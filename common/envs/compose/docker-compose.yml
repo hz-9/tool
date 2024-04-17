@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  postgis-14:
+    platform: linux/amd64
+    image: postgis/postgis:14-3.2-alpine
+    restart: always
+    networks:
+      all:
+        aliases:
+          - all.postgis-14
+    volumes:
+      - ~/Workspaces/docker-volumes/monorepos_postgresql-14/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123456
+    ports:
+      - 5432:5432
+
+networks:
+  all:

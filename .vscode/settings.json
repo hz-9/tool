@@ -1,0 +1,8 @@
+{
+  "eslint.nodePath": "common/autoinstallers/rush-eslint",
+  "eslint2.options": {
+    "overrideConfigFile": "common/autoinstallers/rush-eslint/.eslintrc.js"
+  },
+  "prettier.useEditorConfig": false,
+  "prettier.configPath": ".prettierrc.js"
+}
