@@ -2,6 +2,20 @@
   "name": "@hz9/heft-node-rig",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@hz9/heft-node-rig_v0.2.0",
+      "date": "Fri, 24 May 2024 04:41:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: only packaging cjs format in tool project",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "e28d7646538f466290b43dd89af84498df9d7336"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@hz9/heft-node-rig_v0.1.0",
       "date": "Fri, 24 May 2024 04:29:05 GMT",
