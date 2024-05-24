@@ -23,17 +23,19 @@
    * 注意，这些选项仅仅适用于 tsconfig.json 配置文件。
    */
   "additionalModuleKindsToEmit": [
-    {
-      /**
-       * （必须）必须是 "commonjs", "amd", "umd", "system", "es2015", "esnext" 之一
-       */
-      "moduleKind": "es2015",
-
-      /**
-       * （必须）输出的文件名将被重写
-       */
-      "outFolderName": "lib/esm"
-    }
+    /**
+     * tool 不打印 esm 版本
+     */
+    // {
+    //   /**
+    //    * （必须）必须是 "commonjs", "amd", "umd", "system", "es2015", "esnext" 之一
+    //    */
+    //   "moduleKind": "es2015",
+    //   /**
+    //    * （必须）输出的文件名将被重写
+    //    */
+    //   "outFolderName": "lib/esm"
+    // }
   ],
 
   /**

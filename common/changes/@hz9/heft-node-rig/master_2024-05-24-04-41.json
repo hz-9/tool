@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/heft-node-rig",
+      "comment": "feat: only packaging cjs format in tool project",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz9/heft-node-rig"
+}
