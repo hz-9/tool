@@ -1,0 +1,19 @@
+{
+  "name": "@hz9/heft-node-rig",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@hz9/heft-node-rig_v0.1.0",
+      "date": "Fri, 24 May 2024 04:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: first commit",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "e9926667cbe6d68c8971b955e9ace17a5b700997"
+          }
+        ]
+      }
+    }
+  ]
+}
