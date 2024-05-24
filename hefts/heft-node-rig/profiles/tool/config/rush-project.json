@@ -1,0 +1,13 @@
+{
+  // "operationSettings": [
+  //   {
+  //     "operationName": "_phase:build",
+  //     "outputFolderNames": ["dist", "lib", "lib-commonjs", "temp"]
+  //   },
+  //   {
+  //     "operationName": "build",
+  //     "outputFolderNames": ["dist", "lib", "lib-commonjs", "temp"]
+  //   }
+  // ],
+  "projectOutputFolderNames": ["lib", "docs", "temp"]
+}

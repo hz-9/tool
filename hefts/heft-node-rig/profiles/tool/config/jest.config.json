@@ -1,0 +1,15 @@
+{
+  "extends": "@rushstack/heft-jest-plugin/includes/jest-shared.config.json",
+
+  "testEnvironment": "jest-environment-node",
+
+  "collectCoverage": true,
+
+  "roots": ["<rootDir>/lib/cjs"],
+
+  "testMatch": ["<rootDir>/lib/cjs/**/*.test.{cjs,js}"],
+
+  "testPathIgnorePatterns": ["/lib/cjs/test/__static__/"],
+
+  "coveragePathIgnorePatterns": ["/lib/cjs/__static__/", "/lib/cjs/bin.{cjs,js}", "/lib/cjs/bin/", "/lib/cjs/types/"]
+}

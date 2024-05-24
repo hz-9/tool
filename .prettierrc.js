@@ -1,7 +1,9 @@
 // 配置可参考 https://prettier.io/en/configuration.html
 
 module.exports = {
-  plugins: ['./common/autoinstallers/rush-prettier/node_modules/@trivago/prettier-plugin-sort-imports'],
+  plugins: [
+    './common/autoinstallers/rush-prettier/node_modules/@trivago/prettier-plugin-sort-imports/lib/src/index.js',
+  ],
 
   // 使用较大的打印宽度，因为 Prettier 的换行设置似乎是针对没有注释的 JavaScript.
   printWidth: 120,
@@ -35,4 +37,6 @@ module.exports = {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   importOrderGroupNamespaceSpecifiers: true,
+
+  importOrderParserPlugins: ['typescript', 'classProperties', 'decorators-legacy'],
 }

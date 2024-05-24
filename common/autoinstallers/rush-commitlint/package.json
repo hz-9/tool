@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@commitlint/cli": "^17.0.1",
-    "@commitlint/config-conventional": "^17.0.0",
-    "@microsoft/rush-lib": "^5.71.0",
-    "execa": "5"
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@microsoft/rush-lib": "^5.124.0",
+    "execa": "^5.0.0"
   }
 }

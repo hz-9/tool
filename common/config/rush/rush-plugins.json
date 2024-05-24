@@ -1,7 +1,7 @@
 /**
  * This configuration file manages Rush's plugin feature.
  */
-{
+ {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush-plugins.schema.json",
   "plugins": [
     /**

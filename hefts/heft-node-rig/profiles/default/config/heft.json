@@ -1,0 +1,107 @@
+/**
+ * Defines configuration used by core Heft.
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
+
+  /**
+   * Optionally specifies another JSON config file that this file extends from. This provides a way for standard
+   * settings to be shared across multiple projects.
+   */
+  // "extends": "base-project/config/heft.json",
+  // "extends": "@rushstack/heft-node-rig/profiles/default/config/heft.json",
+
+  "aliasesByName": {
+    "start": {
+      "actionName": "build-watch",
+      "defaultParameters": ["--serve"]
+    }
+  },
+
+  "phasesByName": {
+    "build": {
+      "cleanFiles": [{ "includeGlobs": ["dist", "lib", "lib-commonjs"] }],
+
+      "tasksByName": {
+        "typescript": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-typescript-plugin"
+          }
+        },
+
+        "lint": {
+          "taskDependencies": ["typescript"],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-lint-plugin"
+          }
+        },
+
+        "api-extractor": {
+          "taskDependencies": ["typescript"],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-api-extractor-plugin"
+          }
+        },
+
+        "node-service": {
+          "taskDependencies": ["typescript"],
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft",
+            "pluginName": "node-service-plugin"
+          }
+        }
+      }
+    },
+
+    "test": {
+      "phaseDependencies": ["build"],
+
+      "tasksByName": {
+        /**
+         * 在更新 @rushstack/heft@0.58.1 后，jest unit 中 __dirname 不再拦截了。
+         */
+        "static-copy": {
+          // 前置任务
+          "taskPlugin": {
+            "pluginName": "copy-files-plugin",
+            "pluginPackage": "@rushstack/heft",
+            "options": {
+              "copyOperations": [
+                {
+                  "sourcePath": "src/test/__tests__",
+
+                  "destinationFolders": ["lib/cjs/test/__tests__"]
+                },
+                {
+                  "sourcePath": "src/test/__fixtures__",
+
+                  "destinationFolders": ["lib/cjs/test/__fixtures__"]
+                },
+                {
+                  "sourcePath": "src/test/__mocks__",
+
+                  "destinationFolders": ["lib/cjs/test/__mocks__"]
+                },
+
+                // 自定义缓存文件
+                {
+                  "sourcePath": "src/test/__static__",
+
+                  "destinationFolders": ["lib/cjs/test/__static__"]
+                }
+              ]
+            }
+          }
+        },
+
+        "jest": {
+          "taskDependencies": ["static-copy"],
+
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-jest-plugin"
+          }
+        }
+      }
+    }
+  }
+}
