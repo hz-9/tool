@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/pkg-build",
+      "comment": "fix: fix only one target rename error",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz9/pkg-build"
+}

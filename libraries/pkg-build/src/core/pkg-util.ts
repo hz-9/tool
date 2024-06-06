@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 17:37:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-06 20:33:01
+ * @LastEditTime : 2024-06-06 20:44:49
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -189,29 +189,36 @@ export class PKGUtil {
   private static _renameResult(options: IPKGInfo): void {
     const filenames = fs.readdirSync(options.outputPath)
 
-    const replaceRules: [RegExp, RegExp][] = [
-      [/linux$/, /linux/],
-      [/macos$/, /macos/],
-      [/win.exe$/, /win/],
-      [/-linux-arm64$/, /-linux-arm64/],
-      [/-macos-arm64$/, /-macos-arm64/],
-      [/-win-arm64.exe$/, /-win-arm64/],
-      [/-linux-x64$/, /-linux-x64/],
-      [/-macos-x64$/, /-macos-x64/],
-      [/-win-x64.exe$/, /-win-x64/],
-    ]
+    if (filenames.length === 1) {
+      const p1 = path.resolve(options.outputPath, filenames[0])
+      const p2 = path.resolve(options.outputPath, this._newFilename(options, options.targets[0]))
+      if (fs.existsSync(p2)) fs.removeSync(p2)
+      fs.renameSync(p1, p2)
+    } else {
+      const replaceRules: [RegExp, RegExp][] = [
+        [/linux$/, /linux/],
+        [/macos$/, /macos/],
+        [/win.exe$/, /win/],
+        [/-linux-arm64$/, /-linux-arm64/],
+        [/-macos-arm64$/, /-macos-arm64/],
+        [/-win-arm64.exe$/, /-win-arm64/],
+        [/-linux-x64$/, /-linux-x64/],
+        [/-macos-x64$/, /-macos-x64/],
+        [/-win-x64.exe$/, /-win-x64/],
+      ]
 
-    filenames.forEach((filename: string) => {
-      const rule = replaceRules.find(([r]) => r.test(filename))
-      if (rule) {
-        const target = options.targets.find((i) => rule[1].test(i))
-        if (target) {
-          const p1 = path.resolve(options.outputPath, filename)
-          const p2 = path.resolve(options.outputPath, this._newFilename(options, target))
-          if (fs.existsSync(p2)) fs.removeSync(p2)
-          fs.renameSync(p1, p2)
+      filenames.forEach((filename: string) => {
+        const rule = replaceRules.find(([r]) => r.test(filename))
+        if (rule) {
+          const target = options.targets.find((i) => rule[1].test(i))
+          if (target) {
+            const p1 = path.resolve(options.outputPath, filename)
+            const p2 = path.resolve(options.outputPath, this._newFilename(options, target))
+            if (fs.existsSync(p2)) fs.removeSync(p2)
+            fs.renameSync(p1, p2)
+          }
         }
-      }
-    })
+      })
+    }
   }
 }
