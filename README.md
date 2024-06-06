@@ -7,3 +7,9 @@
 用于编写一些 `Node.js` ，或跨运行时的工具库。
 
 <!-- TODO 补充操作说明 -->
+
+## 发布
+
+``` sh
+rush publish --apply --publish --add-commit-details --ignore-git-hooks --target-branch master
+```

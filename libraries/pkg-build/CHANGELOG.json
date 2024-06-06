@@ -1,0 +1,19 @@
+{
+  "name": "@hz9/pkg-build",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@hz9/pkg-build_v0.1.0",
+      "date": "Thu, 06 Jun 2024 12:34:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: first commit",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "3a52341126ece18745ff0036ace003435de45a46"
+          }
+        ]
+      }
+    }
+  ]
+}

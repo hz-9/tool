@@ -1,6 +1,6 @@
 {
   "name": "@hz9/pkg-build",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "One 'pkg' wrapper.",
   "main": "./lib/index.js",
   "scripts": {
