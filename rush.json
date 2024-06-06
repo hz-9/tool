@@ -392,6 +392,12 @@
       "packageName": "@hz9/heft-node-rig",
       "projectFolder": "hefts/heft-node-rig",
       "shouldPublish": true
+    },
+
+    {
+      "packageName": "@hz9/pkg-build",
+      "projectFolder": "libraries/pkg-build",
+      "shouldPublish": true
     }
   ]
 }

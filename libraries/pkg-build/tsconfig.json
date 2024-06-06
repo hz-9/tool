@@ -1,0 +1,10 @@
+{
+  "extends": "./node_modules/@hz9/heft-node-rig/profiles/tool/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      // "pkg-types": [
+      //   "./node_modules/pkg-types/dist/index.d.ts"
+      // ]
+    }
+  }
+}

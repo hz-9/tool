@@ -70,3 +70,11 @@ common/autoinstallers/*/.npmrc
 
 # Heft
 .heft
+
+/libraries/*/temp
+/libraries/*/dist
+/libraries/*/lib
+/libraries/*/.rush
+/librlibrariesary/*/docs/.vuepress
+/libraries/*/logs
+/libraries/*/log

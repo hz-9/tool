@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/pkg-build",
+      "comment": "feat: first commit",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz9/pkg-build"
+}
