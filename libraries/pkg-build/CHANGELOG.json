@@ -2,6 +2,20 @@
   "name": "@hz9/pkg-build",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "@hz9/pkg-build_v0.1.1",
+      "date": "Thu, 06 Jun 2024 12:49:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: fix only one target rename error",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "766428667d556d5e009a8f04f8a5127d1966c863"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@hz9/pkg-build_v0.1.0",
       "date": "Thu, 06 Jun 2024 12:34:45 GMT",
