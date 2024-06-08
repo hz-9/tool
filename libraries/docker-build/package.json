@@ -1,6 +1,6 @@
 {
   "name": "@hz9/docker-build",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A docker build tools.",
   "main": "./lib/index.js",
   "scripts": {

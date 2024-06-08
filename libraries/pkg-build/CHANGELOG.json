@@ -2,6 +2,20 @@
   "name": "@hz9/pkg-build",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@hz9/pkg-build_v0.2.0",
+      "date": "Sat, 08 Jun 2024 08:43:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: adjust parameters and analysis scheme",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "1deb98665720ee96a442c81b7738c6de60f7db2d"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.1",
       "tag": "@hz9/pkg-build_v0.1.1",
       "date": "Thu, 06 Jun 2024 12:49:45 GMT",
