@@ -395,6 +395,12 @@
     },
 
     {
+      "packageName": "@hz9/docker-build",
+      "projectFolder": "libraries/docker-build",
+      "shouldPublish": true
+    },
+
+    {
       "packageName": "@hz9/pkg-build",
       "projectFolder": "libraries/pkg-build",
       "shouldPublish": true

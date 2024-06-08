@@ -2,16 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 16:18:28
+ * @LastEditTime : 2024-06-08 15:41:07
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
-import { Command, type OptionValues } from 'commander'
+import { Command } from 'commander'
 import { parse as parseJsonC } from 'jsonc-parser'
 import readPkg, { type NormalizedPackageJson } from 'read-pkg'
 
-import { SupportTarget } from '../enum'
-import type { ICommandOptions, IConfigOptions, IPkgBuildOptions } from '../interface'
+import { SupportPlatform } from '../enum'
+import type { ICommandOptions, IConfigOptions, IDockerBuildOptions } from '../interface'
 
 /**
  * @public
@@ -20,7 +20,7 @@ import type { ICommandOptions, IConfigOptions, IPkgBuildOptions } from '../inter
  *
  */
 export class Commander {
-  public static async parse(): Promise<IPkgBuildOptions> {
+  public static async parse(): Promise<IDockerBuildOptions> {
     const pkg = await readPkg()
 
     const program = new Command()
@@ -32,10 +32,14 @@ export class Commander {
       .option('-c, --config <char>', "Config file 's path.")
       .option('--build-name <char>', "The result 's name.")
       .option('--build-version <char>', "The result 's version.")
-
-      .option('--targets <char>', 'target platform.')
+      .option('--platform <char>', "Support platform. Now, only support 'linux/amd64' 'linux/arm64'")
       .option('--input-path <char>', 'Entry file path.')
-      .option('--output-path <char>', "The result 's dir.")
+      .option('--clean', 'Is clean the result?')
+      .option('--image <char>', "The base docker image. Default: 'node:18.20-slim'")
+      .option('--node <char>', 'Node.js version in docker iamge.')
+      .option('--expose-port <number>', 'Expose port in docker image.')
+      .option('-p, --publish', 'Publish docker image host.')
+      .option('--publish-host <char>', 'Is publish docker image?')
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())
@@ -57,12 +61,10 @@ export class Commander {
    *
    *  用以解析命令行获取的对象。
    *
-   *  inputPath outputPath config 属性，若为相对路径，均会与 root 拼接为绝对路径。
-   *
    * @param options - 命令行参数。
    * @returns 解析成果。
    */
-  public static _parseCommandOptions(options: OptionValues): ICommandOptions {
+  public static _parseCommandOptions(options: ICommandOptions): ICommandOptions {
     const root: string = options.root ?? process.cwd()
 
     const withRoot = (p: unknown): string | undefined => {
@@ -76,7 +78,6 @@ export class Commander {
       root,
       config: withRoot(options.config),
       inputPath: withRoot(options.inputPath),
-      outputPath: withRoot(options.outputPath),
     }
   }
 
@@ -91,9 +92,9 @@ export class Commander {
   private static _parseConfig(configPath: string): IConfigOptions {
     const config = parseJsonC(fs.readFileSync(configPath, { encoding: 'utf8' }))
 
-    if (!config.pkg) return {}
+    if (!config.docker) return {}
 
-    const options: IConfigOptions = config.pkg
+    const options: IConfigOptions = config.docker
 
     const withRoot = (p: unknown): string | undefined => {
       if (typeof p !== 'string') return undefined
@@ -103,11 +104,8 @@ export class Commander {
     return {
       ...options,
 
-      scripts: options.scripts ? options.scripts.map((i) => withRoot(i)!) : undefined,
       assets: options.assets ? options.assets.map((i) => withRoot(i)!) : undefined,
-
       inputPath: withRoot(options.inputPath),
-      outputPath: withRoot(options.outputPath),
     }
   }
 
@@ -124,22 +122,32 @@ export class Commander {
     o1: ICommandOptions,
     o2: IConfigOptions,
     pkg: NormalizedPackageJson
-  ): IPkgBuildOptions {
-    const targets = o1.targets ?? o2.targets ?? []
-    if (!targets.length) targets.push(SupportTarget.LinuxX64)
-
+  ): IDockerBuildOptions {
     const defaultName = (pkg.name.match(/[^/]+$/g) ?? ['unknown'])[0]
+
+    const platform: SupportPlatform = {
+      [SupportPlatform.LINUX_AMD64]: SupportPlatform.LINUX_AMD64,
+      [SupportPlatform.AMD64]: SupportPlatform.LINUX_AMD64,
+      [SupportPlatform.LINUX_ARM64]: SupportPlatform.LINUX_ARM64,
+      [SupportPlatform.ARM64]: SupportPlatform.LINUX_ARM64,
+    }[o1.platform ?? o2.platform ?? SupportPlatform.LINUX_AMD64]
+
+    const node: string = o1.node ?? o2.node ?? '18.20'
 
     return {
       root: o1.root,
       config: o1.config,
       buildName: o1.buildName ?? o2.buildName ?? defaultName,
       buildVersion: o1.buildVersion ?? o2.buildVersion ?? pkg.version,
-      inputPath: o1.inputPath ?? o2.inputPath ?? path.resolve(o1.root, './src/index.js'),
-      outputPath: o1.outputPath ?? o2.outputPath ?? path.resolve(o1.root, './build'),
-      targets,
-      scripts: o2.scripts ?? [],
-      assets: o2.assets ?? [],
+      platform,
+      inputPath: o1.inputPath ?? o2.inputPath ?? path.resolve(o1.root, './build/service'),
+      node,
+      publish: o1.publish ?? o2.publish ?? false,
+      publishHost: o1.publishHost ?? o2.publishHost,
+      image: o1.image ?? o2.image ?? `node:${node}-slim`,
+      exposePort: o1.exposePort ?? o2.exposePort ?? 16100,
+      assets: o2.assets ?? [path.resolve(o1.root, 'package.json')],
+      clean: o1.clean ?? o2.clean ?? false,
     }
   }
 }

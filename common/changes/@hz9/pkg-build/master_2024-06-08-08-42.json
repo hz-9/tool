@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/pkg-build",
+      "comment": "feat: adjust parameters and analysis scheme",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz9/pkg-build"
+}
