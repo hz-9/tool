@@ -1,5 +1,5 @@
 {
-  "name": "@hz9/pkg-build",
+  "name": "@hz-9/pkg-build",
   "version": "0.2.0",
   "description": "One 'pkg' wrapper.",
   "main": "./lib/index.js",
@@ -31,8 +31,8 @@
     "upath": "~2.0.1"
   },
   "devDependencies": {
-    "@hz9/eslint-config-airbnb-ts": "~0.4.1",
-    "@hz9/heft-node-rig": "workspace:*",
+    "@hz-9/eslint-config-airbnb-ts": "^0.5.2",
+    "@hz-9/heft-node-rig": "workspace:*",
     "@rushstack/heft": "0.66.1",
     "@types/fs-extra": "~11.0.3",
     "@types/heft-jest": "~1.0.3",

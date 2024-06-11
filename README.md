@@ -1,14 +1,10 @@
 # JavaScript Tool
 
-## 简介
+## Introduction
 
-一个使用 `Rush.js` 进行编排的 `Monorepos` 仓库。
+Some 'Node.js' tool library.
 
-用于编写一些 `Node.js` ，或跨运行时的工具库。
-
-<!-- TODO 补充操作说明 -->
-
-## 发布
+## Publish
 
 ``` sh
 rush publish --apply --publish --add-commit-details --ignore-git-hooks --target-branch master

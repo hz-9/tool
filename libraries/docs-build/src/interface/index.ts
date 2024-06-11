@@ -2,10 +2,8 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 21:46:47
+ * @LastEditTime : 2024-06-11 11:14:05
  */
-import type { NormalizedPackageJson } from 'read-pkg'
-
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
 import type { ISidebarOptions } from './vuepress-theme-hope.sidebar-options'

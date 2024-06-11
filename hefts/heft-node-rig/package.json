@@ -1,5 +1,5 @@
 {
-  "name": "@hz9/heft-node-rig",
+  "name": "@hz-9/heft-node-rig",
   "version": "0.3.0",
   "description": "A rig package for Node.js projects that build using Heft",
   "license": "",

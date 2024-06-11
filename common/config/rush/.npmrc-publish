@@ -19,6 +19,5 @@
 #   //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
 #
 
-registry=http://47.92.86.108:8081/repository/hz9-npm/
-
-//47.92.86.108:8081/repository/hz9-npm/:_authToken=${HZ9_OWN_NPM_AUTH_TOKEN}
+registry=https://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=${HZ9_NPM_AUTH_TOKEN}

@@ -215,7 +215,7 @@
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote main branch.
      */
-    "url": "git@gitee.com:heavenzhen999/javascript-tool.git",
+    "url": "git@github.com:hz-9/tool.git",
 
     /**
      * The default branch name. This tells "rush change" which remote branch to compare against.
@@ -389,25 +389,25 @@
     // "apps" folder (alphabetical order)
 
     {
-      "packageName": "@hz9/heft-node-rig",
+      "packageName": "@hz-9/heft-node-rig",
       "projectFolder": "hefts/heft-node-rig",
       "shouldPublish": true
     },
 
     {
-      "packageName": "@hz9/docker-build",
+      "packageName": "@hz-9/docker-build",
       "projectFolder": "libraries/docker-build",
       "shouldPublish": true
     },
 
     {
-      "packageName": "@hz9/docs-build",
+      "packageName": "@hz-9/docs-build",
       "projectFolder": "libraries/docs-build",
       "shouldPublish": true
     },
 
     {
-      "packageName": "@hz9/pkg-build",
+      "packageName": "@hz-9/pkg-build",
       "projectFolder": "libraries/pkg-build",
       "shouldPublish": true
     }

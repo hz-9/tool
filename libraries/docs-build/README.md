@@ -2,7 +2,7 @@
 
 ## 介绍
 
-对 TypeScript 库，`@hz9/ts-docs-build` 会读取 `Markdown` 文件组织成文档网站。
+对 TypeScript 库，`@hz-9/ts-docs-build` 会读取 `Markdown` 文件组织成文档网站。
 
 ## 扫描方案
 

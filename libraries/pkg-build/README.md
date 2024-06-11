@@ -1,8 +1,8 @@
 # PKG Build
 
-`@hz9/pkg-build` 是一个 `pkg` 打包的封装库。
+`@hz-9/pkg-build` 是一个 `pkg` 打包的封装库。
 
-`@hz9/pkg-build` 与 `pkg` 相比，增加了以下功能。
+`@hz-9/pkg-build` 与 `pkg` 相比，增加了以下功能。
 
 1. 对 config 文件，支持更多的属性；
    1. 增加了 `inputPath` 属性，设置打包入库；

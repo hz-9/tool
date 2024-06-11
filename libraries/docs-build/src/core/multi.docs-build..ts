@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 22:33:13
+ * @LastEditTime : 2024-06-11 11:13:15
  */
 
 /* eslint-disable no-param-reassign */
@@ -240,12 +240,11 @@ export class MultiDocsBuild extends SingleDocsBuild {
               // @ts-ignore
               sidebarOptions[`/${navPath}/${packageName}`] = navPath === 'api' ? getSidebar(p) : 'structure'
             } else {
-              // nothings.
-              if (!(sidebarOptions as ISidebarObjectOptions)[`/${navPath}`]) {
-                ;(sidebarOptions as ISidebarObjectOptions)[`/${navPath}`] = []
+              const sidebarOptions2 = sidebarOptions as ISidebarObjectOptions
+              if (!sidebarOptions2[`/${navPath}`]) {
+                sidebarOptions2[`/${navPath}`] = []
               }
-
-              const arr = (sidebarOptions as ISidebarObjectOptions)[`/${navPath}`]
+              const arr = sidebarOptions2[`/${navPath}`]
               if (Array.isArray(arr)) {
                 arr.push(path.basename(newFilePath))
               }
@@ -254,10 +253,12 @@ export class MultiDocsBuild extends SingleDocsBuild {
           },
           navbarCallback: (navbarOptions: INavbarOptions, sidebarOptions: ISidebarOptions) => {
             if (schema.isDir) {
-              const f = navbarOptions.find((i) => (i as INavbarGroupOptions).text === navName)
+              const f = navbarOptions.find((i) => (i as INavbarGroupOptions).text === navName) as
+                | INavbarGroupOptions
+                | undefined
 
               if (f) {
-                ;(f as INavbarGroupOptions).children.push(packageName)
+                f.children.push(packageName)
               } else {
                 navbarOptions.push({
                   text: navName,

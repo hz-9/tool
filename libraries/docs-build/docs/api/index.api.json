@@ -139,14 +139,14 @@
     }
   },
   "kind": "Package",
-  "canonicalReference": "@hz9/docs-build!",
+  "canonicalReference": "@hz-9/docs-build!",
   "docComment": "",
-  "name": "@hz9/docs-build",
+  "name": "@hz-9/docs-build",
   "preserveMemberOrder": false,
   "members": [
     {
       "kind": "EntryPoint",
-      "canonicalReference": "@hz9/docs-build!",
+      "canonicalReference": "@hz-9/docs-build!",
       "name": "",
       "preserveMemberOrder": false,
       "members": []

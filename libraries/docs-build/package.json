@@ -1,5 +1,5 @@
 {
-  "name": "@hz9/docs-build",
+  "name": "@hz-9/docs-build",
   "version": "0.0.0",
   "description": "One Docs Website Generate Tool.",
   "main": "./lib/index.js",
@@ -35,8 +35,8 @@
     "chokidar": "~3.6.0"
   },
   "devDependencies": {
-    "@hz9/eslint-config-airbnb-ts": "~0.4.1",
-    "@hz9/heft-node-rig": "workspace:*",
+    "@hz-9/eslint-config-airbnb-ts": "^0.5.2",
+    "@hz-9/heft-node-rig": "workspace:*",
     "@rushstack/heft": "0.66.1",
     "@types/fs-extra": "~11.0.3",
     "@types/heft-jest": "~1.0.3",

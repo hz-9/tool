@@ -1,4 +1,4 @@
-# Change Log - @hz9/pkg-build
+# Change Log - @hz-9/pkg-build
 
 This log was last generated on Sat, 08 Jun 2024 08:43:11 GMT and should not be manually modified.
 

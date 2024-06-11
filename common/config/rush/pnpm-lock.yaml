@@ -63,10 +63,10 @@ importers:
         specifier: 9.0.1
         version: 9.0.1
     devDependencies:
-      '@hz9/eslint-config-airbnb-ts':
-        specifier: ~0.4.1
-        version: 0.4.1(eslint@8.57.0)(typescript@5.3.3)
-      '@hz9/heft-node-rig':
+      '@hz-9/eslint-config-airbnb-ts':
+        specifier: ^0.5.2
+        version: 0.5.2(eslint@8.57.0)(typescript@5.3.3)
+      '@hz-9/heft-node-rig':
         specifier: workspace:*
         version: link:../../hefts/heft-node-rig
       '@rushstack/heft':
@@ -126,14 +126,11 @@ importers:
       upath:
         specifier: ~2.0.1
         version: 2.0.1
-      yaml:
-        specifier: ~2.4.5
-        version: 2.4.5
     devDependencies:
-      '@hz9/eslint-config-airbnb-ts':
-        specifier: ~0.4.1
-        version: 0.4.1(eslint@8.57.0)(typescript@5.3.3)
-      '@hz9/heft-node-rig':
+      '@hz-9/eslint-config-airbnb-ts':
+        specifier: ^0.5.2
+        version: 0.5.2(eslint@8.57.0)(typescript@5.3.3)
+      '@hz-9/heft-node-rig':
         specifier: workspace:*
         version: link:../../hefts/heft-node-rig
       '@rushstack/heft':
@@ -182,10 +179,10 @@ importers:
         specifier: ~2.0.1
         version: 2.0.1
     devDependencies:
-      '@hz9/eslint-config-airbnb-ts':
-        specifier: ~0.4.1
-        version: 0.4.1(eslint@8.57.0)(typescript@5.3.3)
-      '@hz9/heft-node-rig':
+      '@hz-9/eslint-config-airbnb-ts':
+        specifier: ^0.5.2
+        version: 0.5.2(eslint@8.57.0)(typescript@5.3.3)
+      '@hz-9/heft-node-rig':
         specifier: workspace:*
         version: link:../../hefts/heft-node-rig
       '@rushstack/heft':
@@ -599,13 +596,14 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: true
 
-  /@hz9/eslint-config-airbnb-ts@0.4.1(eslint@8.57.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-hWV6mSltLRPsH0ZWPJWRmEpjN58Cmmz6aihai/Sfms1Nf4aHXRHsuNOvqcghuZe273bQntpycoa7r3vWknN8gA==}
+  /@hz-9/eslint-config-airbnb-ts@0.5.2(eslint@8.57.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-3LIEeBcwCyk+F/UzcWW/CK/zIyqE5kj5fWvWl2knFtXMczsZC1ABFHAUMAswAKQrlqOhvgsDoK53GUY6eEG+Xg==}
+    engines: {node: '>=18.15.0 <19.0.0 || >=20.9.0 <21.0.0'}
     peerDependencies:
       eslint: ^8.2.0
       typescript: '>=5.0.0 <5.4.0'
     dependencies:
-      '@hz9/eslint-config-airbnb': 0.2.0(eslint@8.57.0)
+      '@hz-9/eslint-config-airbnb': 0.3.2(eslint@8.57.0)
       '@rushstack/eslint-config': 3.7.0(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.3.3)
@@ -617,8 +615,9 @@ packages:
       - supports-color
     dev: true
 
-  /@hz9/eslint-config-airbnb@0.2.0(eslint@8.57.0):
-    resolution: {integrity: sha512-XNncrvQ+11QpWUboPOcApN2CyrtywwYSI3X2/nmgHhCiXlMGFYD/MoQYPyVsfCGDfX9t4oiJrTDXh4ZI4BA1tw==}
+  /@hz-9/eslint-config-airbnb@0.3.2(eslint@8.57.0):
+    resolution: {integrity: sha512-t0Z2ePKlPCshZXpiWrFIywfUJKDgb7c00VniBWUTlbgGzVaZoinerP+i47XQGpI+qIrT+zG+bYCG5kB3c9BfMg==}
+    engines: {node: '>=18.15.0 <19.0.0 || >=20.9.0 <21.0.0'}
     peerDependencies:
       eslint: ^8.2.0
     dependencies:
@@ -4811,12 +4810,6 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-
-  /yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
-    engines: {node: '>= 14'}
-    hasBin: true
-    dev: false
 
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}

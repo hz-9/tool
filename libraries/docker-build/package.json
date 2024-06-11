@@ -1,5 +1,5 @@
 {
-  "name": "@hz9/docker-build",
+  "name": "@hz-9/docker-build",
   "version": "0.1.0",
   "description": "A docker build tools.",
   "main": "./lib/index.js",
@@ -34,8 +34,8 @@
     "uuid": "9.0.1"
   },
   "devDependencies": {
-    "@hz9/eslint-config-airbnb-ts": "~0.4.1",
-    "@hz9/heft-node-rig": "workspace:*",
+    "@hz-9/eslint-config-airbnb-ts": "^0.5.2",
+    "@hz-9/heft-node-rig": "workspace:*",
     "@rushstack/heft": "0.66.1",
     "@types/fs-extra": "~11.0.3",
     "@types/heft-jest": "~1.0.3",
