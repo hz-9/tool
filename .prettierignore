@@ -68,28 +68,23 @@ common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
 
-libraries/*/sandbox/temp
-libraries/*/src/test/temp
-libraries/*/lib
-libraries/*/docs/api
-libraries/*/build
-libraries/*/temp
-libraries/*/public/*.json
-libraries/docs-build/.template/vuepress
+/hefts/*/temp
+/hefts/*/dist
+/hefts/*/lib
+/hefts/*/.rush
+/hefts/*/docs/.vuepress
+/hefts/*/docs/.markdowns
+/hefts/*/logs
+/hefts/*/log
 
-tools/*/sandbox/temp
-tools/*/src/test/temp
-tools/*/lib
-tools/*/docs/api
-tools/*/build
-tools/*/temp
-
-types/*/sandbox/temp
-types/*/src/test/temp
-types/*/lib
-types/*/docs/api
-types/*/build
-types/*/temp
+/libraries/*/temp
+/libraries/*/dist
+/libraries/*/lib
+/libraries/*/.rush
+/libraries/*/docs/.vuepress
+/libraries/*/docs/.markdowns
+/libraries/*/logs
+/libraries/*/log
 
 # Heft
 .heft

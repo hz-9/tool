@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 19:35:51
+ * @LastEditTime : 2024-06-11 21:07:31
  */
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
@@ -92,6 +92,8 @@ export interface IPackageInfo {
 }
 
 export interface IRenderOptions {
+  options: ICommandOptions
+
   sidebarOptions: ISidebarOptions
 
   navbarOptions: INavbarOptions
@@ -146,6 +148,11 @@ export interface ICommandOptions {
    *
    */
   action?: VuepressAction
+
+  /**
+   * @since 0.2.0
+   */
+  baseUrl: string
 }
 
 /**

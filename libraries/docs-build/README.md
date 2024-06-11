@@ -69,6 +69,10 @@ The markdown folder generated using `@microsoft/api-documenter`. If omitted, it 
 
 Vuepress Action. Support `serve` or `build`.
 
+### --base-url
+
+Vuepress base url. If omitted, it is `/`.
+
 ## Scan rule
 
 ### Normal project

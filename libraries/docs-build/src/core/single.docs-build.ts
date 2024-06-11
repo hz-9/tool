@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 19:43:42
+ * @LastEditTime : 2024-06-11 21:04:22
  */
 
 /* eslint-disable no-param-reassign */
@@ -68,6 +68,7 @@ export class SingleDocsBuild {
       markdownPath: withRoot(options.markdownPath),
       docsSpace: withRoot(options.docsSpace),
       action: options.action,
+      baseUrl: options.baseUrl,
     }
   }
 
@@ -94,6 +95,7 @@ export class SingleDocsBuild {
     const packageInfo = await readPkg(options.root)
 
     await moveVuepressTemp(options.docsSpace, {
+      options,
       navbarOptions,
       sidebarOptions,
       packageInfo: { name: packageInfo.name, description: packageInfo.description ?? '' },

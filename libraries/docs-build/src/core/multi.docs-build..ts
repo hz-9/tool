@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 19:37:04
+ * @LastEditTime : 2024-06-11 21:04:15
  */
 
 /* eslint-disable no-param-reassign */
@@ -93,6 +93,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
     const packageInfo = await this._parseBaseReadme(baseReadme)
 
     await moveVuepressTemp(options.docsSpace, {
+      options,
       navbarOptions,
       sidebarOptions,
       packageInfo,

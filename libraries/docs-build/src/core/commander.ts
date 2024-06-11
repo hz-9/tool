@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 18:39:28
+ * @LastEditTime : 2024-06-11 20:59:44
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -36,6 +36,7 @@ export class Commander {
       .option('--docs-space <char>', 'The space to docs website.', './docs/.vuepress')
       .option('--markdown-path <char>', 'the markdown folder.', './docs/.markdowns')
       .option('-a, --action <char>', "vuepress action. Support 'serve' or 'build'")
+      .option('--base-url <char>', 'vuepress build path', '/')
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())
@@ -57,6 +58,7 @@ export class Commander {
 
     return {
       root,
+      baseUrl: options.baseUrl,
       config: options.config,
       markdownPath: options.markdownPath,
       docsSpace: options.docsSpace,
