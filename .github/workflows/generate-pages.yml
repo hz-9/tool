@@ -42,7 +42,7 @@ jobs:
       - name: RushJS Helper
         uses: advancedcsg-open/actions-rush@v1.6.2
       - name: Install @hz-9/docs-build
-        run: npm install -g @hz-9/docs-build
+        run: npm install -g @hz-9/docs-build@test
       - name: Build docs
         run: docs-build --action build --base-url '/tool/'
       - name: Upload artifact
