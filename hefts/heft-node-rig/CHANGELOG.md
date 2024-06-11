@@ -1,6 +1,13 @@
-# Change Log - @hz9/heft-node-rig
+# Change Log - @hz-9/heft-node-rig
 
-This log was last generated on Sat, 25 May 2024 08:15:31 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2024 03:33:51 GMT and should not be manually modified.
+
+## 0.4.0
+Tue, 11 Jun 2024 03:33:51 GMT
+
+### Minor changes
+
+- feat: extend the `include` attribute of tsconfig.json
 
 ## 0.3.0
 Sat, 25 May 2024 08:15:31 GMT

@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/docs-build",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "One Docs Website Generate Tool.",
   "main": "./lib/index.js",
   "scripts": {
