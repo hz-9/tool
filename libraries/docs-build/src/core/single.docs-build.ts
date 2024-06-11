@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:04:22
+ * @LastEditTime : 2024-06-11 21:49:51
  */
 
 /* eslint-disable no-param-reassign */
@@ -161,9 +161,13 @@ export class SingleDocsBuild {
 
     const entryPath: string = configInfo.mainEntryPointFilePath
 
+    // eslint-disable-next-line prefer-destructuring
+    const apiJsonFilePath: string = configInfo?.docModel?.apiJsonFilePath ?? '<projectFolder>/docs/api/index.api.json'
+
     return {
       entryPath: toAbsolute(entryPath),
       apiPath: toAbsolute(apiPath),
+      apiJsonFilePath: toAbsolute(apiJsonFilePath),
       configPath: options.config,
     }
   }
@@ -175,11 +179,14 @@ export class SingleDocsBuild {
    *
    */
   protected async generateAPIDocs(options: ICommandOptions, configOptions: IConfigOptions): Promise<void> {
-    const exists = await fs.existsSync(path.resolve(options.root, 'tsconfig.json'))
-    const entryExists = await fs.existsSync(configOptions.entryPath)
+    const exists = fs.existsSync(path.resolve(options.root, 'tsconfig.json'))
+    const entryExists = fs.existsSync(configOptions.entryPath)
+    const jsonExists = fs.existsSync(configOptions.apiJsonFilePath)
 
     if (exists && entryExists) {
       await this.runApiExtractor(options, configOptions)
+      await this.runApiDocumenter(options, configOptions)
+    } else if (exists && jsonExists) {
       await this.runApiDocumenter(options, configOptions)
     }
   }
@@ -339,9 +346,13 @@ export class SingleDocsBuild {
     while (list.length) {
       const item = list.shift()!
 
+      const p1 = path.relative(options.root, item.baseFilepath)
+      const p2 = path.relative(options.root, item.newFilePath)
+
       fs.removeSync(item.newFilePath)
       try {
         transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+        console.log(`Moved  : ${p1} -> ${p2}`)
       } catch (error) {
         console.error(error)
       }
@@ -351,9 +362,6 @@ export class SingleDocsBuild {
           ignored: /(^|[/\\])\../, // ignore dotfiles
           persistent: true,
         })
-
-        const p1 = path.relative(options.root, item.baseFilepath)
-        const p2 = path.relative(options.root, item.newFilePath)
 
         console.log(`Watch  : ${p1} -> ${p2}`)
         watcher.on('change', async () => {

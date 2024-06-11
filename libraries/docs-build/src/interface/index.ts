@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:07:31
+ * @LastEditTime : 2024-06-11 21:48:53
  */
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
@@ -57,7 +57,7 @@ export interface IConfigOptions {
    *
    * API Docs:
    *
-   * index.api.json 文件所在文件夹。
+   * index.api.md 文件所在文件夹。
    *
    * 默认：读取 api-extractor.base.json 文件中的 apiReport.reportFolder 属性
    *
@@ -79,6 +79,17 @@ export interface IConfigOptions {
    * 配置文件路径。
    */
   configPath: string
+
+  /**
+   *
+   * API Docs:
+   *
+   * index.api.json 文件所在路径。
+   *
+   * 默认：读取 api-extractor.base.json 文件中的 docModel.apiJsonFilePath 属性
+   *
+   */
+  apiJsonFilePath: string
 
   /**
    * rig 包所在路径。

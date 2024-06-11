@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:04:15
+ * @LastEditTime : 2024-06-11 21:57:22
  */
 
 /* eslint-disable no-param-reassign */
@@ -203,6 +203,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
     const rigPackagePath = path.resolve(options.root, 'node_modules', rigPackageName)
 
     const result = await super.parseAPIConfig({ ...options, config }, tempDir)
+
     return {
       ...result,
 

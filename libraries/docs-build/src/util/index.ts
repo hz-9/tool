@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 19:38:26
+ * @LastEditTime : 2024-06-11 21:30:13
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -33,6 +33,8 @@ export const readPkg = (cwd: string = path.resolve(__dirname, '../..')): Normali
 export const printOptions = async (options: ICommandOptions): Promise<void> => {
   const pkg = readPkg(path.resolve(__dirname, '../../'))
 
+  const inRush = fs.existsSync(path.resolve(options.root, 'rush.json'))
+
   console.log()
   console.log(`${pkg.name} - ${pkg.version}`)
   console.log()
@@ -40,6 +42,7 @@ export const printOptions = async (options: ICommandOptions): Promise<void> => {
   console.log(`  root        : ${options.root}`)
 
   console.log(`  action      : ${options.action}`)
+  console.log(`  in rush     : ${inRush}`)
   console.log()
 }
 
