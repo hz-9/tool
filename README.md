@@ -1,4 +1,4 @@
-# JavaScript Tool
+# HZ 9 Tool
 
 ## Introduction
 
