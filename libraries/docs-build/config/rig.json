@@ -7,7 +7,7 @@
    * （必须）继承的 rig 包的名字。
    * 它要求 NPM 包必须带有 "-rig" 的后缀。
    */
-  "rigPackageName": "@hz9/heft-node-rig",
+  "rigPackageName": "@hz-9/heft-node-rig",
 
   /**
    * （可选） 从 rig 包的配置档案中选择一个。

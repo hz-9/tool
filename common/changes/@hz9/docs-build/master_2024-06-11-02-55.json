@@ -1,10 +1,10 @@
 {
   "changes": [
     {
-      "packageName": "@hz9/docs-build",
+      "packageName": "@hz-9/docs-build",
       "comment": "feat: first commit",
       "type": "minor"
     }
   ],
-  "packageName": "@hz9/docs-build"
+  "packageName": "@hz-9/docs-build"
 }

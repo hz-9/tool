@@ -71,19 +71,23 @@ common/autoinstallers/*/.npmrc
 libraries/*/sandbox/temp
 libraries/*/src/test/temp
 libraries/*/lib
+libraries/*/docs/api
 libraries/*/build
 libraries/*/temp
 libraries/*/public/*.json
+libraries/docs-build/.template/vuepress
 
 tools/*/sandbox/temp
 tools/*/src/test/temp
 tools/*/lib
+tools/*/docs/api
 tools/*/build
 tools/*/temp
 
 types/*/sandbox/temp
 types/*/src/test/temp
 types/*/lib
+types/*/docs/api
 types/*/build
 types/*/temp
 
@@ -104,10 +108,6 @@ CHANGELOG.*
 # docs
 markdowns
 
-libraries/map-3d-board/index.html
-
-tools/outline-mapshaper/static
-
 **/temp/_eslint-*.json
 
 # 包管理文件
@@ -122,5 +122,3 @@ lib
 
 # 在 Markdown 中，Prettier 将会对代码块进行格式化，这会影响输出
 *.md
-
-libraries/docs-build/.template/vuepress

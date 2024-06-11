@@ -1,10 +1,10 @@
 {
   "changes": [
     {
-      "packageName": "@hz9/heft-node-rig",
+      "packageName": "@hz-9/heft-node-rig",
       "comment": "feat: extend the `include` attribute of tsconfig.json",
       "type": "minor"
     }
   ],
-  "packageName": "@hz9/heft-node-rig"
+  "packageName": "@hz-9/heft-node-rig"
 }
