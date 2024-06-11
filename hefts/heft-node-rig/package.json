@@ -2,14 +2,29 @@
   "name": "@hz-9/heft-node-rig",
   "version": "0.3.0",
   "description": "A rig package for Node.js projects that build using Heft",
-  "license": "",
   "scripts": {
     "build": " "
   },
+  "author": "Chen Zhen <heavenzhen999@163.com>",
+  "bugs": {
+    "url": "https://github.com/hz-9/tool/issues"
+  },
+  "engines": {
+    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "@rushstack/heft": "0.66.1",
     "@types/heft-jest": "~1.0.3",
     "typescript": ">=5.0.0 <5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "hefts/heft-node-rig",
+    "type": "git",
+    "url": "git+https://github.com/hz-9/tool"
   },
   "dependencies": {
     "@microsoft/api-extractor": "7.42.3",

@@ -15,11 +15,25 @@
     "CHANGELOG.md",
     ".template"
   ],
-  "author": "Chen Zhen",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
   "bin": {
     "pkg-build": "./lib/bin/pkg-build.js"
   },
+  "bugs": {
+    "url": "https://github.com/hz-9/tool/issues"
+  },
+  "engines": {
+    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
+  },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "libraries/pkg-build",
+    "type": "git",
+    "url": "git+https://github.com/hz-9/tool"
+  },
   "types": "./lib/index.d.ts",
   "dependencies": {
     "commander": "~12.1.0",
