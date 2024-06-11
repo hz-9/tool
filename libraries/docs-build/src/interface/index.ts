@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 11:14:05
+ * @LastEditTime : 2024-06-11 19:35:51
  */
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
@@ -79,6 +79,11 @@ export interface IConfigOptions {
    * 配置文件路径。
    */
   configPath: string
+
+  /**
+   * rig 包所在路径。
+   */
+  rigPackage?: string
 }
 
 export interface IPackageInfo {
@@ -110,19 +115,19 @@ export interface ICommandOptions {
 
   /**
    *
+   * api-extractor.json 所在路径。
+   *
+   */
+  config?: string
+
+  /**
+   *
    * 文档生成地址。
    *
    * 默认为：'${root}/docs/.vuepress'。
    *
    */
   docsSpace: string
-
-  /**
-   *
-   * api-extractor.json 所在路径。
-   *
-   */
-  config?: string
 
   /**
    *

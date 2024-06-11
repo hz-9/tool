@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 22:28:00
+ * @LastEditTime : 2024-06-11 19:38:26
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -85,27 +85,6 @@ export const moveVuepressTemp = async (vuepressDirPath: string, renderOptions: I
   }
 
   // await fs.remove(path.resolve(vuepressDirPath, './init'))
-}
-
-export const getPkgCommand = async (root: string): Promise<string> => {
-  const execaResult = await execa('npm', ['config', 'get', 'prefix'])
-
-  const paths = [
-    path.resolve(root, './node_modules/.bin/pkg'),
-
-    path.resolve(process.cwd(), './node_modules/.bin/pkg'),
-
-    path.resolve(execaResult.stdout, './bin/pkg'),
-  ]
-
-  let i = 0
-  while (i < paths.length) {
-    const p = paths[i]
-    if (fs.existsSync(p)) return p
-    i += 1
-  }
-
-  return paths[0]
 }
 
 export const commandIsExists = async (c: string, commands: string[]): Promise<boolean> => {

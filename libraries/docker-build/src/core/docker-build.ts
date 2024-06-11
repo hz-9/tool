@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 17:37:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 16:36:57
+ * @LastEditTime : 2024-06-11 17:53:30
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -54,7 +54,7 @@ export class DockerBuild {
 
     if (options.publish) await this._publishDockerImage(options)
 
-    if (options.clean) await this._clean(options)
+    if (options.lastClean) await this._clean(options)
   }
 
   /**
@@ -73,7 +73,7 @@ export class DockerBuild {
    * 下载基础镜像。
    */
   private static async _downloadBaseImage(options: IDockerBuildOptions): Promise<void> {
-    const commands: string[] = ['pull', `--platform=${options.platform}`, options.image]
+    const commands: string[] = ['pull', `--platform=${options.platform}`, options.baseImage]
 
     await printCommand(`docker ${commands.join(' ')}`)
 
@@ -91,7 +91,7 @@ export class DockerBuild {
    */
   private static async _createDockerfile(options: IDockerBuildOptions, dockerfilePath: string): Promise<void> {
     fs.mkdirpSync(path.dirname(dockerfilePath))
-    const template = fs.readFileSync(path.resolve(__dirname, '../../dockerfile.ejs'), { encoding: 'utf8' })
+    const template = fs.readFileSync(path.resolve(__dirname, '../../.template/dockerfile.ejs'), { encoding: 'utf8' })
     const newOptions: IDockerBuildOptions = JSON.parse(JSON.stringify(options))
 
     const toRelative = (p: string): string => path.relative(options.root, p)
@@ -154,7 +154,6 @@ export class DockerBuild {
       const commands: string[] = ['image', 'inspect', dockerTag]
 
       await printCommand(`docker ${commands.join(' ')}`)
-
       await execa('docker', commands)
       return true
     } catch (error) {
@@ -167,7 +166,6 @@ export class DockerBuild {
       const commands: string[] = ['rmi', dockerTag]
 
       await printCommand(`docker ${commands.join(' ')}`)
-
       await execa('docker', commands)
     } catch (error) {
       // ...

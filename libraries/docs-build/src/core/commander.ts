@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 19:48:01
+ * @LastEditTime : 2024-06-11 18:39:28
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -31,11 +31,11 @@ export class Commander {
     if (pkg.description) program.description(pkg.description)
 
     program
-      .option('-r, --root <char>', 'Root dir for workspace.', process.cwd())
-      .option('-d, --docs-space <char>', 'Vuepress temp path.', 'docs/.vuepress')
-      .option('-c, --config <char>', "Config file 's path.")
-      .option('-m, --markdown-path <char>', "Generated Markdowns file 's path.", './docs/.markdowns')
-      .option('-a, --action <char>', "Vuepress action. Only support 'serve' or 'build'")
+      .option('-r, --root <char>', 'the execution path.', process.cwd())
+      .option('-c, --config <char>', "the path to 'api-extractor.json'.")
+      .option('--docs-space <char>', 'The space to docs website.', './docs/.vuepress')
+      .option('--markdown-path <char>', 'the markdown folder.', './docs/.markdowns')
+      .option('-a, --action <char>', "vuepress action. Support 'serve' or 'build'")
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())

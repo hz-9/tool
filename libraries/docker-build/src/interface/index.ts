@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 15:36:22
+ * @LastEditTime : 2024-06-11 17:50:32
  */
 import type { SupportPlatform } from '../enum'
 
@@ -66,17 +66,8 @@ export interface IDockerBuildOptions {
 
   /**
    * 入口文件。
-   *
-   * 默认为：`./build/service`
    */
   inputPath: string
-
-  /**
-   * Node.js 的版本。
-   *
-   * 默认为：'18.20'
-   */
-  node: string
 
   /**
    * 打包时使用的镜像。
@@ -86,7 +77,21 @@ export interface IDockerBuildOptions {
    *
    * 默认为：'node:${node}-slim' ('node:18.20-slim')
    */
-  image: string
+  baseImage: string
+
+  /**
+   * 开放的端口。
+   *
+   * 默认：16100。
+   */
+  exposePort: number
+
+  /**
+   * 需要移入镜像的静态资源。
+   *
+   * 默认为：['package.json']
+   */
+  assets: string[]
 
   /**
    * 是否发布镜像。
@@ -105,19 +110,5 @@ export interface IDockerBuildOptions {
    *
    * 默认：false
    */
-  clean: boolean
-
-  /**
-   * 开放的端口。
-   *
-   * 默认：16100。
-   */
-  exposePort: number
-
-  /**
-   * 需要移入镜像的静态资源。
-   *
-   * 默认为：['package.json']
-   */
-  assets: string[]
+  lastClean: boolean
 }

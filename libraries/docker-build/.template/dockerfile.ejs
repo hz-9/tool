@@ -1,5 +1,5 @@
 FROM <%= options.image %>
-  
+
 WORKDIR /app
 
 COPY  <%= options.inputPath %>          /app/service
@@ -8,6 +8,6 @@ COPY  <%= options.inputPath %>          /app/service
   assets.map((i) => `RUN   mkdir -p ${i[1]} \nCOPY  ${i[0]}          ${i[1]}`).join('\n')
 %>
 
-EXPOSE <%= options.exposePort %>
-  
+<%= options.exposePort ? `EXPOSE ${options.exposePort}` : '' %>
+
 CMD [ "/app/service" ]

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 22:09:35
+ * @LastEditTime : 2024-06-11 19:43:42
  */
 
 /* eslint-disable no-param-reassign */
@@ -26,6 +26,7 @@ import type {
 } from '../interface/index'
 import {
   commandIsExists,
+  getSidebar,
   installByPnpm,
   installInGlobal,
   moveVuepressTemp,
@@ -171,16 +172,12 @@ export class SingleDocsBuild {
    *  生成文档
    *
    */
-  protected async generateAPIDocs(
-    options: ICommandOptions,
-    configOptions: IConfigOptions,
-    inRush: boolean = false
-  ): Promise<void> {
+  protected async generateAPIDocs(options: ICommandOptions, configOptions: IConfigOptions): Promise<void> {
     const exists = await fs.existsSync(path.resolve(options.root, 'tsconfig.json'))
     const entryExists = await fs.existsSync(configOptions.entryPath)
 
     if (exists && entryExists) {
-      if (!inRush) await this.runApiExtractor(options, configOptions)
+      await this.runApiExtractor(options, configOptions)
       await this.runApiDocumenter(options, configOptions)
     }
   }
@@ -191,11 +188,19 @@ export class SingleDocsBuild {
       await installInGlobal('@microsoft/api-extractor')
     }
 
+    let command: string = 'api-extractor'
+
+    if (configOptions.rigPackage) {
+      const p = path.resolve(configOptions.rigPackage, 'node_modules/@microsoft/api-extractor/bin/api-extractor')
+
+      if (fs.existsSync(p)) command = p
+    }
+
     try {
       const commands: string[] = ['run', '-c', path.resolve(options.root, configOptions.configPath)]
-      await printCommand(`api-extractor ${commands.join(' ')}`)
+      await printCommand(`${command} ${commands.join(' ')}`)
 
-      await execa('api-extractor', commands, {
+      await execa(command, commands, {
         cwd: options.root,
         stderr: process.stderr,
         stdout: process.stdout,
@@ -234,7 +239,14 @@ export class SingleDocsBuild {
     const parsePath = (p: string): string => (path.isAbsolute(p) ? p : path.resolve(options.root, p))
 
     const tryPath = (schema: IDocsParseSchemeItem): string | undefined => {
-      const f = schema.parsePath.find((i) => {
+      const isAPI: boolean = schema.navPath.replace(/^\/|\/$/g, '') === 'api'
+
+      const parsePathList = [...schema.parsePath]
+      if (isAPI) {
+        parsePathList.push(options.markdownPath)
+      }
+
+      const f = parsePathList.find((i) => {
         const p = parsePath(i)
         if (fs.existsSync(p)) {
           if (fs.statSync(p).isDirectory() && schema.isDir) return true
@@ -254,10 +266,11 @@ export class SingleDocsBuild {
       const p = tryPath(schema)
       if (p) {
         const isHome = schema.navPath === '/'
+        const navPath = schema.navPath.replace(/^\/|\/$/g, '')
 
-        let newFilePath = `${options.docsSpace}/src/${schema.navPath.replace(/^\/|\/$/g, '')}/README.md`
+        let newFilePath = `${options.docsSpace}/src/${navPath}/README.md`
         if (isHome) newFilePath = `${options.docsSpace}/src/README.md`
-        if (schema.isDir) newFilePath = `${options.docsSpace}/src/${schema.navPath.replace(/^\/|\/$/g, '')}`
+        if (schema.isDir) newFilePath = `${options.docsSpace}/src/${navPath}`
 
         docsList.push({
           baseFilepath: p,
@@ -268,7 +281,7 @@ export class SingleDocsBuild {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[schema.navPath] = 'structure'
+              sidebarOptions[schema.navPath] = navPath === 'api' ? getSidebar(p) : 'structure'
             } else {
               // nothings.
               // sidebarOptions[isHome ? '/' : schema.navPath] = schema.navPath === '/' ? [''] : ["README.md"]
@@ -328,7 +341,7 @@ export class SingleDocsBuild {
       try {
         transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
       } catch (error) {
-        console.error('!!!item', item, error)
+        console.error(error)
       }
 
       if (options.action === VuepressAction.Serve) {

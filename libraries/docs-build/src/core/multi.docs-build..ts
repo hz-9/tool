@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 11:13:15
+ * @LastEditTime : 2024-06-11 19:37:04
  */
 
 /* eslint-disable no-param-reassign */
@@ -77,7 +77,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
       const configOptions = await this.parseAPIConfig(projectOptions, tempDir)
 
-      await this.generateAPIDocs(projectOptions, configOptions, false)
+      await this.generateAPIDocs(projectOptions, configOptions)
 
       const docsList = await this.parseScheme(projectOptions)
 
@@ -125,14 +125,15 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
   private _addBaseReadme(optionsBase: ICommandOptions): IDocsItem | undefined {
     const options = this.toAbsolute(optionsBase)
-    const p = path.resolve(options.root, 'README.md')
+    const list: string[] = [path.resolve(options.root, 'docs/README.md'), path.resolve(options.root, 'README.md')]
+    const f = list.find((i) => fs.existsSync(i))
 
-    if (!fs.existsSync(p)) return undefined
+    if (!f) return undefined
 
     return {
-      baseFilepath: p,
+      baseFilepath: f,
       newFilePath: path.resolve(options.docsSpace, 'src', 'README.md'),
-      watchFilePath: p,
+      watchFilePath: f,
 
       sidebarCallback: (sidebarOptions: ISidebarOptions) => sidebarOptions,
 
@@ -165,6 +166,15 @@ export class MultiDocsBuild extends SingleDocsBuild {
   }
 
   protected async parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions> {
+    if (options.config) {
+      const config = path.isAbsolute(options.config) ? options.config : path.resolve(options.root, options.config)
+
+      if (fs.existsSync(config)) {
+        const result = await super.parseAPIConfig({ ...options, config }, tempDir)
+        return result
+      }
+    }
+
     const rigJsonPath = path.resolve(options.root, 'config/rig.json')
 
     if (!fs.existsSync(rigJsonPath)) {
@@ -189,8 +199,17 @@ export class MultiDocsBuild extends SingleDocsBuild {
       'api-extractor.json'
     )
 
+    const rigPackagePath = path.resolve(options.root, 'node_modules', rigPackageName)
+
     const result = await super.parseAPIConfig({ ...options, config }, tempDir)
-    return result
+    return {
+      ...result,
+
+      /**
+       * Rig 的路径。
+       */
+      rigPackage: fs.existsSync(rigPackagePath) ? rigPackagePath : undefined,
+    }
   }
 
   protected async parseScheme(options: ICommandOptions): Promise<IDocsItem[]> {
@@ -202,7 +221,14 @@ export class MultiDocsBuild extends SingleDocsBuild {
     const parsePath = (p: string): string => (path.isAbsolute(p) ? p : path.resolve(options.root, p))
 
     const tryPath = (schema: IDocsParseSchemeItem): string | undefined => {
-      const f = schema.parsePath.find((i) => {
+      const isAPI: boolean = schema.navPath.replace(/^\/|\/$/g, '') === 'api'
+
+      const parsePathList = [...schema.parsePath]
+      if (isAPI) {
+        parsePathList.push(options.markdownPath)
+      }
+
+      const f = parsePathList.find((i) => {
         const p = parsePath(i)
         if (fs.existsSync(p)) {
           if (fs.statSync(p).isDirectory() && schema.isDir) return true

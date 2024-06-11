@@ -1,8 +1,27 @@
 {
   "name": "@hz-9/docker-build",
   "version": "0.1.1",
-  "description": "A docker build tools.",
+  "description": "A tool for create node.js docker image and upload product.",
+  "bugs": {
+    "url": "https://github.com/hz-9/tool/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz-9/tool",
+    "directory": "libraries/docker-build"
+  },
+  "license": "MIT",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "docker-build": "./lib/bin/docker-build.js"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    ".template"
+  ],
   "scripts": {
     "build": "heft test --clean",
     "build:link": "heft test --clean && npm unlink -g && npm link",
@@ -10,32 +29,6 @@
     "test": "heft test --clean",
     "test:watch": "heft test-watch --clean"
   },
-  "files": [
-    "lib",
-    "CHANGELOG.md",
-    "dockerfile.ejs",
-    ".template"
-  ],
-  "author": "Chen Zhen <heavenzhen999@163.com>",
-  "bin": {
-    "docker-build": "./lib/bin/docker-build.js"
-  },
-  "bugs": {
-    "url": "https://github.com/hz-9/tool/issues"
-  },
-  "engines": {
-    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
-  },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "directory": "libraries/docker-build",
-    "type": "git",
-    "url": "git+https://github.com/hz-9/tool"
-  },
-  "types": "./lib/index.d.ts",
   "dependencies": {
     "commander": "~12.1.0",
     "execa": "^4.1.0",
@@ -58,5 +51,11 @@
     "@types/uuid": "~9.0.8",
     "eslint": "^8.2.0",
     "typescript": ">=5.0.0 <5.4.0"
+  },
+  "engines": {
+    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

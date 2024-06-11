@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 16:33:41
+ * @LastEditTime : 2024-06-11 17:48:18
  */
 import console from 'node:console'
 import readPkg from 'read-pkg'
@@ -25,12 +25,11 @@ export const printOptions = async (options: IDockerBuildOptions): Promise<void> 
   console.log(`  name        : ${options.buildName}`)
   console.log(`  version     : ${options.buildVersion}`)
   console.log(`  input path  : ${options.inputPath}`)
-  console.log(`  node        : ${options.node}`)
-  console.log(`  image       : ${options.image}`)
+  console.log(`  base image  : ${options.baseImage}`)
   console.log(`  publish     : ${options.publish}`)
   console.log(`  publish host: ${options.publishHost ?? 'Offical'}`)
   console.log(`  expose port : ${options.exposePort}`)
-  console.log(`  clean       : ${options.clean}`)
+  console.log(`  last clean  : ${options.lastClean}`)
 
   options.assets.forEach((i, index) => {
     if (index === 0) {
@@ -55,3 +54,5 @@ export const printCommand = async (command: string): Promise<void> => {
   console.log(`    ${command}`)
   console.log()
 }
+
+export const getDefaultImage = (): string => `node:${process.version.replace(/^v/, '')}-slim`

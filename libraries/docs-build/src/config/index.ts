@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 22:37:19
+ * @LastEditTime : 2024-06-11 18:59:51
  */
 import * as path from 'upath'
 
@@ -70,11 +70,11 @@ const DocsParseSchemeBase = {
     navPath: '/about',
   } as IDocsParseSchemeItem,
 
-  link: {
-    parsePath: ['./docs/LINKS.md', './docs/LINK.md'],
-    navName: '链接',
-    navPath: '/links',
-  } as IDocsParseSchemeItem,
+  // link: {
+  //   parsePath: ['./docs/LINKS.md', './docs/LINK.md'],
+  //   navName: '链接',
+  //   navPath: '/links',
+  // } as IDocsParseSchemeItem,
 } as const
 
 export type TDocsParseScheme = typeof DocsParseSchemeBase

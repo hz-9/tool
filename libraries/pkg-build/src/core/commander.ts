@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 12:08:08
+ * @LastEditTime : 2024-06-11 17:38:09
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -28,14 +28,14 @@ export class Commander {
     if (pkg.description) program.description(pkg.description)
 
     program
-      .option('-r, --root <char>', 'Root dir for workspace.', process.cwd())
-      .option('-c, --config <char>', "Config file 's path.")
-      .option('--build-name <char>', "The result 's name.")
-      .option('--build-version <char>', "The result 's version.")
+      .option('-r, --root <char>', 'the execution path.', process.cwd())
+      .option('-c, --config <char>', 'the path to the configuration file.')
+      .option('--build-name <char>', 'the name part of the build output filename.')
+      .option('--build-version <char>', 'the version part of the build output filename.')
 
-      .option('--targets <char>', 'target platform.')
-      .option('--input-path <char>', 'Entry file path.')
-      .option('--output-path <char>', "The result 's dir.")
+      .option('--targets <char>', 'the targets parameter when execution pkg.')
+      .option('--input-path <char>', "the entry file path when execution pkg. Default is './src/index.js'")
+      .option('--output-path <char>', "the output folder path when execution pkg. Default is './build'")
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())

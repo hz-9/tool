@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docker-build",
+      "comment": "feat: change command-line parameters ",
+      "type": "minor"
+    },
+    {
+      "packageName": "@hz-9/docker-build",
+      "comment": "docs: upgrade `README.md`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docker-build"
+}

@@ -1,8 +1,27 @@
 {
   "name": "@hz-9/pkg-build",
   "version": "0.2.1",
-  "description": "One 'pkg' wrapper.",
+  "description": "A tool for run pkg to package Node.js service or tool.",
+  "bugs": {
+    "url": "https://github.com/hz-9/tool/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz-9/tool",
+    "directory": "libraries/pkg-build"
+  },
+  "license": "MIT",
+  "author": "Chen Zhen <heavenzhen999@163.com>",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": {
+    "pkg-build": "./lib/bin/pkg-build.js"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    ".template"
+  ],
   "scripts": {
     "build": "heft test --clean",
     "build:link": "heft test --clean && npm unlink -g && npm link",
@@ -10,31 +29,6 @@
     "test": "heft test --clean",
     "test:watch": "heft test-watch --clean"
   },
-  "files": [
-    "lib",
-    "CHANGELOG.md",
-    ".template"
-  ],
-  "author": "Chen Zhen <heavenzhen999@163.com>",
-  "bin": {
-    "pkg-build": "./lib/bin/pkg-build.js"
-  },
-  "bugs": {
-    "url": "https://github.com/hz-9/tool/issues"
-  },
-  "engines": {
-    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
-  },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "directory": "libraries/pkg-build",
-    "type": "git",
-    "url": "git+https://github.com/hz-9/tool"
-  },
-  "types": "./lib/index.d.ts",
   "dependencies": {
     "commander": "~12.1.0",
     "execa": "^4.1.0",
@@ -54,5 +48,11 @@
     "eslint": "^8.2.0",
     "execa": "^4.1.0",
     "typescript": ">=5.0.0 <5.4.0"
+  },
+  "engines": {
+    "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

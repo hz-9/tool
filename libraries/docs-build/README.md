@@ -1,41 +1,104 @@
-# TS Docs Build
+# @hz-9/docs-build
 
-## 介绍
+A toos for generate [vuepress-theme-hopo] from typescript project.
 
-对 TypeScript 库，`@hz-9/ts-docs-build` 会读取 `Markdown` 文件组织成文档网站。
+![NPM Version][npm-version-url] ![NPM License][npm-license-url] ![NPM Downloads][npm-downloads-url]
 
-## 扫描方案
+[vuepress-theme-hopo]: https://theme-hope.vuejs.press/
+[npm-version-url]: https://img.shields.io/npm/v/@hz-9/docs-build
+[npm-license-url]: https://img.shields.io/npm/l/@hz-9/docs-build
+[npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/docs-build
 
-在 `ts-docs-build` 读取 `Markdown` 文件时，会经历以下过程：
+## Introduction
 
-1. 依次尝试读取 `${workspace}/docs/README.md`、`${workspace}/README.md` 作为文档网站首页，若均不存在，则提供默认文档首页；
-2. 依次尝试获取 `${workspace}/docs/CHANGELOG.md` `${workspace}/CHANGELOG.md` 文件，作为 `更新日志` 内容；
-3. 依次尝试获取 `${workspace}/docs/TODOLIST.md`、`${workspace}/docs/TODOLIST.todo`、`${workspace}/TODOLIST.md`、`${workspace}/TODOLIST.todo` 文件，作为 `待办清单` 内容；
-4. 尝试获取 `${workspace}/docs/guide` 文件夹，将其作为 `指南` 导航；
-5. 尝试获取 `${workspace}/docs/advance` 文件夹，将其作为 `进阶` 导航；
-6. 尝试获取 `${workspace}/docs/ABOUT.md` 文件，将其作为 `关于` 导航；
-7. 尝试获取 `${workspace}/docs/LINKS.json`、`${workspace}/docs/LINK.json` 文件，将其作为 `更多` 导航；
-8. 尝试生成 api 的文档，将其作为 `api` 导航（[api 生成方案](#api-生成方案)）；
+`@hz-9/docs-build` will scan the markdown files of a project based on certain rules and compile them into a [vuepress-theme-hopo] website. For logic, please refer to the [Scan Rule](#scan-rule).
 
-## api 生成方案
+## Installation
 
-api 生成是基于 [@microsoft/api-extractor](https://api-extractor.com/) 进行 api 文档生成的。`ts-docs-build` 提供了两种方案进行生成：
+``` bash
+npm install --global @hz-9/docs-build
+```
 
-### 方案1
+## Usage
 
-此方案无需在项目中安装其他依赖，侵入性小，不过要求在全局进行一些依赖的安装。
+Get help:
 
-1. 在 `tsc` 命名打包时，需要保留注释信息；
-2. 通过 `@microsoft/api-extractor` 将 `*.d.ts` 合并为一个 `all.d.ts` 文件；
-3. 通过 `@microsoft/api-extractor` 生成 `${workspace}/docs/api/index.api.json` `${workspace}/docs/api/index.api.md` 文件；
-4. 通过 `@microsoft/api-documenter` 生成独立的 `Markdown` 文件，保存于 `${workspace}/docs/api/.markdowns` 路径下。；
-5. 由 `ts-docs-build` 生成文档配置信息；
+``` bash
+docs-build --help
+```
 
-> 此方案需要在全局安装 `@microsoft/api-extractor` `@microsoft/api-documenter` 组件；
+Minimal execution:
 
-### 方案2
+``` bash
+docs-build
+```
 
-在项目中的打包环节操作中，生成了 `${workspace}/docs/api/index.api.json` 文件；
+Developer mode:
 
-1. 通过 `@microsoft/api-documenter` 生成独立的 `Markdown` 文件，保存于 `${workspace}/docs/api/.markdowns` 路径下。；
-2. 由 `ts-docs-build` 生成文档配置信息；
+``` bash
+docs-build --action serve
+```
+
+> `serve` only listens for changes in file content. If a file that matches the rules is added, the current command needs to be restarted.
+
+Production Env:
+
+``` bash
+docs-build --action build
+```
+
+## Parameters
+
+### -r, --root
+
+The execution path, default is `process.cwd()`. This parameter will affects the reading of the `package.json` file and the resolution of other relative paths.
+
+### -c, --config
+
+The path to `api-extractor.json`. Support absolute path or relative path.
+
+### --docs-space
+
+The space to docs website. If omitted, it is `./docs/.vuepress`.
+
+### --markdown-path
+
+The markdown folder generated using `@microsoft/api-documenter`. If omitted, it is `./docs/.markdowns`.
+
+### -a, --action
+
+Vuepress Action. Support `serve` or `build`.
+
+## Scan rule
+
+### Normal project
+
+| Force file                          | Moved file                             | view link    |
+| ----------------------------------- | -------------------------------------- | ------------ |
+| `${workspace}/docs/README.md`       | With down line.                        |              |
+| `${workspace}/README.md`            | `${docsSpace}/src/README.md`           | `/`          |
+| `${workspace}/docs/CHANGELOG.md`    | With down line.                        |              |
+| `${workspace}/CHANGELOG.md`         | `${docsSpace}/src/changelog/README.md` | `/changelog` |
+| `${workspace}/docs/TODOLIST.md`     | With down line.                        |              |
+| `${workspace}/TODOLIST.md`          | `${docsSpace}/src/todo/README.md`      | `/todo`      |
+| `${workspace}/docs/guide/*.md`      | `${docsSpace}/src/guide/*.md`          | `/guide/*`   |
+| `${workspace}/docs/advance/*.md`    | `${docsSpace}/src/advance/*.md`        | `/advance/*` |
+| `${workspace}/docs/.markdowns/*.md` | `${docsSpace}/src/api/*.md`            | `/api/*`     |
+| `${workspace}/docs/ABOUT.md`        | `${docsSpace}/src/about/README.md`     | `/about`     |
+
+### Rush.js project
+
+| Force file                                           | Moved file                                             | view link                           |
+| ---------------------------------------------------- | ------------------------------------------------------ | ----------------------------------- |
+| `${workspace}/docs/README.md`                        | With down line.                                        |                                     |
+| `${workspace}/README.md`                             | `${docsSpace}/src/README.md`                           | `/`                                 |
+| `${workspace}/${projectFolder}/docs/README.md`       | With down line.                                        |                                     |
+| `${workspace}/${projectFolder}/README.md`            | `${docsSpace}/src/home/${unscopedPackageName}.md`      | `/home/${unscopedPackageName}`      |
+| `${workspace}/${projectFolder}/docs/CHANGELOG.md`    | With down line.                                        |                                     |
+| `${workspace}/${projectFolder}/CHANGELOG.md`         | `${docsSpace}/src/changelog/${unscopedPackageName}.md` | `/changelog/${unscopedPackageName}` |
+| `${workspace}/${projectFolder}/docs/TODOLIST.md`     | With down line.                                        |                                     |
+| `${workspace}/${projectFolder}/TODOLIST.md`          | `${docsSpace}/src/todo/${unscopedPackageName}.md`      | `/todo/${unscopedPackageName}`      |
+| `${workspace}/${projectFolder}/docs/guide/*.md`      | `${docsSpace}/src/guide/${unscopedPackageName}/*.md`   | `/guide/${unscopedPackageName}/*`   |
+| `${workspace}/${projectFolder}/docs/advance/*.md`    | `${docsSpace}/src/advance/${unscopedPackageName}/*.md` | `/advance/${unscopedPackageName}/*` |
+| `${workspace}/${projectFolder}/docs/.markdowns/*.md` | `${docsSpace}/src/api/${unscopedPackageName}/*.md`     | `/api/${unscopedPackageName}/*`     |
+| `${workspace}/${projectFolder}/docs/ABOUT.md`        | `${docsSpace}/src/about/${unscopedPackageName}.md`     | `/about/${unscopedPackageName}`     |

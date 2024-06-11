@@ -1,13 +1,139 @@
-# PKG Build
+# @hz-9/pkg-build
 
-`@hz-9/pkg-build` 是一个 `pkg` 打包的封装库。
+A tool for run [pkg] to package Node.js service or tool.
 
-`@hz-9/pkg-build` 与 `pkg` 相比，增加了以下功能。
+[pkg]: https://www.npmjs.com/package/pkg
 
-1. 对 config 文件，支持更多的属性；
-   1. 增加了 `inputPath` 属性，设置打包入库；
-   2. 增加 `name` 属性，设置成果名称；
-   3. 增加 `version` 属性，设置成果版本；
-2. 支持从 package.json 中读取成果名称和版本信息信息；
-3. 对于 `MacOS`，`macos` 会优先理解为 `macos-x64` 而非本地环境；
-4. 除 `pkg-fetch` 之外，提供了其他的下载能力；
+![NPM Version][npm-version-url] ![NPM License][npm-license-url] ![NPM Downloads][npm-downloads-url]
+
+[npm-version-url]:   https://img.shields.io/npm/v/@hz-9/pkg-build
+[npm-license-url]:   https://img.shields.io/npm/l/@hz-9/pkg-build
+[npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/pkg-build
+
+## Introduction
+
+__Why create `@hz-9/pkg-build` instead of directly use `pkg` ?__
+
+`@hz-9/pkg-build` still utilizes pkg for packaging operations without optimizations. `@hz-9/pkg-build` provides the following functionalities:
+
+1. Supports `buildName` and `buildVersion` parameters. Default, it will read them from the package.json file.
+2. The output artifacts will be rename `${name}-${version}-${platform}-${arch}` format.
+
+## Installation
+
+``` bash
+npm install --global @hz-9/pkg-build
+```
+
+## Usage
+
+Get help:
+
+``` bash
+pkg-build --help
+```
+
+Minimal execution:
+
+``` bash
+pkg-build
+```
+
+With config file:
+
+``` bash
+pkg-build --config ./.hz-9.conf.json
+```
+
+Please see [config file description](#config-file) to learn how to write `.hz-9.conf.json`.
+
+## Parameters
+
+### -r, --root
+
+The execution path, default is `process.cwd()`. This parameter will affects the reading of the `package.json` file and the resolution of other relative paths.
+
+### -c, --config
+
+The path to the configuration file. If omitted, the configuration file is not read.
+
+> The command-line parameters have higher priority than configuration file parameters.
+
+### --build-name
+
+The name part of the build output filename. If omitted, it will read `name` parameter from `package.json`.  If package.json cannot be found or parsed correctly, it will default to 'unknown'.
+
+### --build-version
+
+The version part of the build output filename. If omitted, it will read `version` parameter from `package.json`.  If package.json cannot be found or parsed correctly, it will default to '0.0.0'.
+
+### --targets
+
+The `targets` parameter when execution `pkg`. This is [detail](https://www.npmjs.com/package/pkg#targets).
+
+If export multi platforms, use `,` to separate them.(eg: `linux-64,win-x64`) If omitted, it is `linux-x64`.
+
+### --input-path
+
+The entry file path when execution `pkg`. If ommited, it is `./src/index.js`.
+
+### --output-path
+
+The output folder path when execution `pkg`. If ommited, it is `./build`.
+
+> The --config, --input-path, and --output-path parameters can all accept relative or absolute paths.
+> Relative paths will be resolved using the root parameter as the base path.
+
+## Config file
+
+The configuration file support `jsonc` format. All parameters are prefixed with `pkg`.
+
+eg: Read `buildName` parameter, will read the value of `pkg.buildName` from the configuration file.
+
+This is a template for a configuration file:
+
+``` json
+{
+  "pkg": {
+    "inputPath": "dist/main.js",
+    "buildName": "service",
+    "version": "0.0.0",
+    "targets": [
+      "linux-x64"
+    ]
+  }
+}
+
+```
+
+### pkg.buildName
+
+Equivalent to `--build-name`. Has lower priority than command-line arguments.
+
+### pkg.buildVersion
+
+Equivalent to `--build-version`. Has lower priority than command-line arguments.
+
+### pkg.targets
+
+Equivalent to `--targets`. Has lower priority than command-line arguments.
+
+### pkg.inputPath
+
+Equivalent to `--input-path`. If a relative path is provided，it will be resolved using the path where the `config` folder is located as the base path.
+
+### pkg.outputPath
+
+Equivalent to `--output-path`. If a relative path is provided，it will be resolved using the path where the `config` folder is located as the base path.
+
+### pkg.scripts
+
+Since `scripts` are fixed information in the project, we do not plan to support `scripts` parameters in command-line.
+
+[scripts detail](https://www.npmjs.com/package/pkg#assets)
+
+### pkg.assets
+
+Since `assets` are fixed information in the project, we do not plan to support `assets` parameters in command-line.
+
+[assets detail](https://www.npmjs.com/package/pkg#assets)

@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "feat: change command-line description",
+      "type": "patch"
+    },
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "docs: upgrade `README.md`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/pkg-build"
+}

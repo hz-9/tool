@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 12:07:56
+ * @LastEditTime : 2024-06-11 17:51:25
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -12,6 +12,7 @@ import readPkg, { type NormalizedPackageJson } from 'read-pkg'
 
 import { SupportPlatform } from '../enum'
 import type { ICommandOptions, IConfigOptions, IDockerBuildOptions } from '../interface'
+import { getDefaultImage } from '../util'
 
 /**
  * @public
@@ -28,18 +29,23 @@ export class Commander {
     if (pkg.description) program.description(pkg.description)
 
     program
-      .option('-r, --root <char>', 'Root dir for workspace.', process.cwd())
-      .option('-c, --config <char>', "Config file 's path.")
-      .option('--build-name <char>', "The result 's name.")
-      .option('--build-version <char>', "The result 's version.")
-      .option('--platform <char>', "Support platform. Now, only support 'linux/amd64' 'linux/arm64'")
-      .option('--input-path <char>', 'Entry file path.')
-      .option('--clean', 'Is clean the result?')
-      .option('--image <char>', "The base docker image. Default: 'node:18.20-slim'")
-      .option('--node <char>', 'Node.js version in docker iamge.')
-      .option('--expose-port <number>', 'Expose port in docker image.')
-      .option('-p, --publish', 'Publish docker image host.')
-      .option('--publish-host <char>', 'Is publish docker image?')
+      .option('-r, --root <char>', 'the execution path.', process.cwd())
+      .option('-c, --config <char>', 'the path to the configuration file.')
+      .option('--build-name <char>', 'the name part of the build output filename.')
+      .option('--build-version <char>', 'the version part of the build output filename.')
+
+      .option(
+        '--platform <char>',
+        "the 'platform' parameter when build docker image. Now, only support 'linux/amd64' 'linux/arm64'. Default is 'linux/amd64'."
+      )
+      .option('--input-path <char>', 'the entry file path.')
+
+      .option('--base-image <char>', `the base docker image. Default: '${getDefaultImage()}'`)
+      .option('--expose-port <number>', 'the port to expose in docker image.')
+
+      .option('--publish', 'publish docker image.')
+      .option('--publish-host <char>', 'the publish address.')
+      .option('--last-clean', 'clean up the build artifacts.')
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())
@@ -132,7 +138,10 @@ export class Commander {
       [SupportPlatform.ARM64]: SupportPlatform.LINUX_ARM64,
     }[o1.platform ?? o2.platform ?? SupportPlatform.LINUX_AMD64]
 
-    const node: string = o1.node ?? o2.node ?? '18.20'
+    const inputPath = o1.inputPath ?? o2.inputPath
+    if (!inputPath) {
+      throw new Error(`Please set '--input-path' or add 'docker.inputPath' in config file.`)
+    }
 
     return {
       root: o1.root,
@@ -140,14 +149,13 @@ export class Commander {
       buildName: o1.buildName ?? o2.buildName ?? defaultName,
       buildVersion: o1.buildVersion ?? o2.buildVersion ?? pkg.version,
       platform,
-      inputPath: o1.inputPath ?? o2.inputPath ?? path.resolve(o1.root, './build/service'),
-      node,
+      inputPath,
       publish: o1.publish ?? o2.publish ?? false,
       publishHost: o1.publishHost ?? o2.publishHost,
-      image: o1.image ?? o2.image ?? `node:${node}-slim`,
+      baseImage: o1.baseImage ?? o2.baseImage ?? getDefaultImage(),
       exposePort: o1.exposePort ?? o2.exposePort ?? 16100,
       assets: o2.assets ?? [path.resolve(o1.root, 'package.json')],
-      clean: o1.clean ?? o2.clean ?? false,
+      lastClean: o1.lastClean ?? o2.lastClean ?? false,
     }
   }
 }
