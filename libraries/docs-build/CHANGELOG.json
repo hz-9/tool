@@ -2,6 +2,20 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "@hz-9/docs-build_v0.2.1",
+      "date": "Tue, 11 Jun 2024 13:59:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: `index.api.json` can be used to generate markdowns instead of `index.d.ts`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "5a4346b10aa571c9fc2eb8df6c507183ebe59f3e"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@hz-9/docs-build_v0.2.0",
       "date": "Tue, 11 Jun 2024 13:08:39 GMT",
