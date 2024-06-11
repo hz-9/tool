@@ -2,6 +2,20 @@
   "name": "@hz-9/heft-node-rig",
   "entries": [
     {
+      "version": "0.4.1",
+      "tag": "@hz-9/heft-node-rig_v0.4.1",
+      "date": "Tue, 11 Jun 2024 11:51:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs: upgrade `README.md`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "b0b0448343267bd42bd9a266f74fb4a24c318dd2"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@hz-9/heft-node-rig_v0.4.0",
       "date": "Tue, 11 Jun 2024 03:33:51 GMT",
