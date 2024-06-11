@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/docker-build",
+      "comment": "fix: fix incorrect command line name",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz9/docker-build"
+}

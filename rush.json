@@ -401,6 +401,12 @@
     },
 
     {
+      "packageName": "@hz9/docs-build",
+      "projectFolder": "libraries/docs-build",
+      "shouldPublish": true
+    },
+
+    {
       "packageName": "@hz9/pkg-build",
       "projectFolder": "libraries/pkg-build",
       "shouldPublish": true

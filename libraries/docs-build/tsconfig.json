@@ -1,0 +1,16 @@
+{
+  "extends": "./node_modules/@hz9/heft-node-rig/profiles/tool/tsconfig.json",
+  "compilerOptions": {
+    // "skipLibCheck": true,
+
+    // "module": "Node16",
+
+    // "moduleResolution": "node",
+
+    "paths": {
+      // "pkg-types": [
+      //   "./node_modules/pkg-types/dist/index.d.ts"
+      // ]
+    }
+  }
+}

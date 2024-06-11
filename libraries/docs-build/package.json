@@ -1,0 +1,49 @@
+{
+  "name": "@hz9/docs-build",
+  "version": "0.0.0",
+  "description": "One Docs Website Generate Tool.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "heft test --clean",
+    "build:link": "heft test --clean && npm unlink -g && npm link",
+    "start": "ts-node ./src/bin/pkg-build.ts",
+    "test": "heft test --clean",
+    "test:watch": "heft test-watch --clean"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    ".template",
+    "vure"
+  ],
+  "author": "Chen Zhen",
+  "bin": {
+    "docs-build": "./lib/bin/docs-build.js"
+  },
+  "license": "MIT",
+  "types": "./lib/index.d.ts",
+  "dependencies": {
+    "commander": "~12.1.0",
+    "execa": "^4.1.0",
+    "exit-hook": "~2.2.1",
+    "fs-extra": "~11.1.1",
+    "jsonc-parser": "~3.2.1",
+    "read-pkg": "~5.2.0",
+    "upath": "~2.0.1",
+    "glob": "~10.3.3",
+    "lodash": "~4.17.21",
+    "chokidar": "~3.6.0"
+  },
+  "devDependencies": {
+    "@hz9/eslint-config-airbnb-ts": "~0.4.1",
+    "@hz9/heft-node-rig": "workspace:*",
+    "@rushstack/heft": "0.66.1",
+    "@types/fs-extra": "~11.0.3",
+    "@types/heft-jest": "~1.0.3",
+    "@types/node": "~20.3.1",
+    "eslint": "^8.2.0",
+    "execa": "^4.1.0",
+    "typescript": ">=5.0.0 <5.4.0",
+    "@types/lodash": "~4.17.4"
+  }
+}

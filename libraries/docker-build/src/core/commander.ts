@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 15:41:07
+ * @LastEditTime : 2024-06-10 12:07:56
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -21,10 +21,10 @@ import type { ICommandOptions, IConfigOptions, IDockerBuildOptions } from '../in
  */
 export class Commander {
   public static async parse(): Promise<IDockerBuildOptions> {
-    const pkg = await readPkg()
+    const pkg = await readPkg({ cwd: path.resolve(__dirname, '../../') })
 
     const program = new Command()
-    program.name('pkg-build').version(pkg.version)
+    program.name('docker-build').version(pkg.version)
     if (pkg.description) program.description(pkg.description)
 
     program

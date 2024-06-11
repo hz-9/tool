@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 16:18:28
+ * @LastEditTime : 2024-06-10 12:08:08
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -21,7 +21,7 @@ import type { ICommandOptions, IConfigOptions, IPkgBuildOptions } from '../inter
  */
 export class Commander {
   public static async parse(): Promise<IPkgBuildOptions> {
-    const pkg = await readPkg()
+    const pkg = await readPkg({ cwd: path.resolve(__dirname, '../../') })
 
     const program = new Command()
     program.name('pkg-build').version(pkg.version)

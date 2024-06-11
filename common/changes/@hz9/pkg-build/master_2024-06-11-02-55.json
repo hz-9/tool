@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz9/pkg-build",
+      "comment": "fix: repair error call",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz9/pkg-build"
+}

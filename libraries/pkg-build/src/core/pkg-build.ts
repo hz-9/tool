@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 17:37:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 16:28:01
+ * @LastEditTime : 2024-06-10 12:10:48
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -24,7 +24,7 @@ const needDeleteDirList: string[] = []
  */
 exitHook(() => {
   needDeleteDirList.forEach((d: string) => {
-    // fs.removeSync(d)
+    fs.removeSync(d)
   })
 })
 
