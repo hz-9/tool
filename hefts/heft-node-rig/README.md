@@ -16,8 +16,8 @@ A rig package for Node.js projects that build using Heft build system. To learn 
 
 `@hz-9/heft-node-rig` provides two profiles.
 
-- `default`: one typescript default config, export ESM and CJS;
-- `tool`: one command tools config, only export CJS。
+- `default`: A configuration for common, exporting CommonJS (CJS) and ES Module (ESM).
+- `tool`: A configuration for command-line tool, exporting CommonJS (CJS) .
 
 ## Installation
 

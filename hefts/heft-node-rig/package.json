@@ -2,12 +2,16 @@
   "name": "@hz-9/heft-node-rig",
   "version": "0.4.1",
   "description": "A rig package for Node.js projects that build using Heft build system.",
+  "keywords": [
+    "heft",
+    "rig"
+  ],
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hz-9/tool",
+    "url": "https://github.com/hz-9/tool.git",
     "directory": "hefts/heft-node-rig"
   },
   "license": "MIT",

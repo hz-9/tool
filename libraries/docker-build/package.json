@@ -2,12 +2,17 @@
   "name": "@hz-9/docker-build",
   "version": "0.2.0",
   "description": "A tool for create node.js docker image and upload product.",
+  "keywords": [
+    "docker",
+    "image",
+    "upload"
+  ],
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hz-9/tool",
+    "url": "https://github.com/hz-9/tool.git",
     "directory": "libraries/docker-build"
   },
   "license": "MIT",

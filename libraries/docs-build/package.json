@@ -2,12 +2,17 @@
   "name": "@hz-9/docs-build",
   "version": "0.2.1",
   "description": "A toos for generate vuepress-theme-hopo from typescript project.",
+  "keywords": [
+    "vuepress",
+    "api",
+    "rushjs"
+  ],
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hz-9/tool",
+    "url": "https://github.com/hz-9/tool.git",
     "directory": "libraries/docs-build"
   },
   "license": "MIT",

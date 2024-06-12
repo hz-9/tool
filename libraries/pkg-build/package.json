@@ -2,12 +2,15 @@
   "name": "@hz-9/pkg-build",
   "version": "0.2.2",
   "description": "A tool for run pkg to package Node.js service or tool.",
+  "keywords": [
+    "pkg"
+  ],
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hz-9/tool",
+    "url": "https://github.com/hz-9/tool.git",
     "directory": "libraries/pkg-build"
   },
   "license": "MIT",
