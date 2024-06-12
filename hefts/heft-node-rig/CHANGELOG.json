@@ -2,6 +2,20 @@
   "name": "@hz-9/heft-node-rig",
   "entries": [
     {
+      "version": "0.4.2",
+      "tag": "@hz-9/heft-node-rig_v0.4.2",
+      "date": "Wed, 12 Jun 2024 09:53:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add `keywords` paramater in `package.json`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "f6532667d6a35399aff1337657eccb485f52dae0"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.1",
       "tag": "@hz-9/heft-node-rig_v0.4.1",
       "date": "Tue, 11 Jun 2024 11:51:28 GMT",

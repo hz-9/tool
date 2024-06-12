@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Tue, 11 Jun 2024 13:59:28 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 09:53:01 GMT and should not be manually modified.
+
+## 0.2.2
+Wed, 12 Jun 2024 09:53:01 GMT
+
+### Patches
+
+- add `keywords` paramater in `package.json`
 
 ## 0.2.1
 Tue, 11 Jun 2024 13:59:28 GMT

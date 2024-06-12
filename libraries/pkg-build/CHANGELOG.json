@@ -2,6 +2,25 @@
   "name": "@hz-9/pkg-build",
   "entries": [
     {
+      "version": "0.2.3",
+      "tag": "@hz-9/pkg-build_v0.2.3",
+      "date": "Wed, 12 Jun 2024 09:53:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add `keywords` paramater in `package.json`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "f6532667d6a35399aff1337657eccb485f52dae0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@hz-9/heft-node-rig\" to `0.4.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@hz-9/pkg-build_v0.2.2",
       "date": "Tue, 11 Jun 2024 11:51:28 GMT",
