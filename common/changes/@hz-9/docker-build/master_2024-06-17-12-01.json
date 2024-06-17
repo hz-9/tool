@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docker-build",
+      "comment": "docs: add `homepage` paramater in `package.json`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docker-build"
+}
