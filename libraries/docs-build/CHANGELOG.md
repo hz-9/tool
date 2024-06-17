@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Mon, 17 Jun 2024 11:44:15 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 12:02:22 GMT and should not be manually modified.
+
+## 0.3.1
+Mon, 17 Jun 2024 12:02:22 GMT
+
+### Patches
+
+- docs: add `homepage` paramater in `package.json`
 
 ## 0.3.0
 Mon, 17 Jun 2024 11:44:15 GMT

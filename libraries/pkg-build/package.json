@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/pkg-build",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A tool for run pkg to package Node.js service or tool.",
   "keywords": [
     "pkg"

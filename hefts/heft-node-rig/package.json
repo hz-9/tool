@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/heft-node-rig",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A rig package for Node.js projects that build using Heft build system.",
   "keywords": [
     "heft",

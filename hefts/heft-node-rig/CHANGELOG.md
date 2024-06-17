@@ -1,6 +1,13 @@
 # Change Log - @hz-9/heft-node-rig
 
-This log was last generated on Wed, 12 Jun 2024 09:53:01 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 12:02:22 GMT and should not be manually modified.
+
+## 0.4.3
+Mon, 17 Jun 2024 12:02:22 GMT
+
+### Patches
+
+- docs: add `homepage` paramater in `package.json`
 
 ## 0.4.2
 Wed, 12 Jun 2024 09:53:01 GMT
