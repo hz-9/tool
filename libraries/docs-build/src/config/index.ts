@@ -2,51 +2,53 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 18:59:51
+ * @LastEditTime : 2024-06-17 18:57:14
  */
 import * as path from 'upath'
 
-import type { IDocsParseSchemeItem } from '../interface/index'
+import type { IDocsParseSchemeItem, IDocsParseSchemeLang } from '../interface/index'
 
 export const defaultApiMarkdownPath: string = './docs/.markdowns'
+
+export const MultiDefaultNavName: IDocsParseSchemeLang = { 'en-US': 'Readme', 'zh-CN': '主页' }
 
 const DocsParseSchemeBase = {
   '/': {
     parsePath: ['./docs/README.md', './README.md'],
-    navName: '首页',
+    navName: { 'en-US': 'Home', 'zh-CN': '首页' },
     navPath: '/',
   } as IDocsParseSchemeItem,
 
   changelog: {
     parsePath: ['./docs/CHANGELOG.md', './CHANGELOG.md'],
-    navName: '更新日志',
+    navName: { 'en-US': 'Changelog', 'zh-CN': '更新日志' },
     navPath: '/changelog',
     transform: (content: string): string => content.replace('# Change Log - ', '# '),
   } as IDocsParseSchemeItem,
 
   todo: {
     parsePath: ['./docs/TODOLIST.md', './TODOLIST.md'],
-    navName: '待办清单',
+    navName: { 'en-US': 'Todolist', 'zh-CN': '待办清单' },
     navPath: '/todo',
   } as IDocsParseSchemeItem,
 
   guide: {
     parsePath: ['./docs/guide'],
-    navName: '指南',
+    navName: { 'en-US': 'Guide', 'zh-CN': '指南' },
     navPath: '/guide',
     isDir: true,
   } as IDocsParseSchemeItem,
 
   advance: {
     parsePath: ['./docs/advance'],
-    navName: '进阶',
+    navName: { 'en-US': 'Advance', 'zh-CN': '进阶' },
     navPath: '/advance',
     isDir: true,
   } as IDocsParseSchemeItem,
 
   api: {
     parsePath: ['./docs/.markdowns'],
-    navName: 'API',
+    navName: { 'en-US': 'API', 'zh-CN': '配置项' },
     navPath: '/api',
     isDir: true,
     transform: (content: string): string => {
@@ -66,15 +68,9 @@ const DocsParseSchemeBase = {
 
   about: {
     parsePath: ['./docs/ABOUT.md'],
-    navName: '关于',
+    navName: { 'en-US': 'About', 'zh-CN': '关于' },
     navPath: '/about',
   } as IDocsParseSchemeItem,
-
-  // link: {
-  //   parsePath: ['./docs/LINKS.md', './docs/LINK.md'],
-  //   navName: '链接',
-  //   navPath: '/links',
-  // } as IDocsParseSchemeItem,
 } as const
 
 export type TDocsParseScheme = typeof DocsParseSchemeBase

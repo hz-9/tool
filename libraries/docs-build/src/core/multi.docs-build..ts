@@ -2,16 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:57:22
+ * @LastEditTime : 2024-06-17 19:30:51
  */
 
 /* eslint-disable no-param-reassign */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
-import exitHook from 'exit-hook'
 import { parse as parseJsonC } from 'jsonc-parser'
+import type { Package } from 'normalize-package-data'
 
-import { DocsParseScheme, TDocsParseScheme } from '../config/index'
+import { DocsParseScheme, MultiDefaultNavName, TDocsParseScheme } from '../config/index'
 import type {
   ICommandOptions,
   IConfigOptions,
@@ -19,37 +19,24 @@ import type {
   IDocsParseSchemeItem,
   INavbarGroupOptions,
   INavbarOptions,
-  IPackageInfo,
   IRushProject,
   ISidebarObjectOptions,
   ISidebarOptions,
 } from '../interface/index'
-import { getSidebar, installByPnpm, moveVuepressTemp, printOptions, readPkg, vuepressAction } from '../util/index'
+import { installByPnpm, printOptions, readPkg } from '../util/index'
 import { SingleDocsBuild } from './single.docs-build'
 
 /**
- * 等待删除的文件列表。
- */
-const needDeleteDirList: string[] = []
-
-/**
- * 推出后，对中间成果进行删除。
- */
-exitHook(() => {
-  needDeleteDirList.forEach((d: string) => {
-    fs.removeSync(d)
-  })
-})
-
-/**
+ *
  * @public
  *
- *  文档构建工具。
+ * A build class that utilizes the docs build result.
+ *
+ * In rush.js project.
  *
  */
 export class MultiDocsBuild extends SingleDocsBuild {
   public async build(options: ICommandOptions): Promise<void> {
-    // const options = this.toAbsolute(optionsBase)
     await printOptions(options)
 
     const projects = this._readRushProjects(options)
@@ -73,7 +60,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
       }
 
       const tempDir = path.resolve(projectOptions.root, 'temp', '.hz9/docs-build', `${Date.now()}`)
-      needDeleteDirList.push(tempDir)
+      this.needDeleteDirList.push(tempDir)
 
       const configOptions = await this.parseAPIConfig(projectOptions, tempDir)
 
@@ -92,7 +79,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     const packageInfo = await this._parseBaseReadme(baseReadme)
 
-    await moveVuepressTemp(options.docsSpace, {
+    await this.moveVuepressTemp(options.docsSpace, {
       options,
       navbarOptions,
       sidebarOptions,
@@ -103,13 +90,16 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     await this.watchChange(allDocsList, options)
 
-    await vuepressAction(options.docsSpace, options.action)
+    await this.vuepressAction(options.docsSpace, options.action)
   }
 
-  private async _parseBaseReadme(item?: IDocsItem): Promise<IPackageInfo> {
-    const info: IPackageInfo = {
+  private async _parseBaseReadme(item?: IDocsItem): Promise<Package> {
+    const info: Package = {
       name: 'UNKNOWN',
+      version: '0.0.0',
       description: '',
+      readme: '',
+      _id: '',
     }
 
     if (!item) return info
@@ -140,7 +130,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
       navbarCallback: (navbarOptions: INavbarOptions, sidebarOptions: ISidebarOptions) => {
         navbarOptions.push({
-          text: '首页',
+          text: this.getNavName(DocsParseScheme['/'].navName, optionsBase.lang),
           link: '/',
         })
 
@@ -215,7 +205,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
   }
 
   protected async parseScheme(options: ICommandOptions): Promise<IDocsItem[]> {
-    const packageInfo = await readPkg(options.root)
+    const packageInfo = readPkg(options.root)
     const packageName = (packageInfo.name.match(/[^/]+$/g) ?? ['unknown'])[0]
     const docsList: IDocsItem[] = []
     const schemeKeys = Object.getOwnPropertyNames(DocsParseScheme) as Array<keyof TDocsParseScheme>
@@ -250,8 +240,10 @@ export class MultiDocsBuild extends SingleDocsBuild {
       const p = tryPath(schema)
       if (p) {
         const isHome = schema.navPath === '/'
-        const navPath = isHome ? 'home' : schema.navPath.replace(/^\/|\/$/g, '')
-        const navName = isHome ? '主页' : schema.navName
+        const navPath = isHome ? 'read' : schema.navPath.replace(/^\/|\/$/g, '')
+        const navName = isHome
+          ? this.getNavName(MultiDefaultNavName, options.lang)
+          : this.getNavName(schema.navName, options.lang)
 
         let newFilePath = `${options.docsSpace}/src/${navPath}/${packageName}.md`
         if (schema.isDir) newFilePath = `${options.docsSpace}/src/${navPath}/${packageName}`
@@ -266,7 +258,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[`/${navPath}/${packageName}`] = navPath === 'api' ? getSidebar(p) : 'structure'
+              sidebarOptions[`/${navPath}/${packageName}`] = navPath === 'api' ? this.getSidebar(p) : 'structure'
             } else {
               const sidebarOptions2 = sidebarOptions as ISidebarObjectOptions
               if (!sidebarOptions2[`/${navPath}`]) {

@@ -1,8 +1,5 @@
 /**
- * @Author       : Chen Zhen
- * @Date         : 2024-06-10 14:27:25
- * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 22:32:15
+ * @internal
  */
 interface INavItemOptions {
   /**
@@ -25,6 +22,9 @@ interface INavItemOptions {
   ariaLabel?: string
 }
 
+/**
+ * @internal
+ */
 interface IAutoLinkOptions extends INavItemOptions {
   /**
    * Link of item
@@ -58,8 +58,14 @@ interface IAutoLinkOptions extends INavItemOptions {
   exact?: boolean
 }
 
+/**
+ * @internal
+ */
 type ISidebarLinkOptions = IAutoLinkOptions
 
+/**
+ * @internal
+ */
 interface ISidebarGroupOptions extends INavItemOptions {
   /**
    * Link prefix of current group
@@ -78,7 +84,7 @@ interface ISidebarGroupOptions extends INavItemOptions {
    *
    * 当前分组的链接是否默认展开
    *
-   * @default false
+   * Default: false
    */
   expanded?: boolean
   /**
@@ -86,7 +92,7 @@ interface ISidebarGroupOptions extends INavItemOptions {
    *
    * 当前分组的链接是否可折叠
    *
-   * @default false
+   * Default: false
    */
   collapsible?: boolean
   /**
@@ -97,6 +103,9 @@ interface ISidebarGroupOptions extends INavItemOptions {
   children: ISidebarItemOptions[]
 }
 
+/**
+ * @internal
+ */
 interface ISidebarStructureOptions extends INavItemOptions {
   /**
    * Link prefix of current group
@@ -115,7 +124,7 @@ interface ISidebarStructureOptions extends INavItemOptions {
    *
    * 当前分组的链接是否默认展开
    *
-   * @default false
+   * Default: false
    */
   expanded?: boolean
   /**
@@ -123,23 +132,46 @@ interface ISidebarStructureOptions extends INavItemOptions {
    *
    * 当前分组的链接是否可折叠
    *
-   * @default false
+   * Default: false
    */
   collapsible?: boolean
   children: 'structure'
 }
 
+/**
+ * @internal
+ */
 type ISidebarItemOptions = ISidebarLinkOptions | ISidebarGroupOptions | ISidebarStructureOptions | string
 
+/**
+ * @internal
+ */
 type ISidebarLinkItem = ISidebarLinkOptions
 
+/**
+ * @internal
+ */
 interface ISidebarGroupItem extends ISidebarGroupOptions {
   prefix: string
   children: ISidebarItem[]
 }
 
+/**
+ * @internal
+ */
 export type ISidebarItem = ISidebarLinkItem | ISidebarGroupItem | ISidebarItemOptions
 
+/**
+ * @internal
+ */
 export type ISidebarArrayOptions = ISidebarItemOptions[]
+
+/**
+ * @internal
+ */
 export type ISidebarObjectOptions = Record<string, ISidebarArrayOptions | 'structure' | false>
+
+/**
+ * @internal
+ */
 export type ISidebarOptions = ISidebarArrayOptions | ISidebarObjectOptions | 'structure' | false

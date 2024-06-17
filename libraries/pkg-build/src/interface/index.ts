@@ -2,25 +2,23 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 11:34:26
+ * @LastEditTime : 2024-06-17 18:24:19
  */
 import type { SupportTarget } from '../enum'
 
 /**
- * @public
+ * @internal
  *
- *  从命令行出进行解析的参数结果。
- *
- *  除 root 外，不进行默认值设置。
+ * The parsed parameters from the command line.
  *
  */
 export type ICommandOptions = Partial<Omit<IPkgBuildOptions, 'root' | 'assets' | 'scripts'>> &
   Pick<IPkgBuildOptions, 'root'>
 
 /**
- * @public
+ * @internal
  *
- *  配置文件解析结果。
+ * The parsed configuration file options.
  *
  */
 export interface IConfigOptions extends Partial<Omit<IPkgBuildOptions, 'root' | 'config'>> {}
@@ -28,78 +26,68 @@ export interface IConfigOptions extends Partial<Omit<IPkgBuildOptions, 'root' | 
 /**
  * @public
  *
- *  PKG Build 构建时所需参数。
+ * The options required for PKG Build.
  *
  */
 export interface IPkgBuildOptions {
   /**
-   * 操作根路径。会由 Command 直接设置默认值为 process.cwd()
+   * The root path for operations. Defaults to `process.cwd()` set directly by Command.
    */
   root: string
 
   /**
-   * 配置文件存在路径。
+   * The path where the configuration file exists.
    */
   config?: string
 
   /**
+   * The build name.
    *
-   * 构建名称。
-   *
-   * 默认：采用 package.json 的 name 属性；（去除 scoped 部分）
-   *
+   * Default: Uses the name property from `package.json` (excluding the scoped part);
    */
   buildName: string
 
   /**
-   * 构建版本。
+   * The build version.
    *
-   * 默认：采用 package.json 的 version 属性；
+   * Default: Uses the version property from `package.json`;
    */
   buildVersion: string
 
   /**
+   * The target platform.
    *
-   * 目标平台。
+   * Default: 'linux-x64'
    *
-   * 默认：'linux-x64'
-   *
-   * 说明：https://www.npmjs.com/package/pkg#targets
-   *
+   * Description: https://www.npmjs.com/package/pkg#targets
    */
   targets: SupportTarget[]
 
   /**
-   * 入口文件。
+   * The entry file.
    *
-   * 默认为：`./src/index.js`
+   * Default: `./src/index.js`
    */
   inputPath: string
 
   /**
+   * The output directory.
    *
-   * 输出目录.
-   *
-   * 默认：'./build'
-   *
+   * Default: './build'
    */
   outputPath: string
 
   /**
+   * Additional files to package.
    *
-   * 额外打包的文件。
-   *
-   * 说明：https://www.npmjs.com/package/pkg#scripts
-   *
+   * Description: https://www.npmjs.com/package/pkg#scripts
    */
   scripts: string[]
 
   /**
+   * Additional files to package.
    *
-   * 额外打包的文件。
-   *
-   * 说明：https://www.npmjs.com/package/pkg#assets
-   *
+   * Description: https://www.npmjs.com/package/pkg#assets
    */
   assets: string[]
 }

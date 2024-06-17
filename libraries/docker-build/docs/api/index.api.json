@@ -149,7 +149,697 @@
       "canonicalReference": "@hz-9/docker-build!",
       "name": "",
       "preserveMemberOrder": false,
-      "members": []
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/docker-build!Commander:class",
+          "docComment": "/**\n * Command Line Argument Parsing Class\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Commander "
+            }
+          ],
+          "fileUrlPath": "src/core/commander.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "Commander",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/docker-build!Commander.parse:member(1)",
+              "docComment": "/**\n * Get the final configuration from command line arguments, configuration files, and default values.\n *\n * @returns The final configuration\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static parse(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDockerBuildOptions",
+                  "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "parse"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/docker-build!DockerBuild:class",
+          "docComment": "/**\n * Docker Image Build\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class DockerBuild "
+            }
+          ],
+          "fileUrlPath": "src/core/docker-build.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "DockerBuild",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/docker-build!DockerBuild:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `DockerBuild` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/docker-build!DockerBuild#build:member(1)",
+              "docComment": "/**\n * Executes the build operation.\n *\n * @param options - The necessary configuration information obtained from the `Commander` class.\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "build(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDockerBuildOptions",
+                  "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "build"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/docker-build!DockerBuild.build:member(1)",
+              "docComment": "/**\n * Executes the build operation.\n *\n * @param options - The necessary configuration information obtained from the `Commander` class.\n *\n * @returns A `DockerBuild` instance\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static build(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDockerBuildOptions",
+                  "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DockerBuild",
+                  "canonicalReference": "@hz-9/docker-build!DockerBuild:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "build"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/docker-build!DockerBuild#needDeleteDirList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected needDeleteDirList: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "needDeleteDirList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions:interface",
+          "docComment": "/**\n * The options required for Docker Build.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IDockerBuildOptions "
+            }
+          ],
+          "fileUrlPath": "src/interface/index.ts",
+          "releaseTag": "Public",
+          "name": "IDockerBuildOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#assets:member",
+              "docComment": "/**\n * Static assets to be included in the image.\n *\n * Default: `['package.json']`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "assets: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "assets",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#baseImage:member",
+              "docComment": "/**\n * The base image to use during packaging.\n *\n * The image will change based on the node property. If the image property is specified, the node property will be ignored.\n *\n * Default: `node:${node}-slim` eg: 'node:18.20-slim'\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "baseImage: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "baseImage",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#buildName:member",
+              "docComment": "/**\n * The build name.\n *\n * Default: Uses the name property from `package.json` (excluding the scoped part);\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "buildName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "buildName",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#buildVersion:member",
+              "docComment": "/**\n * The build version.\n *\n * Default: Uses the version property from `package.json`;\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "buildVersion: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "buildVersion",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#config:member",
+              "docComment": "/**\n * The path where the configuration file exists.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "config?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "config",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#exposePort:member",
+              "docComment": "/**\n * The exposed port.\n *\n * Default: 16100.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "exposePort: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "exposePort",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#inputPath:member",
+              "docComment": "/**\n * The entry file.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "inputPath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "inputPath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#lastClean:member",
+              "docComment": "/**\n * Whether to clean up the built image.\n *\n * Default: false\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "lastClean: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "lastClean",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#platform:member",
+              "docComment": "/**\n * The target platform.\n *\n * Default: 'linux-amd64'\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "platform: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SupportPlatform",
+                  "canonicalReference": "@hz-9/docker-build!SupportPlatform:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "platform",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#publish:member",
+              "docComment": "/**\n * Whether to publish the image.\n *\n * Default: false\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "publish: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "publish",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#publishHost:member",
+              "docComment": "/**\n * The image publication address.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "publishHost?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "publishHost",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docker-build!IDockerBuildOptions#root:member",
+              "docComment": "/**\n * The root path for operations. Defaults to `process.cwd()` set directly by Command.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "root: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "root",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@hz-9/docker-build!SupportPlatform:enum",
+          "docComment": "/**\n * The supported target platforms.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum SupportPlatform "
+            }
+          ],
+          "fileUrlPath": "src/enum/index.ts",
+          "releaseTag": "Public",
+          "name": "SupportPlatform",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/docker-build!SupportPlatform.AMD64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "AMD64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"amd64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "AMD64"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/docker-build!SupportPlatform.ARM64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ARM64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"arm64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "ARM64"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/docker-build!SupportPlatform.LINUX_AMD64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LINUX_AMD64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"linux/amd64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LINUX_AMD64"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/docker-build!SupportPlatform.LINUX_ARM64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LINUX_ARM64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"linux/arm64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LINUX_ARM64"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

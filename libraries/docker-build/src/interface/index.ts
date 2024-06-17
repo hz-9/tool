@@ -2,24 +2,22 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 17:50:32
+ * @LastEditTime : 2024-06-17 19:34:53
  */
 import type { SupportPlatform } from '../enum'
 
 /**
- * @public
+ * @internal
  *
- *  从命令行出进行解析的参数结果。
- *
- *  除 root 外，不进行默认值设置。
+ * The parsed parameters from the command line.
  *
  */
 export type ICommandOptions = Partial<Omit<IDockerBuildOptions, 'root' | 'assets'>> & Pick<IDockerBuildOptions, 'root'>
 
 /**
- * @public
+ * @internal
  *
- *  配置文件解析结果。
+ * The parsed configuration file options.
  *
  */
 export interface IConfigOptions extends Partial<Omit<IDockerBuildOptions, 'root' | 'config'>> {}
@@ -27,88 +25,86 @@ export interface IConfigOptions extends Partial<Omit<IDockerBuildOptions, 'root'
 /**
  * @public
  *
- *  DockerBuild 构建时所需参数。
+ * The options required for Docker Build.
  *
  */
 export interface IDockerBuildOptions {
   /**
-   * 操作根路径。会由 Command 直接设置默认值为 process.cwd()
+   * The root path for operations. Defaults to `process.cwd()` set directly by Command.
    */
   root: string
 
   /**
-   * 配置文件存在路径。
+   * The path where the configuration file exists.
    */
   config?: string
 
   /**
+   * The build name.
    *
-   * 构建名称。
-   *
-   * 默认：采用 package.json 的 name 属性；（去除 scoped 部分）
-   *
+   * Default: Uses the name property from `package.json` (excluding the scoped part);
    */
   buildName: string
 
   /**
-   * 构建版本。
+   * The build version.
    *
-   * 默认：采用 package.json 的 version 属性；
+   * Default: Uses the version property from `package.json`;
    */
   buildVersion: string
 
   /**
-   * 目标平台。
+   * The target platform.
    *
-   * 默认：'linux-amd64'
+   * Default: 'linux-amd64'
    */
   platform: SupportPlatform
 
   /**
-   * 入口文件。
+   * The entry file.
    */
   inputPath: string
 
   /**
-   * 打包时使用的镜像。
+   * The base image to use during packaging.
    *
-   * image 会根据 node 属性而改变,
-   * 若指定了 image 属性，则 node 属性无效。
+   * The image will change based on the node property.
+   * If the image property is specified, the node property will be ignored.
    *
-   * 默认为：'node:${node}-slim' ('node:18.20-slim')
+   * Default: `node:${node}-slim` eg: 'node:18.20-slim'
    */
   baseImage: string
 
   /**
-   * 开放的端口。
+   * The exposed port.
    *
-   * 默认：16100。
+   * Default: 16100.
    */
   exposePort: number
 
   /**
-   * 需要移入镜像的静态资源。
+   * Static assets to be included in the image.
    *
-   * 默认为：['package.json']
+   * Default: `['package.json']`
    */
   assets: string[]
 
   /**
-   * 是否发布镜像。
+   * Whether to publish the image.
    *
-   * 默认：false
+   * Default: false
    */
   publish: boolean
 
   /**
-   * 镜像发布地址。
+   * The image publication address.
    */
   publishHost?: string
 
   /**
-   * 是否清理构建的镜像
+   * Whether to clean up the built image.
    *
-   * 默认：false
+   * Default: false
    */
   lastClean: boolean
 }

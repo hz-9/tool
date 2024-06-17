@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 17:37:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 17:53:30
+ * @LastEditTime : 2024-06-17 18:54:25
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -16,31 +16,57 @@ import type { IDockerBuildOptions } from '../interface'
 import { printCommand, printOptions } from '../util'
 
 /**
- * 等待删除的文件列表。
- */
-const needDeleteDirList: string[] = []
-
-/**
- * 推出后，对中间成果进行删除。
- */
-exitHook(() => {
-  needDeleteDirList.forEach((d: string) => {
-    fs.removeSync(d)
-  })
-})
-
-/**
  * @public
  *
  *  Docker Image Build
  *
  */
 export class DockerBuild {
-  public static async build(options: IDockerBuildOptions): Promise<void> {
+  protected needDeleteDirList: string[]
+
+  public constructor() {
+    this.needDeleteDirList = []
+    this._initExitHook()
+  }
+
+  private _initExitHook(): void {
+    exitHook(() => {
+      this.needDeleteDirList.forEach((d: string) => {
+        fs.removeSync(d)
+      })
+    })
+  }
+
+  /**
+   *
+   * @public
+   *
+   * Executes the build operation.
+   *
+   * @param options - The necessary configuration information obtained from the `Commander` class.
+   *
+   * @returns A `DockerBuild` instance
+   */
+  public static async build(options: IDockerBuildOptions): Promise<DockerBuild> {
+    const p = new DockerBuild()
+    await p.build(options)
+    return p
+  }
+
+  /**
+   *
+   * @public
+   *
+   * Executes the build operation.
+   *
+   * @param options - The necessary configuration information obtained from the `Commander` class.
+   *
+   */
+  public async build(options: IDockerBuildOptions): Promise<void> {
     await printOptions(options)
 
     const tempDir = path.resolve(options.root, 'temp', '.hz9/docker-build', `${Date.now()}`)
-    needDeleteDirList.push(tempDir)
+    this.needDeleteDirList.push(tempDir)
 
     const dockerfilePath: string = path.resolve(tempDir, 'dockerfile')
 
@@ -57,10 +83,7 @@ export class DockerBuild {
     if (options.lastClean) await this._clean(options)
   }
 
-  /**
-   * 检查是否已经安装了 Docker?
-   */
-  private static async _checkDockerInstalled(): Promise<void> {
+  private async _checkDockerInstalled(): Promise<void> {
     try {
       await execa('docker', ['--version'])
     } catch (error) {
@@ -69,10 +92,7 @@ export class DockerBuild {
     }
   }
 
-  /**
-   * 下载基础镜像。
-   */
-  private static async _downloadBaseImage(options: IDockerBuildOptions): Promise<void> {
+  private async _downloadBaseImage(options: IDockerBuildOptions): Promise<void> {
     const commands: string[] = ['pull', `--platform=${options.platform}`, options.baseImage]
 
     await printCommand(`docker ${commands.join(' ')}`)
@@ -84,12 +104,7 @@ export class DockerBuild {
     })
   }
 
-  /**
-   *
-   * 创建 Dockerfile
-   *
-   */
-  private static async _createDockerfile(options: IDockerBuildOptions, dockerfilePath: string): Promise<void> {
+  private async _createDockerfile(options: IDockerBuildOptions, dockerfilePath: string): Promise<void> {
     fs.mkdirpSync(path.dirname(dockerfilePath))
     const template = fs.readFileSync(path.resolve(__dirname, '../../.template/dockerfile.ejs'), { encoding: 'utf8' })
     const newOptions: IDockerBuildOptions = JSON.parse(JSON.stringify(options))
@@ -116,10 +131,7 @@ export class DockerBuild {
     fs.writeFileSync(dockerfilePath, content, { encoding: 'utf8' })
   }
 
-  /**
-   * 构建 Docker Image
-   */
-  private static async _buildDockerImage(options: IDockerBuildOptions, dockerfilePath: string): Promise<void> {
+  private async _buildDockerImage(options: IDockerBuildOptions, dockerfilePath: string): Promise<void> {
     const hashTag: string = uuidV1()
     const imageTag: string = this._getDockerImageTag(options)
 
@@ -139,7 +151,6 @@ export class DockerBuild {
 
     await printCommand(`docker ${commands.join(' ')}`)
     await execa('docker', commands, {
-      // cwd: path.dirname(dockerfilePath),
       cwd: options.root,
       stderr: process.stderr,
       stdout: process.stdout,
@@ -149,7 +160,7 @@ export class DockerBuild {
     await this._deleteDockerIamge(hashTag)
   }
 
-  private static async _existsDockerIamge(dockerTag: string): Promise<boolean> {
+  private async _existsDockerIamge(dockerTag: string): Promise<boolean> {
     try {
       const commands: string[] = ['image', 'inspect', dockerTag]
 
@@ -161,7 +172,7 @@ export class DockerBuild {
     }
   }
 
-  private static async _deleteDockerIamge(dockerTag: string): Promise<void> {
+  private async _deleteDockerIamge(dockerTag: string): Promise<void> {
     try {
       const commands: string[] = ['rmi', dockerTag]
 
@@ -172,7 +183,7 @@ export class DockerBuild {
     }
   }
 
-  private static async _renameDockerImage(historyTag: string, newTag: string): Promise<void> {
+  private async _renameDockerImage(historyTag: string, newTag: string): Promise<void> {
     try {
       const commands: string[] = ['tag', historyTag, newTag]
 
@@ -187,7 +198,7 @@ export class DockerBuild {
     }
   }
 
-  private static async _publishDockerImage(options: IDockerBuildOptions): Promise<void> {
+  private async _publishDockerImage(options: IDockerBuildOptions): Promise<void> {
     const imageTag: string = this._getDockerImageTag(options)
 
     const commands: string[] = ['push', imageTag]
@@ -199,12 +210,12 @@ export class DockerBuild {
     })
   }
 
-  private static async _clean(options: IDockerBuildOptions): Promise<void> {
+  private async _clean(options: IDockerBuildOptions): Promise<void> {
     const imageTag: string = this._getDockerImageTag(options)
     await this._deleteDockerIamge(imageTag)
   }
 
-  private static _getDockerImageTag(options: IDockerBuildOptions): string {
+  private _getDockerImageTag(options: IDockerBuildOptions): string {
     let imageTag: string = `${options.buildName}:${options.buildVersion}`
     if (options.publishHost) imageTag = `${options.publishHost}/${imageTag}`
     return imageTag

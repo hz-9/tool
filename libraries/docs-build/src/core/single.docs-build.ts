@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:49:51
+ * @LastEditTime : 2024-06-17 19:30:26
  */
 
 /* eslint-disable no-param-reassign */
@@ -11,7 +11,9 @@ import * as path from 'upath'
 import chokidar from 'chokidar'
 import execa from 'execa'
 import exitHook from 'exit-hook'
+import { glob } from 'glob'
 import { parse as parseJsonC } from 'jsonc-parser'
+import _ from 'lodash'
 import console from 'node:console'
 
 import { DocsParseScheme, TDocsParseScheme, baseConfigPath } from '../config/index'
@@ -21,43 +23,38 @@ import type {
   IConfigOptions,
   IDocsItem,
   IDocsParseSchemeItem,
+  IDocsParseSchemeLang,
   INavbarOptions,
+  IRenderOptions,
+  ISidebarArrayOptions,
+  ISidebarItem,
   ISidebarOptions,
 } from '../interface/index'
-import {
-  commandIsExists,
-  getSidebar,
-  installByPnpm,
-  installInGlobal,
-  moveVuepressTemp,
-  printCommand,
-  printOptions,
-  readPkg,
-  transformFileOrDir,
-  vuepressAction,
-} from '../util/index'
+import { commandIsExists, installByPnpm, installInGlobal, printCommand, printOptions, readPkg } from '../util/index'
 
 /**
- * 等待删除的文件列表。
- */
-const needDeleteDirList: string[] = []
-
-/**
- * 推出后，对中间成果进行删除。
- */
-exitHook(() => {
-  needDeleteDirList.forEach((d: string) => {
-    fs.removeSync(d)
-  })
-})
-
-/**
+ *
  * @public
  *
- *  文档构建工具。
+ * A build class that utilizes the docs build result.
  *
  */
 export class SingleDocsBuild {
+  protected needDeleteDirList: string[]
+
+  public constructor() {
+    this.needDeleteDirList = []
+    this._initExitHook()
+  }
+
+  private _initExitHook(): void {
+    exitHook(() => {
+      this.needDeleteDirList.forEach((d: string) => {
+        fs.removeSync(d)
+      })
+    })
+  }
+
   protected toAbsolute(options: ICommandOptions): ICommandOptions {
     const { root } = options
     const withRoot = (p: string): string => (path.isAbsolute(p) ? p : path.resolve(root, p))
@@ -69,6 +66,7 @@ export class SingleDocsBuild {
       docsSpace: withRoot(options.docsSpace),
       action: options.action,
       baseUrl: options.baseUrl,
+      lang: options.lang,
     }
   }
 
@@ -78,7 +76,7 @@ export class SingleDocsBuild {
     await printOptions(options)
 
     const tempDir = path.resolve(options.root, 'temp', '.hz9/docs-build', `${Date.now()}`)
-    needDeleteDirList.push(tempDir)
+    this.needDeleteDirList.push(tempDir)
 
     await printOptions(options)
 
@@ -92,28 +90,22 @@ export class SingleDocsBuild {
 
     const navbarOptions = await this.generateNavbarOptions(docsList, sidebarOptions)
 
-    const packageInfo = await readPkg(options.root)
+    const packageInfo = readPkg(options.root)
 
-    await moveVuepressTemp(options.docsSpace, {
+    await this.moveVuepressTemp(options.docsSpace, {
       options,
       navbarOptions,
       sidebarOptions,
-      packageInfo: { name: packageInfo.name, description: packageInfo.description ?? '' },
+      packageInfo,
     })
 
     await installByPnpm(options.docsSpace)
 
     await this.watchChange(docsList, options)
 
-    await vuepressAction(options.docsSpace, options.action)
+    await this.vuepressAction(options.docsSpace, options.action)
   }
 
-  /**
-   * @internal
-   *
-   *  解析 API 文档
-   *
-   */
   protected async parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions> {
     if (options.config && !fs.existsSync(options.config)) {
       options.config = undefined
@@ -131,7 +123,7 @@ export class SingleDocsBuild {
 
     const configInfo = parseJsonC(fs.readFileSync(options.config, { encoding: 'utf8' }))
 
-    const projectPKG = await readPkg(options.root)
+    const projectPKG = readPkg(options.root)
     const unscopedPackageName = (projectPKG.name.match(/[^/]+$/g) ?? [projectPKG.name])[0]
 
     /**
@@ -172,12 +164,6 @@ export class SingleDocsBuild {
     }
   }
 
-  /**
-   * @internal
-   *
-   *  生成文档
-   *
-   */
   protected async generateAPIDocs(options: ICommandOptions, configOptions: IConfigOptions): Promise<void> {
     const exists = fs.existsSync(path.resolve(options.root, 'tsconfig.json'))
     const entryExists = fs.existsSync(configOptions.entryPath)
@@ -290,7 +276,7 @@ export class SingleDocsBuild {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[schema.navPath] = navPath === 'api' ? getSidebar(p) : 'structure'
+              sidebarOptions[schema.navPath] = navPath === 'api' ? this.getSidebar(p) : 'structure'
             } else {
               // nothings.
               // sidebarOptions[isHome ? '/' : schema.navPath] = schema.navPath === '/' ? [''] : ["README.md"]
@@ -300,7 +286,7 @@ export class SingleDocsBuild {
           navbarCallback: (navbarOptions: INavbarOptions, sidebarOptions: ISidebarOptions) => {
             navbarOptions.push({
               link: isHome ? '/' : schema.navPath,
-              text: schema.navName,
+              text: this.getNavName(schema.navName, options.lang),
             })
             return navbarOptions
           },
@@ -351,7 +337,7 @@ export class SingleDocsBuild {
 
       fs.removeSync(item.newFilePath)
       try {
-        transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+        this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
         console.log(`Moved  : ${p1} -> ${p2}`)
       } catch (error) {
         console.error(error)
@@ -366,9 +352,180 @@ export class SingleDocsBuild {
         console.log(`Watch  : ${p1} -> ${p2}`)
         watcher.on('change', async () => {
           console.log(`Change : ${p1} -> ${p2}`)
-          transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+          this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
         })
       }
     }
+  }
+
+  protected async moveVuepressTemp(vuepressDirPath: string, renderOptions: IRenderOptions): Promise<void> {
+    const vuepressTemplate = path.resolve(__dirname, '../../.template/vuepress')
+
+    const globResult = await glob('**/*', { dot: true, nodir: true, cwd: vuepressTemplate })
+
+    let i = 0
+    while (i < globResult.length) {
+      const filepath = globResult[i]
+
+      const p1 = path.resolve(vuepressTemplate, filepath)
+      const p2 = path.resolve(vuepressDirPath, filepath)
+
+      if (/js$|ts$|json$|yaml$|md$/.test(filepath)) {
+        const text = await fs.readFile(p1, { encoding: 'utf8' })
+        const textRender = _.template(text, { interpolate: /{{([\s\S]+?)}}/g })(renderOptions)
+
+        await fs.mkdirp(path.dirname(p2))
+        await fs.writeFile(p2, textRender, { encoding: 'utf8' })
+      } else {
+        await fs.copy(p1, p2)
+      }
+
+      i += 1
+    }
+  }
+
+  protected async vuepressAction(docsSpace: string, action?: VuepressAction): Promise<void> {
+    switch (action) {
+      case VuepressAction.Serve:
+        await execa('npm', ['run', 'docs:dev'], {
+          cwd: docsSpace,
+          stderr: process.stderr,
+          stdout: process.stdout,
+        })
+        break
+      case VuepressAction.Build:
+        await execa('npm', ['run', 'docs:build'], {
+          cwd: docsSpace,
+          stderr: process.stderr,
+          stdout: process.stdout,
+        })
+
+        console.log(`Build: ${path.resolve(docsSpace, 'src/.vuepress/dist')}`)
+        break
+      default:
+        // ...
+        break
+    }
+  }
+
+  protected transformFileOrDir(from: string, to: string, transform?: (c: string) => string): void {
+    if (fs.existsSync(from)) {
+      const stat = fs.statSync(from)
+
+      if (stat.isFile()) {
+        const content = fs.readFileSync(from, { encoding: 'utf8' })
+        fs.mkdirpSync(path.dirname(to))
+        fs.writeFileSync(to, transform ? transform(content) : content, { encoding: 'utf8' })
+      }
+
+      if (stat.isDirectory()) {
+        fs.emptyDirSync(to)
+        const filenames = fs.readdirSync(from)
+        filenames.forEach((filename) => {
+          this.transformFileOrDir(path.resolve(from, filename), path.resolve(to, filename), transform)
+        })
+      }
+    }
+  }
+
+  protected getSidebar(apiDir: string): ISidebarArrayOptions {
+    const sidebarOptions: ISidebarArrayOptions = []
+
+    const keys: Record<
+      string,
+      Array<{
+        name: string
+        filename: string
+      }>
+    > = {}
+
+    fs.readdirSync(apiDir).forEach((filename) => {
+      const filepath = path.resolve(apiDir, filename)
+      const fileText = fs.readFileSync(filepath, { encoding: 'utf8' })
+      const lines = fileText.split('\r\n')
+      const findTitleLevel2 = lines.find((i) => /^## /.test(i))
+      if (findTitleLevel2) {
+        const keyMatch = findTitleLevel2.match(/[^ ]+$/)
+        if (keyMatch?.length === 1) {
+          let key = keyMatch[0]
+
+          if (key === 'Reference') key = 'API Reference'
+          if (key.includes('(constructor)')) key = 'Constructor'
+
+          if (!keys[key]) keys[key] = []
+
+          let name = findTitleLevel2
+            .replace(/[^ ]+$/, '')
+            .replace(/^## /, '')
+            .trim()
+
+          if (key === 'Constructor') {
+            name = findTitleLevel2.replace('.(constructor)', '').replace(/^## /, '').trim()
+          }
+
+          keys[key].push({
+            name,
+            filename,
+          })
+        } else {
+          console.log('Unknow key.', filename)
+        }
+      }
+    })
+
+    const apiArr: ISidebarItem[][] = []
+
+    const OBJECT_INDEX = {
+      Package: 1,
+      Class: 2,
+      Constructor: 3,
+      Method: 3,
+      Interface: 5,
+      Property: 6,
+
+      Unknown: 99,
+    }
+
+    Object.keys(keys).forEach((key) => {
+      const children: ISidebarOptions = []
+      if (key === 'API Reference') {
+        apiArr[0] = [
+          {
+            text: _.upperFirst(key),
+            link: 'index.md',
+          },
+        ]
+      } else {
+        const index: number = OBJECT_INDEX[_.upperFirst(key) as keyof typeof OBJECT_INDEX] ?? OBJECT_INDEX.Unknown
+
+        if (!apiArr[index]) apiArr[index] = []
+
+        apiArr[index].push({
+          text: _.upperFirst(key),
+          icon: key[0].toLowerCase(),
+          collapsible: true,
+          children,
+        })
+
+        keys[key].forEach(({ name, filename }) => {
+          children.push({
+            text: name,
+            link: filename,
+          })
+        })
+      }
+    })
+
+    apiArr.forEach((i) => {
+      if (i) {
+        sidebarOptions.push(...i)
+      }
+    })
+
+    return sidebarOptions
+  }
+
+  protected getNavName(navName: IDocsParseSchemeLang, lang: string): string {
+    return navName[lang as keyof IDocsParseSchemeLang] ?? navName['en-US']
   }
 }

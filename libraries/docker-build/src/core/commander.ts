@@ -2,30 +2,38 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 17:51:25
+ * @LastEditTime : 2024-06-17 18:35:19
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
 import { Command } from 'commander'
 import { parse as parseJsonC } from 'jsonc-parser'
-import readPkg, { type NormalizedPackageJson } from 'read-pkg'
+import type { Package } from 'normalize-package-data'
 
 import { SupportPlatform } from '../enum'
 import type { ICommandOptions, IConfigOptions, IDockerBuildOptions } from '../interface'
-import { getDefaultImage } from '../util'
+import { getDefaultImage, readPkg } from '../util'
 
 /**
+ *
  * @public
  *
- * 命令行交互对象
+ * Command Line Argument Parsing Class
  *
  */
 export class Commander {
+  /**
+   * @public
+   *
+   * Get the final configuration from command line arguments, configuration files, and default values.
+   *
+   * @returns The final configuration
+   */
   public static async parse(): Promise<IDockerBuildOptions> {
-    const pkg = await readPkg({ cwd: path.resolve(__dirname, '../../') })
+    const pkg = readPkg()
 
     const program = new Command()
-    program.name('docker-build').version(pkg.version)
+    program.name(pkg.name).version(pkg.version)
     if (pkg.description) program.description(pkg.description)
 
     program
@@ -50,12 +58,7 @@ export class Commander {
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())
 
-    let configOptions = {}
-
-    if (commandOptions.config) {
-      // 通过 Config 进行信息补充；
-      configOptions = this._parseConfig(commandOptions.config)
-    }
+    const configOptions = this._parseConfig(commandOptions.config)
 
     const options = this._mergeOptionsWithDefault(commandOptions, configOptions, pkg)
 
@@ -63,12 +66,15 @@ export class Commander {
   }
 
   /**
+   *
    * @internal
    *
-   *  用以解析命令行获取的对象。
+   * Converts the property describing the path from command line arguments into
+   * an absolute path starting from the `options.root` location
+   * and returns the correct `ICommandOptions` object.
    *
-   * @param options - 命令行参数。
-   * @returns 解析成果。
+   * @param options - The unformatted command line object
+   * @returns The formatted result.
    */
   public static _parseCommandOptions(options: ICommandOptions): ICommandOptions {
     const root: string = options.root ?? process.cwd()
@@ -88,17 +94,21 @@ export class Commander {
   }
 
   /**
+   *
    * @internal
    *
-   *  解析配置文件。
+   * Parses the configuration file and converts the property describing the path into
+   * an absolute path starting from the folder where the `config` file is located,
+   * then returns the correct `IConfigOptions` object.
    *
-   * @param configPath - 文件路径。
-   * @returns 解析成果。
+   * @param options - The absolute path to the configuration file.
+   * @returns The parsed result of the configuration file information.
    */
-  private static _parseConfig(configPath: string): IConfigOptions {
+  private static _parseConfig(configPath?: string): IConfigOptions {
+    if (!configPath) return {}
+    if (!fs.existsSync(configPath)) return {}
     const config = parseJsonC(fs.readFileSync(configPath, { encoding: 'utf8' }))
-
-    if (!config.docker) return {}
+    if (!config.pkg) return {}
 
     const options: IConfigOptions = config.docker
 
@@ -118,17 +128,13 @@ export class Commander {
   /**
    * @internal
    *
-   *  合并配置信息，并赋予默认值。
+   * Merges configuration information and assigns default values.
    *
-   * @param o1 - 命令行参数获取的配置信息
-   * @param o2 - 配置文件中读取的配置信息
-   * @returns 最终成果
+   * @param o1 - Configuration information obtained from command line arguments
+   * @param o2 - Configuration information read from the configuration file
+   * @returns The final configuration
    */
-  private static _mergeOptionsWithDefault(
-    o1: ICommandOptions,
-    o2: IConfigOptions,
-    pkg: NormalizedPackageJson
-  ): IDockerBuildOptions {
+  private static _mergeOptionsWithDefault(o1: ICommandOptions, o2: IConfigOptions, pkg: Package): IDockerBuildOptions {
     const defaultName = (pkg.name.match(/[^/]+$/g) ?? ['unknown'])[0]
 
     const platform: SupportPlatform = {

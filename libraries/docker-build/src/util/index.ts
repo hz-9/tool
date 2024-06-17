@@ -2,18 +2,37 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 17:48:18
+ * @LastEditTime : 2024-06-17 18:33:21
  */
+import * as fs from 'fs-extra'
+import * as path from 'upath'
 import console from 'node:console'
-import readPkg from 'read-pkg'
+import type { Package } from 'normalize-package-data'
 
 import type { IDockerBuildOptions } from '../interface'
 
 /**
- * 打印所有配置信息。
+ * @internal
+ *
+ * Reads package.json information.
+ *
+ * @param cwd - The path where package.json exists
+ *
+ */
+export const readPkg = (cwd: string = path.resolve(__dirname, '../..')): Package => {
+  const p = path.resolve(cwd, 'package.json')
+  const info = fs.readFileSync(p, { encoding: 'utf8' })
+  return JSON.parse(info)
+}
+
+/**
+ * @internal
+ *
+ * Outputs the final configuration information.
+ *
  */
 export const printOptions = async (options: IDockerBuildOptions): Promise<void> => {
-  const pkg = await readPkg()
+  const pkg = readPkg()
 
   console.log()
   console.log(`${pkg.name} - ${pkg.version}`)
@@ -42,13 +61,13 @@ export const printOptions = async (options: IDockerBuildOptions): Promise<void> 
 }
 
 /**
- * @public
+ * @internal
  *
- *  打印了命令行信息。
+ * Prints command line information.
  *
  */
 export const printCommand = async (command: string): Promise<void> => {
-  const pkg = await readPkg()
+  const pkg = readPkg()
 
   console.log(`${pkg.name} command:`)
   console.log(`    ${command}`)

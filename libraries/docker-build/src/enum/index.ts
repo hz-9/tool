@@ -2,13 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 11:54:49
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-08 12:44:28
+ * @LastEditTime : 2024-06-17 18:36:20
  */
 
 /**
+ *
  * @public
  *
- * 支持的平台
+ * The supported target platforms.
  *
  */
 export enum SupportPlatform {

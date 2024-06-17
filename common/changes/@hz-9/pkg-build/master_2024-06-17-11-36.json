@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "feat: expose internal implementation classes to support secondary development.",
+      "type": "minor"
+    },
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "feat: remove dependency `read-pkg`.",
+      "type": "patch"
+    },
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "feat: added comments and translated them into English comments.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/pkg-build"
+}

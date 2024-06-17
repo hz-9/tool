@@ -149,7 +149,779 @@
       "canonicalReference": "@hz-9/pkg-build!",
       "name": "",
       "preserveMemberOrder": false,
-      "members": []
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/pkg-build!Commander:class",
+          "docComment": "/**\n * Command Line Argument Parsing Class\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Commander "
+            }
+          ],
+          "fileUrlPath": "src/core/commander.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "Commander",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!Commander.parse:member(1)",
+              "docComment": "/**\n * Get the final configuration from command line arguments, configuration files, and default values.\n *\n * @returns The final configuration\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static parse(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IPkgBuildOptions",
+                  "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "parse"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions:interface",
+          "docComment": "/**\n * The options required for PKG Build.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IPkgBuildOptions "
+            }
+          ],
+          "fileUrlPath": "src/interface/index.ts",
+          "releaseTag": "Public",
+          "name": "IPkgBuildOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#assets:member",
+              "docComment": "/**\n * Additional files to package.\n *\n * Description: https://www.npmjs.com/package/pkg#assets\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "assets: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "assets",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#buildName:member",
+              "docComment": "/**\n * The build name.\n *\n * Default: Uses the name property from `package.json` (excluding the scoped part);\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "buildName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "buildName",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#buildVersion:member",
+              "docComment": "/**\n * The build version.\n *\n * Default: Uses the version property from `package.json`;\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "buildVersion: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "buildVersion",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#config:member",
+              "docComment": "/**\n * The path where the configuration file exists.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "config?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "config",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#inputPath:member",
+              "docComment": "/**\n * The entry file.\n *\n * Default: `./src/index.js`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "inputPath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "inputPath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#outputPath:member",
+              "docComment": "/**\n * The output directory.\n *\n * Default: './build'\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "outputPath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "outputPath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#root:member",
+              "docComment": "/**\n * The root path for operations. Defaults to `process.cwd()` set directly by Command.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "root: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "root",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#scripts:member",
+              "docComment": "/**\n * Additional files to package.\n *\n * Description: https://www.npmjs.com/package/pkg#scripts\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "scripts: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "scripts",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions#targets:member",
+              "docComment": "/**\n * The target platform.\n *\n * Default: 'linux-x64'\n *\n * Description: https://www.npmjs.com/package/pkg#targets\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "targets: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SupportTarget",
+                  "canonicalReference": "@hz-9/pkg-build!SupportTarget:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "targets",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/pkg-build!PkgBuild:class",
+          "docComment": "/**\n * A build class that utilizes the `pkg` build result.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class PkgBuild "
+            }
+          ],
+          "fileUrlPath": "src/core/pkg-build.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "PkgBuild",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `PkgBuild` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor();"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": []
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild#build:member(1)",
+              "docComment": "/**\n * Executes the build operation.\n *\n * @param options - The necessary configuration information obtained from the `Commander` class.\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "build(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IPkgBuildOptions",
+                  "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "build"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild.build:member(1)",
+              "docComment": "/**\n * Executes the build operation.\n *\n * @param options - The necessary configuration information obtained from the `Commander` class.\n *\n * @returns A `PkgBuild` instance\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static build(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IPkgBuildOptions",
+                  "canonicalReference": "@hz-9/pkg-build!IPkgBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PkgBuild",
+                  "canonicalReference": "@hz-9/pkg-build!PkgBuild:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "build"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild.getDefaultFancyArch:member(1)",
+              "docComment": "/**\n * Gets the current platform.\n *\n * If it is under the MacOS Arm framework, it will return x64.\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getDefaultFancyArch(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getDefaultFancyArch"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild.getFancyArch:member(1)",
+              "docComment": "/**\n * Gets the framework name\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getFancyArch(arch?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "arch",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getFancyArch"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild.getFancyPlatform:member(1)",
+              "docComment": "/**\n * Gets the current system name\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getFancyPlatform(platform?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "platform",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getFancyPlatform"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild.getPkgCommand:member(1)",
+              "docComment": "/**\n * Gets the `pkg` command-line file\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static getPkgCommand(root: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "root",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "getPkgCommand"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/pkg-build!PkgBuild#needDeleteDirList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected needDeleteDirList: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "needDeleteDirList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@hz-9/pkg-build!SupportTarget:enum",
+          "docComment": "/**\n * The supported target platforms.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum SupportTarget "
+            }
+          ],
+          "fileUrlPath": "src/enum/index.ts",
+          "releaseTag": "Public",
+          "name": "SupportTarget",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/pkg-build!SupportTarget.LinuxX64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "LinuxX64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"linux-x64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "LinuxX64"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/pkg-build!SupportTarget.MacosX64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "MacosX64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"macos-x64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "MacosX64"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@hz-9/pkg-build!SupportTarget.WinX64:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "WinX64 = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"win-x64\""
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "WinX64"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

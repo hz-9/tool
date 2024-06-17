@@ -2,17 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:16:59
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-10 16:08:59
+ * @LastEditTime : 2024-06-17 18:47:17
  */
 
 /**
  * @public
  *
- *  Vuepress 操作类型
+ * Vuepress Operation Types
  *
  */
 export enum VuepressAction {
   Serve = 'serve',
-
   Build = 'build',
 }

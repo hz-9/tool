@@ -2,8 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-11 21:48:53
+ * @LastEditTime : 2024-06-17 19:16:19
  */
+import type { Package } from 'normalize-package-data'
+
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
 import type { ISidebarOptions } from './vuepress-theme-hope.sidebar-options'
@@ -12,36 +14,38 @@ export * from './vuepress-theme-hope.sidebar-options'
 export * from './vuepress-theme-hope.navbar-options'
 
 /**
- * 数据挂载对象。
+ * @public
+ *
+ * The data mounting object.
  */
 export interface IDocsItem {
   /**
-   * 文件原始路径。
+   * The original file path.
    */
   baseFilepath: string
 
   /**
-   * 移动后的文件路径。
+   * The file path after moving.
    */
   newFilePath: string
 
   /**
-   * 用以监听的文件路径。
+   * The file path used for listening.
    */
   watchFilePath: string
 
   /**
-   * 用以编辑目录结构
+   * Used to edit the sidebar structure.
    */
   sidebarCallback: (options: ISidebarOptions) => ISidebarOptions
 
   /**
-   * 用以编辑导航信息
+   * Used to edit the navigation information.
    */
   navbarCallback: (o1: INavbarOptions, o2: ISidebarOptions) => INavbarOptions
 
   /**
-   * 进行文件装换。
+   * Performs file transformation.
    */
   transform?: (s: string) => string
 }
@@ -49,17 +53,22 @@ export interface IDocsItem {
 /**
  * @public
  *
- *  从 api-extractor.json 中解析出来的配置信息。
+ * Configuration information parsed from 'api-extractor.json'.
  *
  */
 export interface IConfigOptions {
   /**
+   * The path to the configuration file.
+   */
+  configPath: string
+
+  /**
    *
    * API Docs:
    *
-   * index.api.md 文件所在文件夹。
+   * The folder where the 'index.api.md' file is located.
    *
-   * 默认：读取 api-extractor.base.json 文件中的 apiReport.reportFolder 属性
+   * Default: Reads the 'apiReport.reportFolder' property from the 'api-extractor.base.json' file.
    *
    */
   apiPath: string
@@ -68,137 +77,165 @@ export interface IConfigOptions {
    *
    * API Docs:
    *
-   *  入口文件
+   * The entry file.
    *
-   * 默认：读取 api-extractor.base.json 文件中的 mainEntryPointFilePath 属性
+   * Default: Reads the 'mainEntryPointFilePath' property from the 'api-extractor.base.json' file.
    *
    */
   entryPath: string
 
   /**
-   * 配置文件路径。
-   */
-  configPath: string
-
-  /**
    *
    * API Docs:
    *
-   * index.api.json 文件所在路径。
+   * The path where the 'index.api.json' file is located.
    *
-   * 默认：读取 api-extractor.base.json 文件中的 docModel.apiJsonFilePath 属性
+   * Default: Reads the 'docModel.apiJsonFilePath' property from the 'api-extractor.base.json' file.
    *
    */
   apiJsonFilePath: string
 
   /**
-   * rig 包所在路径。
+   * The path to the rig package.
    */
   rigPackage?: string
 }
 
-export interface IPackageInfo {
-  name: string
-  description: string
-}
-
+/**
+ * @internal
+ *
+ * Parameters passed in during template rendering.
+ *
+ */
 export interface IRenderOptions {
   options: ICommandOptions
 
+  /**
+   * Options for the vuepress sidebar.
+   */
   sidebarOptions: ISidebarOptions
 
+  /**
+   * Options for the vuepress navbar.
+   */
   navbarOptions: INavbarOptions
 
-  packageInfo: IPackageInfo
+  /**
+   * Information about the package.
+   */
+  packageInfo: Package
 }
 
 /**
  * @public
  *
- *  从命令行出进行解析的参数结果。
+ * The result of parsing parameters from the command line.
  *
- *  除 root 外，不进行默认值设置。
- *
+ * Except for 'root', no default values are set.
  */
 export interface ICommandOptions {
   /**
-   * 操作根路径。会由 Command 直接设置默认值为 process.cwd()
+   * The root path of the operation. Will be directly set by Command with the default value of process.cwd().
    */
   root: string
 
   /**
-   *
-   * api-extractor.json 所在路径。
-   *
+   * The path to the 'api-extractor.json' file.
    */
   config?: string
 
   /**
+   * The location where the documentation will be generated.
    *
-   * 文档生成地址。
-   *
-   * 默认为：'${root}/docs/.vuepress'。
-   *
+   * Default: `${root}/docs/.vuepress`.
    */
   docsSpace: string
 
   /**
-   *
    * API Docs:
    *
-   *  Markdown 相关文件输出路径。
+   * The output path for Markdown-related files.
    *
-   * 默认：'./docs/.markdowns'
-   *
+   * Default: './docs/.markdowns'
    */
   markdownPath: string
 
   /**
-   *
-   * 对 VuePress 的动作。
-   *
+   * The action to perform on VuePress.
    */
   action?: VuepressAction
 
   /**
-   * @since 0.2.0
+   * (Vuepress) The base path for generating documentation.
+   *
+   * Default: '/'
+   *
+   * Since 0.2.0
    */
   baseUrl: string
+
+  /**
+   * (Vuepress) The language of the documentation.
+   *
+   * Default: 'en-US'
+   *
+   * List of supported languages. Please [check](https://theme-hope.vuejs.press/config/i18n.html#supported-languages).
+   *
+   * Since 0.3.0
+   */
+  lang: string
 }
 
 /**
  * @public
  *
- *  文件解析方案。(每个功能的子项)
+ * Navigation name parsing scheme.
+ *
+ */
+export interface IDocsParseSchemeLang {
+  'en-US': string
+  'zh-CN': string
+}
+
+/**
+ * @public
+ *
+ * File parsing scheme (sub-items for each feature).
  *
  */
 export interface IDocsParseSchemeItem {
   /**
-   * 导航显示名称。
+   * Navigation display name.
    */
-  navName: string
+  navName: IDocsParseSchemeLang
 
   /**
-   * 导航路径。
+   * Navigation path.
    */
   navPath: string
 
   /**
-   * 解析路径。
+   * Parsing path.
    */
   parsePath: string[]
 
   /**
-   * 是否为文件夹
+   * Whether it is a directory
    */
   isDir?: true
 
   /**
-   * 进行文件装换。
+   * Perform file transformation.
    */
   transform?: (s: string) => string
 }
 
+/**
+ * @internal
+ *
+ * Information obtained from the 'projects' property when parsing the 'rush.json' file.
+ *
+ */
 export interface IRushProject {
   packageName: string
   projectFolder: string

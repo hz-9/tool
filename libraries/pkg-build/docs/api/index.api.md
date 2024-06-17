@@ -4,6 +4,62 @@
 
 ```ts
 
+import { OptionValues } from 'commander';
+
+// @public
+export class Commander {
+    static parse(): Promise<IPkgBuildOptions>;
+    // @internal
+    static _parseCommandOptions(options: OptionValues): ICommandOptions;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ICommandOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type ICommandOptions = Partial<Omit<IPkgBuildOptions, 'root' | 'assets' | 'scripts'>> & Pick<IPkgBuildOptions, 'root'>;
+
+// Warning: (ae-internal-missing-underscore) The name "IConfigOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface IConfigOptions extends Partial<Omit<IPkgBuildOptions, 'root' | 'config'>> {
+}
+
+// @public
+export interface IPkgBuildOptions {
+    assets: string[];
+    buildName: string;
+    buildVersion: string;
+    config?: string;
+    inputPath: string;
+    outputPath: string;
+    root: string;
+    scripts: string[];
+    targets: SupportTarget[];
+}
+
+// @public
+export class PkgBuild {
+    constructor();
+    static build(options: IPkgBuildOptions): Promise<PkgBuild>;
+    build(options: IPkgBuildOptions): Promise<void>;
+    static getDefaultFancyArch(): string;
+    static getFancyArch(arch?: string): string;
+    static getFancyPlatform(platform?: string): string;
+    static getPkgCommand(root: string): Promise<string>;
+    // (undocumented)
+    protected needDeleteDirList: string[];
+}
+
+// @public
+export enum SupportTarget {
+    // (undocumented)
+    LinuxX64 = "linux-x64",
+    // (undocumented)
+    MacosX64 = "macos-x64",
+    // (undocumented)
+    WinX64 = "win-x64"
+}
+
 // (No @packageDocumentation comment for this package)
 
 ```

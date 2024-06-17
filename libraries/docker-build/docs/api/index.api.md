@@ -4,6 +4,61 @@
 
 ```ts
 
+// @public
+export class Commander {
+    static parse(): Promise<IDockerBuildOptions>;
+    // @internal
+    static _parseCommandOptions(options: ICommandOptions): ICommandOptions;
+}
+
+// @public
+export class DockerBuild {
+    constructor();
+    static build(options: IDockerBuildOptions): Promise<DockerBuild>;
+    build(options: IDockerBuildOptions): Promise<void>;
+    // (undocumented)
+    protected needDeleteDirList: string[];
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ICommandOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type ICommandOptions = Partial<Omit<IDockerBuildOptions, 'root' | 'assets'>> & Pick<IDockerBuildOptions, 'root'>;
+
+// Warning: (ae-internal-missing-underscore) The name "IConfigOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface IConfigOptions extends Partial<Omit<IDockerBuildOptions, 'root' | 'config'>> {
+}
+
+// @public
+export interface IDockerBuildOptions {
+    assets: string[];
+    baseImage: string;
+    buildName: string;
+    buildVersion: string;
+    config?: string;
+    exposePort: number;
+    inputPath: string;
+    lastClean: boolean;
+    platform: SupportPlatform;
+    publish: boolean;
+    publishHost?: string;
+    root: string;
+}
+
+// @public
+export enum SupportPlatform {
+    // (undocumented)
+    AMD64 = "amd64",
+    // (undocumented)
+    ARM64 = "arm64",
+    // (undocumented)
+    LINUX_AMD64 = "linux/amd64",
+    // (undocumented)
+    LINUX_ARM64 = "linux/arm64"
+}
+
 // (No @packageDocumentation comment for this package)
 
 ```

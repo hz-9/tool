@@ -1,4 +1,6 @@
 /**
+ * @internal
+ *
  * Base nav item, displayed as text
  */
 export interface INavItemOptions {
@@ -22,6 +24,8 @@ export interface INavItemOptions {
   ariaLabel?: string
 }
 /**
+ * @internal
+ *
  * Options for `<AutoLink>`
  */
 export interface IAutoLinkOptions extends INavItemOptions {
@@ -77,6 +81,18 @@ interface INavGroup<T> extends INavItemOptions {
    */
   children: T[]
 }
+
+/**
+ * @internal
+ */
 export type INavbarLinkOptions = IAutoLinkOptions
+
+/**
+ * @internal
+ */
 export type INavbarGroupOptions = INavGroup<INavbarLinkOptions | INavGroup<INavbarLinkOptions> | string>
+
+/**
+ * @internal
+ */
 export type INavbarOptions = (INavbarLinkOptions | INavbarGroupOptions | string)[]
