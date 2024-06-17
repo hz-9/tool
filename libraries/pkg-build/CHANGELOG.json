@@ -2,6 +2,32 @@
   "name": "@hz-9/pkg-build",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "@hz-9/pkg-build_v0.3.0",
+      "date": "Mon, 17 Jun 2024 11:44:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: expose internal implementation classes to support secondary development.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "81f0d7877b0c9c79674bad65c20170542fdbdd79"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "feat: remove dependency `read-pkg`.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "81f0d7877b0c9c79674bad65c20170542fdbdd79"
+          },
+          {
+            "comment": "feat: added comments and translated them into English comments.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "81f0d7877b0c9c79674bad65c20170542fdbdd79"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.3",
       "tag": "@hz-9/pkg-build_v0.2.3",
       "date": "Wed, 12 Jun 2024 09:53:01 GMT",

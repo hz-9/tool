@@ -74,6 +74,7 @@ common/autoinstallers/*/.npmrc
 /hefts/*/.rush
 /hefts/*/docs/.vuepress
 /hefts/*/docs/.markdowns
+/hefts/*/docs/api
 /hefts/*/logs
 /hefts/*/log
 
@@ -83,6 +84,7 @@ common/autoinstallers/*/.npmrc
 /libraries/*/.rush
 /libraries/*/docs/.vuepress
 /libraries/*/docs/.markdowns
+/libraries/*/docs/api
 /libraries/*/logs
 /libraries/*/log
 
