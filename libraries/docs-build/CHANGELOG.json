@@ -2,6 +2,30 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@hz-9/docs-build_v0.4.0",
+      "date": "Tue, 18 Jun 2024 12:34:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: added support for watching the `index.api.json` file and updating `Vuepress` accordingly.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "2e01ece404576d496eb6ebd37cb258e5f9d923b5"
+          },
+          {
+            "comment": "feat: in `Rush` repositories, stopped displaying individual project's `README.md` files.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "2e01ece404576d496eb6ebd37cb258e5f9d923b5"
+          },
+          {
+            "comment": "feat: added sorting functionality for navigation tabs.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "2e01ece404576d496eb6ebd37cb258e5f9d923b5"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.1",
       "tag": "@hz-9/docs-build_v0.3.1",
       "date": "Mon, 17 Jun 2024 12:02:22 GMT",
