@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 19:30:26
+ * @LastEditTime : 2024-06-18 20:22:09
  */
 
 /* eslint-disable no-param-reassign */
@@ -16,7 +16,7 @@ import { parse as parseJsonC } from 'jsonc-parser'
 import _ from 'lodash'
 import console from 'node:console'
 
-import { DocsParseScheme, TDocsParseScheme, baseConfigPath } from '../config/index'
+import { DocsParseScheme, baseConfigPath } from '../config/index'
 import { VuepressAction } from '../enum'
 import type {
   ICommandOptions,
@@ -24,6 +24,7 @@ import type {
   IDocsItem,
   IDocsParseSchemeItem,
   IDocsParseSchemeLang,
+  INavbarGroupOptions,
   INavbarOptions,
   IRenderOptions,
   ISidebarArrayOptions,
@@ -94,7 +95,7 @@ export class SingleDocsBuild {
 
     await this.moveVuepressTemp(options.docsSpace, {
       options,
-      navbarOptions,
+      navbarOptions: this.sortNavbarOptions(navbarOptions),
       sidebarOptions,
       packageInfo,
     })
@@ -169,11 +170,28 @@ export class SingleDocsBuild {
     const entryExists = fs.existsSync(configOptions.entryPath)
     const jsonExists = fs.existsSync(configOptions.apiJsonFilePath)
 
-    if (exists && entryExists) {
+    const watch = (): void => {
+      if (options.action === VuepressAction.Serve) {
+        const watcher = chokidar.watch(configOptions.apiJsonFilePath, {
+          ignored: /(^|[/\\])\../, // ignore dotfiles
+          persistent: true,
+        })
+
+        console.log(`Watch  : ${path.relative(options.root, configOptions.apiJsonFilePath)}`)
+
+        watcher.on('change', async () => {
+          await this.runApiDocumenter(options, configOptions)
+        })
+      }
+    }
+
+    if (exists && jsonExists) {
+      await this.runApiDocumenter(options, configOptions)
+      watch()
+    } else if (exists && entryExists) {
       await this.runApiExtractor(options, configOptions)
       await this.runApiDocumenter(options, configOptions)
-    } else if (exists && jsonExists) {
-      await this.runApiDocumenter(options, configOptions)
+      watch()
     }
   }
 
@@ -211,12 +229,16 @@ export class SingleDocsBuild {
       await installInGlobal('@microsoft/api-documenter')
     }
 
+    const output: string = path.resolve(options.root, options.markdownPath)
+    fs.mkdirpSync(output)
+    const tempOutput: string = path.resolve(output, './.temp')
+
     const commands: string[] = [
       'markdown',
       '--input-folder',
       path.resolve(options.root, configOptions.apiPath),
       '--output-folder',
-      path.resolve(options.root, options.markdownPath),
+      tempOutput,
     ]
 
     await printCommand(`api-documenter ${commands.join(' ')}`)
@@ -226,21 +248,45 @@ export class SingleDocsBuild {
       stderr: process.stderr,
       stdout: process.stdout,
     })
+
+    fs.readdirSync(tempOutput).forEach((f) => {
+      const p1 = path.resolve(tempOutput, f)
+      const p2 = path.resolve(output, f)
+      const p2E = fs.existsSync(p2)
+
+      if (p2E) {
+        if (fs.readFileSync(p1, { encoding: 'utf8' }) !== fs.readFileSync(p2, { encoding: 'utf8' })) {
+          fs.copySync(p1, p2)
+        } else {
+          // 文件不变，不进行更新
+        }
+      } else {
+        fs.copySync(p1, p2)
+      }
+    })
+
+    fs.readdirSync(output).forEach((f) => {
+      if (f !== '.temp') {
+        // 删除历史文件
+        const p = path.resolve(tempOutput, f)
+        if (!fs.existsSync(p)) fs.removeSync(path.resolve(output, f))
+      }
+    })
+
+    fs.removeSync(tempOutput)
   }
 
-  protected async parseScheme(options: ICommandOptions): Promise<IDocsItem[]> {
-    const schemeKeys = Object.getOwnPropertyNames(DocsParseScheme) as Array<keyof TDocsParseScheme>
+  protected async parseScheme(
+    options: ICommandOptions,
+    docsParseScheme: Partial<typeof DocsParseScheme> = DocsParseScheme
+  ): Promise<IDocsItem[]> {
+    const schemeKeys = Object.getOwnPropertyNames(docsParseScheme) as Array<keyof typeof docsParseScheme>
     const docsList: IDocsItem[] = []
     const parsePath = (p: string): string => (path.isAbsolute(p) ? p : path.resolve(options.root, p))
 
     const tryPath = (schema: IDocsParseSchemeItem): string | undefined => {
-      const isAPI: boolean = schema.navPath.replace(/^\/|\/$/g, '') === 'api'
-
-      const parsePathList = [...schema.parsePath]
-      if (isAPI) {
-        parsePathList.push(options.markdownPath)
-      }
-
+      const isAPI = schema.navName === DocsParseScheme.api.navName
+      const parsePathList = isAPI ? [options.markdownPath] : [...schema.parsePath]
       const f = parsePathList.find((i) => {
         const p = parsePath(i)
         if (fs.existsSync(p)) {
@@ -256,10 +302,10 @@ export class SingleDocsBuild {
 
     while (schemeKeys.length) {
       const key = schemeKeys.shift()!
-      const schema = DocsParseScheme[key]
-
+      const schema = docsParseScheme[key]!
       const p = tryPath(schema)
       if (p) {
+        const isAPI = schema.navName === DocsParseScheme.api.navName
         const isHome = schema.navPath === '/'
         const navPath = schema.navPath.replace(/^\/|\/$/g, '')
 
@@ -270,13 +316,13 @@ export class SingleDocsBuild {
         docsList.push({
           baseFilepath: p,
           newFilePath,
-          watchFilePath: schema.isDir ? `${p}/*` : p,
+          isDir: schema.isDir === true,
           transform: schema.transform,
           sidebarCallback: (sidebarOptions: ISidebarOptions) => {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[schema.navPath] = navPath === 'api' ? this.getSidebar(p) : 'structure'
+              sidebarOptions[schema.navPath] = isAPI ? this.getSidebar(p) : 'structure'
             } else {
               // nothings.
               // sidebarOptions[isHome ? '/' : schema.navPath] = schema.navPath === '/' ? [''] : ["README.md"]
@@ -344,15 +390,23 @@ export class SingleDocsBuild {
       }
 
       if (options.action === VuepressAction.Serve) {
-        const watcher = chokidar.watch(item.watchFilePath, {
-          ignored: /(^|[/\\])\../, // ignore dotfiles
+        console.log(`Watch  : ${item.baseFilepath}`)
+
+        const watcher = chokidar.watch(item.baseFilepath, {
+          ignored: /\.temp/, // ignore dotfiles
           persistent: true,
         })
 
-        console.log(`Watch  : ${p1} -> ${p2}`)
-        watcher.on('change', async () => {
-          console.log(`Change : ${p1} -> ${p2}`)
-          this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+        watcher.on('change', async (x) => {
+          if (item.isDir) {
+            const t = path.relative(item.baseFilepath, x)
+            const p = path.resolve(item.newFilePath, t)
+            console.log(`Change : ${path.relative(options.root, x)} -> ${path.relative(options.root, p)}`)
+            this.transformFileOrDir(x, p, item.transform)
+          } else {
+            console.log(`Change : ${p1} -> ${p2}`)
+            this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+          }
         })
       }
     }
@@ -527,5 +581,30 @@ export class SingleDocsBuild {
 
   protected getNavName(navName: IDocsParseSchemeLang, lang: string): string {
     return navName[lang as keyof IDocsParseSchemeLang] ?? navName['en-US']
+  }
+
+  protected sortNavbarOptions(navbarOptions: INavbarOptions): INavbarOptions {
+    const navIndex: Record<string, number> = {
+      '/': -2,
+      // read: -1,
+    }
+
+    Object.keys(DocsParseScheme).forEach((k: string, index) => {
+      if (k !== '/') {
+        const scheme = DocsParseScheme[k as keyof typeof DocsParseScheme]
+        navIndex[scheme.navPath.replace(/^\/|\/$/g, '')] = index
+      }
+    })
+
+    navbarOptions.sort((a, b) => {
+      const aK: string = (a.link ?? (a as INavbarGroupOptions).prefix) as string
+      const bK: string = (b.link ?? (b as INavbarGroupOptions).prefix) as string
+      const aIndex = navIndex[aK === '/' ? aK : aK.replace(/^\/|\/$/g, '')] ?? 999
+      const bIndex = navIndex[bK === '/' ? bK : bK.replace(/^\/|\/$/g, '')] ?? 999
+
+      return aIndex - bIndex
+    })
+
+    return navbarOptions
   }
 }

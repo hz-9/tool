@@ -668,6 +668,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docs-build!IDocsItem#isDir:member",
+              "docComment": "/**\n * Whether it is a directory\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isDir: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "isDir",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@hz-9/docs-build!IDocsItem#navbarCallback:member",
               "docComment": "/**\n * Used to edit the navigation information.\n */\n",
               "excerptTokens": [
@@ -806,33 +833,6 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "transform",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsItem#watchFilePath:member",
-              "docComment": "/**\n * The file path used for listening.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "watchFilePath: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "watchFilePath",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -1945,6 +1945,28 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", docsParseScheme?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DocsParseScheme",
+                  "canonicalReference": "@hz-9/docs-build!~DocsParseScheme:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -1972,8 +1994,8 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 7
+                "startIndex": 8,
+                "endIndex": 12
               },
               "releaseTag": "Public",
               "isProtected": true,
@@ -1986,6 +2008,14 @@
                     "endIndex": 2
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "docsParseScheme",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
@@ -2133,6 +2163,56 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "runApiExtractor"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#sortNavbarOptions:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected sortNavbarOptions(navbarOptions: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "INavbarOptions",
+                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "INavbarOptions",
+                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "navbarOptions",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "sortNavbarOptions"
             },
             {
               "kind": "Method",

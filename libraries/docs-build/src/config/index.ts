@@ -2,15 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 18:57:14
+ * @LastEditTime : 2024-06-18 20:16:53
  */
 import * as path from 'upath'
 
 import type { IDocsParseSchemeItem, IDocsParseSchemeLang } from '../interface/index'
 
 export const defaultApiMarkdownPath: string = './docs/.markdowns'
-
-export const MultiDefaultNavName: IDocsParseSchemeLang = { 'en-US': 'Readme', 'zh-CN': '主页' }
 
 const DocsParseSchemeBase = {
   '/': {
@@ -19,17 +17,11 @@ const DocsParseSchemeBase = {
     navPath: '/',
   } as IDocsParseSchemeItem,
 
-  changelog: {
-    parsePath: ['./docs/CHANGELOG.md', './CHANGELOG.md'],
-    navName: { 'en-US': 'Changelog', 'zh-CN': '更新日志' },
-    navPath: '/changelog',
-    transform: (content: string): string => content.replace('# Change Log - ', '# '),
-  } as IDocsParseSchemeItem,
-
-  todo: {
-    parsePath: ['./docs/TODOLIST.md', './TODOLIST.md'],
-    navName: { 'en-US': 'Todolist', 'zh-CN': '待办清单' },
-    navPath: '/todo',
+  overview: {
+    parsePath: ['./docs/overview'],
+    navName: { 'en-US': 'Overview', 'zh-CN': '概述' },
+    navPath: '/overview',
+    isDir: true,
   } as IDocsParseSchemeItem,
 
   guide: {
@@ -47,13 +39,14 @@ const DocsParseSchemeBase = {
   } as IDocsParseSchemeItem,
 
   api: {
-    parsePath: ['./docs/.markdowns'],
+    parsePath: [
+      // ... 应由 options.markdownPath 属性进行补全、
+    ],
     navName: { 'en-US': 'API', 'zh-CN': '配置项' },
     navPath: '/api',
     isDir: true,
     transform: (content: string): string => {
       if (content.includes('## API Reference')) {
-        // 首页
         const matched = content.match(/\[[^[]+\]/g)
         if (matched && matched.length === 2) {
           return content
@@ -66,6 +59,19 @@ const DocsParseSchemeBase = {
     },
   } as IDocsParseSchemeItem,
 
+  changelog: {
+    parsePath: ['./docs/CHANGELOG.md', './CHANGELOG.md'],
+    navName: { 'en-US': 'Changelog', 'zh-CN': '更新日志' },
+    navPath: '/changelog',
+    transform: (content: string): string => content.replace('# Change Log - ', '# '),
+  } as IDocsParseSchemeItem,
+
+  todo: {
+    parsePath: ['./docs/TODOLIST.md', './TODOLIST.md'],
+    navName: { 'en-US': 'Todolist', 'zh-CN': '待办清单' },
+    navPath: '/todo',
+  } as IDocsParseSchemeItem,
+
   about: {
     parsePath: ['./docs/ABOUT.md'],
     navName: { 'en-US': 'About', 'zh-CN': '关于' },
@@ -73,22 +79,22 @@ const DocsParseSchemeBase = {
   } as IDocsParseSchemeItem,
 } as const
 
-export type TDocsParseScheme = typeof DocsParseSchemeBase
+export const DocsParseSchemeMultiRoot = {
+  '/': DocsParseSchemeBase['/'],
+  overview: DocsParseSchemeBase.overview,
+} as const
 
-type ToPath<T extends IDocsParseSchemeItem> = {
-  [K in keyof T]: T[K] extends string[] ? string : T[K]
-}
+export const DocsParseSchemeMultiItem = {
+  guide: DocsParseSchemeBase.guide,
+  advance: DocsParseSchemeBase.advance,
+  api: DocsParseSchemeBase.api,
+  changelog: DocsParseSchemeBase.changelog,
+  todo: DocsParseSchemeBase.todo,
+  about: DocsParseSchemeBase.about,
+} as const
 
-/**
- * 解析过后的接口
- */
-export type TDocsParsedScheme = {
-  -readonly [K in keyof TDocsParseScheme]?: ToPath<TDocsParseScheme[K]>
-}
+export type DocsParseSchemeType = typeof DocsParseSchemeBase
 
-/**
- * 文档解析方案
- */
-export const DocsParseScheme: TDocsParseScheme = DocsParseSchemeBase
+export const DocsParseScheme: typeof DocsParseSchemeBase = DocsParseSchemeBase
 
 export const baseConfigPath: string = path.resolve(__dirname, '../../.template/api-extractor.base.json')

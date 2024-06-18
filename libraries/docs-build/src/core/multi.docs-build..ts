@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 19:30:51
+ * @LastEditTime : 2024-06-18 20:26:32
  */
 
 /* eslint-disable no-param-reassign */
@@ -11,7 +11,7 @@ import * as path from 'upath'
 import { parse as parseJsonC } from 'jsonc-parser'
 import type { Package } from 'normalize-package-data'
 
-import { DocsParseScheme, MultiDefaultNavName, TDocsParseScheme } from '../config/index'
+import { DocsParseScheme, DocsParseSchemeMultiItem, DocsParseSchemeMultiRoot } from '../config/index'
 import type {
   ICommandOptions,
   IConfigOptions,
@@ -46,9 +46,9 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     const allDocsList: IDocsItem[] = []
 
-    const baseReadme = await this._addBaseReadme(options)
-
-    if (baseReadme) allDocsList.push(baseReadme)
+    const rootDocsList = await super.parseScheme(options)
+    const packageInfo = await this._parseBaseReadme(options)
+    allDocsList.push(...rootDocsList)
 
     let i = 0
     while (i < projects.length) {
@@ -77,11 +77,9 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     navbarOptions = await this.generateNavbarOptions(allDocsList, sidebarOptions, navbarOptions)
 
-    const packageInfo = await this._parseBaseReadme(baseReadme)
-
     await this.moveVuepressTemp(options.docsSpace, {
       options,
-      navbarOptions,
+      navbarOptions: this.sortNavbarOptions(navbarOptions),
       sidebarOptions,
       packageInfo,
     })
@@ -93,7 +91,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
     await this.vuepressAction(options.docsSpace, options.action)
   }
 
-  private async _parseBaseReadme(item?: IDocsItem): Promise<Package> {
+  private async _parseBaseReadme(options: ICommandOptions): Promise<Package> {
     const info: Package = {
       name: 'UNKNOWN',
       version: '0.0.0',
@@ -102,41 +100,17 @@ export class MultiDocsBuild extends SingleDocsBuild {
       _id: '',
     }
 
-    if (!item) return info
+    const list: string[] = [path.resolve(options.root, 'docs/README.md'), path.resolve(options.root, 'README.md')]
+    const p = list.find((i) => fs.existsSync(i))
+    if (!p) return info
 
-    const readmeText = await fs.readFile(item.baseFilepath, { encoding: 'utf8' })
+    const readmeText = await fs.readFile(p, { encoding: 'utf8' })
 
     const lines = readmeText.split(/\r|\n/g)
     const f = lines.find((i: string) => /^# /.test(i))
     if (f) info.name = f.replace(/^# /, '').trim()
     info.description = ''
-
     return info
-  }
-
-  private _addBaseReadme(optionsBase: ICommandOptions): IDocsItem | undefined {
-    const options = this.toAbsolute(optionsBase)
-    const list: string[] = [path.resolve(options.root, 'docs/README.md'), path.resolve(options.root, 'README.md')]
-    const f = list.find((i) => fs.existsSync(i))
-
-    if (!f) return undefined
-
-    return {
-      baseFilepath: f,
-      newFilePath: path.resolve(options.docsSpace, 'src', 'README.md'),
-      watchFilePath: f,
-
-      sidebarCallback: (sidebarOptions: ISidebarOptions) => sidebarOptions,
-
-      navbarCallback: (navbarOptions: INavbarOptions, sidebarOptions: ISidebarOptions) => {
-        navbarOptions.push({
-          text: this.getNavName(DocsParseScheme['/'].navName, optionsBase.lang),
-          link: '/',
-        })
-
-        return navbarOptions
-      },
-    }
   }
 
   private _readRushProjects(options: ICommandOptions): IRushProject[] {
@@ -208,7 +182,9 @@ export class MultiDocsBuild extends SingleDocsBuild {
     const packageInfo = readPkg(options.root)
     const packageName = (packageInfo.name.match(/[^/]+$/g) ?? ['unknown'])[0]
     const docsList: IDocsItem[] = []
-    const schemeKeys = Object.getOwnPropertyNames(DocsParseScheme) as Array<keyof TDocsParseScheme>
+    const schemeKeys = Object.getOwnPropertyNames(DocsParseSchemeMultiItem) as Array<
+      keyof typeof DocsParseSchemeMultiItem
+    >
 
     const parsePath = (p: string): string => (path.isAbsolute(p) ? p : path.resolve(options.root, p))
 
@@ -239,11 +215,8 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
       const p = tryPath(schema)
       if (p) {
-        const isHome = schema.navPath === '/'
-        const navPath = isHome ? 'read' : schema.navPath.replace(/^\/|\/$/g, '')
-        const navName = isHome
-          ? this.getNavName(MultiDefaultNavName, options.lang)
-          : this.getNavName(schema.navName, options.lang)
+        const navPath = schema.navPath.replace(/^\/|\/$/g, '')
+        const navName = this.getNavName(schema.navName, options.lang)
 
         let newFilePath = `${options.docsSpace}/src/${navPath}/${packageName}.md`
         if (schema.isDir) newFilePath = `${options.docsSpace}/src/${navPath}/${packageName}`
@@ -251,9 +224,8 @@ export class MultiDocsBuild extends SingleDocsBuild {
         docsList.push({
           baseFilepath: p,
           newFilePath,
-          watchFilePath: schema.isDir ? `${p}/*` : p,
           transform: schema.transform,
-
+          isDir: schema.isDir === true,
           sidebarCallback: (sidebarOptions: ISidebarOptions) => {
             if (schema.isDir) {
               // 移动！！！

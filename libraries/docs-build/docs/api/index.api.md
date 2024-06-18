@@ -51,6 +51,7 @@ export interface IConfigOptions {
 // @public
 export interface IDocsItem {
     baseFilepath: string;
+    isDir: boolean;
     // Warning: (ae-incompatible-release-tags) The symbol "navbarCallback" is marked as @public, but its signature references "INavbarOptions" which is marked as @internal
     // Warning: (ae-incompatible-release-tags) The symbol "navbarCallback" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
     navbarCallback: (o1: INavbarOptions, o2: ISidebarOptions) => INavbarOptions;
@@ -58,7 +59,6 @@ export interface IDocsItem {
     // Warning: (ae-incompatible-release-tags) The symbol "sidebarCallback" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
     sidebarCallback: (options: ISidebarOptions) => ISidebarOptions;
     transform?: (s: string) => string;
-    watchFilePath: string;
 }
 
 // @public
@@ -189,12 +189,18 @@ export class SingleDocsBuild {
     protected needDeleteDirList: string[];
     // (undocumented)
     protected parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions>;
+    // Warning: (ae-forgotten-export) The symbol "DocsParseScheme" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    protected parseScheme(options: ICommandOptions): Promise<IDocsItem[]>;
+    protected parseScheme(options: ICommandOptions, docsParseScheme?: Partial<typeof DocsParseScheme>): Promise<IDocsItem[]>;
     // (undocumented)
     protected runApiDocumenter(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
     // (undocumented)
     protected runApiExtractor(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
+    // Warning: (ae-incompatible-release-tags) The symbol "sortNavbarOptions" is marked as @public, but its signature references "INavbarOptions" which is marked as @internal
+    //
+    // (undocumented)
+    protected sortNavbarOptions(navbarOptions: INavbarOptions): INavbarOptions;
     // (undocumented)
     protected toAbsolute(options: ICommandOptions): ICommandOptions;
     // (undocumented)

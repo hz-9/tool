@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 19:16:19
+ * @LastEditTime : 2024-06-18 19:37:38
  */
 import type { Package } from 'normalize-package-data'
 
@@ -25,14 +25,14 @@ export interface IDocsItem {
   baseFilepath: string
 
   /**
+   * Whether it is a directory
+   */
+  isDir: boolean
+
+  /**
    * The file path after moving.
    */
   newFilePath: string
-
-  /**
-   * The file path used for listening.
-   */
-  watchFilePath: string
 
   /**
    * Used to edit the sidebar structure.
