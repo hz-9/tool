@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-18 20:22:09
+ * @LastEditTime : 2024-06-19 10:40:45
  */
 
 /* eslint-disable no-param-reassign */
@@ -322,7 +322,7 @@ export class SingleDocsBuild {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[schema.navPath] = isAPI ? this.getSidebar(p) : 'structure'
+              sidebarOptions[schema.navPath] = isAPI ? this.getSidebar(p) : this.praseSidebarJson(p) ?? 'structure'
             } else {
               // nothings.
               // sidebarOptions[isHome ? '/' : schema.navPath] = schema.navPath === '/' ? [''] : ["README.md"]
@@ -606,5 +606,18 @@ export class SingleDocsBuild {
     })
 
     return navbarOptions
+  }
+
+  protected praseSidebarJson(dirPath: string): ISidebarOptions | undefined {
+    try {
+      const p = path.resolve(dirPath, '.sidebar.json')
+
+      if (p) {
+        return parseJsonC(fs.readFileSync(p, { encoding: 'utf8' })) as ISidebarOptions
+      }
+    } catch (error) {
+      // ...
+    }
+    return undefined
   }
 }

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "feat: allow adding `.sidebar.json` files for folders to customize navigation information",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}

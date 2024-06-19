@@ -2024,6 +2024,59 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#praseSidebarJson:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected praseSidebarJson(dirPath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISidebarOptions",
+                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "dirPath",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "praseSidebarJson"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#runApiDocumenter:member(1)",
               "docComment": "",
               "excerptTokens": [

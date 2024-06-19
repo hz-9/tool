@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-18 20:26:32
+ * @LastEditTime : 2024-06-19 10:41:07
  */
 
 /* eslint-disable no-param-reassign */
@@ -46,7 +46,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     const allDocsList: IDocsItem[] = []
 
-    const rootDocsList = await super.parseScheme(options)
+    const rootDocsList = await super.parseScheme(options, DocsParseSchemeMultiRoot)
     const packageInfo = await this._parseBaseReadme(options)
     allDocsList.push(...rootDocsList)
 
@@ -230,7 +230,8 @@ export class MultiDocsBuild extends SingleDocsBuild {
             if (schema.isDir) {
               // 移动！！！
               // @ts-ignore
-              sidebarOptions[`/${navPath}/${packageName}`] = navPath === 'api' ? this.getSidebar(p) : 'structure'
+              sidebarOptions[`/${navPath}/${packageName}`] =
+                navPath === 'api' ? this.getSidebar(p) : this.praseSidebarJson(p) ?? 'structure'
             } else {
               const sidebarOptions2 = sidebarOptions as ISidebarObjectOptions
               if (!sidebarOptions2[`/${navPath}`]) {
