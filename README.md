@@ -1,11 +1,5 @@
 # HZ 9 Tool
 
-## Introduction
-
 Some 'Node.js' tool library.
 
-## Publish
-
-``` sh
-rush publish --apply --publish --add-commit-details --ignore-git-hooks --target-branch master
-```
+[Document](https://hz-9.github.io/tool)
