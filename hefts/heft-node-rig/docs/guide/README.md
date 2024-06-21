@@ -10,25 +10,20 @@ A rig package for Node.js projects that build using Heft build system. To learn 
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-node-rig
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-node-rig
 
-> Please visit [@hz-9/heft-node-rig](https://hz-9.github.io/tool/guide/heft-node-rig) for detailed documentation.
-
 ## Introduction
 
-`@hz-9/heft-node-rig` is a rig package, so the project must have used [Heft](https://heft.rushstack.io/).
+`@hz-9/heft-node-rig` is a [rig](https://heft.rushstack.io/pages/intro/rig_packages/) pacakge. So the project must have used [Heft](https://heft.rushstack.io/).
 
-`@hz-9/heft-node-rig` provides two profiles:
+`@hz-9/heft-node-rig` provides two profiles.
 
-- `default`: A configuration for common use, exporting CommonJS (CJS) and ES Module (ESM).
-- `tool`: A configuration for command-line tools, exporting CommonJS (CJS).
+- `default`: A configuration for common, exporting CommonJS (CJS) and ES Module (ESM).
+- `tool`: A configuration for command-line tool, exporting CommonJS (CJS) .
 
 ## Installation
 
 ``` bash
-npm install @hz-9/heft-node-rig @rushstack/heft@0.66.1 --save-dev
+npm install @hz-9/heft-node-rig --save-dev
 ```
-
-## Document
-
 
 ## Usage
 

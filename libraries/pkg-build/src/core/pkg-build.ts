@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 17:37:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 18:16:51
+ * @LastEditTime : 2024-06-21 20:06:11
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -143,7 +143,6 @@ export class PkgBuild {
             filename.includes(version)
 
           if (needCopy) {
-            // 需要进行文件拷贝
             const toDirSecond = path.resolve(to, n)
 
             if (!fs.existsSync(toDirSecond)) await fs.mkdirp(toDirSecond)

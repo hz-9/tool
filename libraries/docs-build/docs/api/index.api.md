@@ -152,6 +152,8 @@ export type ISidebarOptions = ISidebarArrayOptions | ISidebarObjectOptions | 'st
 // @public
 export class MultiDocsBuild extends SingleDocsBuild {
     // (undocumented)
+    static build(optionsBase: ICommandOptions): Promise<MultiDocsBuild>;
+    // (undocumented)
     build(options: ICommandOptions): Promise<void>;
     // (undocumented)
     protected parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions>;
@@ -162,6 +164,8 @@ export class MultiDocsBuild extends SingleDocsBuild {
 // @public
 export class SingleDocsBuild {
     constructor();
+    // (undocumented)
+    static build(optionsBase: ICommandOptions): Promise<SingleDocsBuild>;
     // (undocumented)
     build(optionsBase: ICommandOptions): Promise<void>;
     // (undocumented)

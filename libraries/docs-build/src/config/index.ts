@@ -2,11 +2,11 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-18 20:16:53
+ * @LastEditTime : 2024-06-21 20:20:45
  */
 import * as path from 'upath'
 
-import type { IDocsParseSchemeItem, IDocsParseSchemeLang } from '../interface/index'
+import type { IDocsParseSchemeItem } from '../interface/index'
 
 export const defaultApiMarkdownPath: string = './docs/.markdowns'
 

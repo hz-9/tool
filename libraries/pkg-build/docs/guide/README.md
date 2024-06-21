@@ -10,8 +10,6 @@ A tool for run [pkg] to package Node.js service or tool.
 [npm-license-url]:   https://img.shields.io/npm/l/@hz-9/pkg-build
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/pkg-build
 
-> Please visit [@hz-9/pkg-build](https://hz-9.github.io/tool/guide/pkg-build) for detailed documentation.
-
 ## Introduction
 
 __Why create `@hz-9/pkg-build` instead of directly use `pkg` ?__

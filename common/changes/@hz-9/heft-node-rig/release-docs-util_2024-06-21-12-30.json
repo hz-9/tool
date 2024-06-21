@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/heft-node-rig",
+      "comment": "docs: add docs files",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/heft-node-rig"
+}

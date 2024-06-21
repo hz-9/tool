@@ -4,10 +4,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 15:44:04
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 17:17:22
+ * @LastEditTime : 2024-06-21 20:07:32
  */
-import { Commander } from '../core/commander'
-import { PkgBuild } from '../core/pkg-build'
+import { Commander, PkgBuild } from '../index'
 
 ;(async () => {
   const options = await Commander.parse()

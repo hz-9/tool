@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 10:40:45
+ * @LastEditTime : 2024-06-21 20:28:53
  */
 
 /* eslint-disable no-param-reassign */
@@ -71,6 +71,12 @@ export class SingleDocsBuild {
     }
   }
 
+  public static async build(optionsBase: ICommandOptions): Promise<SingleDocsBuild> {
+    const build = new SingleDocsBuild()
+    await build.build(optionsBase)
+    return build
+  }
+
   public async build(optionsBase: ICommandOptions): Promise<void> {
     const options = this.toAbsolute(optionsBase)
 
@@ -129,14 +135,16 @@ export class SingleDocsBuild {
 
     /**
      *
-     * @microsoft/api-extractor 的 api-extractor.json 文件中，对于 apiReport.reportFolder 提供了三个 Token，
+     * In the api-extractor.json file of @microsoft/api-extractor,
+     * three tokens are provided for apiReport.reportFolder.
      *
-     * 现在进行解析。
+     * Now, let's parse them.
      *
-     * <projectFolder> 替换为 process.cwd()
+     * Replace <projectFolder> with process.cwd().
      *
-     * <projectFolder>, <packageName>, <unscopedPackageName>
+     * Replace <projectFolder> with `projectPKG.name`.
      *
+     * Replace <projectFolder> with `unscopedPackageName`.
      */
     const toAbsolute = (pa: string): string => {
       let p2: string = pa
@@ -320,7 +328,6 @@ export class SingleDocsBuild {
           transform: schema.transform,
           sidebarCallback: (sidebarOptions: ISidebarOptions) => {
             if (schema.isDir) {
-              // 移动！！！
               // @ts-ignore
               sidebarOptions[schema.navPath] = isAPI ? this.getSidebar(p) : this.praseSidebarJson(p) ?? 'structure'
             } else {

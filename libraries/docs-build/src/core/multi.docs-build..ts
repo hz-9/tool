@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-19 10:41:07
+ * @LastEditTime : 2024-06-21 19:39:00
  */
 
 /* eslint-disable no-param-reassign */
@@ -36,6 +36,12 @@ import { SingleDocsBuild } from './single.docs-build'
  *
  */
 export class MultiDocsBuild extends SingleDocsBuild {
+  public static async build(optionsBase: ICommandOptions): Promise<MultiDocsBuild> {
+    const build = new MultiDocsBuild()
+    await build.build(optionsBase)
+    return build
+  }
+
   public async build(options: ICommandOptions): Promise<void> {
     await printOptions(options)
 

@@ -8,8 +8,6 @@ A tool for create node.js docker image and upload artifacts.
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/docker-build
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/docker-build
 
-> Please visit [@hz-9/docker-build](https://hz-9.github.io/tool/guide/docker-build) for detailed documentation.
-
 ## Introduction
 
 `@hz-9/docker-build` provides the following functionalities:
