@@ -4,5 +4,6 @@
     "overrideConfigFile": "common/autoinstallers/rush-eslint/.eslintrc.js"
   },
   "prettier.useEditorConfig": false,
-  "prettier.configPath": ".prettierrc.js"
+  "prettier.configPath": ".prettierrc.js",
+  "github-actions.workflows.pinned.workflows": [".github/workflows/generate-pages.yml"]
 }
