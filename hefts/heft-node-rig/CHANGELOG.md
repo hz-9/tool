@@ -1,6 +1,13 @@
 # Change Log - @hz-9/heft-node-rig
 
-This log was last generated on Mon, 17 Jun 2024 12:02:22 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 15:12:03 GMT and should not be manually modified.
+
+## 0.4.4
+Fri, 21 Jun 2024 15:12:03 GMT
+
+### Patches
+
+- docs: add docs files
 
 ## 0.4.3
 Mon, 17 Jun 2024 12:02:22 GMT

@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/docker-build",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A tool for create node.js docker image and upload product.",
   "keywords": [
     "docker",

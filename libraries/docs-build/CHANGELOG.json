@@ -2,6 +2,37 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.5.0",
+      "tag": "@hz-9/docs-build_v0.5.0",
+      "date": "Fri, 21 Jun 2024 15:12:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: in `Rush` repository, the `${root}/docs` folder should only support prioritized paths.",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "e546f2c09160831f65f26076ee1fd3e1557b5ed0"
+          },
+          {
+            "comment": "docs: add docs files",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "db4630961118903c84eede74bc71727f2eaf67e6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "feat: allow adding `.sidebar.json` files for folders to customize navigation information",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "e546f2c09160831f65f26076ee1fd3e1557b5ed0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@hz-9/heft-node-rig\" to `0.4.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@hz-9/docs-build_v0.4.0",
       "date": "Tue, 18 Jun 2024 12:34:42 GMT",

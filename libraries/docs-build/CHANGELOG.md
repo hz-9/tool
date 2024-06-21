@@ -1,6 +1,18 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Tue, 18 Jun 2024 12:34:42 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 15:12:03 GMT and should not be manually modified.
+
+## 0.5.0
+Fri, 21 Jun 2024 15:12:03 GMT
+
+### Minor changes
+
+- feat: allow adding `.sidebar.json` files for folders to customize navigation information
+
+### Patches
+
+- fix: in `Rush` repository, the `${root}/docs` folder should only support prioritized paths.
+- docs: add docs files
 
 ## 0.4.0
 Tue, 18 Jun 2024 12:34:42 GMT
