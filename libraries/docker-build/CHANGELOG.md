@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docker-build
 
-This log was last generated on Fri, 21 Jun 2024 15:12:03 GMT and should not be manually modified.
+This log was last generated on Sat, 22 Jun 2024 02:44:32 GMT and should not be manually modified.
+
+## 0.3.3
+Sat, 22 Jun 2024 02:44:32 GMT
+
+### Patches
+
+- docs: add `LICENSE` file
 
 ## 0.3.2
 Fri, 21 Jun 2024 15:12:03 GMT
