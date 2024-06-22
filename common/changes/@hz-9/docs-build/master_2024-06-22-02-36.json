@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "docs: add `LICENSE` file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}
