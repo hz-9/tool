@@ -1,13 +1,42 @@
-import { sidebar, type SidebarOptions } from 'vuepress-theme-hope'
+import { sidebar, type SidebarObjectOptions } from 'vuepress-theme-hope'
+
+// /**
+//  *
+//  * Guide
+//  *
+//  * API
+//  *
+//  * ChangeLog.md
+//  */
+
+export interface ILangObj {
+  'en-US': string
+  'zh-CN': string
+}
+
+export type Lang = keyof ILangObj
+
+export type LangPlus = `/${Lang}/`
+
+export type ISidebarOptionsGroup = {
+  '/': SidebarObjectOptions,
+} & {
+  [K in LangPlus]?: SidebarObjectOptions
+}
 
 /**
- *
- * Guide
- *
- * API
- *
- * ChangeLog.md
+ * Icon 从 https://fontawesome.com/search 中获取
  */
-const sidebarOptions: SidebarOptions = {{ JSON.stringify(sidebarOptions, undefined, 2) }}
+export default (() => {
+  const sidebarOptionsGroup: ISidebarOptionsGroup = {{ JSON.stringify(sidebarOptionsGroup, undefined, 2) }}
 
-export default sidebar(sidebarOptions)
+  const obj: ISidebarOptionsGroup = {
+    "/": {}
+  }
+
+  Object.keys(sidebarOptionsGroup).forEach((key) => {
+    obj[key] = sidebar(sidebarOptionsGroup[key])
+  })
+
+  return obj
+})()

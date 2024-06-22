@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "perf: support for multiple languages",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}

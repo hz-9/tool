@@ -17,6 +17,14 @@ export class Commander {
     static _parseCommandOptions(options: OptionValues): ICommandOptions;
 }
 
+// Warning: (ae-internal-missing-underscore) The name "IApiDocVersionFile" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface IApiDocVersionFile {
+    // (undocumented)
+    hash: string;
+}
+
 // Warning: (ae-internal-missing-underscore) The name "IAutoLinkOptions" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -34,13 +42,15 @@ export interface ICommandOptions {
     baseUrl: string;
     config?: string;
     docsSpace: string;
-    lang: string;
+    // Warning: (ae-incompatible-release-tags) The symbol "lang" is marked as @public, but its signature references "Lang" which is marked as @internal
+    lang: Lang[];
     markdownPath: string;
     root: string;
 }
 
 // @public
 export interface IConfigOptions {
+    apiDocVersionFilepath: string;
     apiJsonFilePath: string;
     apiPath: string;
     configPath: string;
@@ -50,33 +60,44 @@ export interface IConfigOptions {
 
 // @public
 export interface IDocsItem {
+    // (undocumented)
     baseFilepath: string;
+    // (undocumented)
+    focusFilepath: string;
+    // (undocumented)
     isDir: boolean;
-    // Warning: (ae-incompatible-release-tags) The symbol "navbarCallback" is marked as @public, but its signature references "INavbarOptions" which is marked as @internal
-    // Warning: (ae-incompatible-release-tags) The symbol "navbarCallback" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
-    navbarCallback: (o1: INavbarOptions, o2: ISidebarOptions) => INavbarOptions;
-    newFilePath: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "sidebarCallback" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
-    sidebarCallback: (options: ISidebarOptions) => ISidebarOptions;
     transform?: (s: string) => string;
 }
 
 // @public
 export interface IDocsParseSchemeItem {
     isDir?: true;
-    navName: IDocsParseSchemeLang;
+    navName: ILangObj;
     navPath: string;
     parsePath: string[];
     transform?: (s: string) => string;
 }
 
-// @public
-export interface IDocsParseSchemeLang {
+// @public (undocumented)
+export interface ILangObj {
     // (undocumented)
     'en-US': string;
     // (undocumented)
     'zh-CN': string;
 }
+
+// Warning: (ae-internal-missing-underscore) The name "ILocales" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type ILocales = {
+    '/': {
+        lang: Lang;
+    };
+} & {
+    [K in LangPlus]?: {
+        lang: Lang;
+    };
+};
 
 // Warning: (ae-forgotten-export) The symbol "INavGroup" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-missing-underscore) The name "INavbarGroupOptions" should be prefixed with an underscore because the declaration is marked as @internal
@@ -94,6 +115,15 @@ export type INavbarLinkOptions = IAutoLinkOptions;
 // @internal (undocumented)
 export type INavbarOptions = (INavbarLinkOptions | INavbarGroupOptions | string)[];
 
+// Warning: (ae-internal-missing-underscore) The name "INavbarOptionsGroup" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type INavbarOptionsGroup = {
+    '/': INavbarOptions;
+} & {
+    [K in LangPlus]?: INavbarOptions;
+};
+
 // Warning: (ae-internal-missing-underscore) The name "INavItemOptions" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -107,11 +137,11 @@ export interface INavItemOptions {
 //
 // @internal
 export interface IRenderOptions {
-    navbarOptions: INavbarOptions;
+    // (undocumented)
+    locales: ILocales;
     // (undocumented)
     options: ICommandOptions;
     packageInfo: Package;
-    sidebarOptions: ISidebarOptions;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "IRushProject" should be prefixed with an underscore because the declaration is marked as @internal
@@ -149,16 +179,35 @@ export type ISidebarObjectOptions = Record<string, ISidebarArrayOptions | 'struc
 // @internal (undocumented)
 export type ISidebarOptions = ISidebarArrayOptions | ISidebarObjectOptions | 'structure' | false;
 
+// Warning: (ae-internal-missing-underscore) The name "ISidebarOptionsGroup" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type ISidebarOptionsGroup = {
+    '/': ISidebarObjectOptions;
+} & {
+    [K in LangPlus]?: ISidebarObjectOptions;
+};
+
+// Warning: (ae-internal-missing-underscore) The name "Lang" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type Lang = keyof ILangObj;
+
+// Warning: (ae-internal-missing-underscore) The name "LangPlus" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type LangPlus = `/${Lang}/`;
+
 // @public
 export class MultiDocsBuild extends SingleDocsBuild {
     // (undocumented)
     static build(optionsBase: ICommandOptions): Promise<MultiDocsBuild>;
     // (undocumented)
     build(options: ICommandOptions): Promise<void>;
+    // Warning: (ae-incompatible-release-tags) The symbol "readRushProjects" is marked as @public, but its signature references "IRushProject" which is marked as @internal
+    //
     // (undocumented)
-    protected parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions>;
-    // (undocumented)
-    protected parseScheme(options: ICommandOptions): Promise<IDocsItem[]>;
+    protected readRushProjects(options: ICommandOptions): IRushProject[];
 }
 
 // @public
@@ -169,54 +218,55 @@ export class SingleDocsBuild {
     // (undocumented)
     build(optionsBase: ICommandOptions): Promise<void>;
     // (undocumented)
+    protected docsItemList: IDocsItem[];
+    // (undocumented)
     protected generateAPIDocs(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
-    // Warning: (ae-incompatible-release-tags) The symbol "generateNavbarOptions" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
-    // Warning: (ae-incompatible-release-tags) The symbol "generateNavbarOptions" is marked as @public, but its signature references "INavbarOptions" which is marked as @internal
+    // (undocumented)
+    protected generateSidebarJson(apiDir: string): void;
+    // Warning: (ae-incompatible-release-tags) The symbol "getLocales" is marked as @public, but its signature references "ILocales" which is marked as @internal
     //
     // (undocumented)
-    protected generateNavbarOptions(docsList: IDocsItem[], sidebarOptions: ISidebarOptions, navbarOptions?: INavbarOptions): Promise<INavbarOptions>;
-    // Warning: (ae-incompatible-release-tags) The symbol "generateSidebarOptions" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
+    protected getLocales(options: ICommandOptions): ILocales;
+    // Warning: (ae-incompatible-release-tags) The symbol "getNavName" is marked as @public, but its signature references "Lang" which is marked as @internal
     //
     // (undocumented)
-    protected generateSidebarOptions(docsList: IDocsItem[], sidebarOptions?: ISidebarOptions): Promise<ISidebarOptions>;
+    protected getNavName(navName: ILangObj, lang: Lang): string;
     // (undocumented)
-    protected getNavName(navName: IDocsParseSchemeLang, lang: string): string;
-    // Warning: (ae-incompatible-release-tags) The symbol "getSidebar" is marked as @public, but its signature references "ISidebarArrayOptions" which is marked as @internal
-    //
-    // (undocumented)
-    protected getSidebar(apiDir: string): ISidebarArrayOptions;
+    protected moveAndWatch(options: ICommandOptions): Promise<void>;
     // Warning: (ae-incompatible-release-tags) The symbol "moveVuepressTemp" is marked as @public, but its signature references "IRenderOptions" which is marked as @internal
     //
     // (undocumented)
     protected moveVuepressTemp(vuepressDirPath: string, renderOptions: IRenderOptions): Promise<void>;
+    // Warning: (ae-incompatible-release-tags) The symbol "navbarOptionsGroup" is marked as @public, but its signature references "INavbarOptionsGroup" which is marked as @internal
+    //
+    // (undocumented)
+    protected navbarOptionsGroup: INavbarOptionsGroup;
     // (undocumented)
     protected needDeleteDirList: string[];
     // (undocumented)
-    protected parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions>;
-    // Warning: (ae-forgotten-export) The symbol "DocsParseScheme" needs to be exported by the entry point index.d.ts
+    protected parseAPIExtractorJson(options: ICommandOptions, tempDir: string): Promise<IConfigOptions>;
+    // Warning: (ae-incompatible-release-tags) The symbol "praseSidebarJson" is marked as @public, but its signature references "ISidebarArrayOptions" which is marked as @internal
     //
     // (undocumented)
-    protected parseScheme(options: ICommandOptions, docsParseScheme?: Partial<typeof DocsParseScheme>): Promise<IDocsItem[]>;
-    // Warning: (ae-incompatible-release-tags) The symbol "praseSidebarJson" is marked as @public, but its signature references "ISidebarOptions" which is marked as @internal
-    //
-    // (undocumented)
-    protected praseSidebarJson(dirPath: string): ISidebarOptions | undefined;
+    protected praseSidebarJson(dirPath: string): ISidebarArrayOptions | undefined;
     // (undocumented)
     protected runApiDocumenter(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
     // (undocumented)
     protected runApiExtractor(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
-    // Warning: (ae-incompatible-release-tags) The symbol "sortNavbarOptions" is marked as @public, but its signature references "INavbarOptions" which is marked as @internal
+    // Warning: (ae-forgotten-export) The symbol "DocsParseScheme" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    protected sortNavbarOptions(navbarOptions: INavbarOptions): INavbarOptions;
+    protected scan(options: ICommandOptions, docsParseScheme?: Partial<typeof DocsParseScheme>, inRush?: boolean): Promise<IDocsItem[]>;
+    // Warning: (ae-incompatible-release-tags) The symbol "sidebarOptionsGroup" is marked as @public, but its signature references "ISidebarOptionsGroup" which is marked as @internal
+    //
+    // (undocumented)
+    protected sidebarOptionsGroup: ISidebarOptionsGroup;
     // (undocumented)
     protected toAbsolute(options: ICommandOptions): ICommandOptions;
     // (undocumented)
     protected transformFileOrDir(from: string, to: string, transform?: (c: string) => string): void;
     // (undocumented)
     protected vuepressAction(docsSpace: string, action?: VuepressAction): Promise<void>;
-    // (undocumented)
-    protected watchChange(docsList: IDocsItem[], options: ICommandOptions): Promise<void>;
 }
 
 // @public

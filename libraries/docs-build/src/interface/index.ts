@@ -2,47 +2,27 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-18 19:37:38
+ * @LastEditTime : 2024-06-23 01:23:47
  */
 import type { Package } from 'normalize-package-data'
 
 import type { VuepressAction } from '../enum'
 import type { INavbarOptions } from './vuepress-theme-hope.navbar-options'
-import type { ISidebarOptions } from './vuepress-theme-hope.sidebar-options'
+import type { ISidebarObjectOptions } from './vuepress-theme-hope.sidebar-options'
 
 export * from './vuepress-theme-hope.sidebar-options'
 export * from './vuepress-theme-hope.navbar-options'
-
 /**
  * @public
  *
  * The data mounting object.
  */
 export interface IDocsItem {
-  /**
-   * The original file path.
-   */
   baseFilepath: string
 
-  /**
-   * Whether it is a directory
-   */
+  focusFilepath: string
+
   isDir: boolean
-
-  /**
-   * The file path after moving.
-   */
-  newFilePath: string
-
-  /**
-   * Used to edit the sidebar structure.
-   */
-  sidebarCallback: (options: ISidebarOptions) => ISidebarOptions
-
-  /**
-   * Used to edit the navigation information.
-   */
-  navbarCallback: (o1: INavbarOptions, o2: ISidebarOptions) => INavbarOptions
 
   /**
    * Performs file transformation.
@@ -99,6 +79,11 @@ export interface IConfigOptions {
    * The path to the rig package.
    */
   rigPackage?: string
+
+  /**
+   * `api documenter`version filepath.
+   */
+  apiDocVersionFilepath: string
 }
 
 /**
@@ -110,15 +95,7 @@ export interface IConfigOptions {
 export interface IRenderOptions {
   options: ICommandOptions
 
-  /**
-   * Options for the vuepress sidebar.
-   */
-  sidebarOptions: ISidebarOptions
-
-  /**
-   * Options for the vuepress navbar.
-   */
-  navbarOptions: INavbarOptions
+  locales: ILocales
 
   /**
    * Information about the package.
@@ -183,19 +160,27 @@ export interface ICommandOptions {
    *
    * Since 0.3.0
    */
-  lang: string
+  lang: Lang[]
 }
 
 /**
  * @public
  *
- * Navigation name parsing scheme.
- *
  */
-export interface IDocsParseSchemeLang {
+export interface ILangObj {
   'en-US': string
   'zh-CN': string
 }
+
+/**
+ * @internal
+ */
+export type Lang = keyof ILangObj
+
+/**
+ * @internal
+ */
+export type LangPlus = `/${Lang}/`
 
 /**
  * @public
@@ -207,7 +192,7 @@ export interface IDocsParseSchemeItem {
   /**
    * Navigation display name.
    */
-  navName: IDocsParseSchemeLang
+  navName: ILangObj
 
   /**
    * Navigation path.
@@ -240,4 +225,41 @@ export interface IRushProject {
   packageName: string
   projectFolder: string
   shouldPublish?: boolean
+}
+
+/**
+ * @internal
+ *
+ * The version file of the API document.
+ *
+ */
+export interface IApiDocVersionFile {
+  hash: string
+}
+
+/**
+ * @internal
+ */
+export type INavbarOptionsGroup = {
+  '/': INavbarOptions
+} & {
+  [K in LangPlus]?: INavbarOptions
+}
+
+/**
+ * @internal
+ */
+export type ISidebarOptionsGroup = {
+  '/': ISidebarObjectOptions
+} & {
+  [K in LangPlus]?: ISidebarObjectOptions
+}
+
+/**
+ * @internal
+ */
+export type ILocales = {
+  '/': { lang: Lang }
+} & {
+  [K in LangPlus]?: { lang: Lang }
 }

@@ -2,13 +2,20 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 20:20:45
+ * @LastEditTime : 2024-06-23 01:08:45
  */
 import * as path from 'upath'
 
-import type { IDocsParseSchemeItem } from '../interface/index'
+import type { IDocsParseSchemeItem, Lang } from '../interface/index'
 
 export const defaultApiMarkdownPath: string = './docs/.markdowns'
+
+export const fileSuffix: Record<Lang, RegExp> = {
+  'en-US': /.en-US.md$/,
+  'zh-CN': /.zh-CN.md$/,
+}
+
+export const fileSuffixs: RegExp[] = Object.values(fileSuffix)
 
 const DocsParseSchemeBase = {
   '/': {
@@ -21,21 +28,18 @@ const DocsParseSchemeBase = {
     parsePath: ['./docs/overview'],
     navName: { 'en-US': 'Overview', 'zh-CN': '概述' },
     navPath: '/overview',
-    isDir: true,
   } as IDocsParseSchemeItem,
 
   guide: {
     parsePath: ['./docs/guide'],
     navName: { 'en-US': 'Guide', 'zh-CN': '指南' },
     navPath: '/guide',
-    isDir: true,
   } as IDocsParseSchemeItem,
 
   advance: {
     parsePath: ['./docs/advance'],
     navName: { 'en-US': 'Advance', 'zh-CN': '进阶' },
     navPath: '/advance',
-    isDir: true,
   } as IDocsParseSchemeItem,
 
   api: {
@@ -44,19 +48,18 @@ const DocsParseSchemeBase = {
     ],
     navName: { 'en-US': 'API', 'zh-CN': '配置项' },
     navPath: '/api',
-    isDir: true,
-    transform: (content: string): string => {
-      if (content.includes('## API Reference')) {
-        const matched = content.match(/\[[^[]+\]/g)
-        if (matched && matched.length === 2) {
-          return content
-            .replace(matched[0], matched[1])
-            .replace('## API Reference', `# ${matched[1].replace(/\[|\]/g, '')}`)
-        }
-      }
+    // transform: (content: string): string => {
+    //   if (content.includes('## API Reference')) {
+    //     const matched = content.match(/\[[^[]+\]/g)
+    //     if (matched && matched.length === 2) {
+    //       return content
+    //         .replace(matched[0], matched[1])
+    //         .replace('## API Reference', `# ${matched[1].replace(/\[|\]/g, '')}`)
+    //     }
+    //   }
 
-      return content.replace('## ', '# ')
-    },
+    //   return content.replace('## ', '# ')
+    // },
   } as IDocsParseSchemeItem,
 
   changelog: {

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-06 15:57:39
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 18:46:40
+ * @LastEditTime : 2024-06-22 21:43:53
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
@@ -38,7 +38,7 @@ export class Commander {
       .option('--markdown-path <char>', 'the markdown folder.', './docs/.markdowns')
       .option('-a, --action <char>', "vuepress action. Support 'serve' or 'build'")
       .option('--base-url <char>', 'vuepress website base path', '/')
-      .option('--lang <char>', 'vuepress website language', 'en-US')
+      .option('--lang <char>', `vuepress website language. support 'en-US' 'zh-CN' or 'en-US,zh-CN'`, 'en-US')
 
     program.parse(process.argv)
     const commandOptions = this._parseCommandOptions(program.opts())
@@ -62,7 +62,7 @@ export class Commander {
     return {
       root,
       baseUrl: options.baseUrl,
-      lang: options.lang,
+      lang: options.lang.split(','),
       config: options.config,
       markdownPath: options.markdownPath,
       docsSpace: options.docsSpace,

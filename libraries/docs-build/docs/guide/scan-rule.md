@@ -1,6 +1,8 @@
 
 # Scan rule
 
+扫描规则，若不存在语言后缀的文件未找到，则会被 `@hz-9/docs-build` 忽略这个文件，若第二语言或其他语言未找到，会将第一语言文件进行重复展示。
+
 ## Normal project
 
 | Force file                          | Moved file                             | view link    |

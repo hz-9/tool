@@ -397,8 +397,13 @@
                   "text": "lang: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "Lang",
+                  "canonicalReference": "@hz-9/docs-build!Lang:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "[]"
                 },
                 {
                   "kind": "Content",
@@ -411,7 +416,7 @@
               "name": "lang",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -486,6 +491,33 @@
           "name": "IConfigOptions",
           "preserveMemberOrder": false,
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docs-build!IConfigOptions#apiDocVersionFilepath:member",
+              "docComment": "/**\n * `api documenter`version filepath.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "apiDocVersionFilepath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "apiDocVersionFilepath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "@hz-9/docs-build!IConfigOptions#apiJsonFilePath:member",
@@ -642,7 +674,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@hz-9/docs-build!IDocsItem#baseFilepath:member",
-              "docComment": "/**\n * The original file path.\n */\n",
+              "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -668,8 +700,35 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@hz-9/docs-build!IDocsItem#focusFilepath:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "focusFilepath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "focusFilepath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@hz-9/docs-build!IDocsItem#isDir:member",
-              "docComment": "/**\n * Whether it is a directory\n */\n",
+              "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -691,124 +750,6 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsItem#navbarCallback:member",
-              "docComment": "/**\n * Used to edit the navigation information.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "navbarCallback: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(o1: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", o2: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ") => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "navbarCallback",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 7
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsItem#newFilePath:member",
-              "docComment": "/**\n * The file path after moving.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "newFilePath: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "newFilePath",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsItem#sidebarCallback:member",
-              "docComment": "/**\n * Used to edit the sidebar structure.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "sidebarCallback: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ") => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "sidebarCallback",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
               }
             },
             {
@@ -894,8 +835,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IDocsParseSchemeLang",
-                  "canonicalReference": "@hz-9/docs-build!IDocsParseSchemeLang:interface"
+                  "text": "ILangObj",
+                  "canonicalReference": "@hz-9/docs-build!ILangObj:interface"
                 },
                 {
                   "kind": "Content",
@@ -997,22 +938,22 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "@hz-9/docs-build!IDocsParseSchemeLang:interface",
-          "docComment": "/**\n * Navigation name parsing scheme.\n *\n * @public\n */\n",
+          "canonicalReference": "@hz-9/docs-build!ILangObj:interface",
+          "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IDocsParseSchemeLang "
+              "text": "export interface ILangObj "
             }
           ],
           "fileUrlPath": "src/interface/index.ts",
           "releaseTag": "Public",
-          "name": "IDocsParseSchemeLang",
+          "name": "ILangObj",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsParseSchemeLang#\"en-US\":member",
+              "canonicalReference": "@hz-9/docs-build!ILangObj#\"en-US\":member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1039,7 +980,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/docs-build!IDocsParseSchemeLang#\"zh-CN\":member",
+              "canonicalReference": "@hz-9/docs-build!ILangObj#\"zh-CN\":member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1211,91 +1152,12 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!MultiDocsBuild#parseAPIConfig:member(1)",
+              "canonicalReference": "@hz-9/docs-build!MultiDocsBuild#readRushProjects:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected parseAPIConfig(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ICommandOptions",
-                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", tempDir: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IConfigOptions",
-                  "canonicalReference": "@hz-9/docs-build!IConfigOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 9
-              },
-              "releaseTag": "Public",
-              "isProtected": true,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "tempDir",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 4
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "parseAPIConfig"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!MultiDocsBuild#parseScheme:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected parseScheme(options: "
+                  "text": "protected readRushProjects(options: "
                 },
                 {
                   "kind": "Reference",
@@ -1308,21 +1170,12 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
+                  "text": "IRushProject",
+                  "canonicalReference": "@hz-9/docs-build!IRushProject:interface"
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IDocsItem",
-                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[]>"
+                  "text": "[]"
                 },
                 {
                   "kind": "Content",
@@ -1332,7 +1185,7 @@
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
-                "endIndex": 7
+                "endIndex": 5
               },
               "releaseTag": "Public",
               "isProtected": true,
@@ -1349,7 +1202,7 @@
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "parseScheme"
+              "name": "readRushProjects"
             }
           ],
           "extendsTokenRange": {
@@ -1507,6 +1360,41 @@
               "name": "build"
             },
             {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#docsItemList:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected docsItemList: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDocsItem",
+                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "docsItemList",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            },
+            {
               "kind": "Method",
               "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#generateAPIDocs:member(1)",
               "docComment": "",
@@ -1579,61 +1467,24 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#generateNavbarOptions:member(1)",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#generateSidebarJson:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected generateNavbarOptions(docsList: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IDocsItem",
-                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
+                  "text": "protected generateSidebarJson(apiDir: "
                 },
                 {
                   "kind": "Content",
-                  "text": "[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", sidebarOptions: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", navbarOptions?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
+                  "text": "string"
                 },
                 {
                   "kind": "Content",
                   "text": "): "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
                   "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
+                  "text": "void"
                 },
                 {
                   "kind": "Content",
@@ -1642,68 +1493,39 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 12
+                "startIndex": 3,
+                "endIndex": 4
               },
               "releaseTag": "Public",
               "isProtected": true,
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "docsList",
+                  "parameterName": "apiDir",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 3
+                    "endIndex": 2
                   },
                   "isOptional": false
-                },
-                {
-                  "parameterName": "sidebarOptions",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "navbarOptions",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 6,
-                    "endIndex": 7
-                  },
-                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "generateNavbarOptions"
+              "name": "generateSidebarJson"
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#generateSidebarOptions:member(1)",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#getLocales:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected generateSidebarOptions(docsList: "
+                  "text": "protected getLocales(options: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "IDocsItem",
-                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", sidebarOptions?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
+                  "text": "ICommandOptions",
+                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -1711,21 +1533,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
+                  "text": "ILocales",
+                  "canonicalReference": "@hz-9/docs-build!ILocales:type"
                 },
                 {
                   "kind": "Content",
@@ -1734,33 +1543,25 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 10
+                "startIndex": 3,
+                "endIndex": 4
               },
               "releaseTag": "Public",
               "isProtected": true,
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "docsList",
+                  "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
-                    "endIndex": 3
+                    "endIndex": 2
                   },
                   "isOptional": false
-                },
-                {
-                  "parameterName": "sidebarOptions",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 5
-                  },
-                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "generateSidebarOptions"
+              "name": "getLocales"
             },
             {
               "kind": "Method",
@@ -1773,16 +1574,17 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IDocsParseSchemeLang",
-                  "canonicalReference": "@hz-9/docs-build!IDocsParseSchemeLang:interface"
+                  "text": "ILangObj",
+                  "canonicalReference": "@hz-9/docs-build!ILangObj:interface"
                 },
                 {
                   "kind": "Content",
                   "text": ", lang: "
                 },
                 {
-                  "kind": "Content",
-                  "text": "string"
+                  "kind": "Reference",
+                  "text": "Lang",
+                  "canonicalReference": "@hz-9/docs-build!Lang:type"
                 },
                 {
                   "kind": "Content",
@@ -1829,16 +1631,17 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#getSidebar:member(1)",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#moveAndWatch:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected getSidebar(apiDir: "
+                  "text": "protected moveAndWatch(options: "
                 },
                 {
-                  "kind": "Content",
-                  "text": "string"
+                  "kind": "Reference",
+                  "text": "ICommandOptions",
+                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -1846,8 +1649,12 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "ISidebarArrayOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarArrayOptions:type"
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
                 },
                 {
                   "kind": "Content",
@@ -1857,14 +1664,14 @@
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
-                "endIndex": 4
+                "endIndex": 5
               },
               "releaseTag": "Public",
               "isProtected": true,
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "apiDir",
+                  "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
@@ -1874,7 +1681,7 @@
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "getSidebar"
+              "name": "moveAndWatch"
             },
             {
               "kind": "Method",
@@ -1948,6 +1755,37 @@
             },
             {
               "kind": "Property",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#navbarOptionsGroup:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected navbarOptionsGroup: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "INavbarOptionsGroup",
+                  "canonicalReference": "@hz-9/docs-build!INavbarOptionsGroup:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "navbarOptionsGroup",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
               "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#needDeleteDirList:member",
               "docComment": "",
               "excerptTokens": [
@@ -1978,12 +1816,12 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#parseAPIConfig:member(1)",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#parseAPIExtractorJson:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected parseAPIConfig(options: "
+                  "text": "protected parseAPIExtractorJson(options: "
                 },
                 {
                   "kind": "Reference",
@@ -2053,100 +1891,7 @@
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "parseAPIConfig"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#parseScheme:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected parseScheme(options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ICommandOptions",
-                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", docsParseScheme?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<typeof "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "DocsParseScheme",
-                  "canonicalReference": "@hz-9/docs-build!~DocsParseScheme:var"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IDocsItem",
-                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[]>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 12
-              },
-              "releaseTag": "Public",
-              "isProtected": true,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "docsParseScheme",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 7
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "parseScheme"
+              "name": "parseAPIExtractorJson"
             },
             {
               "kind": "Method",
@@ -2167,8 +1912,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "ISidebarOptions",
-                  "canonicalReference": "@hz-9/docs-build!ISidebarOptions:type"
+                  "text": "ISidebarArrayOptions",
+                  "canonicalReference": "@hz-9/docs-build!ISidebarArrayOptions:type"
                 },
                 {
                   "kind": "Content",
@@ -2345,17 +2090,47 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#sortNavbarOptions:member(1)",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#scan:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "protected sortNavbarOptions(navbarOptions: "
+                  "text": "protected scan(options: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
+                  "text": "ICommandOptions",
+                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", docsParseScheme?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DocsParseScheme",
+                  "canonicalReference": "@hz-9/docs-build!~DocsParseScheme:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", inRush?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
                 },
                 {
                   "kind": "Content",
@@ -2363,8 +2138,21 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "INavbarOptions",
-                  "canonicalReference": "@hz-9/docs-build!INavbarOptions:type"
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDocsItem",
+                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
                 },
                 {
                   "kind": "Content",
@@ -2373,25 +2161,72 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
+                "startIndex": 10,
+                "endIndex": 14
               },
               "releaseTag": "Public",
               "isProtected": true,
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "navbarOptions",
+                  "parameterName": "options",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "docsParseScheme",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                },
+                {
+                  "parameterName": "inRush",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  },
+                  "isOptional": true
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "sortNavbarOptions"
+              "name": "scan"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#sidebarOptionsGroup:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected sidebarOptionsGroup: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ISidebarOptionsGroup",
+                  "canonicalReference": "@hz-9/docs-build!ISidebarOptionsGroup:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "sidebarOptionsGroup",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
             },
             {
               "kind": "Method",
@@ -2592,81 +2427,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "vuepressAction"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/docs-build!SingleDocsBuild#watchChange:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "protected watchChange(docsList: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IDocsItem",
-                  "canonicalReference": "@hz-9/docs-build!IDocsItem:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", options: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ICommandOptions",
-                  "canonicalReference": "@hz-9/docs-build!ICommandOptions:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Promise",
-                  "canonicalReference": "!Promise:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<void>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "isProtected": true,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "docsList",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "options",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "watchChange"
             }
           ],
           "implementsTokenRanges": []

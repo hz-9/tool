@@ -2,10 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-21 20:28:53
+ * @LastEditTime : 2024-06-23 01:15:27
  */
 
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, no-lonely-if */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
 import chokidar from 'chokidar'
@@ -16,22 +16,38 @@ import { parse as parseJsonC } from 'jsonc-parser'
 import _ from 'lodash'
 import console from 'node:console'
 
-import { DocsParseScheme, baseConfigPath } from '../config/index'
+import { DocsParseScheme, baseConfigPath, fileSuffixs } from '../config/index'
 import { VuepressAction } from '../enum'
 import type {
+  IApiDocVersionFile,
   ICommandOptions,
   IConfigOptions,
   IDocsItem,
   IDocsParseSchemeItem,
-  IDocsParseSchemeLang,
+  ILangObj,
+  ILocales,
   INavbarGroupOptions,
+  INavbarLinkOptions,
   INavbarOptions,
+  INavbarOptionsGroup,
   IRenderOptions,
   ISidebarArrayOptions,
   ISidebarItem,
+  ISidebarObjectOptions,
   ISidebarOptions,
+  ISidebarOptionsGroup,
+  Lang,
+  LangPlus,
 } from '../interface/index'
-import { commandIsExists, installByPnpm, installInGlobal, printCommand, printOptions, readPkg } from '../util/index'
+import {
+  calculateFileHash,
+  commandIsExists,
+  installByPnpm,
+  installInGlobal,
+  printCommand,
+  printOptions,
+  readPkg,
+} from '../util/index'
 
 /**
  *
@@ -43,9 +59,25 @@ import { commandIsExists, installByPnpm, installInGlobal, printCommand, printOpt
 export class SingleDocsBuild {
   protected needDeleteDirList: string[]
 
+  protected navbarOptionsGroup: INavbarOptionsGroup
+
+  protected sidebarOptionsGroup: ISidebarOptionsGroup
+
+  protected docsItemList: IDocsItem[]
+
   public constructor() {
     this.needDeleteDirList = []
     this._initExitHook()
+
+    this.navbarOptionsGroup = {
+      '/': [],
+    }
+
+    this.sidebarOptionsGroup = {
+      '/': {},
+    }
+
+    this.docsItemList = []
   }
 
   private _initExitHook(): void {
@@ -87,44 +119,87 @@ export class SingleDocsBuild {
 
     await printOptions(options)
 
-    const configOptions = await this.parseAPIConfig(options, tempDir)
+    const configOptions = await this.parseAPIExtractorJson(options, tempDir)
 
     await this.generateAPIDocs(options, configOptions)
 
-    const docsList = await this.parseScheme(options)
-
-    const sidebarOptions = await this.generateSidebarOptions(docsList)
-
-    const navbarOptions = await this.generateNavbarOptions(docsList, sidebarOptions)
+    await this.scan(options)
 
     const packageInfo = readPkg(options.root)
 
     await this.moveVuepressTemp(options.docsSpace, {
       options,
-      navbarOptions: this.sortNavbarOptions(navbarOptions),
-      sidebarOptions,
       packageInfo,
+      locales: this.getLocales(options),
     })
 
     await installByPnpm(options.docsSpace)
 
-    await this.watchChange(docsList, options)
+    await this.moveAndWatch(options)
 
     await this.vuepressAction(options.docsSpace, options.action)
   }
 
-  protected async parseAPIConfig(options: ICommandOptions, tempDir: string): Promise<IConfigOptions> {
-    if (options.config && !fs.existsSync(options.config)) {
-      options.config = undefined
+  protected getLocales(options: ICommandOptions): ILocales {
+    const locales: ILocales = {
+      '/': {
+        lang: options.lang[0],
+      },
+    }
+    options.lang.forEach((l, index) => {
+      if (index > 0) {
+        locales[`/${l}/`] = { lang: l }
+      }
+    })
+
+    return locales
+  }
+
+  protected async parseAPIExtractorJson(options: ICommandOptions, tempDir: string): Promise<IConfigOptions> {
+    // eslint-disable-next-line no-undef-init
+    let rigPackage: string | undefined = undefined
+
+    /**
+     * 尝试解析
+     */
+    if (options.config) {
+      const config = path.isAbsolute(options.config) ? options.config : path.resolve(options.root, options.config)
+
+      if (!fs.existsSync(config)) {
+        options.config = undefined
+      }
     }
 
-    const p = path.resolve(tempDir, path.basename(baseConfigPath))
-    fs.mkdirpSync(path.dirname(p))
     if (!options.config) {
+      const rigJsonPath = path.resolve(options.root, 'config/rig.json')
+      if (fs.existsSync(rigJsonPath)) {
+        const rigTxt = fs.readFileSync(rigJsonPath, { encoding: 'utf8' })
+        const rigInfo = parseJsonC(rigTxt)
+
+        // eslint-disable-next-line prefer-destructuring
+        const rigPackageName: string = rigInfo.rigPackageName
+        const rigProfile: string = rigInfo.rigProfile ?? 'default'
+
+        const config = path.resolve(
+          options.root,
+          'node_modules',
+          rigPackageName,
+          'profiles',
+          rigProfile,
+          'config',
+          'api-extractor.json'
+        )
+        if (fs.existsSync(config)) {
+          options.config = config
+          rigPackage = path.resolve(options.root, 'node_modules', rigPackageName)
+        }
+      }
+    }
+
+    if (!options.config) {
+      const p = path.resolve(tempDir, path.basename(baseConfigPath))
+      fs.mkdirpSync(path.dirname(p))
       fs.copyFileSync(baseConfigPath, p)
-      options.config = p
-    } else {
-      fs.copyFileSync(options.config, p)
       options.config = p
     }
 
@@ -170,6 +245,9 @@ export class SingleDocsBuild {
       apiPath: toAbsolute(apiPath),
       apiJsonFilePath: toAbsolute(apiJsonFilePath),
       configPath: options.config,
+      apiDocVersionFilepath: path.resolve(tempDir, '../', 'api-documenter.version.json'),
+
+      rigPackage,
     }
   }
 
@@ -237,56 +315,93 @@ export class SingleDocsBuild {
       await installInGlobal('@microsoft/api-documenter')
     }
 
-    const output: string = path.resolve(options.root, options.markdownPath)
-    fs.mkdirpSync(output)
-    const tempOutput: string = path.resolve(output, './.temp')
+    const inputFolder: string = path.resolve(options.root, configOptions.apiPath)
 
-    const commands: string[] = [
-      'markdown',
-      '--input-folder',
-      path.resolve(options.root, configOptions.apiPath),
-      '--output-folder',
-      tempOutput,
-    ]
-
-    await printCommand(`api-documenter ${commands.join(' ')}`)
-
-    await execa('api-documenter', commands, {
-      cwd: options.root,
-      stderr: process.stderr,
-      stdout: process.stdout,
-    })
-
-    fs.readdirSync(tempOutput).forEach((f) => {
-      const p1 = path.resolve(tempOutput, f)
-      const p2 = path.resolve(output, f)
-      const p2E = fs.existsSync(p2)
-
-      if (p2E) {
-        if (fs.readFileSync(p1, { encoding: 'utf8' }) !== fs.readFileSync(p2, { encoding: 'utf8' })) {
-          fs.copySync(p1, p2)
-        } else {
-          // 文件不变，不进行更新
+    const inputFolderHash: string = await (async () => {
+      let hash: string = ''
+      const filenames = fs.readdirSync(inputFolder)
+      while (filenames.length) {
+        const f = filenames.shift()!
+        if (f !== '.DT_Store') {
+          const p = path.resolve(inputFolder, f)
+          hash += await calculateFileHash(p)
         }
+      }
+      return hash
+    })()
+
+    const run = async (): Promise<void> => {
+      // 进行安装
+      const output: string = path.resolve(options.root, options.markdownPath)
+      fs.mkdirpSync(output)
+
+      const tempOutput: string = path.resolve(output, './.temp')
+
+      const commands: string[] = ['markdown', '--input-folder', inputFolder, '--output-folder', tempOutput]
+
+      await printCommand(`api-documenter ${commands.join(' ')}`)
+
+      await execa('api-documenter', commands, {
+        cwd: options.root,
+        stderr: process.stderr,
+        stdout: process.stdout,
+      })
+
+      fs.readdirSync(tempOutput).forEach((f) => {
+        const p1 = path.resolve(tempOutput, f)
+        const p2 = path.resolve(output, f)
+        const p2E = fs.existsSync(p2)
+
+        if (p2E) {
+          if (fs.readFileSync(p1, { encoding: 'utf8' }) !== fs.readFileSync(p2, { encoding: 'utf8' })) {
+            fs.copySync(p1, p2)
+          } else {
+            // 文件不变，不进行更新
+          }
+        } else {
+          fs.copySync(p1, p2)
+        }
+      })
+
+      fs.readdirSync(output).forEach((f) => {
+        if (f !== '.temp') {
+          // 删除历史文件
+          const p = path.resolve(tempOutput, f)
+          if (!fs.existsSync(p)) fs.removeSync(path.resolve(output, f))
+        }
+      })
+
+      fs.removeSync(tempOutput)
+
+      const p: IApiDocVersionFile = {
+        hash: inputFolderHash,
+      }
+
+      fs.writeFileSync(configOptions.apiDocVersionFilepath, JSON.stringify(p, undefined, 2), { encoding: 'utf8' })
+
+      this.generateSidebarJson(output)
+    }
+
+    try {
+      const p: IApiDocVersionFile = JSON.parse(
+        fs.readFileSync(configOptions.apiDocVersionFilepath, { encoding: 'utf8' })
+      )
+      if (!p.hash) throw new Error()
+
+      if (inputFolderHash === p.hash) {
+        console.log(`'api-documenter' no changes.`)
       } else {
-        fs.copySync(p1, p2)
+        await run()
       }
-    })
-
-    fs.readdirSync(output).forEach((f) => {
-      if (f !== '.temp') {
-        // 删除历史文件
-        const p = path.resolve(tempOutput, f)
-        if (!fs.existsSync(p)) fs.removeSync(path.resolve(output, f))
-      }
-    })
-
-    fs.removeSync(tempOutput)
+    } catch (error) {
+      await run()
+    }
   }
 
-  protected async parseScheme(
+  protected async scan(
     options: ICommandOptions,
-    docsParseScheme: Partial<typeof DocsParseScheme> = DocsParseScheme
+    docsParseScheme: Partial<typeof DocsParseScheme> = DocsParseScheme,
+    inRush: boolean = false
   ): Promise<IDocsItem[]> {
     const schemeKeys = Object.getOwnPropertyNames(docsParseScheme) as Array<keyof typeof docsParseScheme>
     const docsList: IDocsItem[] = []
@@ -297,100 +412,160 @@ export class SingleDocsBuild {
       const parsePathList = isAPI ? [options.markdownPath] : [...schema.parsePath]
       const f = parsePathList.find((i) => {
         const p = parsePath(i)
-        if (fs.existsSync(p)) {
-          if (fs.statSync(p).isDirectory() && schema.isDir) return true
-          if (fs.statSync(p).isFile() && !schema.isDir) return true
-        }
-
-        return false
+        return fs.existsSync(p)
       })
-
       return f ? parsePath(f) : undefined
+    }
+
+    let unscopedPackageName = 'unknown'
+
+    try {
+      const packageInfo = readPkg(options.root)
+      const m = packageInfo.name.match(/[^/]+$/g)
+      if (m) unscopedPackageName = m[0]
+    } catch (error) {
+      // ...
+    }
+
+    const findPReplace = (p: string, lang: string): string => {
+      const p2 = p.replace(/.md$/, `.${lang}.md`)
+      return fs.existsSync(p2) ? p2 : p
     }
 
     while (schemeKeys.length) {
       const key = schemeKeys.shift()!
       const schema = docsParseScheme[key]!
       const p = tryPath(schema)
+
       if (p) {
-        const isAPI = schema.navName === DocsParseScheme.api.navName
         const isHome = schema.navPath === '/'
         const navPath = schema.navPath.replace(/^\/|\/$/g, '')
 
-        let newFilePath = `${options.docsSpace}/src/${navPath}/README.md`
-        if (isHome) newFilePath = `${options.docsSpace}/src/README.md`
-        if (schema.isDir) newFilePath = `${options.docsSpace}/src/${navPath}`
+        let i = 0
+        while (i < options.lang.length) {
+          const lang = options.lang[i]
+          const isFile = fs.statSync(p).isFile()
+          const isDir = fs.statSync(p).isDirectory()
+          const langKey: '/' | LangPlus = i === 0 ? '/' : `/${lang}/`
 
-        docsList.push({
-          baseFilepath: p,
-          newFilePath,
-          isDir: schema.isDir === true,
-          transform: schema.transform,
-          sidebarCallback: (sidebarOptions: ISidebarOptions) => {
-            if (schema.isDir) {
-              // @ts-ignore
-              sidebarOptions[schema.navPath] = isAPI ? this.getSidebar(p) : this.praseSidebarJson(p) ?? 'structure'
-            } else {
-              // nothings.
-              // sidebarOptions[isHome ? '/' : schema.navPath] = schema.navPath === '/' ? [''] : ["README.md"]
-            }
-            return sidebarOptions
-          },
-          navbarCallback: (navbarOptions: INavbarOptions, sidebarOptions: ISidebarOptions) => {
-            navbarOptions.push({
-              link: isHome ? '/' : schema.navPath,
-              text: this.getNavName(schema.navName, options.lang),
+          if (isFile) {
+            // 获取的是一个文件。
+            const baseFilepath = i === 0 ? p : findPReplace(p, lang)
+            const focusFilepath = inRush
+              ? `${options.docsSpace}/src${langKey}${navPath}/${unscopedPackageName}/README.md`
+              : `${options.docsSpace}/src${langKey}${navPath}/README.md`
+
+            // Addto move and watch
+            this.docsItemList.push({
+              baseFilepath,
+              focusFilepath,
+              transform: schema.transform,
+              isDir: false,
             })
-            return navbarOptions
-          },
-        })
+          } else if (isDir) {
+            const baseFilepath = p
+            const focusFilepath = inRush
+              ? `${options.docsSpace}/src${langKey}${navPath}/${unscopedPackageName}`
+              : `${options.docsSpace}/src${langKey}${navPath}`
+
+            const globResult = await glob('**/*.md', { dot: true, nodir: true, cwd: baseFilepath })
+
+            // eslint-disable-next-line @typescript-eslint/no-loop-func
+            globResult.forEach((f: string) => {
+              if (fileSuffixs.every((suffix) => !suffix.test(f))) {
+                // 如果所有都不匹配，则为普通文件，准备拷贝
+                const baseFilepathR: string =
+                  i === 0 ? path.resolve(baseFilepath, f) : findPReplace(path.resolve(baseFilepath, f), lang)
+
+                // ...
+                this.docsItemList.push({
+                  baseFilepath: baseFilepathR,
+                  focusFilepath: path.resolve(focusFilepath, f),
+                  transform: schema.transform,
+                  isDir: false,
+                })
+              }
+            })
+
+            const sidebarKey: string = inRush ? `${langKey}${navPath}/${unscopedPackageName}` : `${langKey}${navPath}`
+
+            if (!this.sidebarOptionsGroup[langKey]) {
+              this.sidebarOptionsGroup[langKey] = {
+                [sidebarKey]: this.praseSidebarJson(p) ?? 'structure',
+              } as ISidebarObjectOptions
+            } else {
+              ;(this.sidebarOptionsGroup[langKey] as ISidebarObjectOptions)[sidebarKey] =
+                this.praseSidebarJson(p) ?? 'structure'
+            }
+          }
+
+          if (inRush) {
+            // Addto navbarOptions
+            const link: string = isHome ? langKey : `${langKey}${navPath}/`
+            if (!this.navbarOptionsGroup[langKey]) {
+              this.navbarOptionsGroup[langKey] = [
+                {
+                  prefix: link,
+                  text: this.getNavName(schema.navName, lang),
+                  children: [unscopedPackageName],
+                },
+              ] as INavbarGroupOptions[]
+            } else {
+              const groups = this.navbarOptionsGroup[langKey] as INavbarGroupOptions[]
+              const f = groups.find((x) => x.prefix === link)
+              if (!f) {
+                groups.push({
+                  prefix: link,
+                  text: this.getNavName(schema.navName, lang),
+                  children: [unscopedPackageName],
+                } as INavbarGroupOptions)
+              } else {
+                f.children.push(unscopedPackageName)
+              }
+            }
+          } else {
+            // Addto navbarOptions
+            // eslint-disable-next-line no-nested-ternary
+            const link: string = isHome ? langKey : `${langKey}${navPath}`
+            if (this.navbarOptionsGroup[langKey]) {
+              const nO: INavbarLinkOptions[] = this.navbarOptionsGroup[langKey] as INavbarLinkOptions[]
+              const f = nO.find((x) => x.link === link)
+              if (!f) {
+                nO.push({
+                  link,
+                  text: this.getNavName(schema.navName, lang),
+                })
+              }
+            } else {
+              this.navbarOptionsGroup[langKey] = [
+                {
+                  link,
+                  text: this.getNavName(schema.navName, lang),
+                },
+              ] as INavbarOptions
+            }
+          }
+
+          i += 1
+        }
       }
     }
 
     return docsList
   }
 
-  protected async generateSidebarOptions(
-    docsList: IDocsItem[],
-    sidebarOptions: ISidebarOptions = {}
-  ): Promise<ISidebarOptions> {
-    const list: IDocsItem[] = [...docsList]
-
-    while (list.length) {
-      const item = list.shift()!
-      sidebarOptions = item.sidebarCallback(sidebarOptions)
-    }
-
-    return sidebarOptions
-  }
-
-  protected async generateNavbarOptions(
-    docsList: IDocsItem[],
-    sidebarOptions: ISidebarOptions,
-    navbarOptions: INavbarOptions = []
-  ): Promise<INavbarOptions> {
-    const list: IDocsItem[] = [...docsList]
-
-    while (list.length) {
-      const item = list.shift()!
-      navbarOptions = item.navbarCallback(navbarOptions, sidebarOptions)
-    }
-
-    return navbarOptions
-  }
-
-  protected async watchChange(docsList: IDocsItem[], options: ICommandOptions): Promise<void> {
-    const list: IDocsItem[] = [...docsList]
+  protected async moveAndWatch(options: ICommandOptions): Promise<void> {
+    const list: IDocsItem[] = [...this.docsItemList]
 
     while (list.length) {
       const item = list.shift()!
 
       const p1 = path.relative(options.root, item.baseFilepath)
-      const p2 = path.relative(options.root, item.newFilePath)
+      const p2 = path.relative(options.root, item.focusFilepath)
 
-      fs.removeSync(item.newFilePath)
+      fs.removeSync(item.focusFilepath)
       try {
-        this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
+        this.transformFileOrDir(item.baseFilepath, item.focusFilepath, item.transform)
         console.log(`Moved  : ${p1} -> ${p2}`)
       } catch (error) {
         console.error(error)
@@ -405,15 +580,8 @@ export class SingleDocsBuild {
         })
 
         watcher.on('change', async (x) => {
-          if (item.isDir) {
-            const t = path.relative(item.baseFilepath, x)
-            const p = path.resolve(item.newFilePath, t)
-            console.log(`Change : ${path.relative(options.root, x)} -> ${path.relative(options.root, p)}`)
-            this.transformFileOrDir(x, p, item.transform)
-          } else {
-            console.log(`Change : ${p1} -> ${p2}`)
-            this.transformFileOrDir(item.baseFilepath, item.newFilePath, item.transform)
-          }
+          console.log(`Change : ${p1} -> ${p2}`)
+          this.transformFileOrDir(item.baseFilepath, item.focusFilepath, item.transform)
         })
       }
     }
@@ -433,7 +601,11 @@ export class SingleDocsBuild {
 
       if (/js$|ts$|json$|yaml$|md$/.test(filepath)) {
         const text = await fs.readFile(p1, { encoding: 'utf8' })
-        const textRender = _.template(text, { interpolate: /{{([\s\S]+?)}}/g })(renderOptions)
+        const textRender = _.template(text, { interpolate: /{{([\s\S]+?)}}/g })({
+          ...renderOptions,
+          navbarOptionsGroup: this.navbarOptionsGroup,
+          sidebarOptionsGroup: this.sidebarOptionsGroup,
+        })
 
         await fs.mkdirp(path.dirname(p2))
         await fs.writeFile(p2, textRender, { encoding: 'utf8' })
@@ -478,18 +650,10 @@ export class SingleDocsBuild {
         fs.mkdirpSync(path.dirname(to))
         fs.writeFileSync(to, transform ? transform(content) : content, { encoding: 'utf8' })
       }
-
-      if (stat.isDirectory()) {
-        fs.emptyDirSync(to)
-        const filenames = fs.readdirSync(from)
-        filenames.forEach((filename) => {
-          this.transformFileOrDir(path.resolve(from, filename), path.resolve(to, filename), transform)
-        })
-      }
     }
   }
 
-  protected getSidebar(apiDir: string): ISidebarArrayOptions {
+  protected generateSidebarJson(apiDir: string): void {
     const sidebarOptions: ISidebarArrayOptions = []
 
     const keys: Record<
@@ -583,44 +747,45 @@ export class SingleDocsBuild {
       }
     })
 
-    return sidebarOptions
+    const p = path.resolve(apiDir, '.sidebar.json')
+    fs.writeFileSync(p, JSON.stringify(sidebarOptions, undefined, 2), { encoding: 'utf8' })
   }
 
-  protected getNavName(navName: IDocsParseSchemeLang, lang: string): string {
-    return navName[lang as keyof IDocsParseSchemeLang] ?? navName['en-US']
+  protected getNavName(navName: ILangObj, lang: Lang): string {
+    return navName[lang]
   }
 
-  protected sortNavbarOptions(navbarOptions: INavbarOptions): INavbarOptions {
-    const navIndex: Record<string, number> = {
-      '/': -2,
-      // read: -1,
-    }
+  // protected sortNavbarOptions(navbarOptions: INavbarOptions): INavbarOptions {
+  //   const navIndex: Record<string, number> = {
+  //     '/': -2,
+  //     // read: -1,
+  //   }
 
-    Object.keys(DocsParseScheme).forEach((k: string, index) => {
-      if (k !== '/') {
-        const scheme = DocsParseScheme[k as keyof typeof DocsParseScheme]
-        navIndex[scheme.navPath.replace(/^\/|\/$/g, '')] = index
-      }
-    })
+  //   Object.keys(DocsParseScheme).forEach((k: string, index) => {
+  //     if (k !== '/') {
+  //       const scheme = DocsParseScheme[k as keyof typeof DocsParseScheme]
+  //       navIndex[scheme.navPath.replace(/^\/|\/$/g, '')] = index
+  //     }
+  //   })
 
-    navbarOptions.sort((a, b) => {
-      const aK: string = (a.link ?? (a as INavbarGroupOptions).prefix) as string
-      const bK: string = (b.link ?? (b as INavbarGroupOptions).prefix) as string
-      const aIndex = navIndex[aK === '/' ? aK : aK.replace(/^\/|\/$/g, '')] ?? 999
-      const bIndex = navIndex[bK === '/' ? bK : bK.replace(/^\/|\/$/g, '')] ?? 999
+  //   navbarOptions.sort((a, b) => {
+  //     const aK: string = (a.link ?? (a as INavbarGroupOptions).prefix) as string
+  //     const bK: string = (b.link ?? (b as INavbarGroupOptions).prefix) as string
+  //     const aIndex = navIndex[aK === '/' ? aK : aK.replace(/^\/|\/$/g, '')] ?? 999
+  //     const bIndex = navIndex[bK === '/' ? bK : bK.replace(/^\/|\/$/g, '')] ?? 999
 
-      return aIndex - bIndex
-    })
+  //     return aIndex - bIndex
+  //   })
 
-    return navbarOptions
-  }
+  //   return navbarOptions
+  // }
 
-  protected praseSidebarJson(dirPath: string): ISidebarOptions | undefined {
+  protected praseSidebarJson(dirPath: string): ISidebarArrayOptions | undefined {
     try {
       const p = path.resolve(dirPath, '.sidebar.json')
 
       if (p) {
-        return parseJsonC(fs.readFileSync(p, { encoding: 'utf8' })) as ISidebarOptions
+        return parseJsonC(fs.readFileSync(p, { encoding: 'utf8' })) as ISidebarArrayOptions
       }
     } catch (error) {
       // ...

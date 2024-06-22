@@ -68,6 +68,8 @@ common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
 
+/docs/.vuepress
+
 /hefts/*/temp
 /hefts/*/dist
 /hefts/*/lib
@@ -77,6 +79,8 @@ common/autoinstallers/*/.npmrc
 /hefts/*/docs/api
 /hefts/*/logs
 /hefts/*/log
+
+/libraries/docs-build/.template
 
 /libraries/*/temp
 /libraries/*/dist

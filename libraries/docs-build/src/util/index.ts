@@ -2,12 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 18:29:44
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-17 19:28:25
+ * @LastEditTime : 2024-06-22 13:08:28
  */
 import * as fs from 'fs-extra'
 import * as path from 'upath'
 import execa from 'execa'
 import console from 'node:console'
+import crypto from 'node:crypto'
 import type { Package } from 'normalize-package-data'
 
 import type { ICommandOptions } from '../interface/index'
@@ -111,3 +112,22 @@ export const installByPnpm = async (cwd: string): Promise<void> => {
     stdout: process.stdout,
   })
 }
+
+/**
+ * @internal
+ *
+ *  Calculate the hash value of the file
+ *
+ * @param filePath - The path of the file to be calculated
+ * @param algorithm - The algorithm used to calculate the hash value
+ * @returns - The hash value of the file
+ */
+export const calculateFileHash = (filePath: string, algorithm = 'sha256'): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const hash = crypto.createHash(algorithm)
+    const stream = fs.createReadStream(filePath)
+
+    stream.on('error', (err) => reject(err))
+    stream.on('data', (chunk) => hash.update(chunk))
+    stream.on('end', () => resolve(hash.digest('hex')))
+  })
