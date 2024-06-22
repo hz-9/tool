@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:15:27
+ * @LastEditTime : 2024-06-23 01:31:22
  */
 
 /* eslint-disable no-param-reassign, no-lonely-if */
@@ -377,6 +377,7 @@ export class SingleDocsBuild {
         hash: inputFolderHash,
       }
 
+      fs.mkdirpSync(path.dirname(configOptions.apiDocVersionFilepath))
       fs.writeFileSync(configOptions.apiDocVersionFilepath, JSON.stringify(p, undefined, 2), { encoding: 'utf8' })
 
       this.generateSidebarJson(output)
@@ -494,8 +495,8 @@ export class SingleDocsBuild {
                 [sidebarKey]: this.praseSidebarJson(p) ?? 'structure',
               } as ISidebarObjectOptions
             } else {
-              ;(this.sidebarOptionsGroup[langKey] as ISidebarObjectOptions)[sidebarKey] =
-                this.praseSidebarJson(p) ?? 'structure'
+              const o: ISidebarObjectOptions = this.sidebarOptionsGroup[langKey] as ISidebarObjectOptions
+              o[sidebarKey] = this.praseSidebarJson(p) ?? 'structure'
             }
           }
 

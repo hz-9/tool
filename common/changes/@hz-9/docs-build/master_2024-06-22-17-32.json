@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "fix: fix `api-documenter.version.json` write error",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}
