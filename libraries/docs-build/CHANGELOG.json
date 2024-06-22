@@ -2,6 +2,20 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.6.1",
+      "tag": "@hz-9/docs-build_v0.6.1",
+      "date": "Sat, 22 Jun 2024 17:33:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: fix `api-documenter.version.json` write error",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "4094452fbf397cafdaeea727e648a74c0d2e2ed8"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@hz-9/docs-build_v0.6.0",
       "date": "Sat, 22 Jun 2024 17:28:44 GMT",
