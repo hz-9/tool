@@ -2,6 +2,20 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@hz-9/docs-build_v0.6.0",
+      "date": "Sat, 22 Jun 2024 17:28:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "perf: support for multiple languages",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "cac6b91178683542cc240f9303f725c690c0b083"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.1",
       "tag": "@hz-9/docs-build_v0.5.1",
       "date": "Sat, 22 Jun 2024 02:44:32 GMT",

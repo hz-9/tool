@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Sat, 22 Jun 2024 02:44:32 GMT and should not be manually modified.
+This log was last generated on Sat, 22 Jun 2024 17:28:44 GMT and should not be manually modified.
+
+## 0.6.0
+Sat, 22 Jun 2024 17:28:44 GMT
+
+### Minor changes
+
+- perf: support for multiple languages
 
 ## 0.5.1
 Sat, 22 Jun 2024 02:44:32 GMT
