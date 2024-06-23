@@ -2,6 +2,20 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@hz-9/docs-build_v0.7.1",
+      "date": "Sun, 23 Jun 2024 17:37:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: close prefetch in vuepress",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "d002288d21f8a401c981f4a390721ab2cf7f475b"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@hz-9/docs-build_v0.7.0",
       "date": "Sun, 23 Jun 2024 16:35:13 GMT",

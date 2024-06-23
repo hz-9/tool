@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Sun, 23 Jun 2024 16:35:13 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 17:37:23 GMT and should not be manually modified.
+
+## 0.7.1
+Sun, 23 Jun 2024 17:37:23 GMT
+
+### Patches
+
+- fix: close prefetch in vuepress
 
 ## 0.7.0
 Sun, 23 Jun 2024 16:35:13 GMT
