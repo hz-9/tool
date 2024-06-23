@@ -78,6 +78,14 @@ export interface IDocsParseSchemeItem {
     transform?: (s: string) => string;
 }
 
+// Warning: (ae-internal-missing-underscore) The name "IGitInfo" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export interface IGitInfo {
+    // (undocumented)
+    gitUrl?: string;
+}
+
 // @public (undocumented)
 export interface ILangObj {
     // (undocumented)
@@ -137,6 +145,8 @@ export interface INavItemOptions {
 //
 // @internal
 export interface IRenderOptions {
+    // (undocumented)
+    gitInfo: IGitInfo;
     // (undocumented)
     locales: ILocales;
     // (undocumented)
@@ -265,6 +275,10 @@ export class SingleDocsBuild {
     protected toAbsolute(options: ICommandOptions): ICommandOptions;
     // (undocumented)
     protected transformFileOrDir(from: string, to: string, transform?: (c: string) => string): void;
+    // Warning: (ae-incompatible-release-tags) The symbol "tryGetGitInfo" is marked as @public, but its signature references "IGitInfo" which is marked as @internal
+    //
+    // (undocumented)
+    protected tryGetGitInfo(root: string): Promise<IGitInfo>;
     // (undocumented)
     protected vuepressAction(docsSpace: string, action?: VuepressAction): Promise<void>;
 }

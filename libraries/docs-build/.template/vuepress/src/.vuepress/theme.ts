@@ -20,6 +20,8 @@ export default hopeTheme({
 
   docsDir: 'src',
 
+  repo: {{ gitInfo.gitUrl ? `'${gitInfo.gitUrl}'` : 'undefined' }},
+
   locales,
 
   // navbar,

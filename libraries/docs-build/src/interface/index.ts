@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-24 17:09:42
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:23:47
+ * @LastEditTime : 2024-06-24 00:27:22
  */
 import type { Package } from 'normalize-package-data'
 
@@ -88,6 +88,13 @@ export interface IConfigOptions {
 
 /**
  * @internal
+ */
+export interface IGitInfo {
+  gitUrl?: string
+}
+
+/**
+ * @internal
  *
  * Parameters passed in during template rendering.
  *
@@ -96,6 +103,8 @@ export interface IRenderOptions {
   options: ICommandOptions
 
   locales: ILocales
+
+  gitInfo: IGitInfo
 
   /**
    * Information about the package.

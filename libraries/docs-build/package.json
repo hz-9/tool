@@ -45,7 +45,9 @@
     "glob": "~10.3.3",
     "jsonc-parser": "~3.2.1",
     "lodash": "~4.17.21",
-    "upath": "~2.0.1"
+    "simple-git": "~3.20.0",
+    "upath": "~2.0.1",
+    "git-url-parse": "~14.0.0"
   },
   "devDependencies": {
     "@hz-9/eslint-config-airbnb-ts": "^0.5.2",
@@ -58,7 +60,8 @@
     "@types/normalize-package-data": "~2.4.4",
     "eslint": "^8.2.0",
     "execa": "^4.1.0",
-    "typescript": ">=5.0.0 <5.4.0"
+    "typescript": ">=5.0.0 <5.4.0",
+    "@types/git-url-parse": "~9.0.3"
   },
   "engines": {
     "node": ">=18.15.0 <19.0.0 || >=20.9.0 <21.0.0"

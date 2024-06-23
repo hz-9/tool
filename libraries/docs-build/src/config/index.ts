@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 16:51:58
+ * @LastEditTime : 2024-06-24 00:09:07
  */
 import * as path from 'upath'
 
@@ -48,18 +48,18 @@ const DocsParseSchemeBase = {
     ],
     navName: { 'en-US': 'API', 'zh-CN': '配置项' },
     navPath: '/api',
-    // transform: (content: string): string => {
-    //   if (content.includes('## API Reference')) {
-    //     const matched = content.match(/\[[^[]+\]/g)
-    //     if (matched && matched.length === 2) {
-    //       return content
-    //         .replace(matched[0], matched[1])
-    //         .replace('## API Reference', `# ${matched[1].replace(/\[|\]/g, '')}`)
-    //     }
-    //   }
+    transform: (content: string): string => {
+      if (content.includes('## API Reference')) {
+        const matched = content.match(/\[[^[]+\]/g)
+        if (matched && matched.length === 2) {
+          return content
+            .replace(matched[0], matched[1])
+            .replace('## API Reference', `# ${matched[1].replace(/\[|\]/g, '')}`)
+        }
+      }
 
-    //   return content.replace('## ', '# ')
-    // },
+      return content.replace('## ', '# ')
+    },
   } as IDocsParseSchemeItem,
 
   changelog: {

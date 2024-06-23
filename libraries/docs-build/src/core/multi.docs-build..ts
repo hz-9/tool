@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:07:11
+ * @LastEditTime : 2024-06-24 00:24:06
  */
 
 /* eslint-disable no-param-reassign */
@@ -37,6 +37,8 @@ export class MultiDocsBuild extends SingleDocsBuild {
 
     const projects = this.readRushProjects(options)
 
+    const gitInfo = await this.tryGetGitInfo(options.root)
+
     await this.scan(options, DocsParseSchemeMultiRoot)
 
     const packageInfo = await this._parseBaseReadme(options)
@@ -65,6 +67,7 @@ export class MultiDocsBuild extends SingleDocsBuild {
     await this.moveVuepressTemp(options.docsSpace, {
       options,
       packageInfo,
+      gitInfo,
       locales: this.getLocales(options),
     })
 

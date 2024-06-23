@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:31:22
+ * @LastEditTime : 2024-06-24 00:30:43
  */
 
 /* eslint-disable no-param-reassign, no-lonely-if */
@@ -11,10 +11,12 @@ import * as path from 'upath'
 import chokidar from 'chokidar'
 import execa from 'execa'
 import exitHook from 'exit-hook'
+import GitUrlParse from 'git-url-parse'
 import { glob } from 'glob'
 import { parse as parseJsonC } from 'jsonc-parser'
 import _ from 'lodash'
 import console from 'node:console'
+import SimpleGit, { type ConfigValues } from 'simple-git'
 
 import { DocsParseScheme, baseConfigPath, fileSuffixs } from '../config/index'
 import { VuepressAction } from '../enum'
@@ -24,6 +26,7 @@ import type {
   IConfigOptions,
   IDocsItem,
   IDocsParseSchemeItem,
+  IGitInfo,
   ILangObj,
   ILocales,
   INavbarGroupOptions,
@@ -114,6 +117,8 @@ export class SingleDocsBuild {
 
     await printOptions(options)
 
+    const gitInfo = await this.tryGetGitInfo(options.root)
+
     const tempDir = path.resolve(options.root, 'temp', '.hz9/docs-build', `${Date.now()}`)
     this.needDeleteDirList.push(tempDir)
 
@@ -130,6 +135,7 @@ export class SingleDocsBuild {
     await this.moveVuepressTemp(options.docsSpace, {
       options,
       packageInfo,
+      gitInfo,
       locales: this.getLocales(options),
     })
 
@@ -792,5 +798,30 @@ export class SingleDocsBuild {
       // ...
     }
     return undefined
+  }
+
+  protected async tryGetGitInfo(root: string): Promise<IGitInfo> {
+    const info: IGitInfo = {}
+
+    try {
+      const git = SimpleGit(root)
+      const gitConfigs = await git.listConfig()
+
+      let configs: ConfigValues = {}
+      gitConfigs.files.forEach((p) => {
+        const config = gitConfigs.values[p]
+        configs = { ...configs, ...config }
+      })
+
+      if (configs['remote.origin.url']) {
+        const url = configs['remote.origin.url']
+        const gitUrl = Array.isArray(url) ? url[0] : url
+        info.gitUrl = GitUrlParse(gitUrl).toString('https')
+      }
+    } catch (error) {
+      console.error('Parse git info error.', error)
+    }
+
+    return info
   }
 }
