@@ -5,7 +5,7 @@
   "keywords": [
     "pkg"
   ],
-  "homepage": "https://hz-9.github.io/tool/read/pkg-build.html",
+  "homepage": "https://hz-9.github.io/tool/guide/pkg-build",
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
@@ -22,7 +22,7 @@
     "pkg-build": "./lib/bin/pkg-build.js"
   },
   "files": [
-    "lib",
+    "lib/**/*.{d.ts,js}",
     "CHANGELOG.md",
     ".template"
   ],

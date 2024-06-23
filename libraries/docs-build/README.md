@@ -9,7 +9,7 @@ A toos for generate [vuepress-theme-hopo] from typescript project.
 [npm-license-url]: https://img.shields.io/npm/l/@hz-9/docs-build
 [npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/docs-build
 
-> Please visit [@hz-9/docs-build](https://hz-9.github.io/tool/guide/docs-build) for detailed documentation.
+[English Document](https://hz-9.github.io/tool/guide/docs-build/) | [中文文档](https://hz-9.github.io/tool/zh-CN/guide/docs-build/)
 
 ## Introduction
 

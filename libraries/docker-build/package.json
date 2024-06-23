@@ -7,7 +7,7 @@
     "image",
     "upload"
   ],
-  "homepage": "https://hz-9.github.io/tool/read/docker-build.html",
+  "homepage": "https://hz-9.github.io/tool/guide/docker-build",
   "bugs": {
     "url": "https://github.com/hz-9/tool/issues"
   },
@@ -24,7 +24,7 @@
     "docker-build": "./lib/bin/docker-build.js"
   },
   "files": [
-    "lib",
+    "lib/**/*.{d.ts,js}",
     "CHANGELOG.md",
     ".template"
   ],

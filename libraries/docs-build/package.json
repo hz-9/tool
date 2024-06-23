@@ -24,7 +24,7 @@
     "docs-build": "./lib/bin/docs-build.js"
   },
   "files": [
-    "lib",
+    "lib/**/*.{d.ts,js}",
     "CHANGELOG.md",
     ".template",
     "vure"

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "docs: change `README.md`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}

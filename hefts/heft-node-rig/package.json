@@ -17,6 +17,10 @@
   },
   "license": "MIT",
   "author": "Chen Zhen <heavenzhen999@163.com>",
+  "files": [
+    "profiles",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": " "
   },
