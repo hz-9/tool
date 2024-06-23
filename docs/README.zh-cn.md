@@ -1,13 +1,13 @@
-# HZ 9 Tool
+# HZ 9 工具
 
-## Introduction
+## 介绍
 
-Some 'Node.js' tool library.
+一些 `Node.js` 工具库。
 
-## Developer
+## 开发者
 
-### How to publish
+### 如何发布
 
-``` sh
+```sh
 rush publish --apply --publish --add-commit-details --ignore-git-hooks --target-branch master
 ```

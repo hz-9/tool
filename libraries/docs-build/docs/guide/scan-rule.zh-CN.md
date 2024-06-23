@@ -1,26 +1,27 @@
-# Scan Rule
 
-Here we explain which paths `@hz-9/docs-build` will scan in order to generate documentation.
+# 扫描规则
 
-In the `Scan path` column, when there are multiple files, they are matched in the order from top to bottom.
+这里说明了 `@hz-9/docs-build` 会扫描哪些哪些路径，从而生成为文档。
 
-`${baseUrl}` is equivalent to the `--base-url` parameter. The default value is `/` and should be passed in the format `/tool/`.
+`扫描文件` 列中，存在多个文件时，以从上到下的顺序匹配。
 
-`${workspace}` is equivalent to `process.cwd()` or the `--root` parameter.
+`${baseUrl}` 相当于 `--base-url` 参数。默认为 `/`，应传入 `/tool/` 格式的参数。
 
-`${docsSpace}` is usually the `${workspace}/docs/.vuepress` path, which is automatically created and added to `.gitignore`.
+`${workspace}` 相当于 `process.cwd()` 或 `--root` 参数。
 
-`${projectFolder}` is the relative path within a `Rush.js` project.
+`${docsSpace}` 通常为 `${workspace}/docs/.vuepress` 路径，为自动创建文件夹，添加至 `.gitignore` 中。
 
-`${unscopedPackageName}` is considered as the package name without the `scope`.
+`${projectFolder}` 为在 `Rush.js` 项目中的相对路径。
 
-## Normal Project
+`${unscopedPackageName}` 视为不包括 `scope` 的包名称。
+
+## 普通项目
 
 <table>
   <tr>
-    <th>Url</th>
-    <th>Scan path</th>
-    <th>Moved path</th>
+    <th>访问地址</th>
+    <th>扫描文件</th>
+    <th>移动后路径</th>
   </tr>
   <tr>
     <td>
@@ -241,7 +242,7 @@ In the `Scan path` column, when there are multiple files, they are matched in th
   </tr>
 </table>
 
-## In Rush.js Project
+## Rush.js 项目
 
 <table>
   <tr>
@@ -360,7 +361,7 @@ In the `Scan path` column, when there are multiple files, they are matched in th
       <code>http://127.0.0.1${baseUrl}api/${unscopedPackageName}</code>
     </td>
     <td>
-      Default <code>${workspace}/${projectFolder}/docs/.markdowns/*.md</code>
+      默认 <code>${workspace}/${projectFolder}/docs/.markdowns/*.md</code>
     </td>
     <td>
       <code>${docsSpace}/src/api/${unscopedPackageName}/*.md</code>
@@ -371,9 +372,9 @@ In the `Scan path` column, when there are multiple files, they are matched in th
       <code>http://127.0.0.1${baseUrl}zh-CN/api/${unscopedPackageName}</code>
     </td>
     <td>
-      Default <code>${workspace}/${projectFolder}/docs/.markdowns/*.zh-CN.md</code>
+      默认 <code>${workspace}/${projectFolder}/docs/.markdowns/*.zh-CN.md</code>
       <br />
-      Default <code>${workspace}/${projectFolder}/docs/advance/*.md</code>
+      默认 <code>${workspace}/${projectFolder}/docs/advance/*.md</code>
     </td>
     <td>
       <code>${docsSpace}/src/zh-CN/api/${unscopedPackageName}/*.md</code>

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 12:18:23
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:08:45
+ * @LastEditTime : 2024-06-23 16:51:58
  */
 import * as path from 'upath'
 
@@ -85,6 +85,7 @@ const DocsParseSchemeBase = {
 export const DocsParseSchemeMultiRoot = {
   '/': DocsParseSchemeBase['/'],
   overview: DocsParseSchemeBase.overview,
+  about: DocsParseSchemeBase.about,
 } as const
 
 export const DocsParseSchemeMultiItem = {
@@ -93,7 +94,6 @@ export const DocsParseSchemeMultiItem = {
   api: DocsParseSchemeBase.api,
   changelog: DocsParseSchemeBase.changelog,
   todo: DocsParseSchemeBase.todo,
-  about: DocsParseSchemeBase.about,
 } as const
 
 export type DocsParseSchemeType = typeof DocsParseSchemeBase

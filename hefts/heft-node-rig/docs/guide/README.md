@@ -25,6 +25,8 @@ A rig package for Node.js projects that build using Heft build system. To learn 
 npm install @hz-9/heft-node-rig --save-dev
 ```
 
+For information on the `PeerDependencies` of `@hz-9/heft-node-rig`, please [see](./peer-dependendies-version).
+
 ## Usage
 
 1. add file `config/rig.json`:

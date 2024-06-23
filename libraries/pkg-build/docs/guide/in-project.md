@@ -1,4 +1,4 @@
-# As Part of a Project
+# In Project
 
 `@hz-9/pkg-build` can be used as a command line tool, as described in the [README](./), or directly integrated into a project.
 

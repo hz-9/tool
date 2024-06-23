@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/pkg-build",
+      "comment": "docs: upgrade docs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/pkg-build"
+}
