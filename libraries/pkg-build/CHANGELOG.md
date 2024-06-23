@@ -1,6 +1,13 @@
 # Change Log - @hz-9/pkg-build
 
-This log was last generated on Sat, 22 Jun 2024 02:44:32 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 09:07:37 GMT and should not be manually modified.
+
+## 0.3.4
+Sun, 23 Jun 2024 09:07:37 GMT
+
+### Patches
+
+- docs: upgrade docs
 
 ## 0.3.3
 Sat, 22 Jun 2024 02:44:32 GMT
