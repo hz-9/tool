@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-10 14:35:43
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-23 01:10:19
+ * @LastEditTime : 2024-06-24 01:17:06
  */
 import { defineUserConfig } from 'vuepress'
 
 import theme from './theme.js'
 
 export default defineUserConfig({
-  base: '{{ options.baseUrl }}',
+  base: "{{ options.baseUrl }}",
 
   title: '{{ packageInfo.name }}',
 
@@ -18,5 +18,5 @@ export default defineUserConfig({
   theme,
 
   // Enable it with pwa
-  // shouldPrefetch: false,
+  shouldPrefetch: false,
 })

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "fix: close prefetch in vuepress",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}
