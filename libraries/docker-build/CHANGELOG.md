@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docker-build
 
-This log was last generated on Sun, 23 Jun 2024 09:07:37 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 15:51:08 GMT and should not be manually modified.
+
+## 0.3.5
+Sun, 23 Jun 2024 15:51:08 GMT
+
+### Patches
+
+- docs: change `README.md`
 
 ## 0.3.4
 Sun, 23 Jun 2024 09:07:37 GMT

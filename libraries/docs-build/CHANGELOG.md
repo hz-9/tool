@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Sun, 23 Jun 2024 09:07:37 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 15:51:08 GMT and should not be manually modified.
+
+## 0.6.3
+Sun, 23 Jun 2024 15:51:08 GMT
+
+### Patches
+
+- docs: change `README.md`
 
 ## 0.6.2
 Sun, 23 Jun 2024 09:07:37 GMT
