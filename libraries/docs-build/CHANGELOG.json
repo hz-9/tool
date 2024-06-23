@@ -2,6 +2,25 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@hz-9/docs-build_v0.7.0",
+      "date": "Sun, 23 Jun 2024 16:35:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: correct the primary heading in `index.md` for API documentation",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "08e95f4268863069813ca2ed8bac7d243a2703d0"
+          },
+          {
+            "comment": "feat: add support for retrieving Git URL",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "08e95f4268863069813ca2ed8bac7d243a2703d0"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.3",
       "tag": "@hz-9/docs-build_v0.6.3",
       "date": "Sun, 23 Jun 2024 15:51:08 GMT",

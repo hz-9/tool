@@ -1,6 +1,14 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Sun, 23 Jun 2024 15:51:08 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Jun 2024 16:35:13 GMT and should not be manually modified.
+
+## 0.7.0
+Sun, 23 Jun 2024 16:35:13 GMT
+
+### Minor changes
+
+- fix: correct the primary heading in `index.md` for API documentation
+- feat: add support for retrieving Git URL
 
 ## 0.6.3
 Sun, 23 Jun 2024 15:51:08 GMT
