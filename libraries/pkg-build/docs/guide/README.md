@@ -4,11 +4,15 @@ A tool for run [pkg] to package Node.js service or tool.
 
 [pkg]: https://www.npmjs.com/package/pkg
 
-![NPM Version][npm-version-url] ![NPM License][npm-license-url] ![NPM Downloads][npm-downloads-url]
+![NPM Version][npm-version-url] ![NPM License][npm-license-url] ![NPM Downloads][npm-downloads-url] ![Types][types-url]
+<br /> ![Node Version][node-version-url] ![Last Commit][last-commit-url]
 
-[npm-version-url]:   https://img.shields.io/npm/v/@hz-9/pkg-build
-[npm-license-url]:   https://img.shields.io/npm/l/@hz-9/pkg-build
-[npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/pkg-build
+[npm-version-url]:   https://badgen.net/npm/v/@hz-9/pkg-build
+[npm-license-url]:   https://badgen.net/npm/license/@hz-9/pkg-build
+[npm-downloads-url]: https://badgen.net/npm/dt/@hz-9/pkg-build
+[types-url]: https://badgen.net/npm/types/@hz-9/pkg-build
+[node-version-url]: https://badgen.net/npm/node/@hz-9/pkg-build
+[last-commit-url]: https://badgen.net/github/last-commit/hz-9/tool
 
 ## Introduction
 

@@ -5,10 +5,13 @@
 [@rushstack/rig-package]: https://www.npmjs.com/package/@rushstack/rig-package
 
 ![NPM 版本][npm-version-url] ![NPM 许可证][npm-license-url] ![NPM 下载量][npm-downloads-url]
+<br /> ![Node 版本][node-version-url] ![最后提交][last-commit-url]
 
-[npm-version-url]: https://img.shields.io/npm/v/@hz-9/heft-node-rig
-[npm-license-url]: https://img.shields.io/npm/l/@hz-9/heft-node-rig
-[npm-downloads-url]: https://img.shields.io/npm/d18m/@hz-9/heft-node-rig
+[npm-version-url]: https://badgen.net/npm/v/@hz-9/heft-node-rig
+[npm-license-url]: https://badgen.net/npm/license/@hz-9/heft-node-rig
+[npm-downloads-url]: https://badgen.net/npm/dt/@hz-9/heft-node-rig
+[node-version-url]: https://badgen.net/npm/node/@hz-9/heft-node-rig
+[last-commit-url]: https://badgen.net/github/last-commit/hz-9/tool
 
 ## 介绍
 
