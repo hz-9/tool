@@ -2,6 +2,25 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.7.2",
+      "tag": "@hz-9/docs-build_v0.7.2",
+      "date": "Mon, 24 Jun 2024 06:20:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs: updated the badge in `README.md`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "e7b93c35956827ad7fb0e0a2ac13657e73315207"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@hz-9/heft-node-rig\" to `0.4.8`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.1",
       "tag": "@hz-9/docs-build_v0.7.1",
       "date": "Sun, 23 Jun 2024 17:37:23 GMT",

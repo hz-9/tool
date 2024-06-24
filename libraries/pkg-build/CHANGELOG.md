@@ -1,6 +1,13 @@
 # Change Log - @hz-9/pkg-build
 
-This log was last generated on Sun, 23 Jun 2024 15:51:08 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2024 06:20:41 GMT and should not be manually modified.
+
+## 0.3.6
+Mon, 24 Jun 2024 06:20:41 GMT
+
+### Patches
+
+- docs: updated the badge in `README.md`
 
 ## 0.3.5
 Sun, 23 Jun 2024 15:51:08 GMT
