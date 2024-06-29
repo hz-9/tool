@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docs-build
 
-This log was last generated on Mon, 24 Jun 2024 06:20:41 GMT and should not be manually modified.
+This log was last generated on Sat, 29 Jun 2024 07:30:34 GMT and should not be manually modified.
+
+## 0.7.3
+Sat, 29 Jun 2024 07:30:34 GMT
+
+### Patches
+
+- fix: support reading `.sidebar.json` file in multiple languages
 
 ## 0.7.2
 Mon, 24 Jun 2024 06:20:41 GMT
