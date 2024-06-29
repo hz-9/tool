@@ -258,7 +258,7 @@ export class SingleDocsBuild {
     // Warning: (ae-incompatible-release-tags) The symbol "praseSidebarJson" is marked as @public, but its signature references "ISidebarArrayOptions" which is marked as @internal
     //
     // (undocumented)
-    protected praseSidebarJson(dirPath: string): ISidebarArrayOptions | undefined;
+    protected praseSidebarJson(dirPath: string, lang: keyof ILangObj): ISidebarArrayOptions | undefined;
     // (undocumented)
     protected runApiDocumenter(options: ICommandOptions, configOptions: IConfigOptions): Promise<void>;
     // (undocumented)

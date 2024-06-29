@@ -1908,6 +1908,19 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", lang: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ILangObj",
+                  "canonicalReference": "@hz-9/docs-build!ILangObj:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -1926,8 +1939,8 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 5
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
               "isProtected": true,
@@ -1938,6 +1951,14 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "lang",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
                   },
                   "isOptional": false
                 }

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-06-08 18:01:12
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-06-24 00:30:43
+ * @LastEditTime : 2024-06-29 15:26:17
  */
 
 /* eslint-disable no-param-reassign, no-lonely-if */
@@ -498,11 +498,11 @@ export class SingleDocsBuild {
 
             if (!this.sidebarOptionsGroup[langKey]) {
               this.sidebarOptionsGroup[langKey] = {
-                [sidebarKey]: this.praseSidebarJson(p) ?? 'structure',
+                [sidebarKey]: this.praseSidebarJson(p, lang) ?? 'structure',
               } as ISidebarObjectOptions
             } else {
               const o: ISidebarObjectOptions = this.sidebarOptionsGroup[langKey] as ISidebarObjectOptions
-              o[sidebarKey] = this.praseSidebarJson(p) ?? 'structure'
+              o[sidebarKey] = this.praseSidebarJson(p, lang) ?? 'structure'
             }
           }
 
@@ -787,12 +787,16 @@ export class SingleDocsBuild {
   //   return navbarOptions
   // }
 
-  protected praseSidebarJson(dirPath: string): ISidebarArrayOptions | undefined {
+  protected praseSidebarJson(dirPath: string, lang: keyof ILangObj): ISidebarArrayOptions | undefined {
     try {
-      const p = path.resolve(dirPath, '.sidebar.json')
-
-      if (p) {
+      const p = path.resolve(dirPath, `.sidebar.${lang}.json`)
+      if (fs.existsSync(p)) {
         return parseJsonC(fs.readFileSync(p, { encoding: 'utf8' })) as ISidebarArrayOptions
+      }
+
+      const p2 = path.resolve(dirPath, '.sidebar.json')
+      if (fs.existsSync(p2)) {
+        return parseJsonC(fs.readFileSync(p2, { encoding: 'utf8' })) as ISidebarArrayOptions
       }
     } catch (error) {
       // ...

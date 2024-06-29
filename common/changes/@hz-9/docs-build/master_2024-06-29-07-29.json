@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docs-build",
+      "comment": "fix: support reading `.sidebar.json` file in multiple languages",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docs-build"
+}
