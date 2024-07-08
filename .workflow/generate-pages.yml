@@ -23,7 +23,7 @@ stages:
           - npm  remove --global @hz-9/docs-build @microsoft/api-documenter @microsoft/api-extractor
           - npm  --registry https://registry.npmmirror.com/ install --global @hz-9/docs-build @microsoft/api-documenter@7.25.3 @microsoft/api-extractor@7.46.2
           - node ./common/scripts/install-run-rush.js update
-          - docs-build --action build --base-url '/lint/' --lang en-US,zh-CN
+          - docs-build --action build --base-url '/tool/' --lang en-US,zh-CN
         artifacts:
           - name: BUILD_ARTIFACT
             path:
@@ -62,10 +62,10 @@ stages:
         script:
           - cd /usr/heaven_docs/tool
           - tar zxvf output.tar.gz
-          - cd ../ && rm -rf ./lint_dist
-          - mv ./tool/dist ./lint_dist
+          - cd ../ && rm -rf ./tool_dist
+          - mv ./tool/dist ./tool_dist
           - rm -rf ./tool/*
-          - mv ./lint_dist/* ./tool/
+          - mv ./tool_dist/* ./tool/
           - echo 'Publish Page Complete!'
         notify: []
         strategy:
