@@ -70,6 +70,19 @@ stages:
         notify: []
         strategy:
           retry: '0'
+      - step: shell@agent
+        name: send_email
+        displayName: 发送邮件
+        hostGroupID:
+          ID: hz-9
+          hostID:
+            - ae5f4645-c72c-407f-8377-7033c8e79165
+        script:
+          - 'curl -d "{ \"subject\": \"Publish Pages - hz-9/tool\", \"text\": \"Publish Pages - hz-9/tool\" }" -H "Content-Type: application/json" -X POST http://heavenzhen.cn:16100/api/action/email'
+        notify: []
+        strategy:
+          retry: '0'
+        dependsOn: deploy_agent
 strategy:
   cloneDepth: 1
   blocking: true
