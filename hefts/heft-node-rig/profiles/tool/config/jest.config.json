@@ -7,7 +7,7 @@
 
   "roots": ["<rootDir>/lib"],
 
-  "testMatch": ["<rootDir>/lib/**/*.test.{cjs,js}"],
+  "testMatch": ["<rootDir>/lib/**/*.{spec,test}.{cjs,js}"],
 
   "testPathIgnorePatterns": ["/lib/test/__static__/"],
 

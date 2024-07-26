@@ -149,7 +149,1284 @@
       "canonicalReference": "@hz-9/algorithm!",
       "name": "",
       "preserveMemberOrder": false,
-      "members": []
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!DoublyLinkedList:class",
+          "docComment": "/**\n * 双向链表\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class DoublyLinkedList<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "LinkedList",
+              "canonicalReference": "@hz-9/algorithm!~LinkedList:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, "
+            },
+            {
+              "kind": "Reference",
+              "text": "DoublyLinkedListNode",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/linked-list/doubly.linked-list.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "DoublyLinkedList",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#addAt:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addAt(index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "addAt"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#popNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "popNode(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DoublyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "popNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#push:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "push(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "push"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#remove:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "remove"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#removeAt:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeAt(index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "removeAt"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#shiftNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "shiftNode(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DoublyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "shiftNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList#unshift:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unshift(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "unshift"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class",
+          "docComment": "/**\n * 双向链表节点\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class DoublyLinkedListNode<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "LinkedListNode",
+              "canonicalReference": "@hz-9/algorithm!~LinkedListNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/linked-list/doubly.linked-list.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "DoublyLinkedListNode",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `DoublyLinkedListNode` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(val: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "val",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode#next:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "next: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DoublyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "next",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode#prev:member",
+              "docComment": "/**\n * 上一个节点。\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "prev: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DoublyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!DoublyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "prev",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!SinglyLinkedList:class",
+          "docComment": "/**\n * 单向链表\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class SinglyLinkedList<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "LinkedList",
+              "canonicalReference": "@hz-9/algorithm!~LinkedList:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, "
+            },
+            {
+              "kind": "Reference",
+              "text": "SinglyLinkedListNode",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedListNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/linked-list/singly.linked-list.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "SinglyLinkedList",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#addAt:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addAt(index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "addAt"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#popNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "popNode(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SinglyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!SinglyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "popNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#push:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "push(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "push"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#remove:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "remove(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "remove"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#removeAt:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeAt(index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "removeAt"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#shiftNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "shiftNode(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SinglyLinkedListNode",
+                  "canonicalReference": "@hz-9/algorithm!SinglyLinkedListNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "shiftNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SinglyLinkedList#unshift:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unshift(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "unshift"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!SinglyLinkedListNode:class",
+          "docComment": "/**\n * 单向链表节点\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class SinglyLinkedListNode<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "LinkedListNode",
+              "canonicalReference": "@hz-9/algorithm!~LinkedListNode:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/linked-list/singly.linked-list.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "SinglyLinkedListNode",
+          "preserveMemberOrder": false,
+          "members": [],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!SortedLinkedList:class",
+          "docComment": "/**\n * 有序列表\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class SortedLinkedList<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "DoublyLinkedList",
+              "canonicalReference": "@hz-9/algorithm!DoublyLinkedList:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/linked-list/sorted.linked-list.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "SortedLinkedList",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@hz-9/algorithm!SortedLinkedList#_compareFn:member",
+              "docComment": "/**\n * 相等判断函数\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected readonly _compareFn: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(a: T, b: T) => number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "_compareFn",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": true,
+              "isAbstract": false
+            },
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@hz-9/algorithm!SortedLinkedList:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `SortedLinkedList` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(equalsFn?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "defaultEquals",
+                  "canonicalReference": "@hz-9/algorithm!~defaultEquals:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", compareFn?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "defaultCompare",
+                  "canonicalReference": "@hz-9/algorithm!~defaultCompare:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "equalsFn",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 4
+                  },
+                  "isOptional": true
+                },
+                {
+                  "parameterName": "compareFn",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 8
+                  },
+                  "isOptional": true
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SortedLinkedList#addAt:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addAt(index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "addAt"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SortedLinkedList#push:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "push(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "push"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!SortedLinkedList#unshift:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unshift(value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "unshift"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        }
+      ]
     }
   ]
 }

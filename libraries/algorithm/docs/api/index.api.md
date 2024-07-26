@@ -4,6 +4,72 @@
 
 ```ts
 
+// Warning: (ae-forgotten-export) The symbol "LinkedList" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class DoublyLinkedList<T> extends LinkedList<T, DoublyLinkedListNode<T>> {
+    // (undocumented)
+    addAt(index: number, value: T): boolean;
+    // (undocumented)
+    popNode(): DoublyLinkedListNode<T> | undefined;
+    // (undocumented)
+    push(value: T): boolean;
+    // (undocumented)
+    remove(value: T): boolean;
+    // (undocumented)
+    removeAt(index: number): boolean;
+    // (undocumented)
+    shiftNode(): DoublyLinkedListNode<T> | undefined;
+    // (undocumented)
+    unshift(value: T): boolean;
+}
+
+// Warning: (ae-forgotten-export) The symbol "LinkedListNode" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
+    constructor(val: T);
+    // (undocumented)
+    next: DoublyLinkedListNode<T> | undefined;
+    prev: DoublyLinkedListNode<T> | undefined;
+}
+
+// @public
+export class SinglyLinkedList<T> extends LinkedList<T, SinglyLinkedListNode<T>> {
+    // (undocumented)
+    addAt(index: number, value: T): boolean;
+    // (undocumented)
+    popNode(): SinglyLinkedListNode<T> | undefined;
+    // (undocumented)
+    push(value: T): boolean;
+    // (undocumented)
+    remove(value: T): boolean;
+    // (undocumented)
+    removeAt(index: number): boolean;
+    // (undocumented)
+    shiftNode(): SinglyLinkedListNode<T> | undefined;
+    // (undocumented)
+    unshift(value: T): boolean;
+}
+
+// @public
+export class SinglyLinkedListNode<T> extends LinkedListNode<T> {
+}
+
+// @public
+export class SortedLinkedList<T> extends DoublyLinkedList<T> {
+    // Warning: (ae-forgotten-export) The symbol "defaultEquals" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "defaultCompare" needs to be exported by the entry point index.d.ts
+    constructor(equalsFn?: typeof defaultEquals<T>, compareFn?: typeof defaultCompare<T>);
+    // (undocumented)
+    addAt(index: number, value: T): boolean;
+    protected readonly _compareFn: (a: T, b: T) => number;
+    // (undocumented)
+    push(value: T): boolean;
+    // (undocumented)
+    unshift(value: T): boolean;
+}
+
 // (No @packageDocumentation comment for this package)
 
 ```

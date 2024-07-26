@@ -57,46 +57,7 @@
       "phaseDependencies": ["build"],
 
       "tasksByName": {
-        /**
-         * 在更新 @rushstack/heft@0.58.1 后，jest unit 中 __dirname 不再拦截了。
-         */
-        "static-copy": {
-          // 前置任务
-          "taskPlugin": {
-            "pluginName": "copy-files-plugin",
-            "pluginPackage": "@rushstack/heft",
-            "options": {
-              "copyOperations": [
-                {
-                  "sourcePath": "src/test/__tests__",
-
-                  "destinationFolders": ["lib/cjs/test/__tests__"]
-                },
-                {
-                  "sourcePath": "src/test/__fixtures__",
-
-                  "destinationFolders": ["lib/cjs/test/__fixtures__"]
-                },
-                {
-                  "sourcePath": "src/test/__mocks__",
-
-                  "destinationFolders": ["lib/cjs/test/__mocks__"]
-                },
-
-                // 自定义缓存文件
-                {
-                  "sourcePath": "src/test/__static__",
-
-                  "destinationFolders": ["lib/cjs/test/__static__"]
-                }
-              ]
-            }
-          }
-        },
-
         "jest": {
-          "taskDependencies": ["static-copy"],
-
           "taskPlugin": {
             "pluginPackage": "@rushstack/heft-jest-plugin"
           }

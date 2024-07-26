@@ -2,29 +2,29 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:21:51
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-26 17:05:17
+ * @LastEditTime : 2024-07-26 20:31:02
  */
 
 /* eslint-disable no-console, @typescript-eslint/no-extra-semi */
 
 ;(() => {
-  // 声明数组
+  // Declare arrays
   const array: Array<number> = []
-  const array2: Array<number> = new Array(10).fill(0) // 一个长度为 10，每个元素均为 0 的数组
+  const array2: Array<number> = new Array(10).fill(0) // An array of length 10 with all elements as 0
 
-  // 添加元素
-  array.push(1) // 在数组尾部添加元素
-  array.unshift(0) // 在数组头部添加元素
-  array2.push(1) // 在数组尾部添加元素
-  array2.unshift(0) // 在数组头部添加元素
+  // Add elements
+  array.push(1) // Add element to the end of the array
+  array.unshift(0) // Add element to the beginning of the array
+  array2.push(1) // Add element to the end of the array
+  array2.unshift(0) // Add element to the beginning of the array
 
-  // 删除元素
-  array.pop() // 在数组尾部删除元素
-  array.shift() // 在数组头部删除元素
-  array2.push(1) // 在数组尾部添加元素
-  array2.unshift(0) // 在数组头部添加元素
+  // Remove elements
+  array.pop() // Remove element from the end of the array
+  array.shift() // Remove element from the beginning of the array
+  array2.push(1) // Add element to the end of the array
+  array2.unshift(0) // Add element to the beginning of the array
 
-  // 遍历元素
+  // Iterate over elements
   for (let i = 0; i < array.length; i += 1) {
     const item = array[i]
     console.log(`Item: ${item}`)
@@ -34,12 +34,12 @@
     console.log(`Item: ${item}`)
   })
 
-  // 查找
+  // Find
   array.find((n: number) => n === 0)
 
-  array.find((n: number) => n === 1) // 查找元素
+  array.find((n: number) => n === 1) // Find element
 
-  // 扩容元素
+  // Expand array
   const arrayNew: Array<number> = array.concat([1, 2, 3])
   console.log(`ArrayNew: ${arrayNew}`)
 })()
