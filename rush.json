@@ -395,6 +395,12 @@
     },
 
     {
+      "packageName": "@hz-9/algorithm",
+      "projectFolder": "libraries/algorithm",
+      "shouldPublish": true
+    },
+
+    {
       "packageName": "@hz-9/docker-build",
       "projectFolder": "libraries/docker-build",
       "shouldPublish": true
