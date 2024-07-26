@@ -2,13 +2,15 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 01:58:20
+ * @LastEditTime : 2024-07-27 02:20:57
  */
 import { LinkedList, LinkedListNode } from './_base.linked-list'
 
 /**
  *
  * @public
+ *
+ *  Singly Linked List Node Class
  *
  *  单向链表节点
  *
@@ -18,6 +20,8 @@ export class SinglyLinkedListNode<T> extends LinkedListNode<T> {}
 /**
  *
  * @public
+ *
+ *  Singly Linked List Class
  *
  *  单向链表
  *

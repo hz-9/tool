@@ -2,13 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 17:52:10
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-04-13 23:24:38
+ * @LastEditTime : 2024-07-27 02:18:20
  */
 
 /**
  * .find 遍历函数 回调参数类型
  */
-export type FindCallback<T> = (value: T) => boolean
+// export type FindCallback<T> = (value: T) => boolean
 
 /**
  * 中序遍历、先序遍历、后序遍历 回调函数

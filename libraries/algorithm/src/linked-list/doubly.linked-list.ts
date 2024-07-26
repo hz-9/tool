@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 01:58:16
+ * @LastEditTime : 2024-07-27 02:21:19
  */
 import { LinkedList, LinkedListNode } from './_base.linked-list'
 
@@ -10,13 +10,12 @@ import { LinkedList, LinkedListNode } from './_base.linked-list'
  *
  * @public
  *
+ *  Doubly Linked List Node Class
+ *
  *  双向链表节点
  *
  */
 export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
-  /**
-   * 上一个节点。
-   */
   public prev: DoublyLinkedListNode<T> | undefined
 
   public next: DoublyLinkedListNode<T> | undefined
@@ -32,6 +31,8 @@ export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
 /**
  *
  * @public
+ *
+ *  Doubly Linked List Class
  *
  *  双向链表
  *

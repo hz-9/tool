@@ -2,16 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:10:44
+ * @LastEditTime : 2024-07-27 02:21:40
  */
 import { defaultCompare, defaultEquals } from '../utils/index'
-import { DoublyLinkedList, DoublyLinkedListNode } from './doubly.linked-list'
+import { DoublyLinkedList } from './doubly.linked-list'
 
 /**
  *
  * @public
  *
- *  有序列表
+ *  Sorted Linked List Class
  *
  */
 export class SortedLinkedList<T> extends DoublyLinkedList<T> {
@@ -31,9 +31,6 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
   public push(value: T): boolean {
     if (!this._tailNode) return super.push(value)
 
-    /**
-     * 只有当保证合理顺序时，才允许添加
-     */
     const c = this._compareFn(this._tailNode.val, value)
     if (c > 0) return super.push(value)
     return false
@@ -42,9 +39,6 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
   public unshift(value: T): boolean {
     if (!this._headNode) return super.unshift(value)
 
-    /**
-     * 只有当保证合理顺序时，才允许添加
-     */
     const c = this._compareFn(value, this._headNode.val)
     if (c > 0) return super.unshift(value)
     return false

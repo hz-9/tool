@@ -1,11 +1,10 @@
-import type { FindCallback } from '../types/index'
 import { defaultEquals } from '../utils/index'
 
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 15:18:52
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:16:11
+ * @LastEditTime : 2024-07-27 02:18:17
  */
 
 /**
