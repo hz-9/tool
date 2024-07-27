@@ -4,7 +4,7 @@ import { defaultEquals } from '../utils/index'
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 15:18:52
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:18:17
+ * @LastEditTime : 2024-07-28 00:12:51
  */
 
 /**
@@ -402,6 +402,15 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
     this._size = 0
   }
 
+  /**
+   * Returns a string of linked list information.
+   *
+   * 返回由链表信息组成的字符串。
+   *
+   * Time Complexity: O(n)
+   *
+   * Space Complexity: O(n)
+   */
   public toString(): string {
     if (!this._headNode) return ''
 
@@ -415,6 +424,15 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
     return str
   }
 
+  /**
+   * Returns a array of linked list information.
+   *
+   * 返回由链表信息组成的数组。
+   *
+   * Time Complexity: O(n)
+   *
+   * Space Complexity: O(n)
+   */
   public toArray(): T[] {
     const array: T[] = []
     let currentNode = this.headNode
