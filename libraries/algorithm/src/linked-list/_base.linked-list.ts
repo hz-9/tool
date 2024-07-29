@@ -1,11 +1,11 @@
-import { defaultEquals } from '../utils/index'
-
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 15:18:52
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:12:51
+ * @LastEditTime : 2024-07-29 20:20:49
  */
+import { Base } from '../_base/index'
+import { defaultEquals } from '../utils/index'
 
 /**
  * @public
@@ -42,7 +42,7 @@ export class LinkedListNode<T> {
  *
  * 链表基类
  */
-export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode<T>> {
+export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode<T>> implements Base<T> {
   /**
    * Head node of the linked list
    *
@@ -78,20 +78,10 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
     this._equalsFn = equalsFn
   }
 
-  /**
-   * Number of nodes in the linked list
-   *
-   * 链表节点数量
-   */
   public get size(): number {
     return this._size
   }
 
-  /**
-   * Check if the linked list is empty
-   *
-   * 链表是否为空
-   */
   public get isEmpty(): boolean {
     return this.size === 0
   }
@@ -387,30 +377,12 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
    */
   public abstract remove(value: T): boolean
 
-  /**
-   * Clear the linked list.
-   *
-   * 清空链表。
-   *
-   * Time Complexity: O(1)
-   *
-   * Space Complexity: O(1)
-   */
   public clear(): void {
     this._headNode = undefined
     this._tailNode = undefined
     this._size = 0
   }
 
-  /**
-   * Returns a string of linked list information.
-   *
-   * 返回由链表信息组成的字符串。
-   *
-   * Time Complexity: O(n)
-   *
-   * Space Complexity: O(n)
-   */
   public toString(): string {
     if (!this._headNode) return ''
 
@@ -424,15 +396,6 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
     return str
   }
 
-  /**
-   * Returns a array of linked list information.
-   *
-   * 返回由链表信息组成的数组。
-   *
-   * Time Complexity: O(n)
-   *
-   * Space Complexity: O(n)
-   */
   public toArray(): T[] {
     const array: T[] = []
     let currentNode = this.headNode

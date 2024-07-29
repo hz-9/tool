@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 20:09:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 18:22:25
+ * @LastEditTime : 2024-07-29 20:19:25
  */
+import { Base } from '../_base/index'
 
 /**
  * @public
@@ -12,21 +13,7 @@
  *
  * 队列的基类。
  */
-export abstract class Queue<T> {
-  /**
-   * The number of elements in the queue.
-   *
-   * 队列内元素数量。
-   */
-  public abstract get size(): number
-
-  /**
-   * Whether the queue is empty.
-   *
-   * 队列内是否为空。
-   */
-  public abstract get isEmpty(): boolean
-
+export abstract class Queue<T> extends Base<T> {
   /**
    * The first element in the queue.
    *
@@ -90,38 +77,4 @@ export abstract class Queue<T> {
    *
    */
   public abstract shift(): T | undefined
-
-  /**
-   * Clear all elements in the queue.
-   *
-   * 清空队列内所有元素。
-   *
-   * Time Complexity: O(1)
-   *
-   * Space Complexity: O(1)
-   *
-   */
-  public abstract clear(): void
-
-  /**
-   * Returns a string representation of the queue.
-   *
-   * 返回由队列信息组成的字符串。
-   *
-   * Time Complexity: O(n)
-   *
-   * Space Complexity: O(n)
-   */
-  public abstract toString(): string
-
-  /**
-   * Returns an array representation of the queue.
-   *
-   * 返回由队列信息组成的数组。
-   *
-   * Time Complexity: O(n)
-   *
-   * Space Complexity: O(n)
-   */
-  public abstract toArray(): T[]
 }

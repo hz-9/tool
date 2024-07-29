@@ -70,6 +70,14 @@ export class ArrayStack<T> implements Stack<T> {
     toString(): string;
 }
 
+// @public
+export class BetterHashmap<K, V> extends SquareProbingHashmap<K, V> {
+    constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
+}
+
+// @public
+export const djb2HashCode: ToHashCode;
+
 // Warning: (ae-forgotten-export) The symbol "LinkedList" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -102,6 +110,54 @@ export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
 }
 
 // @public
+export const EMPTY_KEY_VALUE: KeyValue<unknown, unknown>;
+
+// Warning: (ae-forgotten-export) The symbol "Base" needs to be exported by the entry point index.d.ts
+//
+// @public
+export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
+    abstract get(key: K): V | undefined;
+    abstract has(key: K): boolean;
+    abstract remove(key: K): boolean;
+    abstract set(key: K, value: V): boolean;
+}
+
+// @public (undocumented)
+export interface IKeyValueObj<K, V> {
+    // (undocumented)
+    key: K;
+    // (undocumented)
+    value: V;
+}
+
+// @public
+export class KeyValue<K, V> {
+    constructor(key: K, value: V);
+    // (undocumented)
+    readonly key: K;
+    // (undocumented)
+    toString(): string;
+    // (undocumented)
+    readonly value: V;
+}
+
+// @public (undocumented)
+export const kVEqualFn: <K, V>(a?: KeyValue<K, V> | undefined, b?: KeyValue<K, V> | undefined) => boolean;
+
+// @public (undocumented)
+export const kVToObj: <K, V>(keyValue: KeyValue<K, V>) => IKeyValueObj<K, V>;
+
+// @public
+export class LinearProbingHashmap<K, V> extends SimpleHashmap<K, V> {
+    // (undocumented)
+    get(key: K): V | undefined;
+    // (undocumented)
+    remove(key: K): boolean;
+    // (undocumented)
+    set(key: K, value: V): boolean;
+}
+
+// @public
 export class LinkedListDeque<T> extends LinkedListQueue<T> implements Deque<T> {
     constructor();
     // (undocumented)
@@ -114,6 +170,37 @@ export class LinkedListDeque<T> extends LinkedListQueue<T> implements Deque<T> {
     pop(): T | undefined;
     // (undocumented)
     unshift(value: T): void;
+}
+
+// @public
+export class LinkedListHashmap<K, V> implements Hashmap<K, V> {
+    constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get(key: K): V | undefined;
+    // (undocumented)
+    has(key: K): boolean;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    protected _items: Record<number, SinglyLinkedList<KeyValue<K, V>>>;
+    // (undocumented)
+    remove(key: K): boolean;
+    // (undocumented)
+    set(key: K, value: V): boolean;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    protected _size: number;
+    // (undocumented)
+    toArray(): IKeyValueObj<K, V>[];
+    // (undocumented)
+    protected _toHashCode: ToHashCode;
+    // (undocumented)
+    protected _toKeyStr: ToKeyStr<K>;
+    // (undocumented)
+    toString(): string;
 }
 
 // @public
@@ -162,6 +249,27 @@ export class LinkedListStack<T> implements Stack<T> {
     toArray(): T[];
     // (undocumented)
     toString(): string;
+}
+
+// @public
+export const loseloseHashCode: ToHashCode;
+
+// Warning: (ae-forgotten-export) The symbol "Heap" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class MaxHeap<T> extends Heap<T> {
+    // (undocumented)
+    siftDown(index: number): void;
+    // (undocumented)
+    siftUp(index: number): void;
+}
+
+// @public (undocumented)
+export class MinHeap<T> extends Heap<T> {
+    // (undocumented)
+    siftDown(index: number): void;
+    // (undocumented)
+    siftUp(index: number): void;
 }
 
 // @public
@@ -237,6 +345,37 @@ export class SetPlus<T> extends Set<T> {
 }
 
 // @public
+export class SimpleHashmap<K, V> implements Hashmap<K, V> {
+    constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get(key: K): V | undefined;
+    // (undocumented)
+    has(key: K): boolean;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    protected _items: Record<number, KeyValue<K, V>>;
+    // (undocumented)
+    remove(key: K): boolean;
+    // (undocumented)
+    set(key: K, value: V): boolean;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    protected _size: number;
+    // (undocumented)
+    toArray(): IKeyValueObj<K, V>[];
+    // (undocumented)
+    protected _toHashCode: ToHashCode;
+    // (undocumented)
+    protected _toKeyStr: ToKeyStr<K>;
+    // (undocumented)
+    toString(): string;
+}
+
+// @public
 export class SinglyLinkedList<T> extends LinkedList<T, SinglyLinkedListNode<T>> {
     // (undocumented)
     addAt(index: number, value: T): boolean;
@@ -271,6 +410,25 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     // (undocumented)
     unshift(value: T): boolean;
 }
+
+// @public
+export class SquareProbingHashmap<K, V> extends SimpleHashmap<K, V> {
+    // (undocumented)
+    get(key: K): V | undefined;
+    // (undocumented)
+    remove(key: K): boolean;
+    // (undocumented)
+    set(key: K, value: V): boolean;
+}
+
+// @public (undocumented)
+export type ToHashCode = (keyStr: string) => number;
+
+// @public (undocumented)
+export type ToKeyStr<K> = (key: K) => string;
+
+// @public (undocumented)
+export const toKeyStrDefault: <K>(key: K) => string;
 
 // (No @packageDocumentation comment for this package)
 
