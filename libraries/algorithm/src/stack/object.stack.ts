@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 01:09:11
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:37:40
+ * @LastEditTime : 2024-07-28 00:43:45
  */
 import { Stack } from './_base.stack'
 
@@ -13,13 +13,12 @@ import { Stack } from './_base.stack'
  *  一个基于对象实现的栈
  *
  */
-export class ObjectStack<T> extends Stack<T> {
+export class ObjectStack<T> implements Stack<T> {
   private _items: Record<number, T>
 
   private _size: number
 
   public constructor() {
-    super()
     this._items = {}
     this._size = 0
   }

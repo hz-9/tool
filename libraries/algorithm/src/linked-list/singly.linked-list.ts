@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:20:57
+ * @LastEditTime : 2024-07-29 17:24:00
  */
 import { LinkedList, LinkedListNode } from './_base.linked-list'
 
@@ -113,8 +113,11 @@ export class SinglyLinkedList<T> extends LinkedList<T, SinglyLinkedListNode<T>> 
       return true
     }
 
-    const prevNode = this.getNodeAt(index - 1)
-    if (!prevNode) return false
+    /**
+     * If `index` is an illegal value, false is already returned above
+     */
+    const prevNode = this.getNodeAt(index - 1)!
+    // if (!prevNode) return false
 
     const node = new SinglyLinkedListNode<T>(value)
     node.next = prevNode.next
@@ -138,9 +141,11 @@ export class SinglyLinkedList<T> extends LinkedList<T, SinglyLinkedListNode<T>> 
       return true
     }
 
-    const prevNode = this.getNodeAt(index - 1)
-
-    if (!prevNode) return false
+    /**
+     * If `index` is an illegal value, false is already returned above
+     */
+    const prevNode = this.getNodeAt(index - 1)!
+    // if (!prevNode) return false
 
     prevNode.next = prevNode.next?.next
 

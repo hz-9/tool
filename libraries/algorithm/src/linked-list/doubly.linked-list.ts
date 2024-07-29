@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:21:19
+ * @LastEditTime : 2024-07-29 17:25:10
  */
 import { LinkedList, LinkedListNode } from './_base.linked-list'
 
@@ -128,8 +128,11 @@ export class DoublyLinkedList<T> extends LinkedList<T, DoublyLinkedListNode<T>> 
       return true
     }
 
-    const prevNode = this.getNodeAt(index - 1)
-    if (!prevNode) return false
+    /**
+     * If `index` is an illegal value, false is already returned above
+     */
+    const prevNode = this.getNodeAt(index - 1)!
+    // if (!prevNode) return false
 
     const node = new DoublyLinkedListNode<T>(value)
     node.next = prevNode.next
@@ -155,8 +158,11 @@ export class DoublyLinkedList<T> extends LinkedList<T, DoublyLinkedListNode<T>> 
       return true
     }
 
-    const currentNode = this.getNodeAt(index)
-    if (!currentNode) return false
+    /**
+     * If `index` is an illegal value, false is already returned above
+     */
+    const currentNode = this.getNodeAt(index)!
+    // if (!currentNode) return false
 
     if (currentNode.prev) currentNode.prev.next = currentNode.next
     if (currentNode.next) currentNode.next.prev = currentNode.prev

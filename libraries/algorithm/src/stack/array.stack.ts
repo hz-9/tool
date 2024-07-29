@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 01:09:11
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:37:31
+ * @LastEditTime : 2024-07-28 00:43:52
  */
 import { Stack } from './_base.stack'
 
@@ -13,11 +13,10 @@ import { Stack } from './_base.stack'
  *  一个基于数组实现的栈
  *
  */
-export class ArrayStack<T> extends Stack<T> {
+export class ArrayStack<T> implements Stack<T> {
   private _list: Array<T>
 
   public constructor() {
-    super()
     this._list = []
   }
 

@@ -4,6 +4,72 @@
 
 ```ts
 
+// Warning: (ae-forgotten-export) The symbol "Deque" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class ArrayDeque<T> extends ArrayQueue<T> implements Deque<T> {
+    // (undocumented)
+    peekBack(): T | undefined;
+    // (undocumented)
+    peekFront(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    unshift(value: T): void;
+}
+
+// Warning: (ae-forgotten-export) The symbol "Queue" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class ArrayQueue<T> implements Queue<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get first(): T | undefined;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    get last(): T | undefined;
+    // (undocumented)
+    protected _list: Array<T>;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    push(value: T): void;
+    // (undocumented)
+    shift(): T | undefined;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "Stack" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class ArrayStack<T> implements Stack<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    push(val: T): void;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
 // Warning: (ae-forgotten-export) The symbol "LinkedList" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -31,7 +97,143 @@ export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
     constructor(val: T);
     // (undocumented)
     next: DoublyLinkedListNode<T> | undefined;
+    // (undocumented)
     prev: DoublyLinkedListNode<T> | undefined;
+}
+
+// @public
+export class LinkedListDeque<T> extends LinkedListQueue<T> implements Deque<T> {
+    constructor();
+    // (undocumented)
+    protected _linkedList: DoublyLinkedList<T>;
+    // (undocumented)
+    peekBack(): T | undefined;
+    // (undocumented)
+    peekFront(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    unshift(value: T): void;
+}
+
+// @public
+export class LinkedListQueue<T> implements Queue<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get first(): T | undefined;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    get last(): T | undefined;
+    // (undocumented)
+    protected _linkedList: SinglyLinkedList<T>;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    push(value: T): void;
+    // (undocumented)
+    shift(): T | undefined;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
+// @public
+export class LinkedListStack<T> implements Stack<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    push(val: T): void;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
+// @public
+export class ObjectDeque<T> extends ObjectQueue<T> implements Deque<T> {
+    // (undocumented)
+    peekBack(): T | undefined;
+    // (undocumented)
+    peekFront(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    unshift(value: T): void;
+}
+
+// @public
+export class ObjectQueue<T> implements Queue<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get first(): T | undefined;
+    protected _flag: number;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    protected _items: Record<number, T>;
+    // (undocumented)
+    get last(): T | undefined;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    push(value: T): void;
+    // (undocumented)
+    shift(): T | undefined;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    protected _size: number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
+// @public
+export class ObjectStack<T> implements Stack<T> {
+    constructor();
+    // (undocumented)
+    clear(): void;
+    // (undocumented)
+    get isEmpty(): boolean;
+    // (undocumented)
+    peek(): T | undefined;
+    // (undocumented)
+    pop(): T | undefined;
+    // (undocumented)
+    push(val: T): void;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): T[];
+    // (undocumented)
+    toString(): string;
+}
+
+// @public
+export class SetPlus<T> extends Set<T> {
+    static difference<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
+    static intersection<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
+    static isSubsetOf<T>(setA: Set<T>, setB: Set<T>): boolean;
+    toSet(): Set<T>;
+    static union<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
 }
 
 // @public

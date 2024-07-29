@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:46:08
+ * @LastEditTime : 2024-07-29 16:39:44
  */
 import { SetPlus } from '../index'
 
@@ -44,8 +44,10 @@ describe('SetPlus', () => {
     const set1 = new Set([1, 2, 3, 4])
     const set2 = new Set([3, 4])
     const set3 = new Set([3, 4, 5])
+    const set4 = new Set([1, 2, 3, 4, 5])
 
     expect(SetPlus.isSubsetOf(set1, set2)).toBe(true)
     expect(SetPlus.isSubsetOf(set1, set3)).toBe(false)
+    expect(SetPlus.isSubsetOf(set1, set4)).toBe(false)
   })
 })

@@ -2,11 +2,29 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:35:20
+ * @LastEditTime : 2024-07-29 16:59:58
  */
 import { ArrayStack, LinkedListStack, ObjectStack } from '../index'
 
-type GetStack = () => ArrayStack<number> | LinkedListStack<number> | ObjectStack<number>
+type UnionStack = ArrayStack<number> | LinkedListStack<number> | ObjectStack<number>
+
+type GetStack = () => UnionStack
+
+interface IStackInfo {
+  size: number
+  isEmpty: boolean
+  peek: number | undefined
+  toString: string
+  toArray: Array<number>
+}
+
+const getStackInfo = (stack: UnionStack): IStackInfo => ({
+  size: stack.size,
+  isEmpty: stack.isEmpty,
+  peek: stack.peek(),
+  toString: stack.toString(),
+  toArray: stack.toArray(),
+})
 
 describe.each([() => new ArrayStack<number>(), () => new LinkedListStack<number>(), () => new ObjectStack<number>()])(
   'Stack - %s',
@@ -18,57 +36,75 @@ describe.each([() => new ArrayStack<number>(), () => new LinkedListStack<number>
       stack.push(3)
       stack.push(2)
 
-      expect(stack.size).toBe(3)
-      expect(stack.isEmpty).toBe(false)
-      expect(stack.toString()).toBe('2,3,1')
-      expect(stack.toArray()).toEqual([2, 3, 1])
+      expect(getStackInfo(stack)).toEqual({
+        size: 3,
+        isEmpty: false,
+        peek: 2,
+        toString: '2,3,1',
+        toArray: [2, 3, 1],
+      })
     })
 
     it('Stack - peek', async () => {
-      const peek1 = stack.peek()
+      expect(stack.peek()).toBe(2)
 
-      expect(peek1).toBe(2)
-      expect(stack.size).toBe(3)
-      expect(stack.isEmpty).toBe(false)
-      expect(stack.toString()).toBe('2,3,1')
-      expect(stack.toArray()).toEqual([2, 3, 1])
+      expect(getStackInfo(stack)).toEqual({
+        size: 3,
+        isEmpty: false,
+        peek: 2,
+        toString: '2,3,1',
+        toArray: [2, 3, 1],
+      })
 
       stack.peek()
       stack.peek()
       stack.peek()
       stack.peek()
 
-      expect(stack.size).toBe(3)
+      expect(getStackInfo(stack)).toEqual({
+        size: 3,
+        isEmpty: false,
+        peek: 2,
+        toString: '2,3,1',
+        toArray: [2, 3, 1],
+      })
 
       stack.clear()
 
-      const peek2 = stack.peek()
+      expect(stack.peek()).toBe(undefined)
 
-      expect(peek2).toBe(undefined)
-      expect(stack.size).toBe(0)
-      expect(stack.isEmpty).toBe(true)
-      expect(stack.toString()).toBe('')
-      expect(stack.toArray()).toEqual([])
+      expect(getStackInfo(stack)).toEqual({
+        size: 0,
+        isEmpty: true,
+        peek: undefined,
+        toString: '',
+        toArray: [],
+      })
     })
 
     it('Stack - pop', async () => {
-      const pop1 = stack.pop()
+      expect(stack.pop()).toBeUndefined()
 
-      expect(pop1).toBeUndefined()
-      expect(stack.size).toBe(0)
-      expect(stack.isEmpty).toBe(true)
-      expect(stack.toString()).toBe('')
-      expect(stack.toArray()).toEqual([])
+      expect(getStackInfo(stack)).toEqual({
+        size: 0,
+        isEmpty: true,
+        peek: undefined,
+        toString: '',
+        toArray: [],
+      })
 
       stack.push(111)
       stack.push(222)
 
-      const pop2 = stack.pop()
-      expect(pop2).toBe(222)
-      expect(stack.size).toBe(1)
-      expect(stack.isEmpty).toBe(false)
-      expect(stack.toString()).toBe('111')
-      expect(stack.toArray()).toEqual([111])
+      expect(stack.pop()).toBe(222)
+
+      expect(getStackInfo(stack)).toEqual({
+        size: 1,
+        isEmpty: false,
+        peek: 111,
+        toString: '111',
+        toArray: [111],
+      })
     })
   }
 )

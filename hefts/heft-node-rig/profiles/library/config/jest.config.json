@@ -11,5 +11,5 @@
 
   "testPathIgnorePatterns": ["/lib/test/__static__/"],
 
-  "coveragePathIgnorePatterns": ["/lib/__static__/", "/lib/bin.{cjs,js}", "/lib/bin/", "/lib/types/"]
+  "coveragePathIgnorePatterns": ["/lib/__static__/"]
 }

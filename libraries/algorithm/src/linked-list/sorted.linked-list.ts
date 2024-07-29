@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-27 02:21:40
+ * @LastEditTime : 2024-07-29 17:29:14
  */
 import { defaultCompare, defaultEquals } from '../utils/index'
 import { DoublyLinkedList } from './doubly.linked-list'
@@ -60,8 +60,11 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
       return false
     }
 
-    const prevNode = this.getNodeAt(index - 1)
-    if (!prevNode) return false
+    /**
+     * If `index` is an illegal value, false is already returned above
+     */
+    const prevNode = this.getNodeAt(index - 1)!
+    // if (!prevNode) return false
 
     if (this._compareFn(prevNode.val, value) > 0) {
       const nextNode = this.getNodeAt(index)

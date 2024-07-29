@@ -1,21 +1,21 @@
 /**
  * @Author       : Chen Zhen
- * @Date         : 2024-03-30 01:09:05
+ * @Date         : 2024-03-30 20:05:19
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:43:41
+ * @LastEditTime : 2024-07-29 16:12:09
  */
 import { SinglyLinkedList } from '../linked-list/singly.linked-list'
-import { Stack } from './_base.stack'
+import { Queue } from './_base.queue'
 
 /**
  *
  * @class
  *
- *  一个基于链表实现的栈
+ *  一个基于链表（单向链表）的单向队列。
  *
  */
-export class LinkedListStack<T> implements Stack<T> {
-  private _linkedList: SinglyLinkedList<T>
+export class LinkedListQueue<T> implements Queue<T> {
+  protected _linkedList: SinglyLinkedList<T>
 
   public constructor() {
     this._linkedList = new SinglyLinkedList<T>()
@@ -29,16 +29,24 @@ export class LinkedListStack<T> implements Stack<T> {
     return this._linkedList.isEmpty
   }
 
-  public push(val: T): void {
-    this._linkedList.push(val)
+  public get first(): T | undefined {
+    return this._linkedList.head
   }
 
-  public peek(): T | undefined {
+  public get last(): T | undefined {
     return this._linkedList.tail
   }
 
-  public pop(): T | undefined {
-    return this._linkedList.pop()
+  public push(value: T): void {
+    this._linkedList.push(value)
+  }
+
+  public peek(): T | undefined {
+    return this.first
+  }
+
+  public shift(): T | undefined {
+    return this._linkedList.shift()
   }
 
   public clear(): void {
@@ -50,7 +58,7 @@ export class LinkedListStack<T> implements Stack<T> {
 
     let currentNode = this._linkedList.headNode
     while (currentNode) {
-      str = currentNode === this._linkedList.headNode ? `${currentNode.val}` : `${currentNode.val},${str}`
+      str = currentNode === this._linkedList.headNode ? `${currentNode.val}` : `${str},${currentNode.val}`
       currentNode = currentNode.next
     }
 
@@ -61,7 +69,7 @@ export class LinkedListStack<T> implements Stack<T> {
     const array: T[] = []
     let currentNode = this._linkedList.headNode
     while (currentNode) {
-      array.unshift(currentNode.val)
+      array.push(currentNode.val)
       currentNode = currentNode.next
     }
     return array
