@@ -2,13 +2,15 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 20:05:19
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 16:12:05
+ * @LastEditTime : 2024-07-29 18:19:41
  */
 import { Queue } from './_base.queue'
 
 /**
  *
- * @class
+ * @public
+ *
+ *  A queue implementation based on array.
  *
  *  一个基于数组的单向队列。
  *

@@ -2,14 +2,16 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 20:05:19
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 16:36:29
+ * @LastEditTime : 2024-07-29 18:20:16
  */
 import { Deque } from './_base.deque'
 import { ObjectQueue } from './object.queue'
 
 /**
  *
- * @class
+ * @public
+ *
+ *  A deque implementation based on object.
  *
  *  一个基于对象的双向队列。
  *

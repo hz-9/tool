@@ -2,16 +2,18 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 01:09:05
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:43:41
+ * @LastEditTime : 2024-07-29 18:18:24
  */
 import { SinglyLinkedList } from '../linked-list/singly.linked-list'
 import { Stack } from './_base.stack'
 
 /**
  *
- * @class
+ * @public
  *
- *  一个基于链表实现的栈
+ *  A stack implementation based on SinglyLinkedList.
+ *
+ *  一个基于数组实现的栈。
  *
  */
 export class LinkedListStack<T> implements Stack<T> {

@@ -2,15 +2,17 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 01:09:11
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:43:52
+ * @LastEditTime : 2024-07-29 18:18:05
  */
 import { Stack } from './_base.stack'
 
 /**
  *
- * @class
+ * @public
  *
- *  一个基于数组实现的栈
+ *  A stack implementation based on arrays.
+ *
+ *  一个基于数组实现的栈。
  *
  */
 export class ArrayStack<T> implements Stack<T> {

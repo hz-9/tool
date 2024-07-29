@@ -153,7 +153,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ArrayDeque:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于数组的双向队列。\n */\n",
+          "docComment": "/**\n * A deque implementation based on array.\n *\n * 一个基于数组的双向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -361,7 +361,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ArrayQueue:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于数组的单向队列。\n */\n",
+          "docComment": "/**\n * A queue implementation based on array.\n *\n * 一个基于数组的单向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -784,7 +784,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ArrayStack:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于数组实现的栈\n */\n",
+          "docComment": "/**\n * A stack implementation based on arrays.\n *\n * 一个基于数组实现的栈。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1649,7 +1649,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!LinkedListDeque:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于链表（双向链表）的双向队列。\n */\n",
+          "docComment": "/**\n * A deque implementation based on DoublyLinkedList.\n *\n * 一个基于链表的双向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1907,7 +1907,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!LinkedListQueue:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于链表（单向链表）的单向队列。\n */\n",
+          "docComment": "/**\n * A queue implementation based on SinglyLinkedList.\n *\n * 一个基于链表的单向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2330,7 +2330,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!LinkedListStack:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于链表实现的栈\n */\n",
+          "docComment": "/**\n * A stack implementation based on SinglyLinkedList.\n *\n * 一个基于数组实现的栈。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2658,7 +2658,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ObjectDeque:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于对象的双向队列。\n */\n",
+          "docComment": "/**\n * A deque implementation based on object.\n *\n * 一个基于对象的双向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2866,7 +2866,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ObjectQueue:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于对象的单向队列。\n */\n",
+          "docComment": "/**\n * A queue implementation based on object.\n *\n * 一个基于对象的单向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3349,7 +3349,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ObjectStack:class",
-          "docComment": "/**\n * @class\n *\n * 一个基于对象实现的栈\n */\n",
+          "docComment": "/**\n * A stack implementation based on object.\n *\n * 一个基于对象实现的栈。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

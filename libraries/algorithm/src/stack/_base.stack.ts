@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-30 01:29:40
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-28 00:22:00
+ * @LastEditTime : 2024-07-29 18:22:30
  */
 
 /**
@@ -34,7 +34,7 @@ export abstract class Stack<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {T} value - The element to be added.
+   * @param value - The element to be added.
    *
    */
   public abstract push(val: T): void
