@@ -1224,6 +1224,146 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!defaultCompare:function(1)",
+          "docComment": "/**\n * Compare the relationship between a and b.\n *\n * 比较 a 和 b 的大小关系。\n *\n * @param a - The value to compare a\n *\n * @param b - The value to compare b\n *\n * @returns The result of the comparison\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "defaultCompare: <T>(a: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", b: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/utils/index.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "a",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "b",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "defaultCompare"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!defaultEquals:function(1)",
+          "docComment": "/**\n * Check if a and b are equal.\n *\n * 判断 a 和 b 是否相等。\n *\n * @param a - The value to compare a\n *\n * @param b - The value to compare b\n *\n * @returns The result of the comparison\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "defaultEquals: <T>(a?: "
+            },
+            {
+              "kind": "Content",
+              "text": "T | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ", b?: "
+            },
+            {
+              "kind": "Content",
+              "text": "T | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            }
+          ],
+          "fileUrlPath": "src/utils/index.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "a",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": true
+            },
+            {
+              "parameterName": "b",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "defaultEquals"
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "@hz-9/algorithm!djb2HashCode:var",
           "docComment": "/**\n * djb2 散列函数。比 loselose 散列函数更好\n */\n",
@@ -7316,7 +7456,7 @@
                 {
                   "kind": "Reference",
                   "text": "defaultEquals",
-                  "canonicalReference": "@hz-9/algorithm!~defaultEquals:var"
+                  "canonicalReference": "@hz-9/algorithm!defaultEquals:var"
                 },
                 {
                   "kind": "Content",
@@ -7333,7 +7473,7 @@
                 {
                   "kind": "Reference",
                   "text": "defaultCompare",
-                  "canonicalReference": "@hz-9/algorithm!~defaultCompare:var"
+                  "canonicalReference": "@hz-9/algorithm!defaultCompare:var"
                 },
                 {
                   "kind": "Content",

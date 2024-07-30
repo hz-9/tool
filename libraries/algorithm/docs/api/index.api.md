@@ -76,6 +76,12 @@ export class BetterHashmap<K, V> extends SquareProbingHashmap<K, V> {
 }
 
 // @public
+export const defaultCompare: <T>(a: T, b: T) => number;
+
+// @public
+export const defaultEquals: <T>(a?: T | undefined, b?: T | undefined) => boolean;
+
+// @public
 export const djb2HashCode: ToHashCode;
 
 // Warning: (ae-forgotten-export) The symbol "LinkedList" needs to be exported by the entry point index.d.ts
@@ -399,8 +405,6 @@ export class SinglyLinkedListNode<T> extends LinkedListNode<T> {
 
 // @public
 export class SortedLinkedList<T> extends DoublyLinkedList<T> {
-    // Warning: (ae-forgotten-export) The symbol "defaultEquals" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "defaultCompare" needs to be exported by the entry point index.d.ts
     constructor(equalsFn?: typeof defaultEquals<T>, compareFn?: typeof defaultCompare<T>);
     // (undocumented)
     addAt(index: number, value: T): boolean;

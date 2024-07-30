@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 17:29:14
+ * @LastEditTime : 2024-07-30 19:36:04
  */
 import { defaultCompare, defaultEquals } from '../utils/index'
 import { DoublyLinkedList } from './doubly.linked-list'
@@ -32,7 +32,7 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     if (!this._tailNode) return super.push(value)
 
     const c = this._compareFn(this._tailNode.val, value)
-    if (c > 0) return super.push(value)
+    if (c < 0) return super.push(value)
     return false
   }
 
@@ -40,7 +40,7 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     if (!this._headNode) return super.unshift(value)
 
     const c = this._compareFn(value, this._headNode.val)
-    if (c > 0) return super.unshift(value)
+    if (c < 0) return super.unshift(value)
     return false
   }
 
@@ -53,7 +53,7 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     }
 
     if (index === 0) {
-      if (this._compareFn(value, this._headNode.val) > 0) {
+      if (this._compareFn(value, this._headNode.val) < 0) {
         this.unshift(value)
         return true
       }
@@ -66,11 +66,11 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     const prevNode = this.getNodeAt(index - 1)!
     // if (!prevNode) return false
 
-    if (this._compareFn(prevNode.val, value) > 0) {
+    if (this._compareFn(prevNode.val, value) < 0) {
       const nextNode = this.getNodeAt(index)
 
       if (nextNode) {
-        if (this._compareFn(value, nextNode.val) > 0) {
+        if (this._compareFn(value, nextNode.val) < 0) {
           return super.addAt(index, value)
         }
       } else {

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:51:18
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 20:28:00
+ * @LastEditTime : 2024-07-30 19:52:02
  */
 import { Base } from '../_base'
 import { defaultCompare } from '../utils/index'
@@ -67,8 +67,9 @@ export abstract class Heap<T> implements Base<T> {
   public pop(): T | undefined {
     const first = this._list[0]
 
-    if (this._list.length > 1) {
+    if (this._list.length > 0) {
       this._list[0] = this._list.pop()!
+      this._size -= 1
       this.siftDown(0)
     }
 
@@ -174,6 +175,14 @@ export abstract class Heap<T> implements Base<T> {
   public clear(): void {
     this._list = []
     this._size = 0
+  }
+
+  public toString(): string {
+    let str = ''
+    this._list.forEach((i) => {
+      if (i !== undefined) str += str === '' ? `${i}` : `,${i}`
+    })
+    return str
   }
 
   public toArray(): Array<T> {

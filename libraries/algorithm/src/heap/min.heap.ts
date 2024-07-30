@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:57:24
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 20:25:40
+ * @LastEditTime : 2024-07-30 19:56:13
  */
 import { Heap } from './_base.heap'
 
@@ -21,7 +21,7 @@ export class MinHeap<T> extends Heap<T> {
     let i: number = index
 
     const left = this.getLeftIndex(index)
-    const right = this.getLeftIndex(index)
+    const right = this.getRightIndex(index)
     const size = this._size
 
     if (left < size && this._compareFn(this._list[i], this._list[left]) > 0) {

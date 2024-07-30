@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:20:14
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 17:58:04
+ * @LastEditTime : 2024-07-30 19:34:27
  */
 
 /**
@@ -29,5 +29,5 @@ export const defaultEquals = <T>(a?: T, b?: T): boolean => a === b
  */
 export const defaultCompare = <T>(a: T, b: T): number => {
   if (a === b) return 0
-  return b > a ? 1 : -1
+  return a > b ? 1 : -1
 }

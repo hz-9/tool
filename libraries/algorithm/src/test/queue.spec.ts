@@ -1,8 +1,8 @@
 /**
  * @Author       : Chen Zhen
- * @Date         : 2024-05-10 00:00:00
+ * @Date         : 2024-07-29 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 16:57:19
+ * @LastEditTime : 2024-07-30 17:08:53
  */
 import { ArrayDeque, ArrayQueue, LinkedListDeque, LinkedListQueue, ObjectDeque, ObjectQueue } from '../index'
 
