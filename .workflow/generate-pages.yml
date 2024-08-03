@@ -8,7 +8,7 @@ triggers:
       include:
         - master
   schedule:
-    - cron: '* 5 8 * * ? *'
+    - cron: '* 5 9 * * ? *'
 stages:
   - name: compile
     displayName: 编译
