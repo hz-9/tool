@@ -1,3 +1,9 @@
+/**
+ * @Author       : Chen Zhen
+ * @Date         : 2024-08-04 16:56:50
+ * @LastEditors  : Chen Zhen
+ * @LastEditTime : 2024-08-04 17:47:57
+ */
 import { TreeNode } from './_base.tree'
 import { BinarySearchTree } from './binary-search.tree'
 
