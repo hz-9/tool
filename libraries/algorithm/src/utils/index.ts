@@ -2,10 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:20:14
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-30 19:34:27
+ * @LastEditTime : 2024-08-04 20:49:13
  */
 
 /**
+ * @public
+ *
  * Check if a and b are equal.
  *
  * 判断 a 和 b 是否相等。
@@ -18,6 +20,8 @@
 export const defaultEquals = <T>(a?: T, b?: T): boolean => a === b
 
 /**
+ * @public
+ *
  * Compare the relationship between a and b.
  *
  * 比较 a 和 b 的大小关系。

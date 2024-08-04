@@ -2,14 +2,14 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 15:33:05
+ * @LastEditTime : 2024-08-04 20:43:35
  */
 import { Base } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
 import { defaultCompare, defaultEquals } from '../utils/index'
 
 /**
- * @class
+ * @public
  *
  * Tree node in a tree structure.
  *
@@ -85,7 +85,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {T} value - The value to be added.
+   * @param value - The value to be added.
    */
   public add(value: T): void {
     this._root = this._addNode(this._root, value)
@@ -96,8 +96,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 将一个值添加到节点中。
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {T} value - The value to be added.
+   * @param node - The base node.
+   * @param value - The value to be added.
    */
   protected abstract _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined
 
@@ -110,8 +110,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {T} value - The value to be checked.
-   * @returns {boolean} - Whether the value exists.
+   * @param value - The value to be checked.
+   * @returns - Whether the value exists.
    */
   public has(value: T): boolean {
     return this._hasNode(this._root, value)
@@ -122,8 +122,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 检查节点下是否存在某个值。
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {T} value - The value to be checked.
+   * @param node - The base node.
+   * @param value - The value to be checked.
    */
   protected abstract _hasNode(node: TreeNode<T> | undefined, value: T): boolean
 
@@ -136,7 +136,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {T} value - The value to be removed.
+   * @param value - The value to be removed.
    */
   public remove(value: T): void {
     this._removeNode(this._root, value)
@@ -147,8 +147,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 从节点中移除一个值。
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {T} value - The value to be removed.
+   * @param node - The base node.
+   * @param value - The value to be removed.
    */
   protected abstract _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined
 
@@ -161,7 +161,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @returns {T | undefined} - The minimum value in the tree. Returns undefined if the tree is empty.
+   * @returns - The minimum value in the tree. Returns undefined if the tree is empty.
    */
   public get min(): T | undefined {
     return this._minNode(this._root)?.val
@@ -172,7 +172,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 获取节点中的最小值。
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param node - The base node.
    */
   protected abstract _minNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined
 
@@ -185,7 +185,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @returns {T | undefined} - The maximum value in the tree. Returns undefined if the tree is empty.
+   * @returns - The maximum value in the tree. Returns undefined if the tree is empty.
    */
   public get max(): T | undefined {
     return this._maxNode(this._root)?.val
@@ -196,7 +196,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 获取节点中的最大值。
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param node - The base node.
    */
   protected abstract _maxNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined
 
@@ -209,7 +209,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param callback - The callback function for traversal.
    */
   public inOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._inOrderTraverseNode(this._root, callback)
@@ -224,8 +224,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param node - The base node.
+   * @param callback - The callback function for traversal.
    */
   protected abstract _inOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 
@@ -238,7 +238,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param callback - The callback function for traversal.
    */
   public preOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._preOrderTraverseNode(this._root, callback)
@@ -253,8 +253,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param node - The base node.
+   * @param callback - The callback function for traversal.
    */
   protected abstract _preOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 
@@ -267,7 +267,7 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param callback - The callback function for traversal.
    */
   public postOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._postOrderTraverseNode(this._root, callback)
@@ -282,8 +282,8 @@ export abstract class Tree<T> implements Base<T> {
    *
    * Space complexity: O(1)
    *
-   * @param {TreeNode<T> | undefined} node - The base node.
-   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
+   * @param node - The base node.
+   * @param callback - The callback function for traversal.
    */
   protected abstract _postOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 

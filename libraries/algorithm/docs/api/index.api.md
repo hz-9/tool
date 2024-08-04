@@ -157,16 +157,64 @@ export class DoublyLinkedListNode<T> extends LinkedListNode<T> {
 }
 
 // @public
+export class Edge<V> {
+    constructor(from: V, to: V, weight: number);
+    // (undocumented)
+    readonly from: V;
+    // (undocumented)
+    readonly to: V;
+    // (undocumented)
+    weight: number;
+}
+
+// @public
 export const EMPTY_KEY_VALUE: KeyValue<unknown, unknown>;
 
 // Warning: (ae-forgotten-export) The symbol "Base" needs to be exported by the entry point index.d.ts
 //
+// @public
+export class Graph<T> implements Base<IGraphToArrayItem<T>> {
+    constructor(isDirected?: boolean, equalsFn?: typeof defaultEquals<T>);
+    addEdge(fromVertex: T | Vertice<T>, toVertex: T | Vertice<T>, weight?: number): void;
+    addVertex(vertex: T | Vertice<T>): Vertice<T>;
+    readonly adjList: Map<Vertice<T>, Array<Edge<Vertice<T>>>>;
+    // (undocumented)
+    clear(): void;
+    protected readonly _equalsFn: (a?: T, b?: T) => boolean;
+    getVertex(vertex: T | Vertice<T>): Vertice<T> | undefined;
+    hasEdge(fromVertex: T | Vertice<T>, toVertex: T | Vertice<T>): boolean;
+    hasVertex(vertex: T | Vertice<T>): boolean;
+    readonly isDirected: boolean;
+    // (undocumented)
+    get isEmpty(): boolean;
+    removeEdge(fromVertex: T | Vertice<T>, toVertex: T | Vertice<T>): boolean;
+    removeVertex(vertex: T | Vertice<T>): boolean;
+    // (undocumented)
+    get size(): number;
+    // (undocumented)
+    toArray(): IGraphToArrayItem<T>[];
+    // (undocumented)
+    toString(): string;
+    readonly vertices: Array<Vertice<T>>;
+}
+
 // @public
 export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
     abstract get(key: K): V | undefined;
     abstract has(key: K): boolean;
     abstract remove(key: K): boolean;
     abstract set(key: K, value: V): boolean;
+}
+
+// @public
+export interface IGraphToArrayItem<T> {
+    // (undocumented)
+    edges: Array<{
+        vertice: T;
+        weight: number;
+    }>;
+    // (undocumented)
+    vertice: T;
 }
 
 // @public
@@ -382,6 +430,37 @@ export class ObjectStack<T> implements Stack<T> {
 }
 
 // @public
+export class RedBlackTree<T> extends BinarySearchTree<T> {
+    // (undocumented)
+    add(value: T): void;
+    // (undocumented)
+    protected _addNode(node: RedBlackTreeNode<T> | undefined, value: T): RedBlackTreeNode<T> | undefined;
+    // (undocumented)
+    protected _fixTreeNode(node: RedBlackTreeNode<T>): void;
+    // (undocumented)
+    protected _root?: RedBlackTreeNode<T>;
+    // (undocumented)
+    protected rotationLL(node: RedBlackTreeNode<T>): void;
+    // (undocumented)
+    protected rotationRR(node: RedBlackTreeNode<T>): void;
+}
+
+// @public
+export class RedBlackTreeNode<T> extends TreeNode<T> {
+    constructor(val: T, left?: RedBlackTreeNode<T>, right?: RedBlackTreeNode<T>);
+    // Warning: (ae-forgotten-export) The symbol "Color" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    color: Color | undefined;
+    // (undocumented)
+    left: RedBlackTreeNode<T> | undefined;
+    // (undocumented)
+    parent: RedBlackTreeNode<T> | undefined;
+    // (undocumented)
+    right: RedBlackTreeNode<T> | undefined;
+}
+
+// @public
 export class SetPlus<T> extends Set<T> {
     static difference<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
     static intersection<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
@@ -474,6 +553,15 @@ export type ToKeyStr<K> = (key: K) => string;
 
 // @public
 export const toKeyStrDefault: <K>(key: K) => string;
+
+// @public
+export class Vertice<T> {
+    constructor(vertice: T);
+    // (undocumented)
+    toString(): string;
+    // (undocumented)
+    readonly vertice: T;
+}
 
 // (No @packageDocumentation comment for this package)
 

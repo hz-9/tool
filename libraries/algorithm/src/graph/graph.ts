@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-02 11:29:16
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 20:25:36
+ * @LastEditTime : 2024-08-04 20:41:34
  */
 import { Base } from '../_base'
 import { defaultEquals } from '../utils/index'
@@ -78,7 +78,14 @@ export class Edge<V> {
   }
 }
 
-export interface GraphToArrayItem<T> {
+/**
+ * @public
+ *
+ *  Graph class toArray function returns an array item.
+ *
+ *  Graph 类 toArray 函数返回的数组项。
+ */
+export interface IGraphToArrayItem<T> {
   vertice: T
   edges: Array<{ vertice: T; weight: number }>
 }
@@ -90,7 +97,7 @@ export interface GraphToArrayItem<T> {
  *
  * 图类。(邻接表)
  */
-export class Graph<T> implements Base<GraphToArrayItem<T>> {
+export class Graph<T> implements Base<IGraphToArrayItem<T>> {
   /**
    * Whether the graph is directed.
    *
@@ -314,8 +321,8 @@ export class Graph<T> implements Base<GraphToArrayItem<T>> {
     return str
   }
 
-  public toArray(): GraphToArrayItem<T>[] {
-    const array: GraphToArrayItem<T>[] = []
+  public toArray(): IGraphToArrayItem<T>[] {
+    const array: IGraphToArrayItem<T>[] = []
 
     this.adjList.forEach((value, key) => {
       array.push({

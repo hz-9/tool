@@ -1,10 +1,10 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-04 17:42:51
+ * @LastEditTime : 2024-08-04 20:41:51
  * @LastEditors  : Chen Zhen
  */
-import { AdelsonVelskiiLandiTree, BinarySearchTree, RedBlackTree, defaultEquals } from '../index'
+import { AdelsonVelskiiLandiTree, BinarySearchTree, RedBlackTree } from '../index'
 
 type UnionTree = BinarySearchTree<number>
 
@@ -32,7 +32,7 @@ const getTreeCommonInfo = (tree: UnionTree): ITreeCommonInfo => ({
   max: tree.max,
 })
 
-const isRedBlackTree = (tree: UnionTree): boolean => tree instanceof RedBlackTree
+// const isRedBlackTree = (tree: UnionTree): boolean => tree instanceof RedBlackTree
 
 const isAdelsonVelskiiLandiTree = (tree: UnionTree): boolean => tree instanceof AdelsonVelskiiLandiTree
 

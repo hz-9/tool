@@ -1,19 +1,17 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-04 20:31:22
+ * @LastEditTime : 2024-08-04 20:42:06
  * @LastEditors  : Chen Zhen
  */
-import { toArray } from 'lodash'
-
-import { Graph, GraphToArrayItem, Vertice } from '../index'
+import { Graph, IGraphToArrayItem, Vertice } from '../index'
 
 interface IGraphInfo {
   size: number
   isEmpty: boolean
   vertices: string[]
   toString: string
-  toArray: GraphToArrayItem<string>[]
+  toArray: IGraphToArrayItem<string>[]
 }
 
 const getGraphInfo = (graph: Graph<string>): IGraphInfo => ({

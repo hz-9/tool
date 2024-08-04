@@ -2,11 +2,13 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 17:08:59
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 11:25:28
+ * @LastEditTime : 2024-08-04 20:48:34
  */
 import type { ToHashCode } from './_base.hashmap'
 
 /**
+ * @public
+ *
  * loselose hash function.
  *
  * loselose 散列函数。
@@ -23,6 +25,8 @@ export const loseloseHashCode: ToHashCode = (tableKey: string): number => {
 }
 
 /**
+ * @public
+ *
  * djb2 hash function. Better than loselose hash function.
  *
  * djb2 散列函数。比 loselose 散列函数更好。

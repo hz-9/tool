@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 12:39:45
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 11:29:47
+ * @LastEditTime : 2024-08-04 20:48:13
  */
 import { Base } from '../_base'
 
@@ -44,6 +44,8 @@ export class KeyValue<K, V> {
 }
 
 /**
+ * @public
+ *
  * An empty KeyValue.
  *
  * 一个空的 KeyValue。
@@ -55,6 +57,8 @@ export const EMPTY_KEY_VALUE: KeyValue<unknown, unknown> = new KeyValue(
 )
 
 /**
+ * @public
+ *
  * Converts a key to a string.
  *
  * 将键转换为字符串。
@@ -62,6 +66,8 @@ export const EMPTY_KEY_VALUE: KeyValue<unknown, unknown> = new KeyValue(
 export type ToKeyStr<K> = (key: K) => string
 
 /**
+ * @public
+ *
  * Converts a key to a string.
  *
  * 将键转换为字符串。
@@ -69,6 +75,8 @@ export type ToKeyStr<K> = (key: K) => string
 export const toKeyStrDefault = <K>(key: K): string => `${key}`
 
 /**
+ * @public
+ *
  * Converts a string key to a hash code.
  *
  * 将字符串键转换为哈希码。
@@ -76,6 +84,8 @@ export const toKeyStrDefault = <K>(key: K): string => `${key}`
 export type ToHashCode = (keyStr: string) => number
 
 /**
+ * @public
+ *
  * An interface representing a key-value object.
  *
  * 表示键值对象的接口。
@@ -86,6 +96,8 @@ export interface IKeyValueObj<K, V> {
 }
 
 /**
+ * @public
+ *
  * The default function to convert a key-value pair to an object.
  *
  * 将键值对转换为对象的默认函数。
@@ -96,6 +108,8 @@ export const kVToObj = <K, V>(keyValue: KeyValue<K, V>): IKeyValueObj<K, V> => (
 })
 
 /**
+ * @public
+ *
  * The equality function for KeyValue objects.
  *
  * KeyValue 对象的相等性函数。

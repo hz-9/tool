@@ -2,12 +2,12 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-04 16:56:50
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 17:47:57
+ * @LastEditTime : 2024-08-04 20:47:15
  */
 import { TreeNode } from './_base.tree'
 import { BinarySearchTree } from './binary-search.tree'
 
-export enum Color {
+enum Color {
   RED = 'red',
   BLACK = 'black',
 }

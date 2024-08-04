@@ -2,38 +2,52 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:20:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 16:38:56
+ * @LastEditTime : 2024-08-04 20:46:38
  */
 import { TreeNode } from './_base.tree'
 import { BinarySearchTree } from './binary-search.tree'
 
 const enum BalanceFactor {
   /**
+   * Right imbalance.
+   * The depth on the right side is 2 more than the depth on the left side.
+   *
    * 右侧失衡。
-   * 右侧深度比左侧深度多 2
+   * 右侧深度比左侧深度多 2。
    */
   UNBALANCED_RIGHT,
 
   /**
+   * Right imbalance.
+   * The depth on the right side is 1 more than the depth on the left side.
+   *
    * 右侧失衡。
-   * 右侧深度比左侧深度多 1
+   * 右侧深度比左侧深度多 1。
    */
   SLIGHTLY_UNBALANCED_RIGHT,
 
   /**
+   * Balanced.
+   *
    * 相等。
    */
   BALANCED,
 
   /**
+   * Left imbalance.
+   * The depth on the left side is 1 more than the depth on the right side.
+   *
    * 左侧失衡。
-   * 左侧深度比右侧深度多 1
+   * 左侧深度比右侧深度多 1。
    */
   SLIGHTLY_UNBALANCED_LEFT,
 
   /**
+   * Left imbalance.
+   * The depth on the left side is 2 more than the depth on the right side.
+   *
    * 左侧失衡。
-   * 左侧深度比右侧深度多 2
+   * 左侧深度比右侧深度多 2。
    */
   UNBALANCED_LEFT,
 }
@@ -43,7 +57,9 @@ const enum BalanceFactor {
 /**
  * @public
  *
- * 自平衡树
+ * Self-balancing tree.
+ *
+ * 自平衡树。
  */
 export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   protected _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> {
@@ -114,11 +130,14 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
+   * Get the height of a node.
+   *
    * 获取节点高度。
    *
-   * @param {TreeNode<T> | undefined} node - 节点
+   * @param node - The node.
    *
-   * @returns 节点高度。若节点缺失，则为 -1
+   * @returns The height of the node. If the node is missing, it returns -1.
+   *
    */
   protected _getNodeHeight(node: TreeNode<T> | undefined): number {
     if (!node) return -1
@@ -126,11 +145,13 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
-   * 获取节点高度差距
+   * Get the height difference of a node.
    *
-   * @param {TreeNode<T> | undefined} node - 节点
+   * 获取节点高度差距。
    *
-   * @returns 高度差。通常为 -2, -1, 0, 1, 2 五个整数
+   * @param node - The node.
+   *
+   * @returns The height difference. Usually one of the five integers: -2, -1, 0, 1, 2.
    */
   protected _getBalanceFactor(node: TreeNode<T>): BalanceFactor {
     const diff = this._getNodeHeight(node.left) - this._getNodeHeight(node.right)
@@ -150,6 +171,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
+   * Left rotation. (Left - Left)
+   *
    * 向右的单旋转。（左 - 左）
    *
    * ```
@@ -160,8 +183,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
    *    1
    * ```
    *
-   * @param node
-   * @returns
+   * @param node - The node.
+   * @returns The rotated node.
    */
   protected _rotationLL(node: TreeNode<T>): TreeNode<T> {
     const tmp: TreeNode<T> = node.left!
@@ -171,6 +194,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
+   * Right rotation. (Right - Right)
+   *
    * 向左的单旋转。（右 - 右）
    *
    * ```
@@ -181,8 +206,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
    *        3
    * ```
    *
-   * @param node
-   * @returns
+   * @param node - The node.
+   * @returns The rotated node.
    */
   protected _rotationRR(node: TreeNode<T>): TreeNode<T> {
     const tmp: TreeNode<T> = node.right!
@@ -192,6 +217,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
+   * Left-Right rotation. (Left - Right)
+   *
    * 向左的单旋转。（左 - 右）
    *
    * ```
@@ -204,8 +231,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
    *    c2  c3                   c1 c2
    * ```
    *
-   * @param node
-   * @returns
+   * @param node - The node.
+   * @returns The rotated node.
    */
   protected _rotationLR(node: TreeNode<T>): TreeNode<T> {
     node.left = this._rotationRR(node.left!)
@@ -213,6 +240,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
   }
 
   /**
+   * Right-Left rotation. (Right - Left)
+   *
    * 向右的单旋转。（右 - 左）
    *
    * ```
@@ -226,8 +255,8 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
    *      c2 c3                         c3 c4
    * ```
    *
-   * @param node
-   * @returns
+   * @param node - The node.
+   * @returns The rotated node.
    */
   protected _rotationRL(node: TreeNode<T>): TreeNode<T> {
     node.right = this._rotationLL(node.right!)
