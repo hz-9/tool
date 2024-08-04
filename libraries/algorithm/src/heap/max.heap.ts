@@ -2,10 +2,18 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:57:24
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-30 20:18:28
+ * @LastEditTime : 2024-08-04 11:27:47
  */
 import { Heap } from './_base.heap'
 
+/**
+ * @public
+ *
+ *  Max Heap Class
+ *
+ *  最大堆
+ *
+ */
 export class MaxHeap<T> extends Heap<T> {
   public siftUp(index: number): void {
     const parent = this.getParentIndex(index)

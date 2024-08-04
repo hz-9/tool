@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 17:07:50
- * @LastEditTime : 2024-07-30 20:19:03
+ * @LastEditTime : 2024-08-04 12:22:22
  * @LastEditors  : Chen Zhen
  */
 import { MaxHeap, MinHeap } from '../index'
@@ -63,6 +63,16 @@ describe('Minheap', () => {
       toArray: [],
     })
 
+    heap.pop()
+
+    expect(getHeapInfo(heap)).toEqual({
+      size: 0,
+      isEmpty: true,
+      peek: undefined,
+      toString: '',
+      toArray: [],
+    })
+
     heap.add(1)
     heap.add(2)
     heap.add(3)
@@ -89,6 +99,16 @@ describe('Minheap', () => {
       peek: 2,
       toString: '2,4,3,8,5,6,7,9',
       toArray: [2, 4, 3, 8, 5, 6, 7, 9],
+    })
+
+    expect(heap.pop()).toBe(2)
+
+    expect(getHeapInfo(heap)).toEqual({
+      size: 7,
+      isEmpty: false,
+      peek: 3,
+      toString: '3,4,6,8,5,9,7',
+      toArray: [3, 4, 6, 8, 5, 9, 7],
     })
   })
 })
@@ -121,8 +141,18 @@ describe('Maxheap', () => {
     })
   })
 
-  it('Minheap - pop', async () => {
+  it('Maxheap - pop', async () => {
     heap.clear()
+
+    expect(getHeapInfo(heap)).toEqual({
+      size: 0,
+      isEmpty: true,
+      peek: undefined,
+      toString: '',
+      toArray: [],
+    })
+
+    heap.pop()
 
     expect(getHeapInfo(heap)).toEqual({
       size: 0,
@@ -158,6 +188,16 @@ describe('Maxheap', () => {
       peek: 8,
       toString: '8,6,7,2,5,4,3,1',
       toArray: [8, 6, 7, 2, 5, 4, 3, 1],
+    })
+
+    expect(heap.pop()).toBe(8)
+
+    expect(getHeapInfo(heap)).toEqual({
+      size: 7,
+      isEmpty: false,
+      peek: 7,
+      toString: '7,6,4,2,5,1,3',
+      toArray: [7, 6, 4, 2, 5, 1, 3],
     })
   })
 })

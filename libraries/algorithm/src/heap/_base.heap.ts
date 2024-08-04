@@ -1,17 +1,19 @@
-/**
- * @Author       : Chen Zhen
- * @Date         : 2024-04-01 00:51:18
- * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-30 19:52:02
- */
 import { Base } from '../_base'
 import { defaultCompare } from '../utils/index'
 
 /**
+ * @Author       : Chen Zhen
+ * @Date         : 2024-04-01 00:51:18
+ * @LastEditors  : Chen Zhen
+ * @LastEditTime : 2024-08-04 11:29:22
+ */
+
+/**
  * @public
  *
- *  最大堆、最小堆的基类。
+ * Base class for MaxHeap and MinHeap.
  *
+ * 最大堆、最小堆的基类。
  */
 export abstract class Heap<T> implements Base<T> {
   protected _size: number
@@ -37,14 +39,15 @@ export abstract class Heap<T> implements Base<T> {
   }
 
   /**
+   * Insert a value into the heap. Returns true if successful, false otherwise.
    *
-   * 在堆中插入一个值。如果插入成功，则返回 true，否则返回 false
+   * 在堆中插入一个值。如果插入成功，则返回 true，否则返回 false。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param value
+   * @param value - The value to be inserted.
    */
   public add(value: T): boolean {
     this._list.push(value)
@@ -55,14 +58,15 @@ export abstract class Heap<T> implements Base<T> {
   }
 
   /**
+   * Remove and return the maximum or minimum value of the heap.
    *
    * 移除这个堆的最大值或最小值，并返回。
    *
-   * 时间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param value
+   * @returns The maximum or minimum value of the heap.
    */
   public pop(): T | undefined {
     const first = this._list[0]
@@ -77,53 +81,57 @@ export abstract class Heap<T> implements Base<T> {
   }
 
   /**
+   * Return the maximum or minimum value of the heap.
    *
    * 返回这个堆的最大值或最小值。
    *
-   * 时间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param value
+   * @returns The maximum or minimum value of the heap.
    */
   public peek(): T | undefined {
     return this._list[0]
   }
 
   /**
+   * Perform the sift-up operation.
    *
    * 上移操作。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {number} value - 待移动的元素位置
+   * @param index - The index of the element to be moved.
    */
   protected abstract siftUp(index: number): void
 
   /**
+   * Perform the sift-down operation.
    *
    * 下移操作。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {number} value - 待移动的元素位置
+   * @param index - The index of the element to be moved.
    */
   protected abstract siftDown(index: number): void
 
   /**
+   * Swap the values at two positions.
    *
-   * 交换两个位置数值。
+   * 交换两个位置的数值。
    *
-   * 时间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param a
-   * @param b
+   * @param a - The index of the first position.
+   * @param b - The index of the second position.
    */
   protected swap(a: number, b: number): void {
     const x = this._list[a]
@@ -133,45 +141,63 @@ export abstract class Heap<T> implements Base<T> {
   }
 
   /**
-   * 获取节点左支的位置
+   * Get the index of the left child node.
    *
-   * 时间复杂度: O(1)
+   * 获取节点左支的位置。
    *
-   * 空间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * @param index - 节点位置
+   * Space complexity: O(1)
+   *
+   * @param index - The index of the node.
+   * @returns The index of the left child node.
    */
   protected getLeftIndex(index: number): number {
     return index * 2 + 1
   }
 
   /**
-   * 获取节点右支的位置
+   * Get the index of the right child node.
    *
-   * 时间复杂度: O(1)
+   * 获取节点右支的位置。
    *
-   * 空间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * @param index - 节点位置
+   * Space complexity: O(1)
+   *
+   * @param index - The index of the node.
+   * @returns The index of the right child node.
    */
   protected getRightIndex(index: number): number {
     return index * 2 + 2
   }
 
   /**
-   * 获取节点父节点的位置
+   * Get the index of the parent node.
    *
-   * 时间复杂度: O(1)
+   * 获取节点父节点的位置。
    *
-   * 空间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * @param index - 节点位置
+   * Space complexity: O(1)
+   *
+   * @param index - The index of the node.
+   * @returns The index of the parent node.
    */
   protected getParentIndex(index: number): number | undefined {
     if (index === 0) return undefined
     return Math.floor((index - 1) / 2)
   }
 
+  /**
+   * Clear the heap.
+   *
+   * 清空堆。
+   *
+   * ime complexity: O(1)
+   *
+   * Space complexity: O(1)
+   */
   public clear(): void {
     this._list = []
     this._size = 0

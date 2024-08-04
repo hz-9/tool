@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 01:40:30
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-30 19:36:04
+ * @LastEditTime : 2024-08-03 20:34:31
  */
 import { defaultCompare, defaultEquals } from '../utils/index'
 import { DoublyLinkedList } from './doubly.linked-list'
@@ -13,11 +13,10 @@ import { DoublyLinkedList } from './doubly.linked-list'
  *
  *  Sorted Linked List Class
  *
+ *  有序链表
+ *
  */
 export class SortedLinkedList<T> extends DoublyLinkedList<T> {
-  /**
-   * 相等判断函数
-   */
   protected readonly _compareFn: (a: T, b: T) => number
 
   public constructor(

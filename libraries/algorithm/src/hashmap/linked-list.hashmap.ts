@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 12:58:01
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 23:05:04
+ * @LastEditTime : 2024-08-04 11:26:15
  */
 import { SinglyLinkedList } from '../linked-list/singly.linked-list'
 import {
@@ -18,11 +18,12 @@ import {
 import { loseloseHashCode } from './hash-code'
 
 /**
- *
  * @public
  *
- * 一个链式寻址的哈希表。
+ * A hash map with linked list chaining.
+ * When encountering hash collisions, it continues to search in the linked list.
  *
+ * 一个链式寻址的哈希表。
  * 若遇到哈希值冲突时，将会根据在链表中继续寻找。
  *
  */

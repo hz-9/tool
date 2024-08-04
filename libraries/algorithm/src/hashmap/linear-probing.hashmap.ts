@@ -2,17 +2,17 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 12:58:01
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 22:34:47
+ * @LastEditTime : 2024-08-04 11:25:54
  */
 import { EMPTY_KEY_VALUE, KeyValue, kVEqualFn } from './_base.hashmap'
 import { SimpleHashmap } from './simple.hashmap'
 
 /**
- *
  * @public
  *
- * 一个线性探查的哈希表。
+ * A hashmap with linear probing.
  *
+ * 一个使用线性探查的哈希表。
  */
 export class LinearProbingHashmap<K, V> extends SimpleHashmap<K, V> {
   public set(key: K, value: V): boolean {

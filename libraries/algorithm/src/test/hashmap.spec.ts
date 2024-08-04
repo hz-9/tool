@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-05-10 00:00:00
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 23:10:41
+ * @LastEditTime : 2024-08-03 20:31:01
  */
 import {
   BetterHashmap,
@@ -181,7 +181,7 @@ describe.each([
  */
 const toCustomHashCode = (tableKey: string): number => Math.floor(+tableKey / 10)
 
-const supportClash = (hashmap: UnionHashmap) =>
+const supportClash = (hashmap: UnionHashmap): boolean =>
   hashmap instanceof BetterHashmap ||
   hashmap instanceof LinearProbingHashmap ||
   hashmap instanceof LinkedListHashmap ||

@@ -2,17 +2,17 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 12:58:01
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 22:35:13
+ * @LastEditTime : 2024-08-04 11:27:08
  */
 import { EMPTY_KEY_VALUE, KeyValue, kVEqualFn } from './_base.hashmap'
 import { SimpleHashmap } from './simple.hashmap'
 
 /**
- *
  * @public
  *
- * 一个平方探查的哈希表。
+ * A hashmap with square probing.
  *
+ * 一个使用平方探查法的哈希表。
  */
 export class SquareProbingHashmap<K, V> extends SimpleHashmap<K, V> {
   public set(key: K, value: V): boolean {

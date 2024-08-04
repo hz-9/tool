@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 12:58:01
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 22:28:33
+ * @LastEditTime : 2024-08-04 11:26:49
  */
 import {
   EMPTY_KEY_VALUE,
@@ -17,13 +17,13 @@ import {
 import { loseloseHashCode } from './hash-code'
 
 /**
- *
  * @public
  *
+ * A simple hashmap.
+ * It is prone to key collision issues, where conflicting keys cannot be added to the hashmap.
+ *
  * 一个简单的哈希表。
- *
- * 较容易遇到键冲突问题，冲突的键无法添加到哈希表中。
- *
+ * 它容易遇到键冲突问题，冲突的键无法添加到哈希表中。
  */
 export class SimpleHashmap<K, V> implements Hashmap<K, V> {
   protected _items: Record<number, KeyValue<K, V>>

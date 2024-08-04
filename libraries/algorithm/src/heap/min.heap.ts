@@ -2,10 +2,18 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:57:24
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-30 19:56:13
+ * @LastEditTime : 2024-08-04 11:27:52
  */
 import { Heap } from './_base.heap'
 
+/**
+ * @public
+ *
+ *  Min Heap Class
+ *
+ *  最小堆
+ *
+ */
 export class MinHeap<T> extends Heap<T> {
   public siftUp(index: number): void {
     const parent = this.getParentIndex(index)
