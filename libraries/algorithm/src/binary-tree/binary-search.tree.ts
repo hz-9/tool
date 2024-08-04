@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:15
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 11:57:50
+ * @LastEditTime : 2024-08-04 12:25:57
  */
 import type { OrderTraverseCallback } from '../types/index'
 import { Tree, TreeNode } from './_base.tree'
@@ -46,11 +46,13 @@ export class BinarySearchTree<T> extends Tree<T> {
     const compareResult = this._compareFn(value, node.val)
 
     if (compareResult < 0) {
+      // eslint-disable-next-line no-param-reassign
       node.left = this._removeNode(node.left, value)
       return node
     }
 
     if (compareResult > 0) {
+      // eslint-disable-next-line no-param-reassign
       node.right = this._removeNode(node.right, value)
       return node
     }
@@ -70,7 +72,9 @@ export class BinarySearchTree<T> extends Tree<T> {
     }
 
     const rightMinNode = this._minNode(node.right)!
+    // eslint-disable-next-line no-param-reassign
     node.val = rightMinNode.val
+    // eslint-disable-next-line no-param-reassign
     node.right = this._removeNode(node.right, rightMinNode.val)
 
     return node
