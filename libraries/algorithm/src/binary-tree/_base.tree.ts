@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 11:36:54
+ * @LastEditTime : 2024-08-04 15:33:05
  */
 import { Base } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
@@ -11,8 +11,9 @@ import { defaultCompare, defaultEquals } from '../utils/index'
 /**
  * @class
  *
- *  树结构节点
+ * Tree node in a tree structure.
  *
+ * 树结构中的节点。
  */
 export class TreeNode<T> {
   public val: T
@@ -30,18 +31,29 @@ export class TreeNode<T> {
   }
 }
 
+/**
+ * @public
+ *
+ * Abstract class for trees.
+ *
+ * 树的抽象类。
+ */
 export abstract class Tree<T> implements Base<T> {
   protected _size: number
 
   protected _root?: TreeNode<T>
 
   /**
-   * 相等判断函数
+   * Function to determine if two values are equal.
+   *
+   * 判断两个值是否相等的函数。
    */
   protected readonly _equalsFn: (a?: T, b?: T) => boolean
 
   /**
-   * 相等判断函数
+   * Function to compare two values.
+   *
+   * 比较两个值的函数。
    */
   protected readonly _compareFn: (a: T, b: T) => number
 
@@ -65,214 +77,224 @@ export abstract class Tree<T> implements Base<T> {
   }
 
   /**
+   * Add an element to the tree.
    *
-   * 添加一个元素。
+   * 添加一个元素到树中。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {T} value - 待添加的元素
-   *
+   * @param {T} value - The value to be added.
    */
   public add(value: T): void {
     this._root = this._addNode(this._root, value)
   }
 
   /**
+   * Add a value to a node.
    *
-   * 加入某元素至某节点中
+   * 将一个值添加到节点中。
    *
-   * @param {TreeNode<T> | undefined} node - 基准接节点
-   * @param {T} value - 待添加的元素
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {T} value - The value to be added.
    */
   protected abstract _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined
 
   /**
+   * Check if a value exists in the tree.
    *
-   * 是否存在某元素。
+   * 检查树中是否存在某个值。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {T} value - 咨询的元素
-   *
-   * @returns 是否存在。
+   * @param {T} value - The value to be checked.
+   * @returns {boolean} - Whether the value exists.
    */
   public has(value: T): boolean {
     return this._hasNode(this._root, value)
   }
 
   /**
+   * Check if a value exists in a node.
    *
-   * 某节点下，是否有某元素
+   * 检查节点下是否存在某个值。
    *
-   * @param {TreeNode<T> | undefined} node - 基准接节点
-   * @param {T} value - 待添加的元素
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {T} value - The value to be checked.
    */
   protected abstract _hasNode(node: TreeNode<T> | undefined, value: T): boolean
 
   /**
+   * Remove an element from the tree.
    *
-   * 移除一个元素。
+   * 从树中移除一个元素。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {T} value - 待移除的元素
-   *
+   * @param {T} value - The value to be removed.
    */
   public remove(value: T): void {
     this._removeNode(this._root, value)
   }
 
   /**
+   * Remove a value from a node.
    *
-   * 在某节点下删除某元素
+   * 从节点中移除一个值。
    *
-   * @param {TreeNode<T> | undefined} node - 基准接节点
-   * @param {T} value - 待删除的元素
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {T} value - The value to be removed.
    */
   protected abstract _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined
 
   /**
+   * Get the minimum value in the tree.
    *
-   * 查询树结构的最小值。
+   * 获取树中的最小值。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @returns 树结构最小值。若树结构为空，则返回 undefined.
+   * @returns {T | undefined} - The minimum value in the tree. Returns undefined if the tree is empty.
    */
   public get min(): T | undefined {
     return this._minNode(this._root)?.val
   }
 
   /**
+   * Get the minimum value in a node.
    *
-   * 在某节点下获取最小元素
+   * 获取节点中的最小值。
    *
-   * @param {TreeNode<T> | undefined} node - 基准接节点
+   * @param {TreeNode<T> | undefined} node - The base node.
    */
   protected abstract _minNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined
 
   /**
+   * Get the maximum value in the tree.
    *
-   * 查询树结构的最大值。
+   * 获取树中的最大值。
    *
-   * 时间复杂度: O(log n)
+   * Time complexity: O(log n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @returns 树结构最大值。若树结构为空，则返回 undefined.
+   * @returns {T | undefined} - The maximum value in the tree. Returns undefined if the tree is empty.
    */
   public get max(): T | undefined {
     return this._maxNode(this._root)?.val
   }
 
   /**
+   * Get the maximum value in a node.
    *
-   * 在某节点下获取最大元素
+   * 获取节点中的最大值。
    *
-   * @param {TreeNode<T> | undefined} node - 基准接节点
+   * @param {TreeNode<T> | undefined} node - The base node.
    */
   protected abstract _maxNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined
 
   /**
+   * Traverse all nodes in the tree using in-order traversal.
    *
-   * 通过中序遍历方式遍历所有节点。
+   * 使用中序遍历方式遍历树中的所有节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   public inOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._inOrderTraverseNode(this._root, callback)
   }
 
   /**
+   * Traverse a node using in-order traversal.
    *
-   * 中序遍历该节点
+   * 使用中序遍历方式遍历节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   protected abstract _inOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 
   /**
+   * Traverse all nodes in the tree using pre-order traversal.
    *
-   * 通过先序遍历方式遍历所有节点。
+   * 使用先序遍历方式遍历树中的所有节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   public preOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._preOrderTraverseNode(this._root, callback)
   }
 
   /**
+   * Traverse a node using pre-order traversal.
    *
-   * 先序遍历该节点
+   * 使用先序遍历方式遍历节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   protected abstract _preOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 
   /**
+   * Traverse all nodes in the tree using post-order traversal.
    *
-   * 通过后序遍历方式遍历所有节点。
+   * 使用后序遍历方式遍历树中的所有节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   public postOrderTraverse(callback: OrderTraverseCallback<T>): void {
     this._postOrderTraverseNode(this._root, callback)
   }
 
   /**
+   * Traverse a node using post-order traversal.
    *
-   * 先序遍历该节点
+   * 使用后序遍历方式遍历节点。
    *
-   * 时间复杂度: O(n)
+   * Time complexity: O(n)
    *
-   * 空间复杂度: O(1)
+   * Space complexity: O(1)
    *
-   * @param {OrderTraverseCallback<T>} callback - 遍历的回调函数
-   *
+   * @param {TreeNode<T> | undefined} node - The base node.
+   * @param {OrderTraverseCallback<T>} callback - The callback function for traversal.
    */
   protected abstract _postOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void
 
   /**
+   * Clear the tree.
    *
    * 清除树结构。
    *
-   * 时间复杂度: O(1)
+   * Time complexity: O(1)
    *
-   * 空间复杂度: O(1)
-   *
+   * Space complexity: O(1)
    */
   public clear(): void {
     this._root = undefined

@@ -152,6 +152,542 @@
       "members": [
         {
           "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree:class",
+          "docComment": "/**\n * 自平衡树\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class AdelsonVelskiiLandiTree<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BinarySearchTree",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/binary-tree/adelson-velskii-landi.tree.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "AdelsonVelskiiLandiTree",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_addNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _addNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_addNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_getBalanceFactor:member(1)",
+              "docComment": "/**\n * 获取节点高度差距\n *\n * @param node - 节点\n *\n * @returns 高度差。通常为 -2, -1, 0, 1, 2 五个整数\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _getBalanceFactor(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "BalanceFactor",
+                  "canonicalReference": "@hz-9/algorithm!~BalanceFactor:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_getBalanceFactor"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_getNodeHeight:member(1)",
+              "docComment": "/**\n * 获取节点高度。\n *\n * @param node - 节点\n *\n * @returns 节点高度。若节点缺失，则为 -1\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _getNodeHeight(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_getNodeHeight"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_removeNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _removeNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_removeNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_rotationLL:member(1)",
+              "docComment": "/**\n * 向右的单旋转。（左 - 左）\n * ```\n *         3               2\n *        /               / \\\n *       2        =>     1   3\n *     /\n *    1\n * ```\n *\n * @param node - \n *\n * @returns \n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _rotationLL(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_rotationLL"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_rotationLR:member(1)",
+              "docComment": "/**\n * 向左的单旋转。（左 - 右）\n * ```\n *        3                          3                          2\n *       / \\                        / \\                        / \\\n *     1    c4   rotateLeft(1)     2   c4  rotateRight(3)    1     3\n *    / \\            =>           / \\           =>          / \\   / \\\n *  c1   2                       1  c3                    c1  c2 c3 c4\n *      / \\                     / \\\n *    c2  c3                   c1 c2\n * ```\n *\n * @param node - \n *\n * @returns \n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _rotationLR(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_rotationLR"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_rotationRL:member(1)",
+              "docComment": "/**\n * 向右的单旋转。（右 - 左）\n * ```\n *\n *        1                         1                          2\n *       / \\                       / \\                        / \\\n *     c1   3    rotateRight(3)   c1  2     rotateLeft(2)   1    3\n *         / \\       =>              / \\         =>        / \\  / \\\n *        2   c4                    c2  3                 c1 c2 c3 c4\n *       / \\                           / \\\n *      c2 c3                         c3 c4\n * ```\n *\n * @param node - \n *\n * @returns \n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _rotationRL(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_rotationRL"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!AdelsonVelskiiLandiTree#_rotationRR:member(1)",
+              "docComment": "/**\n * 向左的单旋转。（右 - 右）\n * ```\n *    1               2\n *     \\             / \\\n *      2     =>    1   3\n *       \\\n *        3\n * ```\n *\n * @param node - \n *\n * @returns \n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _rotationRR(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_rotationRR"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ArrayDeque:class",
           "docComment": "/**\n * A deque implementation based on array.\n *\n * 一个基于数组的双向队列。\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -1224,6 +1760,610 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!BinarySearchTree:class",
+          "docComment": "/**\n * Binary Search Tree\n *\n * 二叉搜索树\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class BinarySearchTree<T> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tree",
+              "canonicalReference": "@hz-9/algorithm!~Tree:class"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/binary-tree/binary-search.tree.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "BinarySearchTree",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_addNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _addNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_addNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_hasNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _hasNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_hasNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_inOrderTraverseNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _inOrderTraverseNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", callback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "OrderTraverseCallback",
+                  "canonicalReference": "@hz-9/algorithm!~OrderTraverseCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "callback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_inOrderTraverseNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_maxNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _maxNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_maxNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_minNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _minNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_minNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_postOrderTraverseNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _postOrderTraverseNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", callback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "OrderTraverseCallback",
+                  "canonicalReference": "@hz-9/algorithm!~OrderTraverseCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "callback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_postOrderTraverseNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_preOrderTraverseNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _preOrderTraverseNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", callback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "OrderTraverseCallback",
+                  "canonicalReference": "@hz-9/algorithm!~OrderTraverseCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "callback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_preOrderTraverseNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_removeNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _removeNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_removeNode"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!defaultCompare:function(1)",
           "docComment": "/**\n * Compare the relationship between a and b.\n *\n * 比较 a 和 b 的大小关系。\n *\n * @param a - The value to compare a\n *\n * @param b - The value to compare b\n *\n * @returns The result of the comparison\n */\n",
@@ -1366,7 +2506,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@hz-9/algorithm!djb2HashCode:var",
-          "docComment": "/**\n * djb2 散列函数。比 loselose 散列函数更好\n */\n",
+          "docComment": "/**\n * djb2 hash function. Better than loselose hash function.\n *\n * djb2 散列函数。比 loselose 散列函数更好。\n *\n * @param tableKey - The key to be hashed.\n *\n * @returns The hash code.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1927,7 +3067,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@hz-9/algorithm!EMPTY_KEY_VALUE:var",
-          "docComment": "/**\n * 一个空的 KeyValue\n */\n",
+          "docComment": "/**\n * An empty KeyValue.\n *\n * 一个空的 KeyValue。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1955,7 +3095,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!Hashmap:class",
-          "docComment": "/**\n * 一个 Hash 表基类。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A base class for hash maps.\n *\n * 一个哈希表的基类。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2017,7 +3157,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!Hashmap#get:member(1)",
-              "docComment": "/**\n * 根据键从哈希表中获取值。\n *\n * 时间复杂度: O(1)\n *\n * 空间复杂度: O(1)\n *\n * @param key - 键对象\n *\n * @returns 值对象。若无该对象，则返回 undefined。\n */\n",
+              "docComment": "/**\n * Retrieves the value from the hash map based on the key.\n *\n * 根据键从哈希表中获取值。\n *\n * Time complexity: O(1)\n *\n * Space complexity: O(1)\n *\n * @param key - The key object.\n *\n * @returns The value object. Returns undefined if the key does not exist.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2065,7 +3205,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!Hashmap#has:member(1)",
-              "docComment": "/**\n * 判断在哈希表中是否有该键的值。\n *\n * 时间复杂度: O(1)\n *\n * 空间复杂度: O(1)\n *\n * @param key - 键对象\n *\n * @returns 是否有该键的值。\n */\n",
+              "docComment": "/**\n * Checks if the hash map contains a value for the key.\n *\n * 判断在哈希表中是否有该键的值。\n *\n * Time complexity: O(1)\n *\n * Space complexity: O(1)\n *\n * @param key - The key object.\n *\n * @returns Whether the key has a value in the hash map.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2113,7 +3253,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!Hashmap#remove:member(1)",
-              "docComment": "/**\n * 在哈希表中删除该键。\n *\n * 时间复杂度: O(1)\n *\n * 空间复杂度: O(1)\n *\n * @param key - 键对象\n *\n * @returns 是否删除成功。\n */\n",
+              "docComment": "/**\n * Removes the key from the hash map.\n *\n * 在哈希表中删除该键。\n *\n * Time complexity: O(1)\n *\n * Space complexity: O(1)\n *\n * @param key - The key object.\n *\n * @returns Whether the removal is successful.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2161,7 +3301,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!Hashmap#set:member(1)",
-              "docComment": "/**\n * 添加键值对至哈希表。\n *\n * 时间复杂度: O(1)\n *\n * 空间复杂度: O(1)\n *\n * @param key - 键对象\n *\n * @param value - 值信息\n *\n * @returns 是否添加成功。false 时，可能为该键已存在数据。\n */\n",
+              "docComment": "/**\n * Adds a key-value pair to the hash map.\n *\n * 将键值对添加到哈希表中。\n *\n * Time complexity: O(1)\n *\n * Space complexity: O(1)\n *\n * @param key - The key object.\n *\n * @param value - The value information.\n *\n * @returns Whether the addition is successful. Returns false if the key already exists.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2232,7 +3372,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "@hz-9/algorithm!IKeyValueObj:interface",
-          "docComment": "",
+          "docComment": "/**\n * An interface representing a key-value object.\n *\n * 表示键值对象的接口。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2328,7 +3468,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!KeyValue:class",
-          "docComment": "/**\n * 一个键值对。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A key-value pair.\n *\n * 一个键值对。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2368,7 +3508,7 @@
             {
               "kind": "Constructor",
               "canonicalReference": "@hz-9/algorithm!KeyValue:constructor(1)",
-              "docComment": "/**\n * Constructs a new instance of the `KeyValue` class\n */\n",
+              "docComment": "/**\n * Constructs a new KeyValue instance.\n *\n * 构造一个新的 KeyValue 实例。\n *\n * @param key - The key.\n *\n * @param value - The value.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2446,7 +3586,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!KeyValue#toString:member(1)",
-              "docComment": "",
+              "docComment": "/**\n * Returns a string representation of the KeyValue.\n *\n * 返回 KeyValue 的字符串表示。\n *\n * @returns The string representation.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2510,7 +3650,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!kVEqualFn:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * The equality function for KeyValue objects.\n *\n * KeyValue 对象的相等性函数。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2601,7 +3741,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!kVToObj:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * The default function to convert a key-value pair to an object.\n *\n * 将键值对转换为对象的默认函数。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2676,7 +3816,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!LinearProbingHashmap:class",
-          "docComment": "/**\n * 一个线性探查的哈希表。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A hashmap with linear probing.\n *\n * 一个使用线性探查的哈希表。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3154,7 +4294,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!LinkedListHashmap:class",
-          "docComment": "/**\n * 一个链式寻址的哈希表。\n *\n * 若遇到哈希值冲突时，将会根据在链表中继续寻找。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A hash map with linked list chaining. When encountering hash collisions, it continues to search in the linked list.\n *\n * 一个链式寻址的哈希表。 若遇到哈希值冲突时，将会根据在链表中继续寻找。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -4535,7 +5675,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@hz-9/algorithm!loseloseHashCode:var",
-          "docComment": "/**\n * loselose 散列函数\n */\n",
+          "docComment": "/**\n * loselose hash function.\n *\n * loselose 散列函数。\n *\n * @param tableKey - The key to be hashed.\n *\n * @returns The hash code.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -4559,7 +5699,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!MaxHeap:class",
-          "docComment": "",
+          "docComment": "/**\n * Max Heap Class\n *\n * 最大堆\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -4704,7 +5844,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!MinHeap:class",
-          "docComment": "",
+          "docComment": "/**\n * Min Heap Class\n *\n * 最小堆\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -6316,7 +7456,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!SimpleHashmap:class",
-          "docComment": "/**\n * 一个简单的哈希表。\n *\n * 较容易遇到键冲突问题，冲突的键无法添加到哈希表中。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A simple hashmap. It is prone to key collision issues, where conflicting keys cannot be added to the hashmap.\n *\n * 一个简单的哈希表。 它容易遇到键冲突问题，冲突的键无法添加到哈希表中。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7371,7 +8511,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!SortedLinkedList:class",
-          "docComment": "/**\n * Sorted Linked List Class\n *\n * @public\n */\n",
+          "docComment": "/**\n * Sorted Linked List Class\n *\n * 有序链表\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7413,7 +8553,7 @@
             {
               "kind": "Property",
               "canonicalReference": "@hz-9/algorithm!SortedLinkedList#_compareFn:member",
-              "docComment": "/**\n * 相等判断函数\n */\n",
+              "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7676,7 +8816,7 @@
         {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!SquareProbingHashmap:class",
-          "docComment": "/**\n * 一个平方探查的哈希表。\n *\n * @public\n */\n",
+          "docComment": "/**\n * A hashmap with square probing.\n *\n * 一个使用平方探查法的哈希表。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7896,7 +9036,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/algorithm!ToHashCode:type",
-          "docComment": "",
+          "docComment": "/**\n * Converts a string key to a hash code.\n *\n * 将字符串键转换为哈希码。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7922,7 +9062,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "@hz-9/algorithm!ToKeyStr:type",
-          "docComment": "",
+          "docComment": "/**\n * Converts a key to a string.\n *\n * 将键转换为字符串。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -7961,7 +9101,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!toKeyStrDefault:function(1)",
-          "docComment": "",
+          "docComment": "/**\n * Converts a key to a string.\n *\n * 将键转换为字符串。\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

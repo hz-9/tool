@@ -4,6 +4,23 @@
 
 ```ts
 
+// @public
+export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
+    // Warning: (ae-forgotten-export) The symbol "TreeNode" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T>;
+    // Warning: (ae-forgotten-export) The symbol "BalanceFactor" needs to be exported by the entry point index.d.ts
+    protected _getBalanceFactor(node: TreeNode<T>): BalanceFactor;
+    protected _getNodeHeight(node: TreeNode<T> | undefined): number;
+    // (undocumented)
+    protected _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
+    protected _rotationLL(node: TreeNode<T>): TreeNode<T>;
+    protected _rotationLR(node: TreeNode<T>): TreeNode<T>;
+    protected _rotationRL(node: TreeNode<T>): TreeNode<T>;
+    protected _rotationRR(node: TreeNode<T>): TreeNode<T>;
+}
+
 // Warning: (ae-forgotten-export) The symbol "Deque" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -75,6 +92,30 @@ export class BetterHashmap<K, V> extends SquareProbingHashmap<K, V> {
     constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
 }
 
+// Warning: (ae-forgotten-export) The symbol "Tree" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class BinarySearchTree<T> extends Tree<T> {
+    // (undocumented)
+    protected _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
+    // (undocumented)
+    protected _hasNode(node: TreeNode<T> | undefined, value: T): boolean;
+    // Warning: (ae-forgotten-export) The symbol "OrderTraverseCallback" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected _inOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void;
+    // (undocumented)
+    protected _maxNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined;
+    // (undocumented)
+    protected _minNode(node: TreeNode<T> | undefined): TreeNode<T> | undefined;
+    // (undocumented)
+    protected _postOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void;
+    // (undocumented)
+    protected _preOrderTraverseNode(node: TreeNode<T> | undefined, callback: OrderTraverseCallback<T>): void;
+    // (undocumented)
+    protected _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
+}
+
 // @public
 export const defaultCompare: <T>(a: T, b: T) => number;
 
@@ -128,7 +169,7 @@ export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
     abstract set(key: K, value: V): boolean;
 }
 
-// @public (undocumented)
+// @public
 export interface IKeyValueObj<K, V> {
     // (undocumented)
     key: K;
@@ -141,16 +182,15 @@ export class KeyValue<K, V> {
     constructor(key: K, value: V);
     // (undocumented)
     readonly key: K;
-    // (undocumented)
     toString(): string;
     // (undocumented)
     readonly value: V;
 }
 
-// @public (undocumented)
+// @public
 export const kVEqualFn: <K, V>(a?: KeyValue<K, V> | undefined, b?: KeyValue<K, V> | undefined) => boolean;
 
-// @public (undocumented)
+// @public
 export const kVToObj: <K, V>(keyValue: KeyValue<K, V>) => IKeyValueObj<K, V>;
 
 // @public
@@ -262,7 +302,7 @@ export const loseloseHashCode: ToHashCode;
 
 // Warning: (ae-forgotten-export) The symbol "Heap" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export class MaxHeap<T> extends Heap<T> {
     // (undocumented)
     siftDown(index: number): void;
@@ -270,7 +310,7 @@ export class MaxHeap<T> extends Heap<T> {
     siftUp(index: number): void;
 }
 
-// @public (undocumented)
+// @public
 export class MinHeap<T> extends Heap<T> {
     // (undocumented)
     siftDown(index: number): void;
@@ -408,6 +448,7 @@ export class SortedLinkedList<T> extends DoublyLinkedList<T> {
     constructor(equalsFn?: typeof defaultEquals<T>, compareFn?: typeof defaultCompare<T>);
     // (undocumented)
     addAt(index: number, value: T): boolean;
+    // (undocumented)
     protected readonly _compareFn: (a: T, b: T) => number;
     // (undocumented)
     push(value: T): boolean;
@@ -425,13 +466,13 @@ export class SquareProbingHashmap<K, V> extends SimpleHashmap<K, V> {
     set(key: K, value: V): boolean;
 }
 
-// @public (undocumented)
+// @public
 export type ToHashCode = (keyStr: string) => number;
 
-// @public (undocumented)
+// @public
 export type ToKeyStr<K> = (key: K) => string;
 
-// @public (undocumented)
+// @public
 export const toKeyStrDefault: <K>(key: K) => string;
 
 // (No @packageDocumentation comment for this package)

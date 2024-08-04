@@ -2,11 +2,20 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:15
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 12:25:57
+ * @LastEditTime : 2024-08-04 15:32:18
  */
 import type { OrderTraverseCallback } from '../types/index'
 import { Tree, TreeNode } from './_base.tree'
 
+/* eslint-disable no-param-reassign */
+
+/**
+ * @public
+ *
+ * Binary Search Tree
+ *
+ * 二叉搜索树
+ */
 export class BinarySearchTree<T> extends Tree<T> {
   protected _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined {
     if (!node) {
@@ -17,13 +26,11 @@ export class BinarySearchTree<T> extends Tree<T> {
     const compareResult = this._compareFn(value, node.val)
 
     if (compareResult < 0) {
-      // eslint-disable-next-line no-param-reassign
       node.left = this._addNode(node.left, value)
       return node
     }
 
     if (compareResult > 0) {
-      // eslint-disable-next-line no-param-reassign
       node.right = this._addNode(node.right, value)
       return node
     }
@@ -46,13 +53,11 @@ export class BinarySearchTree<T> extends Tree<T> {
     const compareResult = this._compareFn(value, node.val)
 
     if (compareResult < 0) {
-      // eslint-disable-next-line no-param-reassign
       node.left = this._removeNode(node.left, value)
       return node
     }
 
     if (compareResult > 0) {
-      // eslint-disable-next-line no-param-reassign
       node.right = this._removeNode(node.right, value)
       return node
     }
@@ -72,9 +77,7 @@ export class BinarySearchTree<T> extends Tree<T> {
     }
 
     const rightMinNode = this._minNode(node.right)!
-    // eslint-disable-next-line no-param-reassign
     node.val = rightMinNode.val
-    // eslint-disable-next-line no-param-reassign
     node.right = this._removeNode(node.right, rightMinNode.val)
 
     return node
