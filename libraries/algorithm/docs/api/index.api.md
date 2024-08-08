@@ -199,12 +199,19 @@ export class Graph<T> implements Base<IGraphToArrayItem<T>> {
 }
 
 // @public
+export class GraphShortestPath {
+    static breadthFirstSearchShortestPath<T>(graph: Graph<T>, startVertex: T | Vertice<T>): IGraphShortestPathReturn<T>;
+    static breadthFirstSearchShortestPathString<T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string): string;
+    static depthFirstSearchShortestPath<T>(graph: Graph<T>, startVertex: T | Vertice<T>): IGraphShortestPathReturn<T>;
+    static depthFirstSearchShortestPathString<T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string): string;
+}
+
+// @public
 export class GraphWalker {
     // Warning: (ae-forgotten-export) The symbol "SearchCallback" needs to be exported by the entry point index.d.ts
-    static breadthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Vertice<T>>): void;
-    static breadthFirstSearchShortestPath<T>(graph: Graph<T>, startVertex: T | Vertice<T>): IGraphBreadthFirstSearchShortestPathReturn<T>;
-    static breadthFirstSearchShortestPathString<T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string): string;
-    static depthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Vertice<T>>): void;
+    static breadthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>): void;
+    static depthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>, explore?: SearchCallback<T, Edge<Vertice<T>>>): void;
+    static depthFirstSearchVariety<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>): void;
 }
 
 // @public
@@ -216,7 +223,7 @@ export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
 }
 
 // @public (undocumented)
-export interface IGraphBreadthFirstSearchShortestPathReturn<T> {
+export interface IGraphShortestPathReturn<T> {
     // (undocumented)
     distances: Map<Vertice<T>, number>;
     // (undocumented)

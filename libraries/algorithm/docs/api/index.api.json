@@ -4229,145 +4229,24 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "@hz-9/algorithm!GraphWalker:class",
-          "docComment": "/**\n * Graph walker class.\n *\n * 图遍历类。\n *\n * @public\n */\n",
+          "canonicalReference": "@hz-9/algorithm!GraphShortestPath:class",
+          "docComment": "/**\n * Graph shortest path class.\n *\n * 图最短路径类。\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class GraphWalker "
+              "text": "export declare class GraphShortestPath "
             }
           ],
-          "fileUrlPath": "src/graph/graph-walker.ts",
+          "fileUrlPath": "src/graph/graph-shortest-path.ts",
           "releaseTag": "Public",
           "isAbstract": false,
-          "name": "GraphWalker",
+          "name": "GraphShortestPath",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/algorithm!GraphWalker.breadthFirstSearch:member(1)",
-              "docComment": "/**\n * Breadth-first search algorithm (BFS).\n *\n * 广度优先搜索算法（BFS）。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param callback - The callback function to execute for each visited vertex.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "static breadthFirstSearch<T>(graph: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Graph",
-                  "canonicalReference": "@hz-9/algorithm!Graph:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", startVertex: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "T | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Vertice",
-                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", callback: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "SearchCallback",
-                  "canonicalReference": "@hz-9/algorithm!~SearchCallback:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T, "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Vertice",
-                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "void"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "T",
-                  "constraintTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  }
-                }
-              ],
-              "isStatic": true,
-              "returnTypeTokenRange": {
-                "startIndex": 13,
-                "endIndex": 14
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "graph",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "startVertex",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "callback",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 8,
-                    "endIndex": 12
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "breadthFirstSearch"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@hz-9/algorithm!GraphWalker.breadthFirstSearchShortestPath:member(1)",
-              "docComment": "/**\n * Breadth-first search algorithm to obtain shortest path information.\n *\n * 使用广度优先搜索算法获取最短路径信息。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n */\n",
+              "canonicalReference": "@hz-9/algorithm!GraphShortestPath.breadthFirstSearchShortestPath:member(1)",
+              "docComment": "/**\n * Using Breadth-first search algorithm to obtain shortest path information.\n *\n * 使用广度优先搜索算法获取最短路径信息。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4405,8 +4284,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IGraphBreadthFirstSearchShortestPathReturn",
-                  "canonicalReference": "@hz-9/algorithm!IGraphBreadthFirstSearchShortestPathReturn:interface"
+                  "text": "IGraphShortestPathReturn",
+                  "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn:interface"
                 },
                 {
                   "kind": "Content",
@@ -4462,8 +4341,8 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "@hz-9/algorithm!GraphWalker.breadthFirstSearchShortestPathString:member(1)",
-              "docComment": "/**\n * Breadth-first search algorithm to obtain shortest path information.(Return string)\n *\n * 使用广度优先搜索算法获取最短路径信息。(返回字符串)\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param chars - The separator between vertices. Default is ' -> '.\n */\n",
+              "canonicalReference": "@hz-9/algorithm!GraphShortestPath.breadthFirstSearchShortestPathString:member(1)",
+              "docComment": "/**\n * Using Breadth-first search algorithm to obtain shortest path information.(Return string)\n *\n * 使用广度优先搜索算法获取最短路径信息。(返回字符串)\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param chars - The separator between vertices. Default is `' -> '`.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4569,8 +4448,360 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!GraphShortestPath.depthFirstSearchShortestPath:member(1)",
+              "docComment": "/**\n * Using Depth-first search algorithm to obtain shortest path information. FIXME: The results are not accurate, not recommended for use.\n *\n * 使用深度优先搜索算法获取最短路径信息。 ！！！结果不够准确，不建议使用。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static depthFirstSearchShortestPath<T>(graph: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Graph",
+                  "canonicalReference": "@hz-9/algorithm!Graph:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", startVertex: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IGraphShortestPathReturn",
+                  "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "graph",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "startVertex",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "depthFirstSearchShortestPath"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!GraphShortestPath.depthFirstSearchShortestPathString:member(1)",
+              "docComment": "/**\n * Using Depth-first search algorithm to obtain shortest path information.(Return string) FIXME: The results are not accurate, not recommended for use.\n *\n * 使用深度优先搜索算法获取最短路径信息。(返回字符串) ！！！结果不够准确，不建议使用。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param chars - The separator between vertices. Default is `' -> '`.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static depthFirstSearchShortestPathString<T>(graph: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Graph",
+                  "canonicalReference": "@hz-9/algorithm!Graph:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", startVertex: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", chars?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "graph",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "startVertex",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "chars",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "depthFirstSearchShortestPathString"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@hz-9/algorithm!GraphWalker:class",
+          "docComment": "/**\n * Graph walker class.\n *\n * 图遍历类。\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class GraphWalker "
+            }
+          ],
+          "fileUrlPath": "src/graph/graph-walker.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "GraphWalker",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!GraphWalker.breadthFirstSearch:member(1)",
+              "docComment": "/**\n * Breadth-first search algorithm (BFS).\n *\n * 广度优先搜索算法（BFS）。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param callback - The callback function to execute for each visited vertex.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static breadthFirstSearch<T>(graph: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Graph",
+                  "canonicalReference": "@hz-9/algorithm!Graph:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", startVertex: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", callback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchCallback",
+                  "canonicalReference": "@hz-9/algorithm!~SearchCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Edge",
+                  "canonicalReference": "@hz-9/algorithm!Edge:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "graph",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "startVertex",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "callback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 14
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "breadthFirstSearch"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "@hz-9/algorithm!GraphWalker.depthFirstSearch:member(1)",
-              "docComment": "/**\n * Depth-first search algorithm (DFS).\n *\n * 深度优先搜索算法（DFS）。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param callback - The callback function to execute for each visited vertex.\n */\n",
+              "docComment": "/**\n * Depth-first search algorithm (DFS).\n *\n * 深度优先搜索算法（DFS）。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param callback - The callback function to execute for each visited vertex.\n *\n * @param explore - The callback function to execute for each explore vertex.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4617,12 +4848,52 @@
                 },
                 {
                   "kind": "Reference",
+                  "text": "Edge",
+                  "canonicalReference": "@hz-9/algorithm!Edge:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
                   "text": "Vertice",
                   "canonicalReference": "@hz-9/algorithm!Vertice:class"
                 },
                 {
                   "kind": "Content",
-                  "text": "<T>>"
+                  "text": "<T>>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", explore?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchCallback",
+                  "canonicalReference": "@hz-9/algorithm!~SearchCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Edge",
+                  "canonicalReference": "@hz-9/algorithm!Edge:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>>"
                 },
                 {
                   "kind": "Content",
@@ -4652,8 +4923,8 @@
               ],
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 13,
-                "endIndex": 14
+                "startIndex": 22,
+                "endIndex": 23
               },
               "releaseTag": "Public",
               "isProtected": false,
@@ -4679,14 +4950,152 @@
                   "parameterName": "callback",
                   "parameterTypeTokenRange": {
                     "startIndex": 8,
-                    "endIndex": 12
+                    "endIndex": 14
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "explore",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 15,
+                    "endIndex": 21
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "depthFirstSearch"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!GraphWalker.depthFirstSearchVariety:member(1)",
+              "docComment": "/**\n * Depth-first search algorithm (DFS). A variant implementation.\n *\n * 深度优先搜索算法（DFS）。 一个变种实现。\n *\n * @param graph - The graph to traverse.\n *\n * @param startVertex - The starting vertex for the traversal.\n *\n * @param callback - The callback function to execute for each visited vertex.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static depthFirstSearchVariety<T>(graph: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Graph",
+                  "canonicalReference": "@hz-9/algorithm!Graph:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", startVertex: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", callback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchCallback",
+                  "canonicalReference": "@hz-9/algorithm!~SearchCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Edge",
+                  "canonicalReference": "@hz-9/algorithm!Edge:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Vertice",
+                  "canonicalReference": "@hz-9/algorithm!Vertice:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "graph",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "startVertex",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "callback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 14
                   },
                   "isOptional": false
                 }
               ],
               "isOptional": false,
               "isAbstract": false,
-              "name": "depthFirstSearch"
+              "name": "depthFirstSearchVariety"
             }
           ],
           "implementsTokenRanges": []
@@ -4970,15 +5379,15 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "@hz-9/algorithm!IGraphBreadthFirstSearchShortestPathReturn:interface",
+          "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn:interface",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IGraphBreadthFirstSearchShortestPathReturn<T> "
+              "text": "export interface IGraphShortestPathReturn<T> "
             }
           ],
-          "fileUrlPath": "src/graph/graph-walker.ts",
+          "fileUrlPath": "src/graph/graph-shortest-path.ts",
           "releaseTag": "Public",
           "typeParameters": [
             {
@@ -4993,12 +5402,12 @@
               }
             }
           ],
-          "name": "IGraphBreadthFirstSearchShortestPathReturn",
+          "name": "IGraphShortestPathReturn",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/algorithm!IGraphBreadthFirstSearchShortestPathReturn#distances:member",
+              "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn#distances:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -5039,7 +5448,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@hz-9/algorithm!IGraphBreadthFirstSearchShortestPathReturn#prodecessors:member",
+              "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn#prodecessors:member",
               "docComment": "",
               "excerptTokens": [
                 {

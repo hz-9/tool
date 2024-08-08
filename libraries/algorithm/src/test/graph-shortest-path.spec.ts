@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-06 22:57:35
+ * @LastEditTime : 2024-08-08 18:30:50
  * @LastEditors  : Chen Zhen
  */
 import { Graph, GraphShortestPath, Vertice } from '../index'
@@ -29,48 +29,56 @@ describe('Graph shortest path', () => {
   graph.addEdge('D', 'H')
   graph.addEdge('E', 'I')
 
+  const distancesResult = new Map<Vertice<string>, number>()
+  const prodecessorsResult = new Map<Vertice<string>, Vertice<string> | undefined>()
+  distancesResult.set(new Vertice<string>('A'), 0)
+  distancesResult.set(new Vertice<string>('B'), 1)
+  distancesResult.set(new Vertice<string>('C'), 1)
+  distancesResult.set(new Vertice<string>('D'), 1)
+  distancesResult.set(new Vertice<string>('E'), 2)
+  distancesResult.set(new Vertice<string>('F'), 2)
+  distancesResult.set(new Vertice<string>('G'), 2)
+  distancesResult.set(new Vertice<string>('H'), 2)
+  distancesResult.set(new Vertice<string>('I'), 3)
+
+  prodecessorsResult.set(new Vertice<string>('A'), undefined)
+  prodecessorsResult.set(new Vertice<string>('B'), new Vertice<string>('A'))
+  prodecessorsResult.set(new Vertice<string>('C'), new Vertice<string>('A'))
+  prodecessorsResult.set(new Vertice<string>('D'), new Vertice<string>('A'))
+  prodecessorsResult.set(new Vertice<string>('E'), new Vertice<string>('B'))
+  prodecessorsResult.set(new Vertice<string>('F'), new Vertice<string>('B'))
+  prodecessorsResult.set(new Vertice<string>('G'), new Vertice<string>('C'))
+  prodecessorsResult.set(new Vertice<string>('H'), new Vertice<string>('D'))
+  prodecessorsResult.set(new Vertice<string>('I'), new Vertice<string>('E'))
+
+  const linesResult: string = [
+    'A -> B',
+    'A -> C',
+    'A -> D',
+    'A -> B -> E',
+    'A -> B -> F',
+    'A -> C -> G',
+    'A -> D -> H',
+    'A -> B -> E -> I',
+  ].join('\n')
+
   it('breadthFirstSearchShortestPath', async () => {
     const result = GraphShortestPath.breadthFirstSearchShortestPath(graph, 'A')
 
-    const distances = new Map<Vertice<string>, number>()
-    const prodecessors = new Map<Vertice<string>, Vertice<string> | undefined>()
-    distances.set(new Vertice<string>('A'), 0)
-    distances.set(new Vertice<string>('B'), 1)
-    distances.set(new Vertice<string>('C'), 1)
-    distances.set(new Vertice<string>('D'), 1)
-    distances.set(new Vertice<string>('E'), 2)
-    distances.set(new Vertice<string>('F'), 2)
-    distances.set(new Vertice<string>('G'), 2)
-    distances.set(new Vertice<string>('H'), 2)
-    distances.set(new Vertice<string>('I'), 3)
-
-    prodecessors.set(new Vertice<string>('A'), undefined)
-    prodecessors.set(new Vertice<string>('B'), new Vertice<string>('A'))
-    prodecessors.set(new Vertice<string>('C'), new Vertice<string>('A'))
-    prodecessors.set(new Vertice<string>('D'), new Vertice<string>('A'))
-    prodecessors.set(new Vertice<string>('E'), new Vertice<string>('B'))
-    prodecessors.set(new Vertice<string>('F'), new Vertice<string>('B'))
-    prodecessors.set(new Vertice<string>('G'), new Vertice<string>('C'))
-    prodecessors.set(new Vertice<string>('H'), new Vertice<string>('D'))
-    prodecessors.set(new Vertice<string>('I'), new Vertice<string>('E'))
-
-    expect(result.distances).toEqual(distances)
-    expect(result.prodecessors).toEqual(prodecessors)
+    expect(result.distances).toEqual(distancesResult)
+    expect(result.prodecessors).toEqual(prodecessorsResult)
   })
 
   it('breadthFirstSearchShortestPathString', async () => {
     const result = GraphShortestPath.breadthFirstSearchShortestPathString(graph, 'A')
+    expect(result).toEqual(linesResult)
+  })
 
-    const lines: string[] = [
-      'A -> B',
-      'A -> C',
-      'A -> D',
-      'A -> B -> E',
-      'A -> B -> F',
-      'A -> C -> G',
-      'A -> D -> H',
-      'A -> B -> E -> I',
-    ]
-    expect(result).toEqual(lines.join('\n'))
+  it('depthFirstSearchShortestPath', async () => {
+    GraphShortestPath.depthFirstSearchShortestPath(graph, 'A')
+  })
+
+  it('depthFirstSearchShortestPathString', async () => {
+    GraphShortestPath.depthFirstSearchShortestPathString(graph, 'A')
   })
 })
