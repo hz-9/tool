@@ -4,6 +4,12 @@
 
 ```ts
 
+import { Edge as Edge_2 } from './graph';
+import { Graph as Graph_2 } from './graph';
+import { IGraphShortestPathReturn as IGraphShortestPathReturn_2 } from './_.shortest-path';
+import { SearchCallback as SearchCallback_2 } from '../types';
+import { Vertice as Vertice_2 } from './graph';
+
 // @public
 export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
     // Warning: (ae-forgotten-export) The symbol "TreeNode" needs to be exported by the entry point index.d.ts
@@ -116,11 +122,34 @@ export class BinarySearchTree<T> extends Tree<T> {
     protected _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
 }
 
+// Warning: (ae-forgotten-export) The symbol "SearchCallback" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const breadthFirstSearch: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>) => void;
+
+// @public
+export const breadthFirstSearchShortestPath: <T>(graph: Graph<T>, startVertex: T | Vertice<T>) => IGraphShortestPathReturn<T>;
+
+// @public
+export const breadthFirstSearchShortestPathString: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string) => string;
+
 // @public
 export const defaultCompare: <T>(a: T, b: T) => number;
 
 // @public
 export const defaultEquals: <T>(a?: T | undefined, b?: T | undefined) => boolean;
+
+// @public
+export const depthFirstSearch: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>, explore?: SearchCallback<T, Edge<Vertice<T>>>) => void;
+
+// @public
+export const depthFirstSearchShortestPath: <T>(graph: Graph<T>, startVertex: T | Vertice<T>) => IGraphShortestPathReturn<T>;
+
+// @public
+export const depthFirstSearchShortestPathString: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string) => string;
+
+// @public
+export const depthFirstSearchVariety: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>) => void;
 
 // @public
 export const djb2HashCode: ToHashCode;
@@ -199,20 +228,19 @@ export class Graph<T> implements Base<IGraphToArrayItem<T>> {
 }
 
 // @public
-export class GraphShortestPath {
-    static breadthFirstSearchShortestPath<T>(graph: Graph<T>, startVertex: T | Vertice<T>): IGraphShortestPathReturn<T>;
-    static breadthFirstSearchShortestPathString<T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string): string;
-    static depthFirstSearchShortestPath<T>(graph: Graph<T>, startVertex: T | Vertice<T>): IGraphShortestPathReturn<T>;
-    static depthFirstSearchShortestPathString<T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string): string;
-}
+export const GraphShortestPath: {
+    readonly breadthFirstSearchShortestPath: <T>(graph: Graph_2<T>, startVertex: T | Vertice_2<T>) => IGraphShortestPathReturn_2<T>;
+    readonly breadthFirstSearchShortestPathString: <T_1>(graph: Graph_2<T_1>, startVertex: T_1 | Vertice_2<T_1>, chars?: string) => string;
+    readonly depthFirstSearchShortestPath: <T_2>(graph: Graph_2<T_2>, startVertex: T_2 | Vertice_2<T_2>) => IGraphShortestPathReturn_2<T_2>;
+    readonly depthFirstSearchShortestPathString: <T_3>(graph: Graph_2<T_3>, startVertex: T_3 | Vertice_2<T_3>, chars?: string) => string;
+};
 
 // @public
-export class GraphWalker {
-    // Warning: (ae-forgotten-export) The symbol "SearchCallback" needs to be exported by the entry point index.d.ts
-    static breadthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>): void;
-    static depthFirstSearch<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>, explore?: SearchCallback<T, Edge<Vertice<T>>>): void;
-    static depthFirstSearchVariety<T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>): void;
-}
+export const GraphWalker: {
+    readonly breadthFirstSearch: <T>(graph: Graph_2<T>, startVertex: T | Vertice_2<T>, callback: SearchCallback_2<T, Edge_2<Vertice_2<T>>>) => void;
+    readonly depthFirstSearch: <T_1>(graph: Graph_2<T_1>, startVertex: T_1 | Vertice_2<T_1>, callback: SearchCallback_2<T_1, Edge_2<Vertice_2<T_1>>>, explore?: SearchCallback_2<T_1, Edge_2<Vertice_2<T_1>>>) => void;
+    readonly depthFirstSearchVariety: <T_2>(graph: Graph_2<T_2>, startVertex: T_2 | Vertice_2<T_2>, callback: SearchCallback_2<T_2, Edge_2<Vertice_2<T_2>>>) => void;
+};
 
 // @public
 export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
