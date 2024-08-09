@@ -8,8 +8,4 @@ export * from './dfs.graph-walker'
 
 export * from './dfs.shortest-path'
 
-export * from './graph-shortest-path'
-
-export * from './graph-walker'
-
 export * from './graph'

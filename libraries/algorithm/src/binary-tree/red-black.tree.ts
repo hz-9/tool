@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-04 16:56:50
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 20:47:15
+ * @LastEditTime : 2024-08-09 11:38:12
  */
+import { Compare } from '../_base'
 import { TreeNode } from './_base.tree'
 import { BinarySearchTree } from './binary-search.tree'
 
@@ -57,7 +58,7 @@ export class RedBlackTree<T> extends BinarySearchTree<T> {
       return newNode
     }
 
-    if (this._compareFn(value, node.val) < 0) {
+    if (this._compareFn(value, node.val) === Compare.LESS_THAN) {
       if (!node.left) {
         node.left = this._addNode(node.left, value) as RedBlackTreeNode<T>
         node.left.parent = node
@@ -66,7 +67,7 @@ export class RedBlackTree<T> extends BinarySearchTree<T> {
       return this._addNode(node.left, value)
     }
 
-    if (this._compareFn(value, node.val) > 0) {
+    if (this._compareFn(value, node.val) === Compare.BIGGER_THAN) {
       if (!node.right) {
         node.right = this._addNode(node.right, value) as RedBlackTreeNode<T>
         node.right.parent = node

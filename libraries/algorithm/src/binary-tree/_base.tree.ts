@@ -2,11 +2,10 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 20:43:35
+ * @LastEditTime : 2024-08-09 16:53:55
  */
-import { Base } from '../_base'
+import { Base, CompareFn, EqualsFn, defaultCompare, defaultEquals } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
-import { defaultCompare, defaultEquals } from '../utils/index'
 
 /**
  * @public
@@ -48,19 +47,16 @@ export abstract class Tree<T> implements Base<T> {
    *
    * 判断两个值是否相等的函数。
    */
-  protected readonly _equalsFn: (a?: T, b?: T) => boolean
+  protected readonly _equalsFn: EqualsFn<T>
 
   /**
    * Function to compare two values.
    *
    * 比较两个值的函数。
    */
-  protected readonly _compareFn: (a: T, b: T) => number
+  protected readonly _compareFn: CompareFn<T>
 
-  public constructor(
-    equalsFn: typeof defaultEquals<T> = defaultEquals,
-    compareFn: typeof defaultCompare<T> = defaultCompare
-  ) {
+  public constructor(equalsFn: EqualsFn<T> = defaultEquals, compareFn: CompareFn<T> = defaultCompare) {
     this._equalsFn = equalsFn
 
     this._compareFn = compareFn

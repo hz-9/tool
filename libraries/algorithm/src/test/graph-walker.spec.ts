@@ -1,10 +1,10 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-07 23:58:00
+ * @LastEditTime : 2024-08-09 16:35:21
  * @LastEditors  : Chen Zhen
  */
-import { Graph, GraphWalker } from '../index'
+import { Graph, breadthFirstSearch, depthFirstSearch, depthFirstSearchVariety } from '../index'
 
 describe('Graph Walker', () => {
   const graph = new Graph<string>()
@@ -31,13 +31,13 @@ describe('Graph Walker', () => {
 
   it('breadthFirstSearch', async () => {
     const list: string[] = []
-    GraphWalker.breadthFirstSearch(graph, 'A', (v, edge) => {
+    breadthFirstSearch(graph, 'A', (v, edge) => {
       list.push(v)
     })
     expect(list).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
     const list2: string[] = []
-    GraphWalker.breadthFirstSearch(graph, 'X', (v, edge) => {
+    breadthFirstSearch(graph, 'X', (v, edge) => {
       list2.push(v)
     })
     expect(list2).toEqual([])
@@ -46,14 +46,14 @@ describe('Graph Walker', () => {
   it('depthFirstSearch', async () => {
     const list: string[] = []
 
-    GraphWalker.depthFirstSearch(graph, 'A', (v, edge) => {
+    depthFirstSearch(graph, 'A', (v, edge) => {
       list.push(v)
     })
 
     expect(list).toEqual(['A', 'B', 'E', 'I', 'F', 'C', 'D', 'G', 'H'])
 
     const list2: string[] = []
-    GraphWalker.depthFirstSearch(graph, 'X', (v, edge) => {
+    depthFirstSearch(graph, 'X', (v, edge) => {
       list2.push(v)
     })
     expect(list2).toEqual([])
@@ -62,14 +62,14 @@ describe('Graph Walker', () => {
   it('depthFirstSearchVariety', async () => {
     const list: string[] = []
 
-    GraphWalker.depthFirstSearchVariety(graph, 'A', (v, vertice) => {
+    depthFirstSearchVariety(graph, 'A', (v, vertice) => {
       list.push(v)
     })
 
     expect(list).toEqual(['A', 'B', 'E', 'I', 'F', 'C', 'D', 'G', 'H'])
 
     const list2: string[] = []
-    GraphWalker.depthFirstSearchVariety(graph, 'X', (v, vertice) => {
+    depthFirstSearchVariety(graph, 'X', (v, vertice) => {
       list2.push(v)
     })
     expect(list2).toEqual([])

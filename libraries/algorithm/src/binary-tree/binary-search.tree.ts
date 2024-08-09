@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:15
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 17:24:46
+ * @LastEditTime : 2024-08-09 11:37:38
  */
+import { Compare } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
 import { Tree, TreeNode } from './_base.tree'
 
@@ -25,12 +26,12 @@ export class BinarySearchTree<T> extends Tree<T> {
 
     const compareResult = this._compareFn(value, node.val)
 
-    if (compareResult < 0) {
+    if (compareResult === Compare.LESS_THAN) {
       node.left = this._addNode(node.left, value)
       return node
     }
 
-    if (compareResult > 0) {
+    if (compareResult === Compare.BIGGER_THAN) {
       node.right = this._addNode(node.right, value)
       return node
     }
@@ -42,8 +43,8 @@ export class BinarySearchTree<T> extends Tree<T> {
     if (!node) return false
 
     const compareResult = this._compareFn(value, node.val)
-    if (compareResult < 0) return this._hasNode(node.left, value)
-    if (compareResult > 0) return this._hasNode(node.right, value)
+    if (compareResult === Compare.LESS_THAN) return this._hasNode(node.left, value)
+    if (compareResult === Compare.BIGGER_THAN) return this._hasNode(node.right, value)
     return true
   }
 
@@ -52,12 +53,12 @@ export class BinarySearchTree<T> extends Tree<T> {
 
     const compareResult = this._compareFn(value, node.val)
 
-    if (compareResult < 0) {
+    if (compareResult === Compare.LESS_THAN) {
       node.left = this._removeNode(node.left, value)
       return node
     }
 
-    if (compareResult > 0) {
+    if (compareResult === Compare.BIGGER_THAN) {
       node.right = this._removeNode(node.right, value)
       return node
     }

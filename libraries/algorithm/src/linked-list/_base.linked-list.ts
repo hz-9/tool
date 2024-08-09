@@ -2,10 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-28 15:18:52
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-07-29 20:20:49
+ * @LastEditTime : 2024-08-09 16:54:18
  */
-import { Base } from '../_base/index'
-import { defaultEquals } from '../utils/index'
+import { Base, EqualsFn, defaultEquals } from '../_base/index'
 
 /**
  * @public
@@ -69,9 +68,9 @@ export abstract class LinkedList<T, N extends LinkedListNode<T> = LinkedListNode
    *
    * 相等判断函数
    */
-  protected readonly _equalsFn: (a?: T, b?: T) => boolean
+  protected readonly _equalsFn: EqualsFn<T>
 
-  public constructor(equalsFn: typeof defaultEquals<T> = defaultEquals) {
+  public constructor(equalsFn: EqualsFn<T> = defaultEquals) {
     this._headNode = undefined
     this._tailNode = undefined
     this._size = 0

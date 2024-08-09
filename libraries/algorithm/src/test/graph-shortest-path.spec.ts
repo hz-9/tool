@@ -1,10 +1,17 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-08 18:30:50
+ * @LastEditTime : 2024-08-09 16:35:47
  * @LastEditors  : Chen Zhen
  */
-import { Graph, GraphShortestPath, Vertice } from '../index'
+import {
+  Graph,
+  Vertice,
+  breadthFirstSearchShortestPath,
+  breadthFirstSearchShortestPathString,
+  depthFirstSearchShortestPath,
+  depthFirstSearchShortestPathString,
+} from '../index'
 
 describe('Graph shortest path', () => {
   const graph = new Graph<string>()
@@ -63,22 +70,22 @@ describe('Graph shortest path', () => {
   ].join('\n')
 
   it('breadthFirstSearchShortestPath', async () => {
-    const result = GraphShortestPath.breadthFirstSearchShortestPath(graph, 'A')
+    const result = breadthFirstSearchShortestPath(graph, 'A')
 
     expect(result.distances).toEqual(distancesResult)
     expect(result.prodecessors).toEqual(prodecessorsResult)
   })
 
   it('breadthFirstSearchShortestPathString', async () => {
-    const result = GraphShortestPath.breadthFirstSearchShortestPathString(graph, 'A')
+    const result = breadthFirstSearchShortestPathString(graph, 'A')
     expect(result).toEqual(linesResult)
   })
 
   it('depthFirstSearchShortestPath', async () => {
-    GraphShortestPath.depthFirstSearchShortestPath(graph, 'A')
+    depthFirstSearchShortestPath(graph, 'A')
   })
 
   it('depthFirstSearchShortestPathString', async () => {
-    GraphShortestPath.depthFirstSearchShortestPathString(graph, 'A')
+    depthFirstSearchShortestPathString(graph, 'A')
   })
 })

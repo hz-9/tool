@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:57:24
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 11:27:52
+ * @LastEditTime : 2024-08-09 11:36:34
  */
+import { Compare } from '../_base'
 import { Heap } from './_base.heap'
 
 /**
@@ -18,7 +19,7 @@ export class MinHeap<T> extends Heap<T> {
   public siftUp(index: number): void {
     const parent = this.getParentIndex(index)
 
-    if (parent !== undefined && this._compareFn(this._list[parent], this._list[index]) > 0) {
+    if (parent !== undefined && this._compareFn(this._list[parent], this._list[index]) === Compare.BIGGER_THAN) {
       this.swap(parent, index)
 
       this.siftUp(parent)
@@ -32,11 +33,11 @@ export class MinHeap<T> extends Heap<T> {
     const right = this.getRightIndex(index)
     const size = this._size
 
-    if (left < size && this._compareFn(this._list[i], this._list[left]) > 0) {
+    if (left < size && this._compareFn(this._list[i], this._list[left]) === Compare.BIGGER_THAN) {
       i = left
     }
 
-    if (right < size && this._compareFn(this._list[i], this._list[right]) > 0) {
+    if (right < size && this._compareFn(this._list[i], this._list[right]) === Compare.BIGGER_THAN) {
       i = right
     }
 

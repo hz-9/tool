@@ -1,12 +1,12 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:46:38
- * @LastEditTime : 2024-08-08 18:51:44
+ * @LastEditTime : 2024-08-09 16:36:26
  * @LastEditors  : Chen Zhen
  */
 import { IGraphShortestPathReturn } from './_.shortest-path'
+import { depthFirstSearch } from './dfs.graph-walker'
 import { Graph, Vertice } from './graph'
-import { GraphWalker } from './graph-walker'
 
 /**
  * @public
@@ -30,7 +30,7 @@ export const depthFirstSearchShortestPath = <T>(
   const prodecessors = new Map<Vertice<T>, Vertice<T> | undefined>()
   if (!startVertexInstance) return { distances, prodecessors }
 
-  GraphWalker.depthFirstSearch(graph, startVertexInstance.vertice, (v, edge) => {
+  depthFirstSearch(graph, startVertexInstance.vertice, (v, edge) => {
     if (distances.size === 0) {
       distances.set(edge.to, 0)
       prodecessors.set(edge.to, undefined)

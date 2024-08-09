@@ -2,8 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:20:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 20:46:38
+ * @LastEditTime : 2024-08-09 11:35:20
  */
+import { Compare } from '../_base'
 import { TreeNode } from './_base.tree'
 import { BinarySearchTree } from './binary-search.tree'
 
@@ -69,25 +70,25 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
     }
 
     const compareResult = this._compareFn(value, node.val)
-    if (compareResult === 0) return node
+    if (compareResult === Compare.EQUALS) return node
 
-    if (compareResult < 0) {
+    if (compareResult === Compare.LESS_THAN) {
       node.left = this._addNode(node.left, value)
-    } else if (compareResult > 0) {
+    } else if (compareResult === Compare.BIGGER_THAN) {
       node.right = this._addNode(node.right, value)
     }
 
     const balanceFactor = this._getBalanceFactor(node)
 
     if (balanceFactor === BalanceFactor.UNBALANCED_LEFT) {
-      if (this._compareFn(value, node.left!.val) < 0) {
+      if (this._compareFn(value, node.left!.val) === Compare.LESS_THAN) {
         return this._rotationLL(node)
       }
       return this._rotationLR(node)
     }
 
     if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT) {
-      if (this._compareFn(value, node.right!.val) > 0) {
+      if (this._compareFn(value, node.right!.val) === Compare.BIGGER_THAN) {
         return this._rotationRR(node)
       }
 

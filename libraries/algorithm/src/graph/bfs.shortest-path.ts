@@ -1,12 +1,12 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:46:38
- * @LastEditTime : 2024-08-08 18:51:20
+ * @LastEditTime : 2024-08-09 16:37:00
  * @LastEditors  : Chen Zhen
  */
 import { IGraphShortestPathReturn } from './_.shortest-path'
+import { breadthFirstSearch } from './bfs.graph-walker'
 import { Graph, Vertice } from './graph'
-import { GraphWalker } from './graph-walker'
 
 /**
  * @public
@@ -28,7 +28,7 @@ export const breadthFirstSearchShortestPath = <T>(
   const prodecessors = new Map<Vertice<T>, Vertice<T> | undefined>()
   if (!startVertexInstance) return { distances, prodecessors }
 
-  GraphWalker.breadthFirstSearch(graph, startVertexInstance.vertice, (v, edge) => {
+  breadthFirstSearch(graph, startVertexInstance.vertice, (v, edge) => {
     if (distances.size === 0) {
       distances.set(edge.to, 0)
       prodecessors.set(edge.to, undefined)

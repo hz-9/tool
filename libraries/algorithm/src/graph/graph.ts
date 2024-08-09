@@ -4,8 +4,7 @@
  * @LastEditors  : Chen Zhen
  * @LastEditTime : 2024-08-04 20:41:34
  */
-import { Base } from '../_base'
-import { defaultEquals } from '../utils/index'
+import { Base, EqualsFn, defaultEquals } from '../_base'
 
 /**
  * Remove elements from an array based on a callback function.
@@ -126,7 +125,7 @@ export class Graph<T> implements Base<IGraphToArrayItem<T>> {
    */
   protected readonly _equalsFn: (a?: T, b?: T) => boolean
 
-  public constructor(isDirected: boolean = false, equalsFn: typeof defaultEquals<T> = defaultEquals) {
+  public constructor(isDirected: boolean = false, equalsFn: EqualsFn<T> = defaultEquals) {
     this.isDirected = isDirected
     this.vertices = []
 

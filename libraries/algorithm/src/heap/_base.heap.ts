@@ -2,10 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-01 00:51:18
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 12:31:30
+ * @LastEditTime : 2024-08-09 16:54:04
  */
-import { Base } from '../_base'
-import { defaultCompare } from '../utils/index'
+import { Base, CompareFn, defaultCompare } from '../_base'
 
 /**
  * @public
@@ -19,9 +18,9 @@ export abstract class Heap<T> implements Base<T> {
 
   protected _list: Array<T>
 
-  protected readonly _compareFn: (a: T, b: T) => number
+  protected readonly _compareFn: CompareFn<T>
 
-  public constructor(compareFn: typeof defaultCompare<T> = defaultCompare) {
+  public constructor(compareFn: CompareFn<T> = defaultCompare) {
     this._compareFn = compareFn
 
     this._list = []

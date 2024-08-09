@@ -4,12 +4,6 @@
 
 ```ts
 
-import { Edge as Edge_2 } from './graph';
-import { Graph as Graph_2 } from './graph';
-import { IGraphShortestPathReturn as IGraphShortestPathReturn_2 } from './_.shortest-path';
-import { SearchCallback as SearchCallback_2 } from '../types';
-import { Vertice as Vertice_2 } from './graph';
-
 // @public
 export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
     // Warning: (ae-forgotten-export) The symbol "TreeNode" needs to be exported by the entry point index.d.ts
@@ -94,6 +88,15 @@ export class ArrayStack<T> implements Stack<T> {
 }
 
 // @public
+export abstract class Base<T> {
+    abstract clear(): void;
+    abstract get isEmpty(): boolean;
+    abstract get size(): number;
+    abstract toArray(): T[];
+    abstract toString(): string;
+}
+
+// @public
 export class BetterHashmap<K, V> extends SquareProbingHashmap<K, V> {
     constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
 }
@@ -134,10 +137,38 @@ export const breadthFirstSearchShortestPath: <T>(graph: Graph<T>, startVertex: T
 export const breadthFirstSearchShortestPathString: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, chars?: string) => string;
 
 // @public
-export const defaultCompare: <T>(a: T, b: T) => number;
+export const bubbleSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
+// @public
+export const bubbleSortBase: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
+// @public
+export const bucketSort: <T>(list: T[], compareFu?: CompareFn<number>, bucketSize?: number, toNumber?: ToNumberFn<T>) => T[];
+
+// @public
+export enum Compare {
+    // (undocumented)
+    BIGGER_THAN = 1,
+    // (undocumented)
+    EQUALS = 0,
+    // (undocumented)
+    LESS_THAN = -1
+}
+
+// @public
+export type CompareFn<T> = (a: T, b: T) => Compare;
+
+// @public
+export const countingSort: <T>(list: T[], toNumber?: ToNumberFn<T>) => T[];
+
+// @public
+export const defaultCompare: <T>(a: T, b: T) => Compare;
 
 // @public
 export const defaultEquals: <T>(a?: T | undefined, b?: T | undefined) => boolean;
+
+// @public
+export const defaultToNumber: <T>(val: T) => number;
 
 // @public
 export const depthFirstSearch: <T>(graph: Graph<T>, startVertex: T | Vertice<T>, callback: SearchCallback<T, Edge<Vertice<T>>>, explore?: SearchCallback<T, Edge<Vertice<T>>>) => void;
@@ -199,11 +230,12 @@ export class Edge<V> {
 // @public
 export const EMPTY_KEY_VALUE: KeyValue<unknown, unknown>;
 
-// Warning: (ae-forgotten-export) The symbol "Base" needs to be exported by the entry point index.d.ts
-//
+// @public
+export type EqualsFn<T> = (a?: T, b?: T) => boolean;
+
 // @public
 export class Graph<T> implements Base<IGraphToArrayItem<T>> {
-    constructor(isDirected?: boolean, equalsFn?: typeof defaultEquals<T>);
+    constructor(isDirected?: boolean, equalsFn?: EqualsFn<T>);
     addEdge(fromVertex: T | Vertice<T>, toVertex: T | Vertice<T>, weight?: number): void;
     addVertex(vertex: T | Vertice<T>): Vertice<T>;
     readonly adjList: Map<Vertice<T>, Array<Edge<Vertice<T>>>>;
@@ -226,21 +258,6 @@ export class Graph<T> implements Base<IGraphToArrayItem<T>> {
     toString(): string;
     readonly vertices: Array<Vertice<T>>;
 }
-
-// @public
-export const GraphShortestPath: {
-    readonly breadthFirstSearchShortestPath: <T>(graph: Graph_2<T>, startVertex: T | Vertice_2<T>) => IGraphShortestPathReturn_2<T>;
-    readonly breadthFirstSearchShortestPathString: <T_1>(graph: Graph_2<T_1>, startVertex: T_1 | Vertice_2<T_1>, chars?: string) => string;
-    readonly depthFirstSearchShortestPath: <T_2>(graph: Graph_2<T_2>, startVertex: T_2 | Vertice_2<T_2>) => IGraphShortestPathReturn_2<T_2>;
-    readonly depthFirstSearchShortestPathString: <T_3>(graph: Graph_2<T_3>, startVertex: T_3 | Vertice_2<T_3>, chars?: string) => string;
-};
-
-// @public
-export const GraphWalker: {
-    readonly breadthFirstSearch: <T>(graph: Graph_2<T>, startVertex: T | Vertice_2<T>, callback: SearchCallback_2<T, Edge_2<Vertice_2<T>>>) => void;
-    readonly depthFirstSearch: <T_1>(graph: Graph_2<T_1>, startVertex: T_1 | Vertice_2<T_1>, callback: SearchCallback_2<T_1, Edge_2<Vertice_2<T_1>>>, explore?: SearchCallback_2<T_1, Edge_2<Vertice_2<T_1>>>) => void;
-    readonly depthFirstSearchVariety: <T_2>(graph: Graph_2<T_2>, startVertex: T_2 | Vertice_2<T_2>, callback: SearchCallback_2<T_2, Edge_2<Vertice_2<T_2>>>) => void;
-};
 
 // @public
 export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
@@ -276,6 +293,9 @@ export interface IKeyValueObj<K, V> {
     // (undocumented)
     value: V;
 }
+
+// @public
+export const insertionSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
 
 // @public
 export class KeyValue<K, V> {
@@ -411,6 +431,9 @@ export class MaxHeap<T> extends Heap<T> {
 }
 
 // @public
+export const mergeSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
+// @public
 export class MinHeap<T> extends Heap<T> {
     // (undocumented)
     siftDown(index: number): void;
@@ -482,6 +505,12 @@ export class ObjectStack<T> implements Stack<T> {
 }
 
 // @public
+export const quickSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
+// @public
+export const radixSort: <T>(list: T[], radixBase?: number, toNumber?: ToNumberFn<T>) => T[];
+
+// @public
 export class RedBlackTree<T> extends BinarySearchTree<T> {
     // (undocumented)
     add(value: T): void;
@@ -511,6 +540,9 @@ export class RedBlackTreeNode<T> extends TreeNode<T> {
     // (undocumented)
     right: RedBlackTreeNode<T> | undefined;
 }
+
+// @public
+export const selectionSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
 
 // @public
 export class SetPlus<T> extends Set<T> {
@@ -576,11 +608,11 @@ export class SinglyLinkedListNode<T> extends LinkedListNode<T> {
 
 // @public
 export class SortedLinkedList<T> extends DoublyLinkedList<T> {
-    constructor(equalsFn?: typeof defaultEquals<T>, compareFn?: typeof defaultCompare<T>);
+    constructor(equalsFn?: EqualsFn<T>, compareFn?: CompareFn<T>);
     // (undocumented)
     addAt(index: number, value: T): boolean;
     // (undocumented)
-    protected readonly _compareFn: (a: T, b: T) => number;
+    protected readonly _compareFn: CompareFn<T>;
     // (undocumented)
     push(value: T): boolean;
     // (undocumented)
@@ -605,6 +637,9 @@ export type ToKeyStr<K> = (key: K) => string;
 
 // @public
 export const toKeyStrDefault: <K>(key: K) => string;
+
+// @public
+export type ToNumberFn<T> = (val: T) => number;
 
 // @public
 export class Vertice<T> {
