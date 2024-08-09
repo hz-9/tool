@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-09 17:24:55
- * @LastEditTime : 2024-08-10 02:35:49
+ * @LastEditTime : 2024-08-10 02:44:57
  * @LastEditors  : Chen Zhen
  */
 import { ToNumberFn, defaultToNumber } from '../_base/index'
@@ -13,7 +13,7 @@ import { ToNumberFn, defaultToNumber } from '../_base/index'
  *
  * Counting sort algorithm.
  *
- * 桶排序。
+ * 计数排序。
  *
  * @param list - The array to be sorted.
  * @param toNumber - The function used to convert elements to numbers.
