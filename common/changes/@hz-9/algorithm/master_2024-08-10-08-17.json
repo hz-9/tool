@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/algorithm",
+      "comment": "fix: repair error filename",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/algorithm"
+}

@@ -6618,7 +6618,7 @@
               "text": "number"
             }
           ],
-          "fileUrlPath": "src/search/interpolation-search.ts",
+          "fileUrlPath": "src/search/interpolation.search.ts",
           "returnTypeTokenRange": {
             "startIndex": 8,
             "endIndex": 9
