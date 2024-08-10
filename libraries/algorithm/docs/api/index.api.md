@@ -101,6 +101,9 @@ export class BetterHashmap<K, V> extends SquareProbingHashmap<K, V> {
     constructor(toKeyStr?: ToKeyStr<K>, toHashCode?: ToHashCode);
 }
 
+// @public
+export const binarySearch: <T>(array: T[], target: T, compareFn?: CompareFn<T>) => number;
+
 // Warning: (ae-forgotten-export) The symbol "Tree" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -296,6 +299,9 @@ export interface IKeyValueObj<K, V> {
 
 // @public
 export const insertionSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
+// @public
+export const interpolationSearch: <T>(array: T[], target: T, compareFn?: CompareFn<T>) => number;
 
 // @public
 export class KeyValue<K, V> {
@@ -545,6 +551,9 @@ export class RedBlackTreeNode<T> extends TreeNode<T> {
 export const selectionSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
 
 // @public
+export const sequentialSearch: <T>(list: T[], value: T, equalsFn?: EqualsFn<T>) => number;
+
+// @public
 export class SetPlus<T> extends Set<T> {
     static difference<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
     static intersection<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
@@ -552,6 +561,9 @@ export class SetPlus<T> extends Set<T> {
     toSet(): Set<T>;
     static union<T>(setA: Set<T>, setB: Set<T>): SetPlus<T>;
 }
+
+// @public
+export const shuffleRandom: <T>(array: T[]) => T[];
 
 // @public
 export class SimpleHashmap<K, V> implements Hashmap<K, V> {

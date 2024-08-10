@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:59:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 02:39:10
+ * @LastEditTime : 2024-08-10 13:15:52
  */
 import { Compare, CompareFn, defaultCompare } from '../_base/index'
 
@@ -14,6 +14,14 @@ import { Compare, CompareFn, defaultCompare } from '../_base/index'
  * Insertion sort algorithm.
  *
  * 插入排序。
+ *
+ * Time complexity: O(n^2)
+ *
+ * Time complexity badest case: O(n^2)
+ *
+ * Time complexity goodest case: O(n)
+ *
+ * Space complexity: O(1)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:59:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 02:36:50
+ * @LastEditTime : 2024-08-10 13:17:27
  */
 import { Compare, CompareFn, defaultCompare } from '../_base/index'
 
@@ -26,6 +26,14 @@ const merge = <T>(left: Array<T>, right: Array<T>, compareFu: CompareFn<T>): Arr
  * Merge sort algorithm.
  *
  * 归并排序。
+ *
+ * Time complexity: O(n logn)
+ *
+ * Time complexity badest case:  O(n logn)
+ *
+ * Time complexity goodest case:  O(n logn)
+ *
+ * Space complexity: O(n)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.

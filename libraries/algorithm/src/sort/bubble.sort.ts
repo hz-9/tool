@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:59:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 02:38:52
+ * @LastEditTime : 2024-08-10 13:15:14
  */
 import { Compare, CompareFn, defaultCompare } from '../_base/index'
 import { swap } from './_.sort'
@@ -13,6 +13,14 @@ import { swap } from './_.sort'
  * Bubble sort algorithm.
  *
  * 冒泡排序。
+ *
+ * Time complexity: O(n^2)
+ *
+ * Time complexity badest case: O(n^2)
+ *
+ * Time complexity goodest case: O(n)
+ *
+ * Space complexity: O(1)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.
@@ -36,6 +44,14 @@ export const bubbleSortBase = <T>(list: Array<T>, compareFu: CompareFn<T> = defa
  * Bubble sort algorithm.
  *
  * 冒泡排序。
+ *
+ * Time complexity: O(n^2 / 2)
+ *
+ * Time complexity badest case: O(n^2 / 2)
+ *
+ * Time complexity goodest case: O(n)
+ *
+ * Space complexity: O(1)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-04-02 11:29:16
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-04 20:41:34
+ * @LastEditTime : 2024-08-10 13:11:27
  */
 import { Base, EqualsFn, defaultEquals } from '../_base'
 
@@ -130,7 +130,7 @@ export class Graph<T> implements Base<IGraphToArrayItem<T>> {
     this.vertices = []
 
     /**
-     * TODO: It's better to use a dictionary type.
+     *  XXX: It's better to use a dictionary type.
      */
     this.adjList = new Map<Vertice<T>, Array<Edge<Vertice<T>>>>()
 

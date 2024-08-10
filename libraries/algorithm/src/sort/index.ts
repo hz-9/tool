@@ -4,6 +4,8 @@ export * from './bucket.sort'
 
 export * from './counting.sort'
 
+export * from './heap.sort'
+
 export * from './insertion.sort'
 
 export * from './merge.sort'

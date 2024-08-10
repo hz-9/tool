@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-09 18:00:36
- * @LastEditTime : 2024-08-10 02:35:01
+ * @LastEditTime : 2024-08-10 13:20:39
  * @LastEditors  : Chen Zhen
  */
 import { CompareFn, ToNumberFn, defaultCompare, defaultToNumber } from '../_base/index'
@@ -55,6 +55,8 @@ const sortBuckets = <T>(buckets: Array<T[]>, compareFu: CompareFn<T>): Array<T> 
  * Bucket sort algorithm.
  *
  * 桶排序。
+ *
+ * Time complexity: O(n)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.

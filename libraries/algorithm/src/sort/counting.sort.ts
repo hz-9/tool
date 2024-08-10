@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-09 17:24:55
- * @LastEditTime : 2024-08-10 02:44:57
+ * @LastEditTime : 2024-08-10 13:18:39
  * @LastEditors  : Chen Zhen
  */
 import { ToNumberFn, defaultToNumber } from '../_base/index'
@@ -14,6 +14,14 @@ import { ToNumberFn, defaultToNumber } from '../_base/index'
  * Counting sort algorithm.
  *
  * 计数排序。
+ *
+ * Time complexity: O(n+k)
+ *
+ * Time complexity badest case:  O(n+k)
+ *
+ * Time complexity goodest case:  O(n+k)
+ *
+ * Space complexity: O(n+k)
  *
  * @param list - The array to be sorted.
  * @param toNumber - The function used to convert elements to numbers.

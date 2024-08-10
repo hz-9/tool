@@ -1,7 +1,7 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-10 02:16:27
- * @LastEditTime : 2024-08-10 02:38:16
+ * @LastEditTime : 2024-08-10 13:19:18
  * @LastEditors  : Chen Zhen
  */
 import { ToNumberFn, defaultToNumber } from '../_base/index'
@@ -14,6 +14,14 @@ import { ToNumberFn, defaultToNumber } from '../_base/index'
  * Radix sort algorithm.
  *
  * 基数排序。
+ *
+ * Time complexity: O(n*m)
+ *
+ * Time complexity badest case:  O(n*m)
+ *
+ * Time complexity goodest case:  O(n*m)
+ *
+ * Space complexity: O(m)
  *
  * @param list - The array to be sorted.
  * @param radixBase - The base of the radix.

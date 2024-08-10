@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-08 18:59:32
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 02:37:23
+ * @LastEditTime : 2024-08-10 13:18:12
  */
 import { Compare, CompareFn, defaultCompare } from '../_base/index'
 import { swap } from './_.sort'
@@ -51,6 +51,14 @@ const quick = <T>(list: Array<T>, left: number, right: number, compareFu: Compar
  * Quick sort algorithm.
  *
  * 快速排序。
+ *
+ * Time complexity: O(n logn)
+ *
+ * Time complexity badest case:  O(n^2)
+ *
+ * Time complexity goodest case:  O(n logn)
+ *
+ * Space complexity: O(n logn)
  *
  * @param list - The array to be sorted.
  * @param compareFu - The comparison function used to determine the order of the elements.

@@ -1945,6 +1945,97 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!binarySearch:function(1)",
+          "docComment": "/**\n * Binary search algorithm.\n *\n * 二分搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "binarySearch: <T>(array: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", target: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/binary.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "array",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "target",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "binarySearch"
+        },
+        {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!BinarySearchTree:class",
           "docComment": "/**\n * Binary Search Tree\n *\n * 二叉搜索树\n *\n * @public\n */\n",
@@ -2863,7 +2954,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!bubbleSort:function(1)",
-          "docComment": "/**\n * Bubble sort algorithm.\n *\n * 冒泡排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Bubble sort algorithm.\n *\n * 冒泡排序。\n *\n * Time complexity: O(n^2 / 2)\n *\n * Time complexity badest case: O(n^2 / 2)\n *\n * Time complexity goodest case: O(n)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2938,7 +3029,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!bubbleSortBase:function(1)",
-          "docComment": "/**\n * Bubble sort algorithm.\n *\n * 冒泡排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Bubble sort algorithm.\n *\n * 冒泡排序。\n *\n * Time complexity: O(n^2)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3013,7 +3104,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!bucketSort:function(1)",
-          "docComment": "/**\n * Bucket sort algorithm.\n *\n * 桶排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @param bucketSize - The size of each bucket.\n *\n * @param toNumber - The function used to convert elements to numbers.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Bucket sort algorithm.\n *\n * 桶排序。\n *\n * Time complexity: O(n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @param bucketSize - The size of each bucket.\n *\n * @param toNumber - The function used to convert elements to numbers.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -3249,7 +3340,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!countingSort:function(1)",
-          "docComment": "/**\n * Counting sort algorithm.\n *\n * 桶排序。\n *\n * @param list - The array to be sorted.\n *\n * @param toNumber - The function used to convert elements to numbers.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Counting sort algorithm.\n *\n * 计数排序。\n *\n * Time complexity: O(n+k)\n *\n * Time complexity badest case: O(n+k)\n *\n * Time complexity goodest case: O(n+k)\n *\n * Space complexity: O(n+k)\n *\n * @param list - The array to be sorted.\n *\n * @param toNumber - The function used to convert elements to numbers.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -6337,7 +6428,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!insertionSort:function(1)",
-          "docComment": "/**\n * Insertion sort algorithm.\n *\n * 插入排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Insertion sort algorithm.\n *\n * 插入排序。\n *\n * Time complexity: O(n^2)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -6408,6 +6499,97 @@
             }
           ],
           "name": "insertionSort"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!interpolationSearch:function(1)",
+          "docComment": "/**\n * Interpolation search algorithm.\n *\n * 内插搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "interpolationSearch: <T>(array: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", target: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/interpolation-search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "array",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "target",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "interpolationSearch"
         },
         {
           "kind": "Class",
@@ -8788,7 +8970,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!mergeSort:function(1)",
-          "docComment": "/**\n * Merge sort algorithm.\n *\n * 归并排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Merge sort algorithm.\n *\n * 归并排序。\n *\n * Time complexity: O(n log n)\n *\n * Time complexity badest case: O(n log n)\n *\n * Time complexity goodest case: O(n log n)\n *\n * Space complexity: O(n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -10027,7 +10209,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!quickSort:function(1)",
-          "docComment": "/**\n * Quick sort algorithm.\n *\n * 快速排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Quick sort algorithm.\n *\n * 快速排序。\n *\n * Time complexity: O(n log n)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n log n)\n *\n * Space complexity: O(n log n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -10102,7 +10284,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!radixSort:function(1)",
-          "docComment": "/**\n * Radix sort algorithm.\n *\n * 基数排序。\n *\n * @param list - The array to be sorted.\n *\n * @param radixBase - The base of the radix.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Radix sort algorithm.\n *\n * 基数排序。\n *\n * Time complexity: O(n*m)\n *\n * Time complexity badest case: O(n*m)\n *\n * Time complexity goodest case: O(n*m)\n *\n * Space complexity: O(m)\n *\n * @param list - The array to be sorted.\n *\n * @param radixBase - The base of the radix.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -10821,7 +11003,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!selectionSort:function(1)",
-          "docComment": "/**\n * Selection sort algorithm.\n *\n * 选择排序。\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Selection sort algorithm.\n *\n * 选择排序。\n *\n * Time complexity: O(n^2)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -10892,6 +11074,97 @@
             }
           ],
           "name": "selectionSort"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!sequentialSearch:function(1)",
+          "docComment": "/**\n * Sequential search algorithm.\n *\n * 线性搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "sequentialSearch: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", equalsFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "EqualsFn",
+              "canonicalReference": "@hz-9/algorithm!EqualsFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/sequential.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "equalsFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "sequentialSearch"
         },
         {
           "kind": "Class",
@@ -11340,6 +11613,60 @@
             "endIndex": 3
           },
           "implementsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!shuffleRandom:function(1)",
+          "docComment": "/**\n * Shuffle the array randomly.\n *\n * 随机打乱数组。\n *\n * @param array - \n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "shuffleRandom: <T>(array: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            }
+          ],
+          "fileUrlPath": "src/random/shuffle.random.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "array",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "shuffleRandom"
         },
         {
           "kind": "Class",
