@@ -78,7 +78,7 @@ stages:
           hostID:
             - ae5f4645-c72c-407f-8377-7033c8e79165
         script:
-          - 'curl -d "{ \"subject\": \"Publish Pages - hz-9/tool\", \"text\": \"Publish Pages - hz-9/tool\" }" -H "Content-Type: application/json" -X POST http://heavenzhen.cn:16100/api/action/email'
+          - 'curl -d "{ \"subject\": \"Publish Gitee Pages - hz-9/tool\", \"text\": \"Publish Gitee Pages - hz-9/tool\" }" -H "Content-Type: application/json" -X POST http://heavenzhen.cn:16100/api/action/email'
         notify: []
         strategy:
           retry: '0'
