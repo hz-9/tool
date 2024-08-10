@@ -2,6 +2,18 @@
   "name": "@hz-9/docs-build",
   "entries": [
     {
+      "version": "0.7.4",
+      "tag": "@hz-9/docs-build_v0.7.4",
+      "date": "Sat, 10 Aug 2024 06:36:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@hz-9/heft-node-rig\" to `0.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.3",
       "tag": "@hz-9/docs-build_v0.7.3",
       "date": "Sat, 29 Jun 2024 07:30:34 GMT",

@@ -2,6 +2,18 @@
   "name": "@hz-9/docker-build",
   "entries": [
     {
+      "version": "0.3.7",
+      "tag": "@hz-9/docker-build_v0.3.7",
+      "date": "Sat, 10 Aug 2024 06:36:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@hz-9/heft-node-rig\" to `0.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.6",
       "tag": "@hz-9/docker-build_v0.3.6",
       "date": "Mon, 24 Jun 2024 06:20:41 GMT",

@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/docs-build",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "A toos for generate vuepress-theme-hopo from typescript project.",
   "keywords": [
     "vuepress",
