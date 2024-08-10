@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/algorithm",
+      "comment": "feat: first commit",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz-9/algorithm"
+}
