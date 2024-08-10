@@ -2,6 +2,20 @@
   "name": "@hz-9/algorithm",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "@hz-9/algorithm_v0.1.1",
+      "date": "Sat, 10 Aug 2024 08:18:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: repair error filename",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "924c7f8c478139b958bec1625f6234bfff78e510"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@hz-9/algorithm_v0.1.0",
       "date": "Sat, 10 Aug 2024 06:36:42 GMT",

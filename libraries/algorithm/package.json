@@ -1,6 +1,6 @@
 {
   "name": "@hz-9/algorithm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A JavaScript algorithm base class library.",
   "keywords": [
     "algorithm"
