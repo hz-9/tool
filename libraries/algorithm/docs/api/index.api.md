@@ -270,6 +270,9 @@ export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
     abstract set(key: K, value: V): boolean;
 }
 
+// @public
+export const heapSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
+
 // @public (undocumented)
 export interface IGraphShortestPathReturn<T> {
     // (undocumented)

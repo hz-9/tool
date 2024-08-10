@@ -6118,6 +6118,81 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!heapSort:function(1)",
+          "docComment": "/**\n * Heap sort algorithm.\n *\n * 堆排序。\n *\n * Time complexity: O(n logn)\n *\n * Time complexity badest case: O(n logn)\n *\n * Time complexity goodest case: O(n logn)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "heapSort: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFu?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            }
+          ],
+          "fileUrlPath": "src/sort/heap.sort.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFu",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "heapSort"
+        },
+        {
           "kind": "Interface",
           "canonicalReference": "@hz-9/algorithm!IGraphShortestPathReturn:interface",
           "docComment": "/**\n * @public\n */\n",
@@ -8970,7 +9045,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!mergeSort:function(1)",
-          "docComment": "/**\n * Merge sort algorithm.\n *\n * 归并排序。\n *\n * Time complexity: O(n log n)\n *\n * Time complexity badest case: O(n log n)\n *\n * Time complexity goodest case: O(n log n)\n *\n * Space complexity: O(n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Merge sort algorithm.\n *\n * 归并排序。\n *\n * Time complexity: O(n logn)\n *\n * Time complexity badest case: O(n logn)\n *\n * Time complexity goodest case: O(n logn)\n *\n * Space complexity: O(n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is not original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -10209,7 +10284,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!quickSort:function(1)",
-          "docComment": "/**\n * Quick sort algorithm.\n *\n * 快速排序。\n *\n * Time complexity: O(n log n)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n log n)\n *\n * Space complexity: O(n log n)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
+          "docComment": "/**\n * Quick sort algorithm.\n *\n * 快速排序。\n *\n * Time complexity: O(n logn)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n logn)\n *\n * Space complexity: O(n logn)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

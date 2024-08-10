@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-10 13:55:41
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 13:58:04
+ * @LastEditTime : 2024-08-10 14:17:37
  */
 
 /**
@@ -12,7 +12,8 @@
  *
  *  随机打乱数组。
  *
- * @param array
+ * @param array - The array to be shuffled.
+ * @returns - The shuffled array. (Is original array)
  */
 export const shuffleRandom = <T>(array: T[]): T[] => {
   for (let i = array.length - 1; i > 0; i -= 1) {
