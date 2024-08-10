@@ -2,6 +2,20 @@
   "name": "@hz-9/algorithm",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@hz-9/algorithm_v0.2.0",
+      "date": "Sat, 10 Aug 2024 10:09:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: add like `binaryTreeSearch` and `hashSearch`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "95c057ffd52d46c8c3a645b692ab6c709cb6a3bc"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.1",
       "tag": "@hz-9/algorithm_v0.1.1",
       "date": "Sat, 10 Aug 2024 08:18:17 GMT",

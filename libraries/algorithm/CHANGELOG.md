@@ -1,6 +1,13 @@
 # Change Log - @hz-9/algorithm
 
-This log was last generated on Sat, 10 Aug 2024 08:18:17 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Aug 2024 10:09:13 GMT and should not be manually modified.
+
+## 0.2.0
+Sat, 10 Aug 2024 10:09:13 GMT
+
+### Minor changes
+
+- feat: add like `binaryTreeSearch` and `hashSearch`
 
 ## 0.1.1
 Sat, 10 Aug 2024 08:18:17 GMT
