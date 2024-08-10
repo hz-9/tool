@@ -1,6 +1,13 @@
 # Change Log - @hz-9/algorithm
 
-This log was last generated on Sat, 10 Aug 2024 10:09:13 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Aug 2024 10:35:15 GMT and should not be manually modified.
+
+## 0.2.1
+Sat, 10 Aug 2024 10:35:15 GMT
+
+### Patches
+
+- docs: add `README.md` in guide
 
 ## 0.2.0
 Sat, 10 Aug 2024 10:09:13 GMT

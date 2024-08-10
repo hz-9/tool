@@ -2,6 +2,20 @@
   "name": "@hz-9/docker-build",
   "entries": [
     {
+      "version": "0.3.8",
+      "tag": "@hz-9/docker-build_v0.3.8",
+      "date": "Sat, 10 Aug 2024 10:35:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs: fix error docs",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "672525ced9fb9aca04c438d95c154d67af2c00a4"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.7",
       "tag": "@hz-9/docker-build_v0.3.7",
       "date": "Sat, 10 Aug 2024 06:36:42 GMT",

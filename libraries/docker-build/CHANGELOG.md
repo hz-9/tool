@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docker-build
 
-This log was last generated on Sat, 10 Aug 2024 06:36:42 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Aug 2024 10:35:15 GMT and should not be manually modified.
+
+## 0.3.8
+Sat, 10 Aug 2024 10:35:15 GMT
+
+### Patches
+
+- docs: fix error docs
 
 ## 0.3.7
 Sat, 10 Aug 2024 06:36:42 GMT
