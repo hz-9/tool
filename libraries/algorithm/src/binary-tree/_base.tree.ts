@@ -2,9 +2,9 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:20
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-09 16:53:55
+ * @LastEditTime : 2024-08-10 17:59:49
  */
-import { Base, CompareFn, EqualsFn, defaultCompare, defaultEquals } from '../_base'
+import { Base, CompareFn, defaultCompare } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
 
 /**
@@ -43,22 +43,13 @@ export abstract class Tree<T> implements Base<T> {
   protected _root?: TreeNode<T>
 
   /**
-   * Function to determine if two values are equal.
-   *
-   * 判断两个值是否相等的函数。
-   */
-  protected readonly _equalsFn: EqualsFn<T>
-
-  /**
    * Function to compare two values.
    *
    * 比较两个值的函数。
    */
   protected readonly _compareFn: CompareFn<T>
 
-  public constructor(equalsFn: EqualsFn<T> = defaultEquals, compareFn: CompareFn<T> = defaultCompare) {
-    this._equalsFn = equalsFn
-
+  public constructor(compareFn: CompareFn<T> = defaultCompare) {
     this._compareFn = compareFn
 
     this._size = 0
@@ -122,6 +113,32 @@ export abstract class Tree<T> implements Base<T> {
    * @param value - The value to be checked.
    */
   protected abstract _hasNode(node: TreeNode<T> | undefined, value: T): boolean
+
+  /**
+   * Get an value from the tree.
+   *
+   * 从树中获取某个值。
+   *
+   * Time complexity: O(log n)
+   *
+   * Space complexity: O(1)
+   *
+   * @param value - The value to be checked.
+   * @returns - Whether the value exists.
+   */
+  public get(value: T): T | undefined {
+    return this._getNode(this._root, value)?.val
+  }
+
+  /**
+   * Get an node from the tree.
+   *
+   * 从节点向下获取匹配的节点。
+   *
+   * @param node - The base node.
+   * @param value - The value to be checked.
+   */
+  protected abstract _getNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined
 
   /**
    * Remove an element from the tree.

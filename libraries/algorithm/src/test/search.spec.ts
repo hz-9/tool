@@ -1,17 +1,36 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-08-09 16:37:56
- * @LastEditTime : 2024-08-10 13:52:46
+ * @LastEditTime : 2024-08-10 18:02:57
  * @LastEditors  : Chen Zhen
  */
-import { binarySearch, interpolationSearch, sequentialSearch } from '../index'
+import {
+  adelsonVelskiiLandiTreeSearch,
+  binarySearch,
+  binaryTreeSearch,
+  hashSearch,
+  interpolationSearch,
+  redBlackTreeSearch,
+  sequentialSearch,
+} from '../index'
 
-type SearchFunction<T> = typeof sequentialSearch<T> | typeof binarySearch<T> | typeof interpolationSearch<T>
+type SearchFunction<T> =
+  | typeof sequentialSearch<T>
+  | typeof binarySearch<T>
+  | typeof interpolationSearch<T>
+  | typeof hashSearch<T>
+  | typeof adelsonVelskiiLandiTreeSearch<T>
+  | typeof binaryTreeSearch<T>
+  | typeof redBlackTreeSearch<T>
 
 describe.each([
   ['sequentialSearch', sequentialSearch],
   ['binarySearch', binarySearch],
   ['interpolationSearch', interpolationSearch],
+  ['hashSearch', hashSearch],
+  ['adelsonVelskiiLandiTreeSearch', adelsonVelskiiLandiTreeSearch],
+  ['binaryTreeSearch', binaryTreeSearch],
+  ['redBlackTreeSearch', redBlackTreeSearch],
 ])('Search - %s', (name: string, searchFun: SearchFunction<number>) => {
   it('Test 0', async () => {
     expect(searchFun([], 1)).toBe(-1)

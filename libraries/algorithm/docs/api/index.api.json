@@ -687,6 +687,97 @@
           "implementsTokenRanges": []
         },
         {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!adelsonVelskiiLandiTreeSearch:function(1)",
+          "docComment": "/**\n * Sequential search algorithm.(AdelsonVelskiiLandiTree) Input parameters do not need to be sorted.\n *\n * 线性搜索算法。(自平衡树) 传入参数必须已经进行从小到大排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "adelsonVelskiiLandiTreeSearch: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/binary-tree.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "adelsonVelskiiLandiTreeSearch"
+        },
+        {
           "kind": "Class",
           "canonicalReference": "@hz-9/algorithm!ArrayDeque:class",
           "docComment": "/**\n * A deque implementation based on array.\n *\n * 一个基于数组的双向队列。\n *\n * @public\n */\n",
@@ -1947,7 +2038,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!binarySearch:function(1)",
-          "docComment": "/**\n * Binary search algorithm.\n *\n * 二分搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "docComment": "/**\n * Binary search algorithm. Input parameters must be sorted in ascending order.\n *\n * 二分搜索算法。 传入参数无需排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2150,6 +2241,80 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "_addNode"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@hz-9/algorithm!BinarySearchTree#_getNode:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "protected _getNode(node: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TreeNode",
+                  "canonicalReference": "@hz-9/algorithm!~TreeNode:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": true,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "node",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "_getNode"
             },
             {
               "kind": "Method",
@@ -2638,6 +2803,97 @@
             "endIndex": 3
           },
           "implementsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!binaryTreeSearch:function(1)",
+          "docComment": "/**\n * Sequential search algorithm.(BinarySearchTree) Input parameters do not need to be sorted.\n *\n * 线性搜索算法。(二叉搜索树) 传入参数必须已经进行从小到大排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "binaryTreeSearch: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/binary-tree.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "binaryTreeSearch"
         },
         {
           "kind": "Function",
@@ -6119,6 +6375,114 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!hashSearch:function(1)",
+          "docComment": "/**\n * Hash search algorithm. Input parameters do not need to be sorted.\n *\n * 哈希搜索算法。 传入参数无需排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param toKeyStr - The function to convert the value to a key string.\n *\n * @param toHashCode - The function to convert the key string to a hash code.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "hashSearch: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", toKeyStr?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ToKeyStr",
+              "canonicalReference": "@hz-9/algorithm!ToKeyStr:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ", toHashCode?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ToHashCode",
+              "canonicalReference": "@hz-9/algorithm!ToHashCode:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/hash.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 10,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "toKeyStr",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            },
+            {
+              "parameterName": "toHashCode",
+              "parameterTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 9
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "hashSearch"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!heapSort:function(1)",
           "docComment": "/**\n * Heap sort algorithm.\n *\n * 堆排序。\n *\n * Time complexity: O(n logn)\n *\n * Time complexity badest case: O(n logn)\n *\n * Time complexity goodest case: O(n logn)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -6578,7 +6942,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!interpolationSearch:function(1)",
-          "docComment": "/**\n * Interpolation search algorithm.\n *\n * 内插搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "docComment": "/**\n * Interpolation search algorithm. Input parameters must be sorted in ascending order.\n *\n * 内插搜索算法。 传入参数必须已经进行从小到大排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -11077,6 +11441,97 @@
         },
         {
           "kind": "Function",
+          "canonicalReference": "@hz-9/algorithm!redBlackTreeSearch:function(1)",
+          "docComment": "/**\n * Sequential search algorithm.(RedBlackTree) Input parameters do not need to be sorted.\n *\n * 线性搜索算法。(红黑树) 传入参数必须已经进行从小到大排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "redBlackTreeSearch: <T>(list: "
+            },
+            {
+              "kind": "Content",
+              "text": "T[]"
+            },
+            {
+              "kind": "Content",
+              "text": ", value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", compareFn?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CompareFn",
+              "canonicalReference": "@hz-9/algorithm!CompareFn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            }
+          ],
+          "fileUrlPath": "src/search/binary-tree.search.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "list",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "compareFn",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "isOptional": true
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "redBlackTreeSearch"
+        },
+        {
+          "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!selectionSort:function(1)",
           "docComment": "/**\n * Selection sort algorithm.\n *\n * 选择排序。\n *\n * Time complexity: O(n^2)\n *\n * Time complexity badest case: O(n^2)\n *\n * Time complexity goodest case: O(n)\n *\n * Space complexity: O(1)\n *\n * @param list - The array to be sorted.\n *\n * @param compareFu - The comparison function used to determine the order of the elements.\n *\n * @returns - The sorted array. (Is original array)\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -11153,7 +11608,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@hz-9/algorithm!sequentialSearch:function(1)",
-          "docComment": "/**\n * Sequential search algorithm.\n *\n * 线性搜索算法。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
+          "docComment": "/**\n * Sequential search algorithm. Input parameters must be sorted in ascending order.\n *\n * 线性搜索算法。 传入参数必须已经进行从小到大排序。\n *\n * @param list - The list to search.\n *\n * @param value - The value to search for.\n *\n * @param compareFn - The compare function.\n *\n * @returns - The index of the value in the list. If the value is not found, return -1.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-03-31 20:03:15
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-09 11:37:38
+ * @LastEditTime : 2024-08-10 17:47:39
  */
 import { Compare } from '../_base'
 import type { OrderTraverseCallback } from '../types/index'
@@ -46,6 +46,15 @@ export class BinarySearchTree<T> extends Tree<T> {
     if (compareResult === Compare.LESS_THAN) return this._hasNode(node.left, value)
     if (compareResult === Compare.BIGGER_THAN) return this._hasNode(node.right, value)
     return true
+  }
+
+  protected _getNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined {
+    if (!node) return undefined
+
+    const compareResult = this._compareFn(value, node.val)
+    if (compareResult === Compare.LESS_THAN) return this._getNode(node.left, value)
+    if (compareResult === Compare.BIGGER_THAN) return this._getNode(node.right, value)
+    return node
   }
 
   protected _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined {

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/algorithm",
+      "comment": "feat: add like `binaryTreeSearch` and `hashSearch`",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz-9/algorithm"
+}

@@ -2,7 +2,7 @@
  * @Author       : Chen Zhen
  * @Date         : 2024-08-10 13:28:40
  * @LastEditors  : Chen Zhen
- * @LastEditTime : 2024-08-10 13:54:23
+ * @LastEditTime : 2024-08-10 17:31:49
  */
 import { Compare, CompareFn, defaultCompare } from '../_base'
 
@@ -10,8 +10,10 @@ import { Compare, CompareFn, defaultCompare } from '../_base'
  * @public
  *
  *  Interpolation search algorithm.
+ *  Input parameters must be sorted in ascending order.
  *
  *  内插搜索算法。
+ *  传入参数必须已经进行从小到大排序。
  *
  * @param list - The list to search.
  * @param value - The value to search for.

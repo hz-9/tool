@@ -21,6 +21,9 @@ export class AdelsonVelskiiLandiTree<T> extends BinarySearchTree<T> {
     protected _rotationRR(node: TreeNode<T>): TreeNode<T>;
 }
 
+// @public
+export const adelsonVelskiiLandiTreeSearch: <T>(list: T[], value: T, compareFn?: CompareFn<T>) => number;
+
 // Warning: (ae-forgotten-export) The symbol "Deque" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -111,6 +114,8 @@ export class BinarySearchTree<T> extends Tree<T> {
     // (undocumented)
     protected _addNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
     // (undocumented)
+    protected _getNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
+    // (undocumented)
     protected _hasNode(node: TreeNode<T> | undefined, value: T): boolean;
     // Warning: (ae-forgotten-export) The symbol "OrderTraverseCallback" needs to be exported by the entry point index.d.ts
     //
@@ -127,6 +132,9 @@ export class BinarySearchTree<T> extends Tree<T> {
     // (undocumented)
     protected _removeNode(node: TreeNode<T> | undefined, value: T): TreeNode<T> | undefined;
 }
+
+// @public
+export const binaryTreeSearch: <T>(list: T[], value: T, compareFn?: CompareFn<T>) => number;
 
 // Warning: (ae-forgotten-export) The symbol "SearchCallback" needs to be exported by the entry point index.d.ts
 //
@@ -269,6 +277,9 @@ export abstract class Hashmap<K, V> extends Base<IKeyValueObj<K, V>> {
     abstract remove(key: K): boolean;
     abstract set(key: K, value: V): boolean;
 }
+
+// @public
+export const hashSearch: <T>(list: T[], value: T, toKeyStr?: ToKeyStr<T>, toHashCode?: ToHashCode) => number;
 
 // @public
 export const heapSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];
@@ -549,6 +560,9 @@ export class RedBlackTreeNode<T> extends TreeNode<T> {
     // (undocumented)
     right: RedBlackTreeNode<T> | undefined;
 }
+
+// @public
+export const redBlackTreeSearch: <T>(list: T[], value: T, compareFn?: CompareFn<T>) => number;
 
 // @public
 export const selectionSort: <T>(list: T[], compareFu?: CompareFn<T>) => T[];

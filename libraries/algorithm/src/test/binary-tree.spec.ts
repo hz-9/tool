@@ -1,12 +1,12 @@
 /**
  * @Author       : Chen Zhen
  * @Date         : 2024-07-30 19:31:44
- * @LastEditTime : 2024-08-04 20:41:51
+ * @LastEditTime : 2024-08-10 18:04:38
  * @LastEditors  : Chen Zhen
  */
 import { AdelsonVelskiiLandiTree, BinarySearchTree, RedBlackTree } from '../index'
 
-type UnionTree = BinarySearchTree<number>
+type UnionTree = BinarySearchTree<number> | AdelsonVelskiiLandiTree<number> | RedBlackTree<number>
 
 type GetTree = () => UnionTree
 
@@ -145,12 +145,18 @@ describe.each([
     }
   })
 
-  it('BinaryTree - has', async () => {
+  it('BinaryTree - has & get', async () => {
     expect(tree.has(11)).toBe(true)
     expect(tree.has(12)).toBe(true)
     expect(tree.has(3)).toBe(true)
     expect(tree.has(100000)).toBe(false)
     expect(tree.has(-1)).toBe(false)
+
+    expect(tree.get(11)).toBe(11)
+    expect(tree.get(12)).toBe(12)
+    expect(tree.get(3)).toBe(3)
+    expect(tree.get(100000)).toBe(undefined)
+    expect(tree.get(-1)).toBe(undefined)
 
     expect(getTreeCommonInfo(tree)).toEqual({
       size: 15,
