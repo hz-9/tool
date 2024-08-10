@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/@hz-9/heft-node-rig/profiles/library/tsconfig.json",
+  "compilerOptions": {
+    "paths": {}
+  }
+}

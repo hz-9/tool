@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/heft-node-rig",
+      "comment": "feat: add configs for library",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@hz-9/heft-node-rig"
+}
