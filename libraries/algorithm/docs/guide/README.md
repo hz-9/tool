@@ -12,8 +12,6 @@ A JavaScript algorithm base class library.
 [node-version-url]: https://badgen.net/npm/node/@hz-9/algorithm
 [last-commit-url]: https://badgen.net/github/last-commit/hz-9/tool
 
-[Document](https://hz-9.github.io/tool/guide/algorithm/) | [文档](https://hz-9.github.io/tool/zh-CN/guide/algorithm/)
-
 ## Introduction
 
 A JavaScript algorithm base class library.

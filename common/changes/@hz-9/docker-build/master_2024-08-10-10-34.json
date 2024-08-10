@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/docker-build",
+      "comment": "docs: fix error docs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/docker-build"
+}

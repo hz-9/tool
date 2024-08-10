@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@hz-9/algorithm",
+      "comment": "docs: add `README.md` in guide",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@hz-9/algorithm"
+}
