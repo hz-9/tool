@@ -62,29 +62,19 @@ jspm_packages/
 common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
-
 **/.rush/temp/
 
-# docs
-/docs/.vuepress
+# Docs
+/docs
+**/docs/.markdowns
+**/docs/.vuepress
 
 # Heft
 .heft
 
-/hefts/*/temp
-/hefts/*/dist
-/hefts/*/lib
-/hefts/*/.rush
-/hefts/*/docs/.vuepress
-/hefts/*/docs/.markdowns
-/hefts/*/logs
-/hefts/*/log
-
-/libraries/*/temp
+# Repo build output
 /libraries/*/dist
 /libraries/*/lib
-/libraries/*/.rush
-/libraries/*/docs/.vuepress
-/libraries/*/docs/.markdowns
-/libraries/*/logs
-/libraries/*/log
+
+# Repo temp files
+/libraries/*/temp

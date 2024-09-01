@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------------------------------------------
-# 保持与 .gitignore 同步
+# Keep in sync with .gitignore
 #-------------------------------------------------------------------------------------------------------------------
 
 # Logs
@@ -68,58 +68,37 @@ common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
 
-/docs/.vuepress
-
-/hefts/*/temp
-/hefts/*/dist
-/hefts/*/lib
-/hefts/*/.rush
-/hefts/*/docs/.vuepress
-/hefts/*/docs/.markdowns
-/hefts/*/docs/api
-/hefts/*/logs
-/hefts/*/log
-
-/libraries/docs-build/.template
-
-/libraries/*/temp
-/libraries/*/dist
-/libraries/*/lib
-/libraries/*/.rush
-/libraries/*/docs/.vuepress
-/libraries/*/docs/.markdowns
-/libraries/*/docs/api
-/libraries/*/logs
-/libraries/*/log
+# Docs
+/docs
+**/docs/.markdowns
+**/docs/.vuepress
 
 # Heft
 .heft
 
+# Repo build output
+/libraries/*/dist
+/libraries/*/lib
+
+# Repo temp files
+/libraries/*/temp
 
 #-------------------------------------------------------------------------------------------------------------------
-# Prettier 通用配置
+# Prettier general configuration
 #-------------------------------------------------------------------------------------------------------------------
 
-# Rush 文件
+# Rush files
 common/changes/
 common/scripts/
 common/config/
 CHANGELOG.*
 
-# docs
+# Docs
 markdowns
+*.md
 
-**/temp/_eslint-*.json
-
-# 包管理文件
+# Package manager lock files
 pnpm-lock.yaml
 yarn.lock
 package-lock.json
 shrinkwrap.json
-
-# 构建产物
-dist
-lib
-
-# 在 Markdown 中，Prettier 将会对代码块进行格式化，这会影响输出
-*.md
