@@ -43,7 +43,7 @@
     "git-url-parse": "~14.0.0"
   },
   "devDependencies": {
-    "@hz-9/eslint-config-airbnb-ts": "^0.5.2",
+    "@hz-9/eslint-config-airbnb-ts": "~0.6.0",
     "@hz-9/heft-node-rig": "workspace:*",
     "@rushstack/heft": "0.66.1",
     "@types/fs-extra": "~11.0.3",
