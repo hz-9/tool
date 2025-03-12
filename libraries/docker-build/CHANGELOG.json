@@ -2,6 +2,20 @@
   "name": "@hz-9/docker-build",
   "entries": [
     {
+      "version": "0.3.9",
+      "tag": "@hz-9/docker-build_v0.3.9",
+      "date": "Wed, 12 Mar 2025 08:24:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "build: upgrade `@hz-9/eslint-config-airbnb-ts` to `~0.6.0`",
+            "author": "Chen Zhen <heavenzhen999@163.com>",
+            "commit": "f6399a4d44476f57eb4b54cbb7a1b0150df22cb3"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.8",
       "tag": "@hz-9/docker-build_v0.3.8",
       "date": "Sat, 10 Aug 2024 10:35:15 GMT",

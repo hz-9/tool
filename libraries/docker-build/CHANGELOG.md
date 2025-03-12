@@ -1,6 +1,13 @@
 # Change Log - @hz-9/docker-build
 
-This log was last generated on Sat, 10 Aug 2024 10:35:15 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Mar 2025 08:24:11 GMT and should not be manually modified.
+
+## 0.3.9
+Wed, 12 Mar 2025 08:24:11 GMT
+
+### Patches
+
+- build: upgrade `@hz-9/eslint-config-airbnb-ts` to `~0.6.0`
 
 ## 0.3.8
 Sat, 10 Aug 2024 10:35:15 GMT
